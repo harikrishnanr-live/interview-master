@@ -1,0 +1,198 @@
+[
+  {
+    "question": "What are the possible ways to create objects in JavaScript",
+    "answer": "The simplest way to create an empty object is using the Object constructor.\nvar object = new Object()\nThe object literal syntax is equivalent to creating a method when it passes null as a parameter:\nvar object = {};"
+  },
+  {
+    "question": "What is the difference between map v/s forEach?",
+    "answer": "The map method returns a new array by applying the callback function on each element of an array, while the forEach method doesn't return anything."
+  },
+  {
+    "question": "What is the spread operator?",
+    "answer": "The spread operator divides an iterable (such as an array or a string) into individual elements. The JavaScript spread operator (...) allows us to quickly copy all or part of an existing array or object into another array or object."
+  },
+  {
+    "question": "What is an anonymous function?",
+    "answer": "A function without a name is known as an anonymous function. An arrow function is also an anonymous function."
+  },
+  {
+    "question": "What is an arrow function in JavaScript",
+    "answer": "The shorthand syntax for writing ES6 functions is arrow functions. The arrow function's definition consists of parameters, followed by an arrow (=>), and the function's body."
+  },
+  {
+    "question": "What are the Limitations of arrow functions",
+    "answer": "Arrow functions cannot be used as constructors.\nArrow functions can’t be hoisted."
+  },
+  {
+    "question": "What is JavaScript Async?",
+    "answer": "Adding the async keyword before a function makes it automatically return a promise."
+  },
+  {
+    "question": "What are promises in JavaScript?",
+    "answer": "A promise is a JavaScript object that allows you to make asynchronous (aka async) calls."
+  },
+  {
+    "question": "What is the States of Promise?",
+    "answer": "pending → undefined\nfulfilled → a result value\nrejected → an error object"
+  },
+  {
+    "question": "What is Hoisting?",
+    "answer": "Hoisting is a behaviour in JavaScript where variables and functions are moved to the top of their scope during execution. Only the declaration is hoisted, not the assignment."
+  },
+  {
+    "question": "What is the Temporal Dead Zone?",
+    "answer": "When you declare a variable using let or const, there is a period (TDZ) during which you can't access it before the declaration. Accessing it throws a ReferenceError."
+  },
+  {
+    "question": "What is async-await?",
+    "answer": "async makes a function return a promise. await pauses the async function until the promise is resolved."
+  },
+  {
+    "question": "What is a pure function?",
+    "answer": "A pure function always returns the same result for the same arguments and has no side effects.\nExample: function sum(a,b){ return a+b; }"
+  },
+  {
+    "question": "What is Currying?",
+    "answer": "Currying is transforming a function with multiple arguments into a series of nested functions taking one argument at a time.\nExample: sum(a)(b)(c)"
+  },
+  {
+    "question": "What is the use of Currying?",
+    "answer": "It makes functions more reusable, allows partial application of arguments, and improves readability and flexibility."
+  },
+  {
+    "question": "Explain Closures in JavaScript.",
+    "answer": "A closure is when a function remembers and can access variables from outside its scope, even after the outer function has finished running."
+  },
+  {
+    "question": "What is the difference between Deep copy vs shallow copy?",
+    "answer": "Shallow Copy duplicates only top-level properties and shares nested references. Deep Copy duplicates everything recursively.\nDeep Copy: JSON.parse(JSON.stringify(obj))"
+  },
+  {
+    "question": "What is the difference between Call v/s apply v/s bind?",
+    "answer": "call: Calls function with arguments separated.\napply: Calls function with arguments as array.\nbind: Returns a new function with this set."
+  },
+  {
+    "question": "What is a callback?",
+    "answer": "A callback is a function passed as an argument to another function and is executed after some operation is completed."
+  },
+  {
+    "question": "What’s the difference between let, const, and var?",
+    "answer": "var can be re-declared and updated.\nlet can be updated but not re-declared.\nconst can't be updated or re-declared."
+  },
+  {
+    "question": "How does the this keyword work in JavaScript?",
+    "answer": "The this keyword refers to the object from which it is called, or in the current execution context."
+  },
+  {
+    "question": "What is event delegation?",
+    "answer": "Event delegation is a technique where a parent element handles events of its children via bubbling."
+  },
+  {
+    "question": "What are the features of ES6?",
+    "answer": "Arrow functions, Classes, Template literals, Destructuring, Default parameters, Rest/Spread, Modules, Promises, Let/Const, Generators"
+  },
+  {
+    "question": "What is the event loop in JavaScript?",
+    "answer": "The event loop manages asynchronous callbacks, executing tasks from the call stack, microtask queue, and callback queue in order."
+  },
+  {
+    "question": "What do you mean by Microtasks Queue?",
+    "answer": "Microtasks Queue contains high-priority asynchronous operations like promises and queueMicrotask."
+  },
+  {
+    "question": "What do you mean by Callback Queue?",
+    "answer": "Callback Queue holds functions waiting to be executed after asynchronous operations (e.g., setTimeout, DOM events)."
+  },
+  {
+    "question": "What are IIFEs (Immediately Invoked Function Expressions)?",
+    "answer": "An IIFE is a function that runs as soon as it is defined. It avoids polluting the global scope."
+  },
+  {
+    "question": "Explain the difference between null and undefined.",
+    "answer": "undefined means a variable is declared but not assigned. null is an assignment value that represents no value."
+  },
+  {
+    "question": "What’s the difference between synchronous and asynchronous programming?",
+    "answer": "Synchronous: Tasks are executed one at a time.\nAsynchronous: Tasks are executed independently, not blocking the main thread."
+  },
+  {
+    "question": "Explain the concept of prototypal inheritance.",
+    "answer": "Objects can inherit properties and methods from another object (prototype) through the prototype chain."
+  },
+  {
+    "question": "What’s the purpose of the () method?",
+    "answer": "Parentheses are used to invoke or call a function in JavaScript."
+  },
+  {
+    "question": "What is a promise chain?",
+    "answer": "A promise chain is a series of .then() calls used to handle multiple asynchronous steps sequentially."
+  },
+  {
+    "question": "Explain the concept of destructuring",
+    "answer": "Destructuring allows unpacking values from arrays or objects into individual variables."
+  },
+  {
+    "question": "What is debouncing?",
+    "answer": "Debouncing limits how often a function is executed. It runs only after a specified delay since the last event."
+  },
+  {
+    "question": "How can you prevent a function from being called multiple times?",
+    "answer": "By using debouncing or throttling techniques."
+  },
+  {
+    "question": "What are generator functions?",
+    "answer": "Generators are functions that can pause and resume execution using the yield keyword."
+  },
+  {
+    "question": "What is the use of a new keyword?",
+    "answer": "The new keyword creates an instance of an object from a constructor function."
+  },
+  {
+    "question": "What is a WeakMap? How does it differ from the normal map?",
+    "answer": "WeakMap keys must be objects and are garbage collectible. Map keys can be any data type and are not garbage collected."
+  },
+  {
+    "question": "What is the rest parameter?",
+    "answer": "Rest parameter (...args) allows a function to accept an indefinite number of arguments as an array."
+  },
+  {
+    "question": "What is the strict mode in JS?",
+    "answer": "Strict mode enables a restricted variant of JavaScript that helps catch common bugs and makes the code more secure."
+  },
+  {
+    "question": "What’s the difference between the spread operator and the rest parameter?",
+    "answer": "Spread expands elements; rest gathers them into a single array."
+  },
+  {
+    "question": "What are some useful methods related to JavaScript objects?",
+    "answer": "Object.keys(), Object.values(), Object.entries(), Object.assign(), Object.freeze(), Object.seal(), Object.create(), Object.hasOwnProperty(), Object.getOwnPropertyDescriptors()"
+  },
+  {
+    "question": "How does JavaScript handle asynchronous operations?",
+    "answer": "Using Callbacks, Promises, and Async/Await."
+  },
+  {
+    "question": "What is the fetch API, and how is it used?",
+    "answer": "Fetch API is a modern way to make HTTP requests. It returns a promise that resolves with the Response object."
+  },
+  {
+    "question": "What is throttling?",
+    "answer": "Throttling limits the number of times a function can be called over time."
+  },
+  {
+    "question": "What is polyfills?",
+    "answer": "Polyfills are scripts that replicate modern JS features on older browsers."
+  },
+  {
+    "question": "What is reduce() in js? And in the below example there is zero at end, what is the usage?",
+    "answer": "reduce() processes an array to reduce it to a single value. The zero is the initial value of the accumulator."
+  },
+  {
+    "question": "JavaScript Design Patterns",
+    "answer": "Singleton Pattern, Factory Pattern, Observer Pattern, Module Pattern, Prototype Pattern"
+  },
+  {
+    "question": "SOLID Principles in JavaScript",
+    "answer": "SRP (Single Responsibility), OCP (Open/Closed), LSP (Liskov Substitution), ISP (Interface Segregation)"
+  }
+]
