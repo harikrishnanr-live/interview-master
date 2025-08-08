@@ -50,6 +50,31 @@
                 background-position: 0% 50%;
             }
         }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 25% 50%; }
+            50% { background-position: 50% 50%; }
+            75% { background-position: 75% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 0, 150, 0.4), 0 0 40px rgba(0, 255, 255, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+            }
+        }
+
+        @keyframes colorShift {
+            0% { filter: hue-rotate(0deg); }
+            25% { filter: hue-rotate(90deg); }
+            50% { filter: hue-rotate(180deg); }
+            75% { filter: hue-rotate(270deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
         
         .fade-in-up {
             animation: fadeInUp 0.6s ease-out forwards;
@@ -64,31 +89,61 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff, #5f27cd);
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 8s ease infinite;
         }
         
         .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease infinite;
+        }
+
+        .glow-box {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .color-shift:hover {
+            animation: colorShift 2s ease-in-out infinite;
+        }
+
+        .rainbow-border {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff, #5f27cd);
+            background-size: 400% 400%;
+            animation: gradient 4s ease infinite;
+            padding: 3px;
+            border-radius: 1rem;
+        }
+
+        .rainbow-border-inner {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: calc(1rem - 3px);
         }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
     <!-- Header -->
-    <header class="glass-effect shadow-2xl sticky top-0 z-50">
+    <header class="glass-effect shadow-2xl sticky top-0 z-50 glow-box">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center">
-                    <svg class="w-8 h-8 mr-3 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                <h1 class="text-4xl font-bold flex items-center">
+                    <svg class="w-10 h-10 mr-3 text-yellow-300 color-shift" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    Angular Q&A Hub
+                    <span class="rainbow-text">Angular Q&A Hub</span>
                 </h1>
-                <div class="text-white font-semibold bg-white bg-opacity-20 px-4 py-2 rounded-full">
-                    <span id="totalQuestions">0</span> Questions Available
+                <div class="text-white font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <span id="totalQuestions">0</span> Questions Available ✨
                 </div>
             </div>
         </div>
@@ -97,44 +152,46 @@
     <div class="container mx-auto px-6 py-8">
         <!-- Stats Card -->
         <div class="mb-8 fade-in-up">
-            <div class="glass-effect rounded-2xl p-6 text-white shadow-2xl">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-yellow-300" id="currentPage">1</div>
-                        <div class="text-sm opacity-90">Current Page</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-green-300" id="displayedCount">0</div>
-                        <div class="text-sm opacity-90">Showing Questions</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-pink-300" id="totalPages">0</div>
-                        <div class="text-sm opacity-90">Total Pages</div>
+            <div class="rainbow-border glow-box">
+                <div class="rainbow-border-inner p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center bg-gradient-to-br from-pink-400 to-red-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <div class="text-4xl font-bold mb-2" id="currentPage">1</div>
+                            <div class="text-lg font-semibold">📄 Current Page</div>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-emerald-400 to-teal-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <div class="text-4xl font-bold mb-2" id="displayedCount">0</div>
+                            <div class="text-lg font-semibold">🔢 Showing Questions</div>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-violet-400 to-purple-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <div class="text-4xl font-bold mb-2" id="totalPages">0</div>
+                            <div class="text-lg font-semibold">📚 Total Pages</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Q&A Container -->
-        <div id="qaContainer" class="space-y-4 mb-8">
+        <div id="qaContainer" class="space-y-6 mb-8">
             <!-- Q&A items will be inserted here -->
         </div>
 
         <!-- Pagination -->
-        <div class="flex justify-center items-center space-x-4 mb-8">
-            <button id="prevBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover">
+        <div class="flex justify-center items-center space-x-6 mb-8">
+            <button id="prevBtn" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover shadow-2xl">
                 <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
-                Previous
+                Previous 🚀
             </button>
             
-            <div class="glass-effect px-4 py-2 rounded-full text-white font-semibold">
-                Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
+            <div class="glass-effect px-8 py-4 rounded-full font-bold text-xl glow-box">
+                <span class="rainbow-text">Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span></span>
             </div>
             
-            <button id="nextBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover">
-                Next
+            <button id="nextBtn" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover shadow-2xl">
+                Next 🚀
                 <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
@@ -143,7 +200,10 @@
 
         <!-- Loading Indicator -->
         <div id="loadingIndicator" class="hidden flex justify-center items-center py-8">
-            <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+            <div class="relative">
+                <div class="animate-spin rounded-full h-16 w-16 border-4 border-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-border"></div>
+                <div class="absolute top-2 left-2 animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+            </div>
         </div>
     </div>
 
@@ -151,6 +211,20 @@
         // Global variables
         let angularData = [];
         let isDataLoaded = false;
+        
+        // Colorful gradient combinations for accordion items
+        const colorCombinations = [
+            'from-pink-400 to-purple-500',
+            'from-blue-400 to-cyan-500',
+            'from-emerald-400 to-teal-500',
+            'from-orange-400 to-red-500',
+            'from-violet-400 to-purple-500',
+            'from-yellow-400 to-orange-500',
+            'from-indigo-400 to-blue-500',
+            'from-green-400 to-emerald-500',
+            'from-rose-400 to-pink-500',
+            'from-cyan-400 to-blue-500'
+        ];
 
         // Function to load JSON data
         async function loadAngularData() {
@@ -174,19 +248,21 @@
         function showErrorMessage() {
             const container = document.getElementById('qaContainer');
             container.innerHTML = `
-                <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-                    <div class="text-red-600 text-lg font-semibold mb-2">
-                        <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-                        </svg>
-                        Unable to Load Data
+                <div class="rainbow-border">
+                    <div class="rainbow-border-inner p-8 text-center">
+                        <div class="text-red-600 text-2xl font-bold mb-4">
+                            <svg class="w-12 h-12 mx-auto mb-4 color-shift" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                            🚨 Unable to Load Data 🚨
+                        </div>
+                        <p class="text-red-700 text-lg font-semibold">
+                            Could not load angular.json file. Please make sure:
+                            <br>• The file exists in the same directory as this HTML file 📁
+                            <br>• The file contains valid JSON data ✅
+                            <br>• Your web server is running properly 🚀
+                        </p>
                     </div>
-                    <p class="text-red-700">
-                        Could not load angular.json file. Please make sure:
-                        <br>• The file exists in the same directory as this HTML file
-                        <br>• The file contains valid JSON data
-                        <br>• Your web server is running properly
-                    </p>
                 </div>
             `;
         }
@@ -209,24 +285,31 @@
         function createAccordionItem(item, index) {
             const globalIndex = (currentPage - 1) * itemsPerPage + index;
             const isOpen = openAccordions.has(globalIndex);
+            const colorCombo = colorCombinations[index % colorCombinations.length];
             
             return `
-                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-up border border-white border-opacity-30" style="animation-delay: ${index * 0.1}s">
-                    <button 
-                        class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 hover:bg-purple-50"
-                        onclick="toggleAccordion(${globalIndex})"
-                    >
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-800 pr-4 leading-6">${item.question}</h3>
-                            <svg class="w-6 h-6 text-purple-600 transform transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="accordion-content overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
-                        <div class="px-6 pb-4">
-                            <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-purple-500 rounded-lg p-4">
-                                <p class="leading-relaxed text-gray-700 font-medium">${item.answer}</p>
+                <div class="rainbow-border transform transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-up" style="animation-delay: ${index * 0.1}s">
+                    <div class="rainbow-border-inner overflow-hidden">
+                        <button 
+                            class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 bg-gradient-to-r ${colorCombo} text-white hover:shadow-lg"
+                            onclick="toggleAccordion(${globalIndex})"
+                        >
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold pr-4 leading-7 drop-shadow-lg">
+                                    💡 ${item.question}
+                                </h3>
+                                <svg class="w-8 h-8 text-white transform transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''} drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                            <div class="px-8 pb-6">
+                                <div class="bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-l-8 border-gradient-to-b border-purple-500 rounded-2xl p-6 shadow-inner">
+                                    <p class="leading-relaxed text-gray-800 font-semibold text-lg">
+                                        ✨ ${item.answer}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -251,8 +334,10 @@
             
             if (currentData.length === 0) {
                 container.innerHTML = `
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6 text-center">
-                        <div class="text-yellow-600 text-lg font-semibold">No data available</div>
+                    <div class="rainbow-border">
+                        <div class="rainbow-border-inner p-8 text-center">
+                            <div class="text-yellow-600 text-2xl font-bold">🤔 No data available</div>
+                        </div>
                     </div>
                 `;
                 return;
