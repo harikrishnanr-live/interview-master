@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Q&A Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .pulse-hover:hover {
+            animation: pulse 0.6s ease-in-out;
+        }
+        
+        .slide-down {
+            animation: slideDown 0.4s ease-out forwards;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Header -->
+    <header class="glass-effect shadow-2xl sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-bold text-white flex items-center">
+                    <svg class="w-8 h-8 mr-3 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Angular Q&A Hub
+                </h1>
+                <div class="text-white font-semibold bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                    <span id="totalQuestions">0</span> Questions Available
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Stats Card -->
+        <div class="mb-8 fade-in-up">
+            <div class="glass-effect rounded-2xl p-6 text-white shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-yellow-300" id="currentPage">1</div>
+                        <div class="text-sm opacity-90">Current Page</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-300" id="displayedCount">0</div>
+                        <div class="text-sm opacity-90">Showing Questions</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-pink-300" id="totalPages">0</div>
+                        <div class="text-sm opacity-90">Total Pages</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q&A Container -->
+        <div id="qaContainer" class="space-y-4 mb-8">
+            <!-- Q&A items will be inserted here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center items-center space-x-4 mb-8">
+            <button id="prevBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover">
+                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Previous
+            </button>
+            
+            <div class="glass-effect px-4 py-2 rounded-full text-white font-semibold">
+                Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
+            </div>
+            
+            <button id="nextBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover">
+                Next
+                <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="hidden flex justify-center items-center py-8">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data - replace with your angular.json
+        const angularData = [];
+
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let openAccordions = new Set();
+
+        document.addEventListener('DOMContentLoaded', () => {
+    fetch('angular.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load angular.json');
+            return response.json();
+        })
+        .then(data => {
+            angularData = data;
+            renderCurrentPage();
+        })
+        .catch(error => {
+            console.error('Error loading data:', error);
+            document.getElementById('qaContainer').innerHTML = `<div class="text-white text-center">Failed to load questions.</div>`;
+        });
+});
+
+        function getTotalPages() {
+            return Math.ceil(angularData.length / itemsPerPage);
+        }
+
+        function getCurrentPageData() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            return angularData.slice(startIndex, endIndex);
+        }
+
+        function createAccordionItem(item, index) {
+            const globalIndex = (currentPage - 1) * itemsPerPage + index;
+            const isOpen = openAccordions.has(globalIndex);
+            
+            return `
+                <div class="glass-effect rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-up" style="animation-delay: ${index * 0.1}s">
+                    <button 
+                        class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 hover:bg-white hover:bg-opacity-10"
+                        onclick="toggleAccordion(${globalIndex})"
+                    >
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-white pr-4">${item.question}</h3>
+                            <svg class="w-6 h-6 text-yellow-300 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                        <div class="px-6 pb-4">
+                            <div class="bg-gradient-to-r from-purple-500 to-pink-500 bg-opacity-20 rounded-lg p-4 text-white">
+                                <p class="leading-relaxed">${item.answer}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleAccordion(globalIndex) {
+            if (openAccordions.has(globalIndex)) {
+                openAccordions.delete(globalIndex);
+            } else {
+                openAccordions.add(globalIndex);
+            }
+            renderCurrentPage();
+        }
+
+        function renderCurrentPage() {
+            const container = document.getElementById('qaContainer');
+            const currentData = getCurrentPageData();
+            
+            container.innerHTML = currentData.map((item, index) => 
+                createAccordionItem(item, index)
+            ).join('');
+            
+            updateStats();
+            updatePagination();
+        }
+
+        function updateStats() {
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('displayedCount').textContent = getCurrentPageData().length;
+            document.getElementById('totalPages').textContent = getTotalPages();
+            document.getElementById('totalQuestions').textContent = angularData.length;
+            document.getElementById('currentPageDisplay').textContent = currentPage;
+            document.getElementById('totalPagesDisplay').textContent = getTotalPages();
+        }
+
+        function updatePagination() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === getTotalPages();
+        }
+
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+        }
+
+        function changePage(direction) {
+            showLoading();
+            
+            setTimeout(() => {
+                if (direction === 'next' && currentPage < getTotalPages()) {
+                    currentPage++;
+                } else if (direction === 'prev' && currentPage > 1) {
+                    currentPage--;
+                }
+                
+                renderCurrentPage();
+                hideLoading();
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500);
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
+        document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCurrentPage();
+        });
+    </script>
+</body>
+</html>

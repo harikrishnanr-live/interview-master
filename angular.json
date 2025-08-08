@@ -1,0 +1,90 @@
+[
+  {
+    "question": "What is Angular?",
+    "answer": "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. It's developed and maintained by Google."
+  },
+  {
+    "question": "What is Angular CLI?",
+    "answer": "Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell."
+  },
+  {
+    "question": "What are Angular Components?",
+    "answer": "Components are the fundamental building blocks of Angular applications. They display data on the screen, listen for user input, and take action based on that input."
+  },
+  {
+    "question": "What is TypeScript?",
+    "answer": "TypeScript is a programming language developed by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static type checking."
+  },
+  {
+    "question": "What are Angular Services?",
+    "answer": "Services are a great way to share information among classes that don't know each other. They help you organize and share code across your app."
+  },
+  {
+    "question": "What is Angular Routing?",
+    "answer": "Angular Router enables navigation from one view to the next as users perform application tasks. It's used to navigate between different components."
+  },
+  {
+    "question": "What are Angular Directives?",
+    "answer": "Directives are classes that add additional behavior to elements in your Angular applications. There are three kinds: component, attribute, and structural directives."
+  },
+  {
+    "question": "What is Angular Data Binding?",
+    "answer": "Data binding is a mechanism for coordinating parts of a template with parts of a component. Angular offers four kinds of data binding."
+  },
+  {
+    "question": "What is Angular Dependency Injection?",
+    "answer": "Dependency Injection is a coding pattern in which a class asks for dependencies from external sources rather than creating them itself."
+  },
+  {
+    "question": "What are Angular Pipes?",
+    "answer": "Pipes transform displayed values within a template. You can use built-in pipes or create custom pipes to transform data."
+  },
+  {
+    "question": "What is Angular Module?",
+    "answer": "NgModules configure the injector, the compiler and help organize related things together. Every Angular app has at least one module, the root module."
+  },
+  {
+    "question": "What is Angular Form Validation?",
+    "answer": "Form validation helps ensure that users enter information in the correct format. Angular provides built-in validators and you can create custom validators."
+  },
+  {
+    "question": "What is Angular HttpClient?",
+    "answer": "HttpClient is Angular's mechanism for communicating with a remote server over HTTP. It's available as an injectable class."
+  },
+  {
+    "question": "What are Angular Observables?",
+    "answer": "Observables provide support for passing messages between parts of your application. They're used frequently in Angular and are a technique for event handling."
+  },
+  {
+    "question": "What is Angular Lifecycle Hooks?",
+    "answer": "Lifecycle hooks are callback methods that Angular calls on directives and components as it creates, changes, and destroys them."
+  },
+  {
+    "question": "What is Angular Testing?",
+    "answer": "Angular testing utilities make it easy to investigate how a component class behaves and test components in isolation from the Angular framework."
+  },
+  {
+    "question": "What is Angular Universal?",
+    "answer": "Angular Universal is a technology that renders Angular applications on the server, enabling server-side rendering (SSR)."
+  },
+  {
+    "question": "What is Angular PWA?",
+    "answer": "Progressive Web Apps (PWA) are web applications that use modern web capabilities to deliver an app-like experience to users."
+  },
+  {
+    "question": "What is Angular Ivy?",
+    "answer": "Ivy is Angular's rendering engine. It enables smaller bundle sizes, faster testing, improved CSS class and style binding, and improved build errors."
+  },
+  {
+    "question": "What is Angular Material?",
+    "answer": "Angular Material is a UI component library for Angular applications that follows Google's Material Design principles."
+  },
+  {
+    "question": "What is RxJS in Angular?",
+    "answer": "RxJS is a library for reactive programming using Observables. It's used extensively throughout Angular for handling asynchronous operations."
+  },
+  {
+    "question": "What is Angular Animation?",
+    "answer": "Angular's animation system is based on CSS functionality, allowing you to animate any property that the browser considers animatable."
+  }
+]

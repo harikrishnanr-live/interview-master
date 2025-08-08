@@ -5,58 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Learning Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.3); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+        .floating:nth-child(2) { animation-delay: -2s; }
+        .floating:nth-child(3) { animation-delay: -4s; }
+        .gradient-bg { 
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        .glow { animation: pulse-glow 2s ease-in-out infinite; }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Tech Learning Hub</h1>
+<body class="gradient-bg min-h-screen">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-pink-400 rounded-full opacity-20 floating"></div>
+        <div class="absolute top-32 right-20 w-16 h-16 bg-blue-400 rounded-full opacity-20 floating"></div>
+        <div class="absolute bottom-20 left-32 w-24 h-24 bg-yellow-400 rounded-full opacity-20 floating"></div>
+        <div class="absolute bottom-40 right-10 w-18 h-18 bg-green-400 rounded-full opacity-20 floating"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-bold mb-4 text-white drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500">
+                    Tech Learning Hub
+                </span>
+            </h1>
+            <p class="text-xl text-white/80 font-medium">Master the fundamentals with interactive learning</p>
+        </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Angular Box -->
-            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer transform hover:scale-105" onclick="redirectToAngular()">
-                <div class="p-6">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-500 text-white rounded-lg mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow" onclick="redirectToAngular()">
+                <div class="absolute inset-0 bg-gradient-to-br from-red-400/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative p-8">
+                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2L2 6v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V6l-10-4z"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">Angular</h2>
-                    <p class="text-gray-600 text-center">Learn Angular framework concepts, components, and best practices</p>
-                    <div class="mt-4 text-center">
-                        <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Framework</span>
+                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-red-300 transition-colors duration-300">Angular</h2>
+                    <p class="text-white/80 text-center leading-relaxed">Learn Angular framework concepts, components, and best practices with interactive examples</p>
+                    <div class="mt-6 text-center">
+                        <span class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Framework</span>
                     </div>
                 </div>
+                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-red-500/20 rounded-full blur-xl group-hover:bg-red-500/40 transition-all duration-500"></div>
             </div>
 
             <!-- JavaScript Box -->
-            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer transform hover:scale-105" onclick="redirectToJavaScript()">
-                <div class="p-6">
-                    <div class="flex items-center justify-center w-16 h-16 bg-yellow-500 text-white rounded-lg mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-2 glow" onclick="redirectToJavaScript()">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative p-8">
+                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.77l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">JavaScript</h2>
-                    <p class="text-gray-600 text-center">Master JavaScript fundamentals, ES6+, and modern development</p>
-                    <div class="mt-4 text-center">
-                        <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Language</span>
+                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-yellow-300 transition-colors duration-300">JavaScript</h2>
+                    <p class="text-white/80 text-center leading-relaxed">Master JavaScript fundamentals, ES6+, and modern development techniques</p>
+                    <div class="mt-6 text-center">
+                        <span class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Language</span>
                     </div>
                 </div>
+                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl group-hover:bg-yellow-500/40 transition-all duration-500"></div>
             </div>
 
-            <!-- Additional Topic Box (Example) -->
-            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer transform hover:scale-105">
-                <div class="p-6">
-                    <div class="flex items-center justify-center w-16 h-16 bg-blue-500 text-white rounded-lg mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <!-- React Box -->
+            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative p-8">
+                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM6.008 16.255l-.472-.12C2.018 15.246 0 13.737 0 11.996s2.018-3.25 5.536-4.139l.472-.119.133.468a23.53 23.53 0 0 0 1.363 3.578l.101.213-.101.213a23.307 23.307 0 0 0-1.363 3.578l-.133.467zM5.317 8.95c-2.674.751-4.315 1.9-4.315 3.046 0 1.145 1.641 2.294 4.315 3.046a24.95 24.95 0 0 1 1.182-3.046A24.752 24.752 0 0 1 5.317 8.95zM17.992 16.255l-.133-.469a23.357 23.357 0 0 0-1.364-3.577l-.101-.213.101-.213a23.42 23.42 0 0 0 1.364-3.578l.133-.468.473.119c3.517.889 5.535 2.398 5.535 4.139s-2.018 3.25-5.535 4.139l-.473.121zm-.491-4.259c.48 1.039.877 2.06 1.182 3.046 2.675-.752 4.315-1.901 4.315-3.046 0-1.146-1.64-2.294-4.315-3.046a24.788 24.788 0 0 1-1.182 3.046z"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">React</h2>
-                    <p class="text-gray-600 text-center">Coming Soon - React components and hooks</p>
-                    <div class="mt-4 text-center">
-                        <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Library</span>
+                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-blue-300 transition-colors duration-300">React</h2>
+                    <p class="text-white/80 text-center leading-relaxed">Coming Soon - React components, hooks, and modern patterns</p>
+                    <div class="mt-6 text-center">
+                        <span class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Library</span>
                     </div>
                 </div>
+                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 transition-all duration-500"></div>
             </div>
         </div>
     </div>
