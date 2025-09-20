@@ -6,40 +6,46 @@
     <title>Angular Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes fadeInUp {
+        @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateX(-50px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
             }
             50% {
-                transform: scale(1.05);
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
             }
         }
-        
-        @keyframes slideDown {
+
+        @keyframes expandAnswer {
             from {
                 opacity: 0;
                 max-height: 0;
-                transform: translateY(-10px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
-                max-height: 500px;
+                max-height: 300px;
                 transform: translateY(0);
             }
         }
-        
-        @keyframes gradient {
+
+        @keyframes waveEffect {
             0% {
                 background-position: 0% 50%;
             }
@@ -51,122 +57,141 @@
             }
         }
 
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 25% 50%; }
-            50% { background-position: 50% 50%; }
-            75% { background-position: 75% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        @keyframes glow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(255, 0, 150, 0.4), 0 0 40px rgba(0, 255, 255, 0.3);
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
             }
-            50% { 
-                box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+            50% {
+                transform: translateY(-10px);
             }
         }
 
-        @keyframes colorShift {
-            0% { filter: hue-rotate(0deg); }
-            25% { filter: hue-rotate(90deg); }
-            50% { filter: hue-rotate(180deg); }
-            75% { filter: hue-rotate(270deg); }
-            100% { filter: hue-rotate(360deg); }
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out forwards;
         }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out forwards;
         }
-        
-        .pulse-hover:hover {
-            animation: pulse 0.6s ease-in-out;
+
+        .expand-answer {
+            animation: expandAnswer 0.5s ease-out forwards;
         }
-        
-        .slide-down {
-            animation: slideDown 0.4s ease-out forwards;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff, #5f27cd);
+
+        .wave-bg {
+            background: linear-gradient(-45deg, #e91e63, #c2185b, #ad1457, #880e4f);
             background-size: 400% 400%;
-            animation: gradient 8s ease infinite;
+            animation: waveEffect 12s ease infinite;
         }
-        
-        .glass-effect {
+
+        .float-effect:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .glass-card {
             backdrop-filter: blur(15px);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        .rainbow-text {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: rainbow 3s ease infinite;
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
         }
 
-        .glow-box {
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        .color-shift:hover {
-            animation: colorShift 2s ease-in-out infinite;
-        }
-
-        .rainbow-border {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff, #5f27cd);
-            background-size: 400% 400%;
-            animation: gradient 4s ease infinite;
-            padding: 3px;
-            border-radius: 1rem;
-        }
-
-        .rainbow-border-inner {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: calc(1rem - 3px);
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
+<body class="wave-bg min-h-screen">
+    <!-- Navigation Menu -->
+    <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold hover:text-red-400 transition-colors">Tech Learning Hub</a>
+            <div class="flex space-x-4 overflow-x-auto">
+                <a href="javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+                <a href="practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
+                <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
+                <a href="react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
+                <a href="nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+                <a href="rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
+                <a href="flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
+                <a href="mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
+                <a href="devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Header -->
-    <header class="glass-effect shadow-2xl sticky top-0 z-50 glow-box">
+    <header class="glass-card shadow-2xl">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-4xl font-bold flex items-center">
-                    <svg class="w-10 h-10 mr-3 text-yellow-300 color-shift" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                    <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
-                    <span class="rainbow-text">Angular Q&A Hub</span>
+                    Angular Q&A Hub
                 </h1>
-                <div class="text-white font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                    <span id="totalQuestions">0</span> Questions Available ✨
+                <div class="text-white font-semibold bg-gradient-to-r from-red-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
+                    <span id="totalQuestions">0</span> Questions Ready
                 </div>
             </div>
         </div>
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Stats Card -->
-        <div class="mb-8 fade-in-up">
-            <div class="rainbow-border glow-box">
-                <div class="rainbow-border-inner p-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-center bg-gradient-to-br from-pink-400 to-red-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
-                            <div class="text-4xl font-bold mb-2" id="currentPage">1</div>
-                            <div class="text-lg font-semibold">📄 Current Page</div>
+        <!-- Search Bar -->
+        <div class="mb-8 slide-in-left">
+            <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex-1 w-full md:w-auto">
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="🔍 Search Angular questions..."
+                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
+                            >
+                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
                         </div>
-                        <div class="text-center bg-gradient-to-br from-emerald-400 to-teal-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
-                            <div class="text-4xl font-bold mb-2" id="displayedCount">0</div>
-                            <div class="text-lg font-semibold">🔢 Showing Questions</div>
-                        </div>
-                        <div class="text-center bg-gradient-to-br from-violet-400 to-purple-500 p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300">
-                            <div class="text-4xl font-bold mb-2" id="totalPages">0</div>
-                            <div class="text-lg font-semibold">📚 Total Pages</div>
-                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-red-300" id="searchResultsCount">46</div>
+                        <div class="text-sm opacity-90 font-medium">Total Questions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="mb-8 slide-in-left">
+            <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-red-300 mb-2" id="currentPage">1</div>
+                        <div class="text-sm opacity-90 font-medium">Current Page</div>
+                        <div class="w-12 h-1 bg-red-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-pink-300 mb-2" id="displayedCount">0</div>
+                        <div class="text-sm opacity-90 font-medium">Showing Now</div>
+                        <div class="w-12 h-1 bg-pink-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-rose-300 mb-2" id="totalPages">0</div>
+                        <div class="text-sm opacity-90 font-medium">Total Pages</div>
+                        <div class="w-12 h-1 bg-rose-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-fuchsia-300 mb-2" id="filteredCount">46</div>
+                        <div class="text-sm opacity-90 font-medium">Filtered Results</div>
+                        <div class="w-12 h-1 bg-fuchsia-400 mx-auto mt-2 rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -177,32 +202,36 @@
             <!-- Q&A items will be inserted here -->
         </div>
 
-        <!-- Pagination -->
+        <!-- Pagination Controls -->
         <div class="flex justify-center items-center space-x-6 mb-8">
-            <button id="prevBtn" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover shadow-2xl">
-                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="prevBtn" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
-                Previous 🚀
+                Previous
             </button>
-            
-            <div class="glass-effect px-8 py-4 rounded-full font-bold text-xl glow-box">
-                <span class="rainbow-text">Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span></span>
+
+            <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
+                <span class="text-red-300">Page <span id="currentPageDisplay">1</span></span>
+                <span class="text-gray-300 mx-2">of</span>
+                <span class="text-pink-300"><span id="totalPagesDisplay">5</span></span>
+                <span class="text-gray-300 ml-4">•</span>
+                <span class="text-fuchsia-300 ml-4"><span id="totalFilteredDisplay">46</span> results</span>
             </div>
-            
-            <button id="nextBtn" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pulse-hover shadow-2xl">
-                Next 🚀
-                <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            <button id="nextBtn" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                Next
+                <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
             </button>
         </div>
 
         <!-- Loading Indicator -->
-        <div id="loadingIndicator" class="hidden flex justify-center items-center py-8">
+        <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
             <div class="relative">
-                <div class="animate-spin rounded-full h-16 w-16 border-4 border-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-border"></div>
-                <div class="absolute top-2 left-2 animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+                <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
+                <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-red-400 border-b-transparent animate-ping"></div>
             </div>
         </div>
     </div>
@@ -210,36 +239,393 @@
     <script>
         // Global variables
         let angularData = [];
+        let filteredData = [];
         let isDataLoaded = false;
-        
-        // Colorful gradient combinations for accordion items
-        const colorCombinations = [
-            'from-pink-400 to-purple-500',
-            'from-blue-400 to-cyan-500',
-            'from-emerald-400 to-teal-500',
-            'from-orange-400 to-red-500',
-            'from-violet-400 to-purple-500',
-            'from-yellow-400 to-orange-500',
-            'from-indigo-400 to-blue-500',
-            'from-green-400 to-emerald-500',
-            'from-rose-400 to-pink-500',
-            'from-cyan-400 to-blue-500'
-        ];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let openAccordions = new Set();
+        let searchTerm = '';
 
         // Function to load JSON data
         async function loadAngularData() {
             showLoading();
             try {
-                const response = await fetch('./angular.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                angularData = await response.json();
+                // Embedded JSON data to avoid CORS issues
+                angularData = [
+                    {
+                        "question": "What is Angular?",
+                        "answer": "Angular is a TypeScript-based free and open-source web application framework led by Google."
+                    },
+                    {
+                        "question": "How to enable AnimationsModule in Angular?",
+                        "answer": "To enable AnimationsModule, you need to import BrowserAnimationsModule in your app.module.ts."
+                    },
+                    {
+                        "question": "How to disable AnimationsModule in Angular?",
+                        "answer": "To disable animations, you import NoopAnimationsModule in your app.module.ts instead of BrowserAnimationsModule."
+                    },
+                    {
+                        "question": "What is @NgModule in app.module.ts?",
+                        "answer": "@NgModule is one of the decorators in Angular. It takes a metadata object that tells Angular how to compile and launch the application."
+                    },
+                    {
+                        "question": "Differentiate between var, const, and let variables.",
+                        "answer": {
+                            "Var": "var variables can be re-declared and updated.",
+                            "Let": "let can be updated but not re-declared.",
+                            "Const": "const cannot be updated or re-declared."
+                        }
+                    },
+                    {
+                        "question": "What are declarations in Angular in app.module.ts?",
+                        "answer": "Declarations in Angular list the components, directives, and pipes that belong to this module."
+                    },
+                    {
+                        "question": "What are the imports in Angular in app.module.ts?",
+                        "answer": "The imports array in app.module.ts is where you include other Angular modules that your module depends on."
+                    },
+                    {
+                        "question": "What are the providers in app.module.ts?",
+                        "answer": "Providers are services or classes that Angular can inject into components and other services. They are listed in the providers array."
+                    },
+                    {
+                        "question": "What is BrowserModule in app.module.ts?",
+                        "answer": "BrowserModule is required for running your Angular application in a browser. It is imported from @angular/platform-browser."
+                    },
+                    {
+                        "question": "What is CommonModule in app.module.ts?",
+                        "answer": "CommonModule is used when you want to use basic Angular directives like NgIf, NgFor in your modules."
+                    },
+                    {
+                        "question": "Differentiate between Angular and AngularJS",
+                        "answer": {
+                            "AngularJS": {
+                                "Language": "JavaScript",
+                                "Mobile support": "Not supported",
+                                "Architecture": "Model-View-Controller design",
+                                "Dependency Injection": "Doesn't support"
+                            },
+                            "Angular": {
+                                "Language": "TypeScript",
+                                "Mobile support": "Supports",
+                                "Architecture": "Uses components and directives",
+                                "Dependency Injection": "Supports"
+                            }
+                        }
+                    },
+                    {
+                        "question": "What is dependency injection in Angular?",
+                        "answer": "Dependency injection is a design pattern where components and services are provided with their dependencies, typically services, without creating them directly."
+                    },
+                    {
+                        "question": "How to serve in production mode?",
+                        "answer": "To serve the application in production mode, run the command 'ng serve --prod'."
+                    },
+                    {
+                        "question": "List out some commands.",
+                        "answer": [
+                            "ng build --prod: Builds the application in production mode.",
+                            "ng serve --prod: Serves the application in production mode."
+                        ]
+                    },
+                    {
+                        "question": "What is Eager and Lazy Loading?",
+                        "answer": {
+                            "Eager Loading": "Eager loading means loading all the modules upfront before the application starts.",
+                            "Lazy Loading": "Lazy loading loads modules only when they are needed, improving the initial load time of the application."
+                        }
+                    },
+                    {
+                        "question": "What are decorators in Angular?",
+                        "answer": "Decorators are functions used to add metadata to classes, methods, or properties. In Angular, common decorators include @Component, @Injectable, and @NgModule."
+                    },
+                    {
+                        "question": "What are Observables in Angular?",
+                        "answer": "Observables are streams of data that can emit multiple values over time. Angular uses Observables for asynchronous operations like HTTP requests."
+                    },
+                    {
+                        "question": "What are Promises?",
+                        "answer": "A Promise is an object that represents the eventual completion or failure of an asynchronous operation and its resulting value. Unlike Observables, Promises emit a single value."
+                    },
+                    {
+                        "question": "What is DOM?",
+                        "answer": "The Document Object Model (DOM) is an interface for web documents. It allows JavaScript to manipulate the structure, style, and content of web pages."
+                    },
+                    {
+                        "question": "What are DOM elements?",
+                        "answer": "DOM elements in Angular typically refer to HTML elements that are manipulated using ElementRef and TemplateRef in templates."
+                    },
+                    {
+                        "question": "Explain the syntax of app.module.ts",
+                        "answer": "@NgModule({declarations: [], imports: [], providers: [], bootstrap: [AppComponent]})"
+                    },
+                    {
+                        "question": "Explain the syntax of app.component.ts",
+                        "answer": "@Component({selector: 'app-dashboard', templateUrl: '', styleUrls: ['']})"
+                    },
+                    {
+                        "question": "Explain the syntax of services.",
+                        "answer": "@Injectable({providedIn: 'root'}) export class ApiServicesService { }"
+                    },
+                    {
+                        "question": "How to set cookies in Angular?",
+                        "answer": {
+                            "set": "cookies.set('cookieName', 'cookieValue')",
+                            "get": "cookies.get('cookieName')",
+                            "delete": "cookies.delete('cookieName')"
+                        }
+                    },
+                    {
+                        "question": "What is the difference between map and foreach?",
+                        "answer": {
+                            "forEach": "forEach is used for iterating over arrays, but it doesn't return anything.",
+                            "map": "map creates and returns a new array with the results of applying a function to each item in the array."
+                        }
+                    },
+                    {
+                        "question": "What are Directives in Angular?",
+                        "answer": "Directives are classes that modify the DOM in Angular applications. There are three types: Component Directives, Structural Directives, and Attribute Directives."
+                    },
+                    {
+                        "question": "What is data binding?",
+                        "answer": "Data binding in Angular is the mechanism of connecting a component's data to its template and vice versa."
+                    },
+                    {
+                        "question": "What are the forms of data binding?",
+                        "answer": [
+                            "String interpolation: {{ expression }}",
+                            "Property binding: [property]='expression'",
+                            "Event binding: (event)='method()'",
+                            "Two-way binding: [(ngModel)]='property'"
+                        ]
+                    },
+                    {
+                        "question": "What is String Interpolation in Angular?",
+                        "answer": "String Interpolation is a type of one-way data binding where data from the component is displayed in the HTML view, using the syntax {{ data }}."
+                    },
+                    {
+                        "question": "What is property binding?",
+                        "answer": "Property binding is a one-way binding mechanism in Angular where data from the component is passed to the HTML element's property, such as [src]='imageUrl'."
+                    },
+                    {
+                        "question": "What is event binding?",
+                        "answer": "Event binding is used to listen for events in the template, such as (click)='method()'. It allows you to trigger a method in the component when a specific event happens."
+                    },
+                    {
+                        "question": "What is two-way binding?",
+                        "answer": "Two-way binding allows automatic synchronization of data between the component and the view. It is implemented with the [(ngModel)] directive."
+                    },
+                    {
+                        "question": "What are modules?",
+                        "answer": "Modules in Angular are used to organize an application. They group components, directives, pipes, and services into cohesive blocks of functionality."
+                    },
+                    {
+                        "question": "What are SYNCHRONOUS and ASYNCHRONOUS?",
+                        "answer": {
+                            "SYNCHRONOUS": "Synchronous operations are executed one after another, blocking the execution of subsequent code until the current operation finishes.",
+                            "ASYNCHRONOUS": "Asynchronous operations allow other code to execute while waiting for a task to finish, such as HTTP requests or timers."
+                        }
+                    },
+                    {
+                        "question": "What are lifecycle hooks in Angular?",
+                        "answer": "Lifecycle hooks are methods that Angular calls during different phases of a component's lifecycle, such as ngOnInit, ngOnDestroy, ngOnChanges, etc."
+                    },
+                    {
+                        "question": "What are components in Angular?",
+                        "answer": "Components are the basic building blocks of an Angular application. Each component consists of a TypeScript class, an HTML template, and a CSS file."
+                    },
+                    {
+                        "question": "What are pipes in Angular?",
+                        "answer": "Pipes are used to transform data in Angular templates. They can format dates, numbers, and other types of data."
+                    },
+                    {
+                        "question": "What is the difference between pure and impure pipes?",
+                        "answer": {
+                            "Impure Pipes": "Impure pipes are reevaluated whenever any change occurs in the component.",
+                            "Pure Pipes": "Pure pipes are only reevaluated when the input data changes."
+                        }
+                    },
+                    {
+                        "question": "What is a parameterized pipe?",
+                        "answer": "A parameterized pipe takes arguments to modify the data before displaying it, such as a custom pipe that transforms a value based on parameters."
+                    },
+                    {
+                        "question": "What is the purpose of AsyncPipe in Angular?",
+                        "answer": "AsyncPipe subscribes to an Observable or a Promise and returns the latest value emitted by it. It also handles unsubscription automatically."
+                    },
+                    {
+                        "question": "What are filters in Angular?",
+                        "answer": "Filters in Angular allow for transforming the display value of expressions in templates, such as filtering arrays or formatting text."
+                    },
+                    {
+                        "question": "What is the difference between AOT and JIT?",
+                        "answer": {
+                            "AOT": "Ahead-of-time (AOT) compilation happens during the build phase and compiles the code before the browser loads it.",
+                            "JIT": "Just-in-time (JIT) compilation occurs in the browser at runtime."
+                        }
+                    },
+                    {
+                        "question": "What is a Wildcard Route in Angular?",
+                        "answer": "The Wildcard Route is used in Angular applications to handle invalid URLs, redirecting them to a 404 or a default route."
+                    },
+                    {
+                        "question": "What is Bazel in Angular?",
+                        "answer": "Bazel is an advanced build and test tool. It supports a lot of features suitable for large projects, such as caching and parallel builds."
+                    },
+                    {
+                        "question": "How to implement lazy loading in Angular?",
+                        "answer": "Generate 2 modules named 'a' and 'b' using the following command: ng generate module modulea --route a --module app.module. Then configure routes in app-routing.module.ts for lazy loading:"
+                    },
+                    {
+                        "question": "What are interfaces in Angular?",
+                        "answer": "Interfaces are used at compile-time to define a contract for class instances, ensuring that expected data follows a particular structure."
+                    },
+                    {
+                        "question": "What is a Built-in directive?",
+                        "answer": "Some common built-in directives are ngIf, ngSwitch, ngFor, ngStyle, ngClass, ngModel."
+                    },
+                    {
+                        "question": "What is an Angular custom directive?",
+                        "answer": "Angular allows us to create custom directives when we need additional behavior not provided by the built-in directives."
+                    },
+                    {
+                        "question": "What are Operators in RxJS?",
+                        "answer": "Operators are pure functions that take an Observable as input and return another Observable. Examples include map, first, interval, catchError, retry, retryWhen."
+                    },
+                    {
+                        "question": "What is an Observable in RxJS?",
+                        "answer": "An Observable in RxJS is a stream that can emit multiple values over time, such as data from HTTP requests or user interactions."
+                    },
+                    {
+                        "question": "What is the difference between Cold and Hot Observables in RxJS?",
+                        "answer": "Cold Observables produce data only when subscribed to, whereas Hot Observables emit data whether or not there are subscribers."
+                    },
+                    {
+                        "question": "What is the difference between scan() vs reduce()?",
+                        "answer": "scan() emits all values from the source Observable, while reduce() emits only the final value after processing all emitted values."
+                    },
+                    {
+                        "question": "How to pass data between components?",
+                        "answer": {
+                            "Parent to Child": "Use @Input() for passing data from parent to child component.",
+                            "Child to Parent": "Use @Output() with EventEmitter to pass data from child to parent component.",
+                            "Unrelated Components": "Use a shared service to pass data between unrelated components."
+                        }
+                    },
+                    {
+                        "question": "What is TAP() in Angular?",
+                        "answer": "The TAP() operator in RxJS allows you to perform side effects without affecting the stream of data."
+                    },
+                    {
+                        "question": "What is the pipe function in Angular?",
+                        "answer": "The pipe function is used to chain multiple operators in RxJS and is essential for composing transformations in observables."
+                    },
+                    {
+                        "question": "What are interceptors?",
+                        "answer": "Interceptors are used to intercept and modify HTTP requests and responses in Angular, typically for adding headers or logging."
+                    },
+                    {
+                        "question": "What is authguard?",
+                        "answer": "AuthGuard is used in Angular to prevent or allow access to certain routes based on conditions, such as whether a user is logged in."
+                    },
+                    {
+                        "question": "What is Angular CLI?",
+                        "answer": "Angular CLI (Command Line Interface) is a tool used to automate common tasks in Angular development, such as creating components, services, and deploying applications."
+                    },
+                    {
+                        "question": "What is ivy?",
+                        "answer": "Ivy is Angular's next-generation rendering engine, which provides better performance, smaller bundle sizes, and improved debugging."
+                    },
+                    {
+                        "question": "What is the difference between ElementRef, TemplateRef, and ViewContainerRef?",
+                        "answer": {
+                            "ElementRef": "Provides a wrapper around a DOM element to access it.",
+                            "TemplateRef": "Represents an Angular template that can be used in structural directives.",
+                            "ViewContainerRef": "Represents a container where views can be dynamically inserted."
+                        }
+                    },
+                    {
+                        "question": "What is transpiling in Angular?",
+                        "answer": "Transpiling refers to the process of converting TypeScript code to JavaScript, allowing it to run in any browser."
+                    },
+                    {
+                        "question": "List some of the tools for testing Angular applications",
+                        "answer": [
+                            "Karma",
+                            "Mocha",
+                            "Jasmine",
+                            "Protractor"
+                        ]
+                    },
+                    {
+                        "question": "What are some disadvantages of using Angular?",
+                        "answer": "Some disadvantages include slower load times for smaller applications, the complexity of learning and using all its features, and difficulties with SEO optimization."
+                    },
+                    {
+                        "question": "What is HttpClient, and what are its benefits?",
+                        "answer": "HttpClient is a service in Angular for making HTTP requests, offering features like request/response interceptors, error handling, and response transformation."
+                    },
+                    {
+                        "question": "What is multicasting in Angular?",
+                        "answer": "Multicasting in Angular allows sharing the same Observable execution between multiple subscribers."
+                    },
+                    {
+                        "question": "What are HttpInterceptors in Angular?",
+                        "answer": "HttpInterceptors allow you to inspect and transform HTTP requests and responses globally in your application."
+                    },
+                    {
+                        "question": "What is the difference between an Annotation and a Decorator in Angular?",
+                        "answer": "Annotations are metadata used to annotate classes, while decorators are used to modify class behavior without altering the original source code."
+                    },
+                    {
+                        "question": "@Injectable",
+                        "answer": "@Injectable decorator tells Angular that a class can be used for dependency injection."
+                    },
+                    {
+                        "question": "@Inject()",
+                        "answer": "It manually specifies how Angular should inject a dependency into a constructor."
+                    },
+                    {
+                        "question": "What do you understand as an observer in Angular?",
+                        "answer": "An observer listens for notifications from an Observable, reacting to data changes or events."
+                    },
+                    {
+                        "question": "What is a router outlet?",
+                        "answer": "The RouterOutlet directive in Angular serves as a placeholder in templates where the router will display the activated components."
+                    },
+                    {
+                        "question": "Explain the use of the 'this' operator in JavaScript",
+                        "answer": "The 'this' operator refers to the current context in which a function is executed, often used to reference the object the function is a part of."
+                    },
+                    {
+                        "question": "What do you understand by 'Closure' in JavaScript?",
+                        "answer": "A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope."
+                    },
+                    {
+                        "question": "Explain the use of the 'TypeOf' operator in JavaScript.",
+                        "answer": "The 'typeof' operator is used to determine the type of a variable or expression and returns a string indicating the type."
+                    },
+                    {
+                        "question": "What are guards in angular?",
+                        "answer": "Guards are used to control access to routes. They can prevent or allow route activation based on conditions like user authentication."
+                    },
+                    {
+                        "question": "What are the different types of guards in Angular?",
+                        "answer": [
+                            "CanActivate",
+                            "CanActivateChild",
+                            "CanDeactivate",
+                            "Resolve",
+                            "CanLoad"
+                        ]
+                    }
+                ];
                 isDataLoaded = true;
+                filteredData = [...angularData];
                 hideLoading();
                 renderCurrentPage();
             } catch (error) {
-                console.error('Error loading angular.json:', error);
+                console.error('Error loading Angular data:', error);
                 hideLoading();
                 showErrorMessage();
             }
@@ -248,68 +634,146 @@
         function showErrorMessage() {
             const container = document.getElementById('qaContainer');
             container.innerHTML = `
-                <div class="rainbow-border">
-                    <div class="rainbow-border-inner p-8 text-center">
-                        <div class="text-red-600 text-2xl font-bold mb-4">
-                            <svg class="w-12 h-12 mx-auto mb-4 color-shift" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-                            </svg>
-                            🚨 Unable to Load Data 🚨
-                        </div>
-                        <p class="text-red-700 text-lg font-semibold">
-                            Could not load angular.json file. Please make sure:
-                            <br>• The file exists in the same directory as this HTML file 📁
-                            <br>• The file contains valid JSON data ✅
-                            <br>• Your web server is running properly 🚀
-                        </p>
+                <div class="bg-white bg-opacity-95 border-l-4 border-red-500 rounded-2xl p-8 text-center shadow-xl">
+                    <div class="text-red-600 text-xl font-bold mb-4">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Oops! Unable to Load Angular Data
                     </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Could not load Angular data. Please ensure the page is loaded properly.
+                    </p>
                 </div>
             `;
         }
 
-        let currentPage = 1;
-        const itemsPerPage = 10;
-        let openAccordions = new Set();
-
         function getTotalPages() {
-            return Math.ceil(angularData.length / itemsPerPage);
+            return Math.ceil(filteredData.length / itemsPerPage);
         }
 
         function getCurrentPageData() {
-            if (!isDataLoaded || angularData.length === 0) return [];
+            if (!isDataLoaded || filteredData.length === 0) return [];
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
-            return angularData.slice(startIndex, endIndex);
+            return filteredData.slice(startIndex, endIndex);
+        }
+
+        // Search functionality
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                filteredData = [...angularData];
+            } else {
+                filteredData = angularData.filter(item =>
+                    item.question.toLowerCase().includes(searchTerm) ||
+                    (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            currentPage = 1; // Reset to first page when searching
+            renderCurrentPage();
+            updateSearchStats();
+        }
+
+        function updateSearchStats() {
+            document.getElementById('searchResultsCount').textContent = filteredData.length;
+            document.getElementById('filteredCount').textContent = filteredData.length;
+            document.getElementById('totalFilteredDisplay').textContent = filteredData.length;
         }
 
         function createAccordionItem(item, index) {
             const globalIndex = (currentPage - 1) * itemsPerPage + index;
             const isOpen = openAccordions.has(globalIndex);
-            const colorCombo = colorCombinations[index % colorCombinations.length];
-            
+
+            const colors = [
+                'from-red-400 to-pink-400',
+                'from-pink-400 to-rose-400',
+                'from-rose-400 to-red-400',
+                'from-fuchsia-400 to-pink-400',
+                'from-pink-400 to-fuchsia-400'
+            ];
+            const colorClass = colors[index % colors.length];
+
+            // Function to convert object/array answers to HTML table
+            function formatAnswer(answer) {
+                if (typeof answer === 'object' && answer !== null) {
+                    if (Array.isArray(answer)) {
+                        // Handle array answers
+                        if (answer.length > 0 && typeof answer[0] === 'string') {
+                            return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
+                        }
+                        return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
+                    } else {
+                        // Handle object answers - convert to table
+                        const entries = Object.entries(answer);
+                        if (entries.length > 0) {
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+                            tableHtml += '</tr></thead><tbody>';
+
+                            entries.forEach(([key, value]) => {
+                                if (typeof value === 'object' && value !== null) {
+                                    // Handle nested objects
+                                    const nestedEntries = Object.entries(value);
+                                    const nestedTable = '<table class="w-full border-collapse border border-gray-200 mt-2 mb-2">';
+                                    nestedTable += '<thead><tr class="bg-gray-50">';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Key</th>';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Value</th>';
+                                    nestedTable += '</tr></thead><tbody>';
+
+                                    nestedEntries.forEach(([nestedKey, nestedValue]) => {
+                                        nestedTable += `<tr class="hover:bg-gray-50">`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm font-medium">${nestedKey}</td>`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm">${nestedValue}</td>`;
+                                        nestedTable += '</tr>';
+                                    });
+                                    nestedTable += '</tbody></table>';
+
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${nestedTable}</td>`;
+                                    tableHtml += '</tr>';
+                                } else {
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                                    tableHtml += '</tr>';
+                                }
+                            });
+
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        }
+                    }
+                }
+                // Handle string answers
+                return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+            }
+
             return `
-                <div class="rainbow-border transform transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-up" style="animation-delay: ${index * 0.1}s">
-                    <div class="rainbow-border-inner overflow-hidden">
-                        <button 
-                            class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 bg-gradient-to-r ${colorCombo} text-white hover:shadow-lg"
-                            onclick="toggleAccordion(${globalIndex})"
-                        >
-                            <div class="flex justify-between items-center">
-                                <h3 class="text-xl font-bold pr-4 leading-7 drop-shadow-lg">
-                                    💡 ${item.question}
-                                </h3>
-                                <svg class="w-8 h-8 text-white transform transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''} drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105 slide-in-left border-l-4 border-gradient-to-r ${colorClass}" style="animation-delay: ${index * 0.15}s">
+                    <button
+                        class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50"
+                        onclick="toggleAccordion(${globalIndex})"
+                    >
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-800 pr-6 leading-7">${item.question}</h3>
+                            <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-red-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                                 </svg>
                             </div>
-                        </button>
-                        <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
-                            <div class="px-8 pb-6">
-                                <div class="bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-l-8 border-gradient-to-b border-purple-500 rounded-2xl p-6 shadow-inner">
-                                    <p class="leading-relaxed text-gray-800 font-semibold text-lg">
-                                        ✨ ${item.answer}
-                                    </p>
-                                </div>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                        <div class="px-8 pb-6">
+                            <div class="bg-gradient-to-r from-red-50 via-pink-50 to-rose-50 border-l-4 border-red-500 rounded-xl p-6 shadow-inner">
+                                ${formatAnswer(item.answer)}
                             </div>
                         </div>
                     </div>
@@ -328,25 +792,29 @@
 
         function renderCurrentPage() {
             if (!isDataLoaded) return;
-            
+
             const container = document.getElementById('qaContainer');
             const currentData = getCurrentPageData();
-            
+
             if (currentData.length === 0) {
                 container.innerHTML = `
-                    <div class="rainbow-border">
-                        <div class="rainbow-border-inner p-8 text-center">
-                            <div class="text-yellow-600 text-2xl font-bold">🤔 No data available</div>
+                    <div class="bg-white bg-opacity-95 border-l-4 border-red-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-red-600 text-xl font-bold mb-2">
+                            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            No Angular Questions Available
                         </div>
+                        <p class="text-gray-700">Please add some questions to your Angular data.</p>
                     </div>
                 `;
                 return;
             }
-            
-            container.innerHTML = currentData.map((item, index) => 
+
+            container.innerHTML = currentData.map((item, index) =>
                 createAccordionItem(item, index)
             ).join('');
-            
+
             updateStats();
             updatePagination();
         }
@@ -358,12 +826,13 @@
             document.getElementById('totalQuestions').textContent = angularData.length;
             document.getElementById('currentPageDisplay').textContent = currentPage;
             document.getElementById('totalPagesDisplay').textContent = getTotalPages();
+            updateSearchStats();
         }
 
         function updatePagination() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            
+
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === getTotalPages();
         }
@@ -378,25 +847,28 @@
 
         function changePage(direction) {
             showLoading();
-            
+
             setTimeout(() => {
                 if (direction === 'next' && currentPage < getTotalPages()) {
                     currentPage++;
                 } else if (direction === 'prev' && currentPage > 1) {
                     currentPage--;
                 }
-                
+
                 renderCurrentPage();
                 hideLoading();
-                
-                // Smooth scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 500);
+
+                // Smooth scroll to top with offset for sticky nav
+                window.scrollTo({ top: 150, behavior: 'smooth' });
+            }, 600);
         }
 
         // Event listeners
         document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
         document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Search input event listener
+        document.getElementById('searchInput').addEventListener('input', performSearch);
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {

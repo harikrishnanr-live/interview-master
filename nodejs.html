@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Q&A Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes expandAnswer {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                max-height: 300px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes waveEffect {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out forwards;
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+
+        .expand-answer {
+            animation: expandAnswer 0.5s ease-out forwards;
+        }
+
+        .wave-bg {
+            background: linear-gradient(-45deg, #4caf50, #388e3c, #43a047, #66bb6a);
+            background-size: 400% 400%;
+            animation: waveEffect 12s ease infinite;
+        }
+
+        .float-effect:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
+        }
+    </style>
+</head>
+<body class="wave-bg min-h-screen">
+    <!-- Navigation Menu -->
+    <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold hover:text-green-400 transition-colors">Tech Learning Hub</a>
+            <div class="flex space-x-4 overflow-x-auto">
+                <a href="javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+                <a href="practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
+                <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
+                <a href="react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
+                <a href="nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap font-semibold">Node.js</a>
+                <a href="rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
+                <a href="flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
+                <a href="mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
+                <a href="devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="glass-card shadow-2xl">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                    <svg class="w-8 h-8 mr-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    Node.js Q&A Hub
+                </h1>
+                <div class="text-white font-semibold bg-gradient-to-r from-green-400 to-emerald-500 px-4 py-2 rounded-full neon-glow">
+                    <span id="totalQuestions">0</span> Questions Ready
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Stats Dashboard -->
+        <div class="mb-8 slide-in-left">
+            <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-green-300 mb-2" id="currentPage">1</div>
+                        <div class="text-sm opacity-90 font-medium">Current Page</div>
+                        <div class="w-12 h-1 bg-green-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-emerald-300 mb-2" id="displayedCount">0</div>
+                        <div class="text-sm opacity-90 font-medium">Showing Now</div>
+                        <div class="w-12 h-1 bg-emerald-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-lime-300 mb-2" id="totalPages">0</div>
+                        <div class="text-sm opacity-90 font-medium">Total Pages</div>
+                        <div class="w-12 h-1 bg-lime-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="text-center float-effect">
+                        <div class="text-4xl font-bold text-teal-300 mb-2" id="totalQuestions">0</div>
+                        <div class="text-sm opacity-90 font-medium">All Questions</div>
+                        <div class="w-12 h-1 bg-teal-400 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q&A Container -->
+        <div id="qaContainer" class="space-y-6 mb-8">
+            <!-- Q&A items will be inserted here -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex justify-center items-center space-x-6 mb-8">
+            <button id="prevBtn" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Previous
+            </button>
+
+            <div class="glass-card px-6 py-3 rounded-2xl text-white font-bold text-lg">
+                Page <span id="currentPageDisplay" class="text-green-300">1</span> of <span id="totalPagesDisplay" class="text-emerald-300">1</span>
+            </div>
+
+            <button id="nextBtn" class="bg-gradient-to-r from-emerald-500 to-lime-600 hover:from-emerald-600 hover:to-lime-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                Next
+                <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
+            <div class="relative">
+                <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
+                <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-green-400 border-b-transparent animate-ping"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let nodejsData = [];
+        let isDataLoaded = false;
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let openAccordions = new Set();
+
+        // Function to load JSON data
+        async function loadNodeJSData() {
+            showLoading();
+            try {
+                // Embedded JSON data to avoid CORS issues
+                nodejsData = [
+                    {
+                        "question": "What is Nodejs?",
+                        "answer": "Node.js is a JavaScript engine used for executing JavaScript code outside the browser, commonly used to build scalable backend applications."
+                    },
+                    {
+                        "question": "What are the features of Nodejs 23?",
+                        "answer": "Node.js lets you run JavaScript code outside of a web browser to build fast and efficient applications. Faster Performance: The new V8 engine makes your applications run faster. WebAssembly (Wasm): Better support for running WebAssembly code, making it easier to run high-performance code in your applications. HTTP/3 Support: New and improved HTTP/3 protocol support for faster and more secure web communication. Native ES Modules Support: Among many other node.js updates, the services now natively provide support for ES modules, which facilitates code compatibility by standardizing the imports of modules."
+                    },
+                    {
+                        "question": "Is Node.js single-threaded?",
+                        "answer": "Yes, Node.js is single-threaded but uses event-driven architecture and non-blocking I/O to handle multiple requests efficiently."
+                    },
+                    {
+                        "question": "What is clustering in Nodejs?",
+                        "answer": "Clustering in Node.js is a way to use multiple CPU cores to run an application for better performance and handle more requests."
+                    },
+                    {
+                        "question": "What is a module in Node.js?",
+                        "answer": "A module in Node.js is a block of code that provides specific functionality, which can be reused across different parts of an application."
+                    },
+                    {
+                        "question": "What is concurrency?",
+                        "answer": "Concurrency is an essential feature of Node.js that enables it to handle large numbers of I/O operations simultaneously, without blocking the execution thread. This concurrency model allows Node.js to handle many requests concurrently, resulting in improved application performance."
+                    },
+                    {
+                        "question": "What is middleware?",
+                        "answer": "Middleware functions execute between the request and response cycle, performing tasks like logging, authentication, and data processing. The different types of middleware are: Application-level Middleware, Router-level Middleware, Error-handling Middleware, Third-party Middleware, and Built-in Middleware."
+                    },
+                    {
+                        "question": "How does Node.js handle concurrency despite being single-threaded?",
+                        "answer": "Node.js handles concurrency through asynchronous, non-blocking operations, allowing multiple tasks to run simultaneously within a single thread."
+                    },
+                    {
+                        "question": "What is a thread pool?",
+                        "answer": "A thread pool in Node.js is like having a group of helpers (threads) ready to execute tasks that take some time, such as reading a file or making a network request. These helpers ensure that your main program keeps running smoothly without waiting for those tasks to finish."
+                    },
+                    {
+                        "question": "What is control flow in Node.js?",
+                        "answer": "Control flow refers to the order in which code statements and functions are executed, managing asynchronous operations and error handling."
+                    },
+                    {
+                        "question": "What is REPL in Node.js?",
+                        "answer": "REPL stands for Read, Evaluate, Print, and Loop; it's an interactive environment for executing Node.js code and debugging."
+                    },
+                    {
+                        "question": "How to import a module in Node.js?",
+                        "answer": "Use the `require()` function to import external modules, storing the result in a variable for use in the application."
+                    },
+                    {
+                        "question": "What is package.json in Node.js?",
+                        "answer": "`package.json` is a metadata file in Node.js that contains information about the project, such as dependencies, scripts, and versions."
+                    },
+                    {
+                        "question": "^(Caret) vs ~(Tilde) in package.json",
+                        "answer": "^ (Caret) allows updates to newer minor or patch versions (e.g., `^1.2.3` can update to `1.2.4` or `1.3.0`, but not `2.0.0`). ~ (Tilde) allows updates only to newer patch versions (e.g., `~1.2.3` can update to `1.2.4` but not `1.3.0`)."
+                    },
+                    {
+                        "question": "Session vs Cookies",
+                        "answer": "Sessions store data on the server and last until the user closes the browser or logs out. Cookies store data on the client's browser and can last until deleted or expire. Sessions are ideal for sensitive data like login information, while cookies are useful for remembering user preferences."
+                    },
+                    {
+                        "question": "response.write vs response.send",
+                        "answer": "response.write is used in Node.js to send raw data in chunks to the client, while response.send in Express.js is a higher-level method that sends a complete HTTP response, which can include HTML, JSON, or plain text."
+                    },
+                    {
+                        "question": "What is the error-first callback?",
+                        "answer": "The 'error-first callback' is a convention in Node.js where the first parameter of the callback function is reserved for an error object. If an error occurs during an asynchronous operation, this error object is populated, otherwise, it is null or undefined."
+                    },
+                    {
+                        "question": "What is the difference between setImmediate() and process.nextTick() methods?",
+                        "answer": "`process.nextTick()` executes callbacks at the start of the next event loop, while `setImmediate()` executes them at the end of the current event loop."
+                    },
+                    {
+                        "question": "What is the child process in Nodejs?",
+                        "answer": "A child process in Node.js allows you to run another program or script from your main Node.js program, enabling parallel task execution without blocking the main program. This can be achieved using `spawn`, `fork`, or `exec` methods."
+                    },
+                    {
+                        "question": "What is event-driven programming in Node.js?",
+                        "answer": "Event-driven programming synchronizes multiple events using event loops and callback functions to simplify program flow."
+                    },
+                    {
+                        "question": "What is a buffer in Node.js?",
+                        "answer": "A buffer is a temporary storage space for binary data, allowing Node.js to handle raw data directly."
+                    },
+                    {
+                        "question": "What are streams in Node.js?",
+                        "answer": "Streams are objects used to handle continuous data flows, allowing for efficient reading and writing of data."
+                    },
+                    {
+                        "question": "What is callback hell?",
+                        "answer": "Callback hell refers to the problematic situation caused by deeply nested callbacks, making code difficult to read and maintain."
+                    },
+                    {
+                        "question": "What are the three methods to avoid callback hell?",
+                        "answer": "To avoid callback hell, use `async/await`, promises, or generators."
+                    },
+                    {
+                        "question": "What is body-parser in Node.js?",
+                        "answer": "Body-parser is a middleware that parses incoming request bodies in a middleware before handling it in Node.js applications."
+                    },
+                    {
+                        "question": "Explain the TLS module in Node.js.",
+                        "answer": "The TLS module provides an implementation of TLS and SSL protocols to establish secure network connections."
+                    },
+                    {
+                        "question": "What is a cluster in Node.js?",
+                        "answer": "A cluster allows Node.js to utilize multiple cores of a machine by creating child processes that share the same server port."
+                    },
+                    {
+                        "question": "process vs thread",
+                        "answer": "A process is a whole program running on your computer with its own memory and resources. A thread is a smaller unit within a process that does a specific task. A process can have multiple threads running simultaneously."
+                    },
+                    {
+                        "question": "What is rate limiting?",
+                        "answer": "Rate limiting is a technique used to control the amount of requests a user or client can make to a server within a specified time period. It is used to prevent abuse, ensure fair resource distribution, and protect against DDoS attacks."
+                    },
+                    {
+                        "question": "What is API caching (Redis)?",
+                        "answer": "API caching with Redis involves storing frequently requested API responses in Redis, an in-memory key-value store. This reduces the need to fetch data from the database every time, improving performance and reducing load."
+                    },
+                    {
+                        "question": "What is JWT Authentication & Authorization?",
+                        "answer": "JWT (JSON Web Token) is used for authentication and authorization in a stateless manner. It involves generating a signed token that contains user information, which can be sent with each request. The server verifies the token to authenticate and authorize the user."
+                    }
+                ];
+                isDataLoaded = true;
+                hideLoading();
+                renderCurrentPage();
+            } catch (error) {
+                console.error('Error loading Node.js data:', error);
+                hideLoading();
+                showErrorMessage();
+            }
+        }
+
+        function showErrorMessage() {
+            const container = document.getElementById('qaContainer');
+            container.innerHTML = `
+                <div class="bg-white bg-opacity-95 border-l-4 border-green-500 rounded-2xl p-8 text-center shadow-xl">
+                    <div class="text-green-600 text-xl font-bold mb-4">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Oops! Unable to Load Node.js Data
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">nodejs.json</span> file. Please ensure:
+                        <br><br>
+                        <span class="inline-block text-left">
+                        • The file exists in the same directory<br>
+                        • The file contains valid JSON format<br>
+                        • Your web server is running properly<br>
+                        • CORS policies allow file access
+                        </span>
+                    </p>
+                </div>
+            `;
+        }
+
+        function getTotalPages() {
+            return Math.ceil(nodejsData.length / itemsPerPage);
+        }
+
+        function getCurrentPageData() {
+            if (!isDataLoaded || nodejsData.length === 0) return [];
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            return nodejsData.slice(startIndex, endIndex);
+        }
+
+        function createAccordionItem(item, index) {
+            const globalIndex = (currentPage - 1) * itemsPerPage + index;
+            const isOpen = openAccordions.has(globalIndex);
+
+            const colors = [
+                'from-green-400 to-emerald-400',
+                'from-emerald-400 to-lime-400',
+                'from-lime-400 to-green-400',
+                'from-teal-400 to-emerald-400',
+                'from-emerald-400 to-teal-400'
+            ];
+            const colorClass = colors[index % colors.length];
+
+            return `
+                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105 slide-in-left border-l-4 border-gradient-to-r ${colorClass}" style="animation-delay: ${index * 0.15}s">
+                    <button
+                        class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50"
+                        onclick="toggleAccordion(${globalIndex})"
+                    >
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-800 pr-6 leading-7">${item.question}</h3>
+                            <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-green-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                        <div class="px-8 pb-6">
+                            <div class="bg-gradient-to-r from-green-50 via-emerald-50 to-lime-50 border-l-4 border-green-500 rounded-xl p-6 shadow-inner">
+                                <p class="leading-relaxed text-gray-800 font-medium text-lg">${item.answer}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleAccordion(globalIndex) {
+            if (openAccordions.has(globalIndex)) {
+                openAccordions.delete(globalIndex);
+            } else {
+                openAccordions.add(globalIndex);
+            }
+            renderCurrentPage();
+        }
+
+        function renderCurrentPage() {
+            if (!isDataLoaded) return;
+
+            const container = document.getElementById('qaContainer');
+            const currentData = getCurrentPageData();
+
+            if (currentData.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white bg-opacity-95 border-l-4 border-green-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-green-600 text-xl font-bold mb-2">
+                            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            No Node.js Questions Available
+                        </div>
+                        <p class="text-gray-700">Please add some questions to your nodejs.json file.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = currentData.map((item, index) =>
+                createAccordionItem(item, index)
+            ).join('');
+
+            updateStats();
+            updatePagination();
+        }
+
+        function updateStats() {
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('displayedCount').textContent = getCurrentPageData().length;
+            document.getElementById('totalPages').textContent = getTotalPages();
+            document.getElementById('totalQuestions').textContent = nodejsData.length;
+            document.getElementById('currentPageDisplay').textContent = currentPage;
+            document.getElementById('totalPagesDisplay').textContent = getTotalPages();
+        }
+
+        function updatePagination() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === getTotalPages();
+        }
+
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+        }
+
+        function changePage(direction) {
+            showLoading();
+
+            setTimeout(() => {
+                if (direction === 'next' && currentPage < getTotalPages()) {
+                    currentPage++;
+                } else if (direction === 'prev' && currentPage > 1) {
+                    currentPage--;
+                }
+
+                renderCurrentPage();
+                hideLoading();
+
+                // Smooth scroll to top with offset for sticky header
+                window.scrollTo({ top: 100, behavior: 'smooth' });
+            }, 600);
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
+        document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNodeJSData();
+        });
+    </script>
+</body>
+</html>
