@@ -1,376 +1,376 @@
 [
   {
-    "id":107,
+    "id":1,
     "question": "What is a variable in JavaScript?",
     "answer": "A variable is a container for storing data values. Declared with var, let, or const."
   },
   {
-    "id":108,
+    "id":2,
     "question": "How do you declare a variable in JavaScript?",
     "answer": "Using var, let, or const followed by the variable name."
   },
   {
-    "id":109,
+    "id":3,
     "question": "What is the difference between var, let, and const?",
     "answer": "var is function scoped and can be re-declared; let and const are block scoped, let can be updated, const cannot."
   },
   {
-    "id":110,
+    "id":4,
     "question": "What data types are supported in JavaScript?",
     "answer": "Number, String, Boolean, Object, Null, Undefined, Symbol, and BigInt."
   },
   {
-    "id":111,
+    "id":5,
     "question": "What is a string in JavaScript?",
     "answer": "A sequence of characters enclosed in single, double quotes, or backticks."
   },
   {
-    "id":112,
+    "id":6,
     "question": "How do you create a multi-line string?",
     "answer": "Using template literals with backticks (`) or concatenation with \\n."
   },
   {
-    "id":113,
+    "id":7,
     "question": "What is a function in JavaScript?",
     "answer": "A reusable block of code designed to perform a particular task."
   },
   {
-    "id":114,
+    "id":8,
     "question": "How do you declare a function?",
     "answer": "Using function keyword: function name() { // code } or arrow functions."
   },
   {
-    "id":115,
+    "id":9,
     "question": "What are function parameters and arguments?",
     "answer": "Parameters are named variables in a function definition; arguments are actual values passed to the function."
   },
   {
-    "id":116,
+    "id":10,
     "question": "What is the return statement?",
     "answer": "It specifies the value a function returns to the caller."
   },
   {
-    "id":117,
+    "id":11,
     "question": "What is an object in JavaScript?",
     "answer": "An object is a collection of key-value pairs, where keys are strings (or Symbols) and values can be any type."
   },
   {
-    "id":118,
+    "id":12,
     "question": "How do you create an object?",
     "answer": "Using object literal syntax {} or new Object()."
   },
   {
-    "id":119,
+    "id":13,
     "question": "How do you access object properties?",
     "answer": "Using dot notation (obj.key) or bracket notation (obj['key'])."
   },
   {
-    "id":120,
+    "id":14,
     "question": "How do you add a property to an object?",
     "answer": "Assign a value to a new key: obj.newProp = value."
   },
   {
-    "id":121,
+    "id":15,
     "question": "What is an array?",
     "answer": "An ordered list of values indexed from 0."
   },
   {
-    "id":122,
+    "id":16,
     "question": "How do you create an array?",
     "answer": "Using square brackets: let arr = [1, 2, 3]."
   },
   {
-    "id":123,
+    "id":17,
     "question": "How do you access elements in an array?",
     "answer": "Using indices: arr[0], arr[1], etc."
   },
   {
-    "id":124,
+    "id":18,
     "question": "How do you find the length of an array?",
     "answer": "Using the length property: arr.length."
   },
   {
-    "id":125,
+    "id":19,
     "question": "What is a loop?",
     "answer": "A control structure that repeats a block of code while a condition is true."
   },
   {
-    "id":126,
+    "id":20,
     "question": "Name different types of loops in JavaScript.",
     "answer": "for, while, do-while, for...in, and for...of loops."
   },
   {
-    "id":127,
+    "id":21,
     "question": "What is the difference between for...in and for...of loops?",
     "answer": "for...in iterates over object keys; for...of iterates over iterable values."
   },
   {
-    "id":128,
+    "id":22,
     "question": "What are conditional statements?",
     "answer": "Statements that perform different actions based on conditions (if, else if, else, switch)."
   },
   {
-    "id":129,
+    "id":23,
     "question": "How do you write an if statement?",
     "answer": "if (condition) { // code }"
   },
   {
-    "id":130,
+    "id":24,
     "question": "What is the switch statement?",
     "answer": "A control statement that executes code based on matching a value to case clauses."
   },
   {
-    "id":131,
+    "id":25,
     "question": "What are truthy and falsy values?",
     "answer": "Truthy values evaluate to true in a boolean context; falsy values (like 0, '', null, undefined, NaN, false) evaluate to false."
   },
   {
-    "id":132,
+    "id":26,
     "question": "What is NaN in JavaScript?",
     "answer": "NaN stands for 'Not-a-Number', representing a value that is not a legal number."
   },
   {
-    "id":133,
+    "id":27,
     "question": "How do you check if a value is NaN?",
     "answer": "Using the built-in isNaN() function or Number.isNaN() for more accurate checking."
   },
   {
-    "id":134,
+    "id":28,
     "question": "What is the difference between == and ===?",
     "answer": "== compares values after type coercion; === compares both value and type (strict equality)."
   },
   {
-    "id":135,
+    "id":29,
     "question": "What is type coercion?",
     "answer": "JavaScript automatically converts values from one type to another when performing operations."
   },
   {
-    "id":136,
+    "id":30,
     "question": "What is a callback function?",
     "answer": "A function passed into another function as an argument to be executed later."
   },
   {
-    "id":137,
+    "id":31,
     "question": "What is event bubbling?",
     "answer": "Event propagation where the event starts from the target element and bubbles up to ancestor elements."
   },
   {
-    "id":138,
+    "id":32,
     "question": "What is event capturing?",
     "answer": "Event propagation phase where the event starts from the root and goes down to the target element."
   },
   {
-    "id":139,
+    "id":33,
     "question": "How do you stop event propagation?",
     "answer": "By calling event.stopPropagation() or event.stopImmediatePropagation()."
   },
   {
-    "id":140,
+    "id":34,
     "question": "What is a promise?",
     "answer": "An object representing eventual completion or failure of an asynchronous operation."
   },
   {
-    "id":141,
+    "id":35,
     "question": "What are the states of a promise?",
     "answer": "Pending, Fulfilled (resolved), and Rejected."
   },
   {
-    "id":142,
+    "id":36,
     "question": "How do you create a promise?",
     "answer": "Using new Promise((resolve, reject) => { /* async code */ })."
   },
   {
-    "id":143,
+    "id":37,
     "question": "What is async/await?",
     "answer": "Syntax for writing asynchronous code that looks synchronous, built on promises."
   },
   {
-    "id":144,
+    "id":38,
     "question": "What is a closure?",
     "answer": "A function with access to its own scope, outer function's scope, and the global scope."
   },
   {
-    "id":145,
+    "id":39,
     "question": "What is the difference between local and global scope?",
     "answer": "Local scope is inside functions or blocks; global scope is accessible everywhere."
   },
   {
-    "id":146,
+    "id":40,
     "question": "What is lexical scoping?",
     "answer": "Variables are resolved by their physical location in the code at the time of definition."
   },
   {
-    "id":147,
+    "id":41,
     "question": "What is the this keyword?",
     "answer": "Refers to the object that is executing the current function."
   },
   {
-    "id":148,
+    "id":42,
     "question": "How does 'this' behave in arrow functions?",
     "answer": "Arrow functions don't have their own this; they inherit it from the surrounding scope."
   },
   {
-    "id":149,
+    "id":43,
     "question": "What is prototype inheritance?",
     "answer": "Objects inherit properties and methods from their prototype objects."
   },
   {
-    "id":150,
+    "id":44,
     "question": "What is the difference between call(), apply(), and bind()?",
     "answer": "call() and apply() invoke functions with a given this; apply() takes args as array, call() as list; bind() returns a new function with bound this."
   },
   {
-    "id":151,
+    "id":45,
     "question": "What is the difference between an expression and a statement?",
     "answer": "An expression produces a value; a statement performs an action."
   },
   {
-    "id":152,
+    "id":46,
     "question": "What is NaN compared to undefined?",
     "answer": "NaN is a number representing 'Not a Number'; undefined means a variable is declared but not assigned."
   },
   {
-    "id":153,
+    "id":47,
     "question": "What is the difference between null and undefined?",
     "answer": "null is an intentional absence of value; undefined means variable declared but not assigned."
   },
   {
-    "id":154,
+    "id":48,
     "question": "How can you convert a string to a number?",
     "answer": "Using Number(), parseInt(), parseFloat(), or unary plus (+) operator."
   },
   {
-    "id":155,
+    "id":49,
     "question": "What is event delegation?",
     "answer": "Attaching a single event listener to a parent element to manage events on child elements."
   },
   {
-    "id":156,
+    "id":50,
     "question": "What is a template literal?",
     "answer": "String literals allowing embedded expressions using backticks and ${}."
   },
   {
-    "id":157,
+    "id":51,
     "question": "What is destructuring assignment?",
     "answer": "Extracting values from arrays or objects into variables."
   },
   {
-    "id":158,
+    "id":52,
     "question": "What are default parameters?",
     "answer": "Function parameters with default values if no argument is provided."
   },
   {
-    "id":159,
+    "id":53,
     "question": "What is the spread operator?",
     "answer": "Expands iterable (like arrays) into individual elements."
   },
   {
-    "id":160,
+    "id":54,
     "question": "What is the rest parameter?",
     "answer": "Collects multiple elements into an array parameter."
   },
   {
-    "id":161,
+    "id":55,
     "question": "How do you create a class in JavaScript?",
     "answer": "Using the class keyword: class MyClass { constructor() { } method() { } }"
   },
   {
-    "id":162,
+    "id":56,
     "question": "What is a constructor?",
     "answer": "A special method for creating and initializing an object created with a class."
   },
   {
-    "id":163,
+    "id":57,
     "question": "What is inheritance in classes?",
     "answer": "A class can extend another class to inherit properties and methods."
   },
   {
-    "id":164,
+    "id":58,
     "question": "What is a module in JavaScript?",
     "answer": "Reusable pieces of code that can be exported and imported using import/export syntax."
   },
   {
-    "id":165,
+    "id":59,
     "question": "What is the difference between synchronous and asynchronous code?",
     "answer": "Synchronous code runs sequentially; asynchronous code runs without blocking the main thread."
   },
   {
-    "id":166,
+    "id":60,
     "question": "How do you handle errors in JavaScript?",
     "answer": "Using try...catch blocks or handling rejected promises."
   },
   {
-    "id":167,
+    "id":61,
     "question": "What is the use of 'use strict'?",
     "answer": "Enables strict mode which helps catch errors and disables some unsafe features."
   },
   {
-    "id":168,
+    "id":62,
     "question": "What is the difference between function declaration and function expression?",
     "answer": "Function declarations are hoisted; function expressions are not."
   },
   {
-    "id":169,
+    "id":63,
     "question": "What is hoisting?",
     "answer": "JavaScript's behavior of moving declarations to the top of their scope before execution."
   },
   {
-    "id":170,
+    "id":64,
     "question": "What is an Immediately Invoked Function Expression (IIFE)?",
     "answer": "A function that runs as soon as it is defined."
   },
   {
-    "id":171,
+    "id":65,
     "question": "What is the difference between null, undefined, and empty string?",
     "answer": "null is an assigned absence, undefined means uninitialized, empty string is a string with no characters."
   },
   {
-    "id":172,
+    "id":66,
     "question": "How do you check if a variable is an array?",
     "answer": "Using Array.isArray(variable)."
   },
   {
-    "id":173,
+    "id":67,
     "question": "What are the ways to clone an object?",
     "answer": "Using Object.assign(), spread operator, or JSON.parse(JSON.stringify(obj)) for deep clone."
   },
   {
-    "id":174,
+    "id":68,
     "question": "What is the difference between shallow copy and deep copy?",
     "answer": "Shallow copy copies top-level properties; deep copy copies nested objects."
   },
   {
-    "id":175,
+    "id":69,
     "question": "What is a Symbol?",
     "answer": "A unique and immutable primitive value used as object property keys."
   },
   {
-    "id":176,
+    "id":70,
     "question": "What is a generator function?",
     "answer": "A function that can be paused and resumed using yield."
   },
   {
-    "id":177,
+    "id":71,
     "question": "What is the event loop in JavaScript?",
     "answer": "A mechanism that handles asynchronous callbacks by queuing and executing tasks."
   },
   {
-    "id":178,
+    "id":72,
     "question": "What is the difference between microtasks and macrotasks?",
     "answer": "Microtasks (e.g. promises) run before macrotasks (e.g. setTimeout) in the event loop."
   },
   {
-    "id":179,
+    "id":73,
     "question": "How do you convert an object to JSON?",
     "answer": "Using JSON.stringify()."
   },
   {
-    "id":180,
+    "id":74,
     "question": "How do you parse JSON to an object?",
     "answer": "Using JSON.parse()."
   },
   {
-    "id":181,
+    "id":75,
     "question": "What is debouncing?",
     "answer": "Delaying function execution until after a certain amount of time has passed since last call."
   }
