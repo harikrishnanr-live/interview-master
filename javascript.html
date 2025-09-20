@@ -698,25 +698,31 @@
 
         function createAccordionItem(item, index) {
             const globalIndex = (currentPage - 1) * itemsPerPage + index;
+            const serialNumber = (currentPage - 1) * itemsPerPage + index + 1;
             const isOpen = openAccordions.has(globalIndex);
-            
+
             const colors = [
                 'from-emerald-400 to-cyan-400',
-                'from-orange-400 to-red-400', 
+                'from-orange-400 to-red-400',
                 'from-blue-400 to-indigo-400',
                 'from-pink-400 to-rose-400',
                 'from-yellow-400 to-orange-400'
             ];
             const colorClass = colors[index % colors.length];
-            
+
             return `
                 <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105 slide-in-left border-l-4 border-gradient-to-r ${colorClass}" style="animation-delay: ${index * 0.15}s">
-                    <button 
+                    <button
                         class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50"
                         onclick="toggleAccordion(${globalIndex})"
                     >
                         <div class="flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-gray-800 pr-6 leading-7">${item.question}</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                    ${serialNumber}
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 leading-7">${item.question}</h3>
+                            </div>
                             <div class="flex-shrink-0">
                                 <svg class="w-8 h-8 text-orange-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>

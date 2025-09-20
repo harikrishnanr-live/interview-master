@@ -401,6 +401,7 @@
 
         function createAccordionItem(item, index) {
             const globalIndex = (currentPage - 1) * itemsPerPage + index;
+            const serialNumber = (currentPage - 1) * itemsPerPage + index + 1;
             const isOpen = openAccordions.has(globalIndex);
 
             const colors = [
@@ -419,7 +420,12 @@
                         onclick="toggleAccordion(${globalIndex})"
                     >
                         <div class="flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-gray-800 pr-6 leading-7">${item.question}</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                    ${serialNumber}
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 leading-7">${item.question}</h3>
+                            </div>
                             <div class="flex-shrink-0">
                                 <svg class="w-8 h-8 text-purple-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
