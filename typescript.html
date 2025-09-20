@@ -137,7 +137,7 @@
                     TypeScript Q&A Hub
                 </h1>
                 <div class="text-white font-semibold bg-gradient-to-r from-blue-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
-                    <span id="totalQuestions">0</span> Questions Ready
+                    <span id="totalQuestions">10</span> Questions Ready
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-blue-300" id="searchResultsCount">0</div>
+                        <div class="text-2xl font-bold text-blue-300" id="searchResultsCount">10</div>
                         <div class="text-sm opacity-90 font-medium">Total Questions</div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                         <div class="w-12 h-1 bg-indigo-400 mx-auto mt-2 rounded-full"></div>
                     </div>
                     <div class="text-center float-effect">
-                        <div class="text-4xl font-bold text-pink-300 mb-2" id="filteredCount">0</div>
+                        <div class="text-4xl font-bold text-pink-300 mb-2" id="filteredCount">10</div>
                         <div class="text-sm opacity-90 font-medium">Filtered Results</div>
                         <div class="w-12 h-1 bg-pink-400 mx-auto mt-2 rounded-full"></div>
                     </div>
@@ -216,7 +216,7 @@
                 <span class="text-gray-300 mx-2">of</span>
                 <span class="text-purple-300"><span id="totalPagesDisplay">1</span></span>
                 <span class="text-gray-300 ml-4">•</span>
-                <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">0</span> results</span>
+                <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">10</span> results</span>
             </div>
 
             <button id="nextBtn" class="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
@@ -250,17 +250,65 @@
         async function loadTypeScriptData() {
             showLoading();
             try {
-                const response = await fetch('./qa/typescript.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                typescriptData = await response.json();
+                // Embedded TypeScript Q&A data to avoid CORS issues
+                typescriptData = [
+                    {
+                        "id":297,
+                        "question": "What is TypeScript?",
+                        "answer": "TypeScript is a statically typed superset of JavaScript that adds optional types to JavaScript. It compiles down to plain JavaScript and can run anywhere JavaScript runs."
+                    },
+                    {
+                        "id":298,
+                        "question": "What are the advantages of using TypeScript over JavaScript?",
+                        "answer": "Type safety, better tooling (autocomplete, linting), supports modern JavaScript features, improved refactoring, and better error checking during development."
+                    },
+                    {
+                        "id":299,
+                        "question": "How do you define a variable in TypeScript?",
+                        "answer": "You define a variable with let, const, or var and specify the type if needed."
+                    },
+                    {
+                        "id":300,
+                        "question": "What are types in TypeScript?",
+                        "answer": "Types describe the shape or structure of data, such as string, number, boolean, and object. They are used to define variables, function parameters, and return types."
+                    },
+                    {
+                        "id":301,
+                        "question": "What is the difference between any and unknown in TypeScript?",
+                        "answer": "any allows any type and bypasses type checking. unknown is safer and forces the developer to check the type before using it."
+                    },
+                    {
+                        "id":302,
+                        "question": "What is a tuple in TypeScript?",
+                        "answer": "A tuple is an ordered collection of elements of different types. In TypeScript, a tuple is a special type of array where the number of elements and their types are fixed. Example: let person: [string, number] = [\"Alice\", 25];"
+                    },
+                    {
+                        "id":303,
+                        "question": "What are interfaces in TypeScript?",
+                        "answer": "Interfaces define the structure of an object, including its properties and methods."
+                    },
+                    {
+                        "id":304,
+                        "question": "What are the different ways to define types in TypeScript?",
+                        "answer": "Types can be defined using primitive types, arrays, tuples, enums, interfaces, or type aliases."
+                    },
+                    {
+                        "id":305,
+                        "question": "What is an Enum in TypeScript?",
+                        "answer": "An enum is a way to define a set of named constants."
+                    },
+                    {
+                        "id":306,
+                        "question": "How does TypeScript handle null and undefined?",
+                        "answer": "TypeScript has strict null checks that distinguish between null, undefined, and other types when configured with --strictNullChecks."
+                    }
+                ];
                 isDataLoaded = true;
                 filteredData = [...typescriptData];
                 hideLoading();
                 renderCurrentPage();
             } catch (error) {
-                console.error('Error loading typescript.json:', error);
+                console.error('Error loading typescript data:', error);
                 hideLoading();
                 showErrorMessage();
             }

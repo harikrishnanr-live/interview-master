@@ -137,7 +137,7 @@
                     JavaScript Practice Q&A Hub
                 </h1>
                 <div class="text-white font-semibold bg-gradient-to-r from-purple-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
-                    <span id="totalQuestions">0</span> Questions Ready
+                    <span id="totalQuestions">15</span> Questions Ready
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-purple-300" id="searchResultsCount">0</div>
+                        <div class="text-2xl font-bold text-purple-300" id="searchResultsCount">15</div>
                         <div class="text-sm opacity-90 font-medium">Total Questions</div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                         <div class="w-12 h-1 bg-violet-400 mx-auto mt-2 rounded-full"></div>
                     </div>
                     <div class="text-center float-effect">
-                        <div class="text-4xl font-bold text-indigo-300 mb-2" id="filteredCount">0</div>
+                        <div class="text-4xl font-bold text-indigo-300 mb-2" id="filteredCount">15</div>
                         <div class="text-sm opacity-90 font-medium">Filtered Results</div>
                         <div class="w-12 h-1 bg-indigo-400 mx-auto mt-2 rounded-full"></div>
                     </div>
@@ -216,7 +216,7 @@
                 <span class="text-gray-300 mx-2">of</span>
                 <span class="text-pink-300"><span id="totalPagesDisplay">1</span></span>
                 <span class="text-gray-300 ml-4">•</span>
-                <span class="text-indigo-300 ml-4"><span id="totalFilteredDisplay">0</span> results</span>
+                <span class="text-indigo-300 ml-4"><span id="totalFilteredDisplay">15</span> results</span>
             </div>
 
             <button id="nextBtn" class="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
@@ -250,17 +250,90 @@
         async function loadPracticeData() {
             showLoading();
             try {
-                const response = await fetch('./qa/practice.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                practiceData = await response.json();
+                // Embedded JavaScript Practice Q&A data to avoid CORS issues
+                practiceData = [
+                    {
+                        "id":252,
+                        "question": "What is the output of console.log(typeof null)?",
+                        "answer": "object (This is a well-known bug in JavaScript)"
+                    },
+                    {
+                        "id":253,
+                        "question": "How do you check if a variable is an array?",
+                        "answer": "Using Array.isArray(variable) or variable instanceof Array"
+                    },
+                    {
+                        "id":254,
+                        "question": "What is the difference between == and === operators?",
+                        "answer": "== compares values after type coercion; === compares both value and type (strict equality)"
+                    },
+                    {
+                        "id":255,
+                        "question": "How do you create a deep copy of an object?",
+                        "answer": "Using JSON.parse(JSON.stringify(obj)) or structuredClone() (ES2022)"
+                    },
+                    {
+                        "id":256,
+                        "question": "What is event delegation?",
+                        "answer": "Attaching a single event listener to a parent element to manage events on child elements"
+                    },
+                    {
+                        "id":257,
+                        "question": "How do you remove duplicates from an array?",
+                        "answer": "Using new Set(array), filter() with indexOf(), or reduce() method"
+                    },
+                    {
+                        "id":258,
+                        "question": "What is a closure in JavaScript?",
+                        "answer": "A function that has access to its own scope, outer function's scope, and global scope"
+                    },
+                    {
+                        "id":259,
+                        "question": "How do you convert a string to a number?",
+                        "answer": "Using Number(), parseInt(), parseFloat(), or unary plus (+) operator"
+                    },
+                    {
+                        "id":260,
+                        "question": "What is the purpose of the bind() method?",
+                        "answer": "Creates a new function with a specified this value and initial arguments"
+                    },
+                    {
+                        "id":261,
+                        "question": "How do you check if an object has a specific property?",
+                        "answer": "Using hasOwnProperty(), in operator, or obj.property !== undefined"
+                    },
+                    {
+                        "id":262,
+                        "question": "What is the difference between let, const, and var?",
+                        "answer": "var is function-scoped and hoisted; let and const are block-scoped; const cannot be reassigned"
+                    },
+                    {
+                        "id":263,
+                        "question": "How do you handle asynchronous operations?",
+                        "answer": "Using callbacks, promises, or async/await syntax"
+                    },
+                    {
+                        "id":264,
+                        "question": "What is the event loop in JavaScript?",
+                        "answer": "A mechanism that handles asynchronous callbacks by queuing and executing tasks"
+                    },
+                    {
+                        "id":265,
+                        "question": "How do you create a promise?",
+                        "answer": "Using new Promise((resolve, reject) => { /* async code */ })"
+                    },
+                    {
+                        "id":266,
+                        "question": "What is destructuring assignment?",
+                        "answer": "Extracting values from arrays or objects into variables using syntax like [a, b] = array or {a, b} = object"
+                    }
+                ];
                 isDataLoaded = true;
                 filteredData = [...practiceData];
                 hideLoading();
                 renderCurrentPage();
             } catch (error) {
-                console.error('Error loading practice.json:', error);
+                console.error('Error loading practice data:', error);
                 hideLoading();
                 showErrorMessage();
             }

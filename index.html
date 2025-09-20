@@ -442,33 +442,44 @@
     <script>
         // Global Unique Visitor Tracking System
         function generateUniqueVisitorId() {
-            // Create a unique ID based on browser fingerprinting
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            ctx.textBaseline = 'top';
-            ctx.font = '14px Arial';
-            ctx.fillText('fingerprint', 2, 2);
+            try {
+                // Create a unique ID based on browser fingerprinting
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (!ctx) {
+                    // Fallback if canvas is not available
+                    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+                }
 
-            const fingerprint = [
-                navigator.userAgent,
-                navigator.language,
-                screen.width + 'x' + screen.height,
-                new Date().getTimezoneOffset(),
-                !!window.sessionStorage,
-                !!window.localStorage,
-                !!window.indexedDB,
-                canvas.toDataURL()
-            ].join('|');
+                ctx.textBaseline = 'top';
+                ctx.font = '14px Arial';
+                ctx.fillText('fingerprint', 2, 2);
 
-            // Create hash from fingerprint
-            let hash = 0;
-            for (let i = 0; i < fingerprint.length; i++) {
-                const char = fingerprint.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash = hash & hash; // Convert to 32-bit integer
+                const fingerprint = [
+                    navigator.userAgent || 'unknown',
+                    navigator.language || 'unknown',
+                    (screen.width || 0) + 'x' + (screen.height || 0),
+                    new Date().getTimezoneOffset(),
+                    !!window.sessionStorage,
+                    !!window.localStorage,
+                    !!window.indexedDB,
+                    canvas.toDataURL()
+                ].join('|');
+
+                // Create hash from fingerprint
+                let hash = 0;
+                for (let i = 0; i < fingerprint.length; i++) {
+                    const char = fingerprint.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convert to 32-bit integer
+                }
+
+                return Math.abs(hash).toString(36);
+            } catch (error) {
+                console.error('Error generating visitor ID:', error);
+                // Fallback ID generation
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
             }
-
-            return Math.abs(hash).toString(36);
         }
 
         function trackUniqueVisitor() {
@@ -476,47 +487,75 @@
             const VISITOR_COUNT_KEY = 'global_unique_visitors';
             const SESSION_TRACKED_KEY = 'session_tracked';
 
-            // Check if this session has already been tracked
-            if (sessionStorage.getItem(SESSION_TRACKED_KEY)) {
-                return; // Already tracked this session
+            try {
+                // Check if this session has already been tracked
+                if (sessionStorage.getItem(SESSION_TRACKED_KEY)) {
+                    // Return current count without incrementing
+                    const currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+                    return isNaN(currentCount) ? 0 : currentCount;
+                }
+
+                // Get or create unique visitor ID
+                let visitorId = localStorage.getItem(VISITOR_ID_KEY);
+                if (!visitorId) {
+                    visitorId = generateUniqueVisitorId();
+                    localStorage.setItem(VISITOR_ID_KEY, visitorId);
+
+                    // Increment global unique visitor count
+                    let currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+                    if (isNaN(currentCount)) {
+                        currentCount = 0;
+                    }
+                    currentCount += 1;
+                    localStorage.setItem(VISITOR_COUNT_KEY, currentCount.toString());
+                }
+
+                // Mark this session as tracked
+                sessionStorage.setItem(SESSION_TRACKED_KEY, 'true');
+
+                // Return the current count
+                const finalCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+                return isNaN(finalCount) ? 0 : finalCount;
+            } catch (error) {
+                console.error('Error tracking visitor:', error);
+                return 0;
             }
-
-            // Get or create unique visitor ID
-            let visitorId = localStorage.getItem(VISITOR_ID_KEY);
-            if (!visitorId) {
-                visitorId = generateUniqueVisitorId();
-                localStorage.setItem(VISITOR_ID_KEY, visitorId);
-
-                // Increment global unique visitor count
-                let currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
-                currentCount += 1;
-                localStorage.setItem(VISITOR_COUNT_KEY, currentCount.toString());
-            }
-
-            // Mark this session as tracked
-            sessionStorage.setItem(SESSION_TRACKED_KEY, 'true');
-
-            return parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
         }
 
         function updateGlobalVisitorStats() {
-            const uniqueVisitors = trackUniqueVisitor();
+            try {
+                const uniqueVisitors = trackUniqueVisitor();
 
-            // Update the global visitor count display in hero section
-            const visitorElement = document.getElementById('globalUniqueVisitors');
-            if (visitorElement) {
-                // Animate the counter
-                animateCounter(visitorElement, 0, uniqueVisitors, 2000);
+                // Ensure we have a valid number
+                const validCount = (typeof uniqueVisitors === 'number' && !isNaN(uniqueVisitors)) ? uniqueVisitors : 0;
+
+                // Update the global visitor count display in hero section
+                const visitorElement = document.getElementById('globalUniqueVisitors');
+                if (visitorElement) {
+                    // Animate the counter
+                    animateCounter(visitorElement, 0, validCount, 2000);
+                }
+
+                // Update the global visitor count display in footer
+                const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
+                if (footerVisitorElement) {
+                    footerVisitorElement.textContent = validCount.toLocaleString();
+                }
+
+                // Update individual page visitor stats
+                updatePageVisitorStats();
+            } catch (error) {
+                console.error('Error updating global visitor stats:', error);
+                // Set fallback values
+                const visitorElement = document.getElementById('globalUniqueVisitors');
+                if (visitorElement) {
+                    visitorElement.textContent = '0';
+                }
+                const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
+                if (footerVisitorElement) {
+                    footerVisitorElement.textContent = '0';
+                }
             }
-
-            // Update the global visitor count display in footer
-            const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
-            if (footerVisitorElement) {
-                footerVisitorElement.textContent = uniqueVisitors.toLocaleString();
-            }
-
-            // Update individual page visitor stats
-            updatePageVisitorStats();
         }
 
         function updatePageVisitorStats() {
@@ -582,9 +621,25 @@
             run();
         }
 
+        // Initialize visitor counter if it doesn't exist
+        function initializeVisitorCounter() {
+            const VISITOR_COUNT_KEY = 'global_unique_visitors';
+            const currentCount = localStorage.getItem(VISITOR_COUNT_KEY);
+
+            if (!currentCount || currentCount === 'NaN' || isNaN(parseInt(currentCount))) {
+                localStorage.setItem(VISITOR_COUNT_KEY, '0');
+            }
+        }
+
         // Initialize all visitor stats
         document.addEventListener('DOMContentLoaded', () => {
-            updateGlobalVisitorStats();
+            // Initialize counter first
+            initializeVisitorCounter();
+
+            // Small delay to ensure DOM is fully ready
+            setTimeout(() => {
+                updateGlobalVisitorStats();
+            }, 100);
         });
     </script>
 </body>
