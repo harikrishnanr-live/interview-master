@@ -109,7 +109,9 @@
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold hover:text-red-400 transition-colors">Tech Learning Hub</a>
-            <div class="flex space-x-4 overflow-x-auto">
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
                 <a href="javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
                 <a href="typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
                 <a href="practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
@@ -123,6 +125,29 @@
                 <a href="nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
                 <a href="devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
+            <a href="javascript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
+            <a href="typescript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
+            <a href="practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
+            <a href="angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
+            <a href="react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
+            <a href="nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+            <a href="rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
+            <a href="flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
+            <a href="php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
+            <a href="mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
+            <a href="nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
+            <a href="devops.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
 
@@ -879,6 +904,32 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             loadAngularData();
+        });
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                mobileMenu.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'A') {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
         });
     </script>
 </body>
