@@ -43,50 +43,90 @@
     </div>
     
     <div class="container mx-auto px-4 py-8 relative z-10">
-        <div class="text-center mb-12">
-            <h1 class="text-6xl font-bold mb-4 text-white drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500">
-                    Tech Learning Hub
-                </span>
-            </h1>
-            <p class="text-xl text-white/80 font-medium">Master the fundamentals with interactive learning</p>
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <div class="mb-8">
+                <h1 class="text-7xl font-extrabold mb-6 text-white drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 leading-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500">
+                        Tech Learning Hub
+                    </span>
+                </h1>
+                <p class="text-2xl text-white/90 font-semibold mb-4 max-w-4xl mx-auto leading-relaxed">
+                    Master the fundamentals with interactive learning
+                </p>
+                <p class="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+                    Explore comprehensive tutorials, practice questions, and hands-on projects across multiple programming languages and frameworks.
+                </p>
+            </div>
+
+            <!-- Global Visitor Stats -->
+            <div class="mb-12">
+                <div class="inline-flex items-center space-x-8 bg-white/10 backdrop-blur-lg rounded-2xl px-8 py-6 shadow-2xl border border-white/20">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-yellow-300 mb-2" id="globalUniqueVisitors">0</div>
+                        <div class="text-sm text-white/80 font-medium">Unique Visitors Worldwide</div>
+                        <div class="text-xs text-white/60 mt-1">Since launch</div>
+                    </div>
+                    <div class="w-px h-12 bg-white/30"></div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-300 mb-2" id="totalPages">13</div>
+                        <div class="text-sm text-white/80 font-medium">Learning Modules</div>
+                        <div class="text-xs text-white/60 mt-1">Comprehensive coverage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Technologies Section -->
+        <div class="mb-16">
+            <h2 class="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">
+                Choose Your Learning Path
+            </h2>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
             <!-- JavaScript Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-2 glow" onclick="redirectToJavaScript()">
-                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+            <div class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-rotate-1 glow border border-white/10" onclick="redirectToJavaScript()">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/30 to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative p-8 h-full flex flex-col">
+                    <div class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.77l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"/>
                         </svg>
                     </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-yellow-300 transition-colors duration-300">JavaScript</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Master JavaScript fundamentals, ES6+, and modern development techniques</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Language</span>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-center mb-4 text-white group-hover:text-yellow-200 transition-colors duration-300">JavaScript</h2>
+                            <p class="text-white/90 text-center leading-relaxed text-base mb-6">Master JavaScript fundamentals, ES6+, and modern development techniques with interactive examples.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Programming Language</span>
+                        </div>
                     </div>
                 </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl group-hover:bg-yellow-500/40 transition-all duration-500"></div>
+                <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-yellow-500/30 rounded-full blur-2xl group-hover:bg-yellow-500/50 transition-all duration-500"></div>
             </div>
 
             <!-- TypeScript Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow" onclick="redirectToTypeScript()">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+            <div class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:rotate-1 glow border border-white/10" onclick="redirectToTypeScript()">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative p-8 h-full flex flex-col">
+                    <div class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/>
                         </svg>
                     </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-indigo-300 transition-colors duration-300">TypeScript</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Learn TypeScript for type-safe JavaScript development and enhanced code quality</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Superset</span>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-center mb-4 text-white group-hover:text-indigo-200 transition-colors duration-300">TypeScript</h2>
+                            <p class="text-white/90 text-center leading-relaxed text-base mb-6">Learn TypeScript for type-safe JavaScript development and enhanced code quality with advanced features.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Type-Safe Superset</span>
+                        </div>
                     </div>
                 </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-indigo-500/20 rounded-full blur-xl group-hover:bg-indigo-500/40 transition-all duration-500"></div>
+                <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-indigo-500/30 rounded-full blur-2xl group-hover:bg-indigo-500/50 transition-all duration-500"></div>
             </div>
 
             <!-- Practice JavaScript Questions Box -->
@@ -344,6 +384,208 @@
         function redirectToDevOps() {
             window.location.href = 'devops.html';
         }
+    </script>
+
+    <!-- Footer -->
+    <footer class="glass-card mt-16">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Developer Info -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
+                    <div class="text-gray-300">
+                        <p class="font-semibold text-lg">Harikrishnan. R</p>
+                        <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
+                        <p class="text-xs mt-2 opacity-80 italic">
+                            If any changes or corrections are required, please contact me.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visitor Stats -->
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-white mb-4">Visitor Analytics</h3>
+                    <div class="space-y-3">
+                        <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-yellow-300 mb-1" id="globalUniqueVisitorsFooter">0</div>
+                            <div class="text-sm text-gray-300">Global Unique Visitors</div>
+                            <div class="text-xs text-gray-400 mt-1">Worldwide reach</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-indigo-300 mb-1" id="visitCount">0</div>
+                            <div class="text-sm text-gray-300">Your Page Visits</div>
+                            <div class="text-xs text-gray-400 mt-1" id="lastVisit">First visit!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-right">
+                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
+                        <a href="javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
+                        <a href="react.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
+                        <a href="angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Tech Learning Hub. Built with ❤️ for developers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global Unique Visitor Tracking System
+        function generateUniqueVisitorId() {
+            // Create a unique ID based on browser fingerprinting
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.textBaseline = 'top';
+            ctx.font = '14px Arial';
+            ctx.fillText('fingerprint', 2, 2);
+
+            const fingerprint = [
+                navigator.userAgent,
+                navigator.language,
+                screen.width + 'x' + screen.height,
+                new Date().getTimezoneOffset(),
+                !!window.sessionStorage,
+                !!window.localStorage,
+                !!window.indexedDB,
+                canvas.toDataURL()
+            ].join('|');
+
+            // Create hash from fingerprint
+            let hash = 0;
+            for (let i = 0; i < fingerprint.length; i++) {
+                const char = fingerprint.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32-bit integer
+            }
+
+            return Math.abs(hash).toString(36);
+        }
+
+        function trackUniqueVisitor() {
+            const VISITOR_ID_KEY = 'global_visitor_id';
+            const VISITOR_COUNT_KEY = 'global_unique_visitors';
+            const SESSION_TRACKED_KEY = 'session_tracked';
+
+            // Check if this session has already been tracked
+            if (sessionStorage.getItem(SESSION_TRACKED_KEY)) {
+                return; // Already tracked this session
+            }
+
+            // Get or create unique visitor ID
+            let visitorId = localStorage.getItem(VISITOR_ID_KEY);
+            if (!visitorId) {
+                visitorId = generateUniqueVisitorId();
+                localStorage.setItem(VISITOR_ID_KEY, visitorId);
+
+                // Increment global unique visitor count
+                let currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+                currentCount += 1;
+                localStorage.setItem(VISITOR_COUNT_KEY, currentCount.toString());
+            }
+
+            // Mark this session as tracked
+            sessionStorage.setItem(SESSION_TRACKED_KEY, 'true');
+
+            return parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+        }
+
+        function updateGlobalVisitorStats() {
+            const uniqueVisitors = trackUniqueVisitor();
+
+            // Update the global visitor count display in hero section
+            const visitorElement = document.getElementById('globalUniqueVisitors');
+            if (visitorElement) {
+                // Animate the counter
+                animateCounter(visitorElement, 0, uniqueVisitors, 2000);
+            }
+
+            // Update the global visitor count display in footer
+            const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
+            if (footerVisitorElement) {
+                footerVisitorElement.textContent = uniqueVisitors.toLocaleString();
+            }
+
+            // Update individual page visitor stats
+            updatePageVisitorStats();
+        }
+
+        function updatePageVisitorStats() {
+            const now = new Date();
+            const visitKey = 'index_visits';
+            const lastVisitKey = 'index_last_visit';
+
+            // Get existing visit data
+            let visits = parseInt(localStorage.getItem(visitKey)) || 0;
+            const lastVisit = localStorage.getItem(lastVisitKey);
+
+            // Increment page visit count
+            visits += 1;
+            localStorage.setItem(visitKey, visits.toString());
+            localStorage.setItem(lastVisitKey, now.toISOString());
+
+            // Update display
+            const visitCountElement = document.getElementById('visitCount');
+            if (visitCountElement) {
+                visitCountElement.textContent = visits;
+            }
+
+            const lastVisitElement = document.getElementById('lastVisit');
+            if (lastVisitElement && lastVisit) {
+                const lastVisitDate = new Date(lastVisit);
+                const timeDiff = now - lastVisitDate;
+                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+                if (daysDiff === 0) {
+                    lastVisitElement.textContent = 'Visited today';
+                } else if (daysDiff === 1) {
+                    lastVisitElement.textContent = 'Visited yesterday';
+                } else {
+                    lastVisitElement.textContent = `${daysDiff} days ago`;
+                }
+            }
+        }
+
+        function animateCounter(element, start, end, duration) {
+            if (start === end) return;
+
+            const range = end - start;
+            const minTimer = 50;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            const timer = stepTime < minTimer ? minTimer : stepTime;
+
+            const startTime = new Date().getTime();
+            const endTime = startTime + duration;
+
+            function run() {
+                const now = new Date().getTime();
+                const remaining = Math.max((endTime - now) / duration, 0);
+                const value = Math.round(end - (remaining * range));
+
+                element.textContent = value.toLocaleString();
+
+                if (value == end) {
+                    clearInterval(timer);
+                }
+            }
+
+            const timer_id = setInterval(run, timer);
+            run();
+        }
+
+        // Initialize all visitor stats
+        document.addEventListener('DOMContentLoaded', () => {
+            updateGlobalVisitorStats();
+        });
     </script>
 </body>
 </html>

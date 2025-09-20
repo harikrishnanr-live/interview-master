@@ -562,5 +562,91 @@
             loadReactData();
         });
     </script>
+
+    <!-- Footer -->
+    <footer class="glass-card mt-16">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Developer Info -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
+                    <div class="text-gray-300">
+                        <p class="font-semibold text-lg">Harikrishnan. R</p>
+                        <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
+                        <p class="text-xs mt-2 opacity-80 italic">
+                            If any changes or corrections are required, please contact me.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visitor Stats -->
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
+                    <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-cyan-300 mb-2" id="visitCount">0</div>
+                        <div class="text-sm text-gray-400">Your Visits</div>
+                        <div class="text-xs text-gray-500 mt-1" id="lastVisit">First visit!</div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-right">
+                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
+                        <a href="javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
+                        <a href="react.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
+                        <a href="angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Tech Learning Hub. Built with ❤️ for developers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Visitor tracking functionality for react.html
+        function updateVisitorStats() {
+            const now = new Date();
+            const visitKey = 'react_visits';
+            const lastVisitKey = 'react_last_visit';
+
+            // Get existing visit data
+            let visits = parseInt(localStorage.getItem(visitKey)) || 0;
+            const lastVisit = localStorage.getItem(lastVisitKey);
+
+            // Increment visit count
+            visits += 1;
+            localStorage.setItem(visitKey, visits.toString());
+            localStorage.setItem(lastVisitKey, now.toISOString());
+
+            // Update display
+            document.getElementById('visitCount').textContent = visits;
+
+            if (lastVisit) {
+                const lastVisitDate = new Date(lastVisit);
+                const timeDiff = now - lastVisitDate;
+                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+                if (daysDiff === 0) {
+                    document.getElementById('lastVisit').textContent = 'Visited today';
+                } else if (daysDiff === 1) {
+                    document.getElementById('lastVisit').textContent = 'Visited yesterday';
+                } else {
+                    document.getElementById('lastVisit').textContent = `${daysDiff} days ago`;
+                }
+            }
+        }
+
+        // Initialize visitor stats
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitorStats();
+        });
+    </script>
 </body>
 </html>
