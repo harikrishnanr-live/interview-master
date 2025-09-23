@@ -495,7 +495,7 @@
             const colorClass = colors[index % colors.length];
 
             return `
-                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105 slide-in-left border-l-4 border-gradient-to-r ${colorClass}" style="animation-delay: ${index * 0.15}s">
+                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-gradient-to-r ${colorClass}">
                     <button
                         class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50"
                         onclick="toggleAccordion(${globalIndex})"
