@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flutter Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="qa-js/flutterData.js"></script>
     <style>
         @keyframes slideInLeft {
             from {
@@ -313,23 +314,21 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
-        // Function to load JSON data
-        async function loadFlutterData() {
+        // Function to load data from JavaScript file
+        function loadFlutterData() {
             showLoading();
-            try {
-                const response = await fetch('qa/flutter.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                flutterData = await response.json();
+
+            // Check if data is available from flutterData.js
+            if (window.flutterData && Array.isArray(window.flutterData)) {
+                flutterData = window.flutterData;
                 isDataLoaded = true;
                 filteredData = [...flutterData];
                 hideLoading();
                 renderCurrentPage();
                 updateSearchStats();
                 setupSearch();
-            } catch (error) {
-                console.error('Error loading Flutter data:', error);
+            } else {
+                console.error('Flutter data not available');
                 hideLoading();
                 showErrorMessage();
             }
@@ -346,13 +345,12 @@
                         Oops! Unable to Load Flutter Data
                     </div>
                     <p class="text-gray-700 leading-relaxed">
-                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">flutter.json</span> file. Please ensure:
+                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">qa-js/flutterData.js</span> file. Please ensure:
                         <br><br>
                         <span class="inline-block text-left">
-                        • The file exists in the same directory<br>
-                        • The file contains valid JSON format<br>
-                        • Your web server is running properly<br>
-                        • CORS policies allow file access
+                        • The file exists in the qa-js directory<br>
+                        • The file contains valid JavaScript syntax<br>
+                        • The flutterData variable is properly defined
                         </span>
                     </p>
                 </div>
@@ -514,7 +512,7 @@
                             </svg>
                             No Flutter Questions Available
                         </div>
-                        <p class="text-gray-700">Please add some questions to your flutter.json file.</p>
+                        <p class="text-gray-700">Please add some questions to your qa-js/flutterData.js file.</p>
                     </div>
                 `;
                 return;
