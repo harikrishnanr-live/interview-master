@@ -315,20 +315,23 @@
         let searchTerm = '';
 
         // Function to load data from JavaScript file
-        function loadFlutterData() {
+        async function loadFlutterData() {
             showLoading();
 
-            // Check if data is available from flutterData.js
-            if (window.flutterData && Array.isArray(window.flutterData)) {
-                flutterData = window.flutterData;
-                isDataLoaded = true;
-                filteredData = [...flutterData];
-                hideLoading();
-                renderCurrentPage();
-                updateSearchStats();
-                setupSearch();
-            } else {
-                console.error('Flutter data not available');
+            try {
+                if (window.flutterData && Array.isArray(window.flutterData)) {
+                    flutterData = window.flutterData;
+                    isDataLoaded = true;
+                    filteredData = [...flutterData];
+                    hideLoading();
+                    renderCurrentPage();
+                    updateSearchStats();
+                    setupSearch();
+                } else {
+                    throw new Error('Flutter data not available');
+                }
+            } catch (error) {
+                console.error('Error loading Flutter data:', error);
                 hideLoading();
                 showErrorMessage();
             }

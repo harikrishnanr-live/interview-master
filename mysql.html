@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MySQL/RDBMS Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="qa-js/mysqlData.js"></script>
     <style>
         @keyframes slideInLeft {
             from {
@@ -259,7 +260,6 @@
 
     <script>
         // Global variables
-        let mysqlData = [];
         let filteredData = [];
         let isDataLoaded = false;
         let currentPage = 1;
@@ -267,94 +267,22 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
-        // Function to load JSON data
+        // Function to load data from JavaScript file
         async function loadMySQLData() {
             showLoading();
+
             try {
-                // Embedded MySQL Q&A data
-                mysqlData = [
-                    {
-                        "id":182,
-                        "question": "What is MySQL?",
-                        "answer": "MySQL is an open-source relational database management system (RDBMS) that uses SQL (Structured Query Language) for managing and manipulating data."
-                    },
-                    {
-                        "id":183,
-                        "question": "What is a primary key?",
-                        "answer": "A primary key is a column or set of columns that uniquely identifies each row in a table. It must contain unique values and cannot be NULL."
-                    },
-                    {
-                        "id":184,
-                        "question": "What is a foreign key?",
-                        "answer": "A foreign key is a column or set of columns in one table that refers to the primary key in another table, establishing a relationship between the tables."
-                    },
-                    {
-                        "id":185,
-                        "question": "What is the difference between CHAR and VARCHAR?",
-                        "answer": "CHAR is fixed-length and pads with spaces, while VARCHAR is variable-length and only stores the actual data plus a length prefix."
-                    },
-                    {
-                        "id":186,
-                        "question": "What are indexes in MySQL?",
-                        "answer": "Indexes are data structures that improve the speed of data retrieval operations on database tables at the cost of additional space and slower write operations."
-                    },
-                    {
-                        "id":187,
-                        "question": "What is a JOIN in SQL?",
-                        "answer": "A JOIN is used to combine rows from two or more tables based on a related column between them."
-                    },
-                    {
-                        "id":188,
-                        "question": "What are the different types of JOINs?",
-                        "answer": "INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, and CROSS JOIN."
-                    },
-                    {
-                        "id":189,
-                        "question": "What is normalization?",
-                        "answer": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity."
-                    },
-                    {
-                        "id":190,
-                        "question": "What are the normal forms?",
-                        "answer": "First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), Boyce-Codd Normal Form (BCNF), Fourth Normal Form (4NF), and Fifth Normal Form (5NF)."
-                    },
-                    {
-                        "id":191,
-                        "question": "What is a stored procedure?",
-                        "answer": "A stored procedure is a prepared SQL code that you can save and reuse. It can accept parameters and return results."
-                    },
-                    {
-                        "id":192,
-                        "question": "What are triggers in MySQL?",
-                        "answer": "Triggers are SQL statements that are automatically executed when specific events occur in a database, such as INSERT, UPDATE, or DELETE operations."
-                    },
-                    {
-                        "id":193,
-                        "question": "What is ACID in database systems?",
-                        "answer": "ACID stands for Atomicity, Consistency, Isolation, and Durability - properties that guarantee reliable processing of database transactions."
-                    },
-                    {
-                        "id":194,
-                        "question": "What is the difference between WHERE and HAVING clauses?",
-                        "answer": "WHERE filters rows before grouping, while HAVING filters groups after the GROUP BY clause is applied."
-                    },
-                    {
-                        "id":195,
-                        "question": "What are views in MySQL?",
-                        "answer": "Views are virtual tables based on the result of a SELECT statement. They don't store data themselves but provide a way to look at data from one or more tables."
-                    },
-                    {
-                        "id":196,
-                        "question": "What is the EXPLAIN statement?",
-                        "answer": "EXPLAIN shows how MySQL executes a query, including which indexes are used and how tables are joined, helping to optimize query performance."
-                    }
-                ];
-                isDataLoaded = true;
-                filteredData = [...mysqlData];
-                hideLoading();
-                renderCurrentPage();
-                updateSearchStats();
-                setupSearch();
+                if (window.mysqlData && Array.isArray(window.mysqlData)) {
+                    mysqlData = window.mysqlData;
+                    isDataLoaded = true;
+                    filteredData = [...mysqlData];
+                    hideLoading();
+                    renderCurrentPage();
+                    updateSearchStats();
+                    setupSearch();
+                } else {
+                    throw new Error('MySQL data not available');
+                }
             } catch (error) {
                 console.error('Error loading MySQL data:', error);
                 hideLoading();
@@ -373,11 +301,11 @@
                         Oops! Unable to Load MySQL/RDBMS Data
                     </div>
                     <p class="text-gray-700 leading-relaxed">
-                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">mysql.json</span> file. Please ensure:
+                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">qa-js/mysqlData.js</span> file. Please ensure:
                         <br><br>
                         <span class="inline-block text-left">
-                        • The file exists in the same directory<br>
-                        • The file contains valid JSON format<br>
+                        • The file exists in the qa-js directory<br>
+                        • The file contains valid JavaScript array format<br>
                         • Your web server is running properly<br>
                         • CORS policies allow file access
                         </span>
@@ -503,7 +431,7 @@
                             </svg>
                             No MySQL/RDBMS Questions Available
                         </div>
-                        <p class="text-gray-700">Please add some questions to your mysql.json file.</p>
+                        <p class="text-gray-700">Please add some questions to your qa-js/mysqlData.js file.</p>
                     </div>
                 `;
                 return;
