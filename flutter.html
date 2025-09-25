@@ -433,24 +433,65 @@
             ];
             const colorClass = colors[index % colors.length];
 
-            // Function to render answer as table if it's an object, else as text
+            // Function to render answer as table if it's an object or array, else as text
             function renderAnswer(answer) {
-                if (typeof answer === 'object' && answer !== null) {
+                if (Array.isArray(answer)) {
+                    // Handle array of objects (like question 16)
                     let rows = '';
+                    answer.forEach((item, index) => {
+                        if (item.term && item.definition) {
+                            const bgColor = index % 2 === 0 ? 'bg-blue-50' : 'bg-sky-50';
+                            rows += `
+                                <tr class="${bgColor} hover:bg-indigo-100 transition-colors">
+                                    <td class="font-bold px-4 py-3 align-top border-2 border-blue-300 text-blue-900">${item.term}</td>
+                                    <td class="px-4 py-3 align-top border-2 border-blue-300 text-gray-800">${item.definition}</td>
+                                </tr>
+                            `;
+                        }
+                    });
+                    return `
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-gray-800 font-medium text-lg border-collapse border-4 border-blue-500 rounded-lg overflow-hidden shadow-lg bg-white min-w-full">
+                                <thead class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left font-bold border-2 border-blue-400 min-w-0 whitespace-nowrap">Term</th>
+                                        <th class="px-4 py-3 text-left font-bold border-2 border-blue-400 min-w-0">Definition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rows}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                } else if (typeof answer === 'object' && answer !== null) {
+                    // Handle regular objects
+                    let rows = '';
+                    let index = 0;
                     for (const [key, value] of Object.entries(answer)) {
+                        const bgColor = index % 2 === 0 ? 'bg-green-50' : 'bg-emerald-50';
                         rows += `
-                            <tr>
-                                <td class="font-bold pr-4 align-top">${key}</td>
-                                <td>${value}</td>
+                            <tr class="${bgColor} hover:bg-teal-100 transition-colors">
+                                <td class="font-bold px-4 py-3 align-top border-2 border-green-300 text-green-900">${key}</td>
+                                <td class="px-4 py-3 align-top border-2 border-green-300 text-gray-800">${value}</td>
                             </tr>
                         `;
+                        index++;
                     }
                     return `
-                        <table class="w-full text-gray-800 font-medium text-lg border-collapse">
-                            <tbody>
-                                ${rows}
-                            </tbody>
-                        </table>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-gray-800 font-medium text-lg border-collapse border-4 border-green-500 rounded-lg overflow-hidden shadow-lg bg-white min-w-full">
+                                <thead class="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left font-bold border-2 border-green-400 min-w-0 whitespace-nowrap">Property</th>
+                                        <th class="px-4 py-3 text-left font-bold border-2 border-green-400 min-w-0">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rows}
+                                </tbody>
+                            </table>
+                        </div>
                     `;
                 } else {
                     return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;

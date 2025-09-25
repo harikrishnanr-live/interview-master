@@ -78,11 +78,25 @@ const flutterQuestions = [
     {
         "id": 16,
         "question": "What is the difference between Colors.blueGrey and Colors.blueGrey[50] in Flutter?",
-        "answer": {
-            "Colors.blueGrey": "is the default shade — medium blue-grey",
-            "Colors.blueGrey[50]": "is a very light shade — soft and almost white.",
-            "possible values": "50, 100, 200, 300, 400, 500, 600, 700, 800, 900"
-        }
+        "answer": [
+            {
+                "term": "Colors.blueGrey",
+                "definition": "is the default shade — medium blue-grey"
+            },
+            {
+                "term": "Colors.blueGrey[50]",
+                "definition": "is a very light shade — soft and almost white."
+            },
+            {
+                "term": "Possible values",
+                "definition": "50, 100, 200, 300, 400, 500, 600, 700, 800, 900"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "question": "What is Scaffold in Flutter?",
+        "answer": "Scaffold is like the basic frame or structure of your app screen."
     }
 ];
 
