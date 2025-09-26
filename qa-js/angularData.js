@@ -22,11 +22,20 @@ let angularData = [
     {
         "id": 5,
         "question": "Differentiate between var, const, and let variables.",
-        "answer": {
-            "Var": "var variables can be re-declared and updated.",
-            "Let": "let can be updated but not re-declared.",
-            "Const": "const cannot be updated or re-declared."
-        }
+        "answer": [
+            {
+                "term": "Var",
+                "definition": "var variables can be re-declared and updated."
+            },
+            {
+                "term": "Let",
+                "definition": "let can be updated but not re-declared."
+            },
+            {
+                "term": "Const",
+                "definition": "const cannot be updated or re-declared."
+            }
+        ]
     },
     {
         "id": 6,
@@ -56,20 +65,28 @@ let angularData = [
     {
         "id": 11,
         "question": "Differentiate between Angular and AngularJS",
-        "answer": {
-            "AngularJS": {
-                "Language": "JavaScript",
-                "Mobile support": "Not supported",
-                "Architecture": "Model-View-Controller design",
-                "Dependency Injection": "Doesn't support"
+        "answer": [
+            {
+                "aspect": "Language",
+                "angular": "TypeScript",
+                "angularjs": "JavaScript"
             },
-            "Angular": {
-                "Language": "TypeScript",
-                "Mobile support": "Supports",
-                "Architecture": "Uses components and directives",
-                "Dependency Injection": "Supports"
+            {
+                "aspect": "Mobile support",
+                "angular": "Supports",
+                "angularjs": "Not supported"
+            },
+            {
+                "aspect": "Architecture",
+                "angular": "Uses components and directives",
+                "angularjs": "Model-View-Controller design"
+            },
+            {
+                "aspect": "Dependency Injection",
+                "angular": "Supports",
+                "angularjs": "Doesn't support"
             }
-        }
+        ]
     },
     {
         "id": 12,
@@ -92,10 +109,16 @@ let angularData = [
     {
         "id": 15,
         "question": "What is Eager and Lazy Loading?",
-        "answer": {
-            "Eager Loading": "Eager loading means loading all the modules upfront before the application starts.",
-            "Lazy Loading": "Lazy loading loads modules only when they are needed, improving the initial load time of the application."
-        }
+        "answer": [
+            {
+                "term": "Eager Loading",
+                "definition": "Eager loading means loading all the modules upfront before the application starts."
+            },
+            {
+                "term": "Lazy Loading",
+                "definition": "Lazy loading loads modules only when they are needed, improving the initial load time of the application."
+            }
+        ]
     },
     {
         "id": 16,
@@ -140,19 +163,36 @@ let angularData = [
     {
         "id": 24,
         "question": "How to set cookies in Angular?",
-        "answer": {
-            "set": "cookies.set('cookieName', 'cookieValue')",
-            "get": "cookies.get('cookieName')",
-            "delete": "cookies.delete('cookieName')"
-        }
+        "answer": [
+            {
+                "term": "set",
+                "definition": "cookies.set('cookieName', 'cookieValue')"
+            },
+            {
+                "term": "get",
+                "definition": "cookies.get('cookieName')"
+            },
+            {
+                "term": "delete",
+                "definition": "cookies.delete('cookieName')"
+            }
+        ]
     },
     {
         "id": 25,
         "question": "What is the difference between map and foreach?",
-        "answer": {
-            "forEach": "forEach is used for iterating over arrays, but it doesn't return anything.",
-            "map": "map creates and returns a new array with the results of applying a function to each item in the array."
-        }
+        "answer": [
+            {
+                "aspect": "Return value",
+                "map": "Returns a new array",
+                "foreach": "Returns undefined"
+            },
+            {
+                "aspect": "Use case",
+                "map": "Transforming array elements",
+                "foreach": "Performing side effects on elements"
+            }
+        ]
     },
     {
         "id": 26,
@@ -225,10 +265,13 @@ let angularData = [
     {
         "id": 38,
         "question": "What is the difference between pure and impure pipes?",
-        "answer": {
-            "Impure Pipes": "Impure pipes are reevaluated whenever any change occurs in the component.",
-            "Pure Pipes": "Pure pipes are only reevaluated when the input data changes."
-        }
+        "answer": [
+            {
+                "aspect": "Reevaluation",
+                "pure": "Only when input data changes",
+                "impure": "Whenever any change occurs in the component"
+            }
+        ]
     },
     {
         "id": 39,
@@ -248,10 +291,18 @@ let angularData = [
     {
         "id": 42,
         "question": "What is the difference between AOT and JIT?",
-        "answer": {
-            "AOT": "Ahead-of-time (AOT) compilation happens during the build phase and compiles the code before the browser loads it.",
-            "JIT": "Just-in-time (JIT) compilation occurs in the browser at runtime."
-        }
+        "answer": [
+            {
+                "aspect": "Timing",
+                "aot": "During build phase",
+                "jit": "At runtime"
+            },
+            {
+                "aspect": "Performance",
+                "aot": "Faster startup, smaller bundle",
+                "jit": "Slower startup, larger bundle"
+            }
+        ]
     },
     {
         "id": 43,
@@ -306,11 +357,20 @@ let angularData = [
     {
         "id": 53,
         "question": "How to pass data between components?",
-        "answer": {
-            "Parent to Child": "Use @Input() for passing data from parent to child component.",
-            "Child to Parent": "Use @Output() with EventEmitter to pass data from child to parent component.",
-            "Unrelated Components": "Use a shared service to pass data between unrelated components."
-        }
+        "answer": [
+            {
+                "term": "Parent to Child",
+                "definition": "Use @Input() for passing data from parent to child component."
+            },
+            {
+                "term": "Child to Parent",
+                "definition": "Use @Output() with EventEmitter to pass data from child to parent component."
+            },
+            {
+                "term": "Unrelated Components",
+                "definition": "Use a shared service to pass data between unrelated components."
+            }
+        ]
     },
     {
         "id": 54,
@@ -345,11 +405,20 @@ let angularData = [
     {
         "id": 60,
         "question": "What is the difference between ElementRef, TemplateRef, and ViewContainerRef?",
-        "answer": {
-            "ElementRef": "Provides a wrapper around a DOM element to access it.",
-            "TemplateRef": "Represents an Angular template that can be used in structural directives.",
-            "ViewContainerRef": "Represents a container where views can be dynamically inserted."
-        }
+        "answer": [
+            {
+                "term": "ElementRef",
+                "definition": "Provides a wrapper around a DOM element to access it."
+            },
+            {
+                "term": "TemplateRef",
+                "definition": "Represents an Angular template that can be used in structural directives."
+            },
+            {
+                "term": "ViewContainerRef",
+                "definition": "Represents a container where views can be dynamically inserted."
+            }
+        ]
     },
     {
         "id": 61,

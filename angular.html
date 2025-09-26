@@ -361,6 +361,35 @@
                         // Handle array answers
                         if (answer.length > 0 && typeof answer[0] === 'string') {
                             return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].aspect) {
+                            // Handle array of differentiation objects with aspect and comparison items
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            const keys = Object.keys(answer[0]).filter(key => key !== 'aspect');
+                            const headers = ['Aspect', ...keys.map(key => key.charAt(0).toUpperCase() + key.slice(1))];
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            headers.forEach(header => {
+                                tableHtml += `<th class="border border-gray-300 px-4 py-2 text-left font-semibold">${header}</th>`;
+                            });
+                            tableHtml += '</tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += '<tr class="hover:bg-gray-50">';
+                                tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${item.aspect}</td>`;
+                                keys.forEach(key => {
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${item[key]}</td>`;
+                                });
+                                tableHtml += '</tr>';
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].term && answer[0].definition) {
+                            // Handle array of {term, definition}
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Term</th><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Definition</th></tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += `<tr class="hover:bg-gray-50"><td class="border border-gray-300 px-4 py-2 font-medium">${item.term}</td><td class="border border-gray-300 px-4 py-2">${item.definition}</td></tr>`;
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
                         }
                         return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
                     } else {
