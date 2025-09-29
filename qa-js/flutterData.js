@@ -140,6 +140,24 @@ let flutterQuestions = [
       }
     ],
   },
+  {
+    id: 19,
+    question: "What is the difference between null and empty in Dart?",
+    answer: [
+      {
+        term: "null in Dart",
+        definition: "null means the variable has no value at all — it hasn't been initialized."
+      },
+      {
+        term: "empty in Dart",
+        definition: "empty means the variable has a value, but it's an empty string (\"\")."
+      },
+      {
+        term: "Why check both value == null || value.isEmpty?",
+        definition: "This condition ensures that the user has actually entered something in the field. It checks: value == null: the field was never touched or initialized. value.isEmpty: the user tapped the field but left it blank. Together, they catch both cases where the password is missing."
+      }
+    ],
+  },
 ];
 
 // Make data available globally
