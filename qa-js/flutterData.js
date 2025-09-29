@@ -120,24 +120,28 @@ let flutterQuestions = [
     answer: [
       {
         term: "Why Dart doesn't have !==",
-        definition: "Dart doesn't include the !== operator because it doesn't need it. Unlike JavaScript, Dart's equality operators are already strict."
+        definition:
+          "Dart doesn't include the !== operator because it doesn't need it. Unlike JavaScript, Dart's equality operators are already strict.",
       },
       {
         term: "Dart's equality operators",
-        definition: "== checks for equality without type conversion. != checks for inequality without type conversion."
+        definition:
+          "== checks for equality without type conversion. != checks for inequality without type conversion.",
       },
       {
         term: "JavaScript comparison",
-        definition: "== allows type conversion (e.g., \"5\" == 5 is true). === avoids type conversion (e.g., \"5\" === 5 is false). So !== is needed to check strict inequality."
+        definition:
+          '== allows type conversion (e.g., "5" == 5 is true). === avoids type conversion (e.g., "5" === 5 is false). So !== is needed to check strict inequality.',
       },
       {
         term: "Dart behavior",
-        definition: "\"5\" != 5 is already false, because Dart doesn't convert types. Therefore, !== would be redundant."
+        definition:
+          '"5" != 5 is already false, because Dart doesn\'t convert types. Therefore, !== would be redundant.',
       },
       {
         term: "Summary",
-        definition: "Dart's != is already strict, so !== isn't necessary."
-      }
+        definition: "Dart's != is already strict, so !== isn't necessary.",
+      },
     ],
   },
   {
@@ -146,16 +150,19 @@ let flutterQuestions = [
     answer: [
       {
         term: "null in Dart",
-        definition: "null means the variable has no value at all — it hasn't been initialized."
+        definition:
+          "null means the variable has no value at all — it hasn't been initialized.",
       },
       {
         term: "empty in Dart",
-        definition: "empty means the variable has a value, but it's an empty string (\"\")."
+        definition:
+          'empty means the variable has a value, but it\'s an empty string ("").',
       },
       {
         term: "Why check both value == null || value.isEmpty?",
-        definition: "This condition ensures that the user has actually entered something in the field. It checks: value == null: the field was never touched or initialized. value.isEmpty: the user tapped the field but left it blank. Together, they catch both cases where the password is missing."
-      }
+        definition:
+          "This condition ensures that the user has actually entered something in the field. It checks: value == null: the field was never touched or initialized. value.isEmpty: the user tapped the field but left it blank. Together, they catch both cases where the password is missing.",
+      },
     ],
   },
 ];
