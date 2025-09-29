@@ -229,28 +229,48 @@
         </div>
 
         <!-- Pagination Controls -->
-        <div class="flex justify-center items-center space-x-6 mb-8">
-            <button id="prevBtn" class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-                Previous
-            </button>
+        <div class="flex flex-col items-center space-y-4 mb-8">
+            <div class="flex justify-center items-center space-x-6">
+                <button id="prevBtn" class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                    <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    Previous
+                </button>
 
-            <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
-                <span class="text-orange-300">Page <span id="currentPageDisplay">1</span></span>
-                <span class="text-gray-300 mx-2">of</span>
-                <span class="text-cyan-300"><span id="totalPagesDisplay">8</span></span>
-                <span class="text-gray-300 ml-4">•</span>
-                <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">72</span> results</span>
+                <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
+                    <span class="text-orange-300">Page <span id="currentPageDisplay">1</span></span>
+                    <span class="text-gray-300 mx-2">of</span>
+                    <span class="text-cyan-300"><span id="totalPagesDisplay">8</span></span>
+                    <span class="text-gray-300 ml-4">•</span>
+                    <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">72</span> results</span>
+                </div>
+
+                <button id="nextBtn" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                    Next
+                    <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
 
-            <button id="nextBtn" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                Next
-                <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-            </button>
+            <!-- Jump to Page -->
+            <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-300 font-medium">Jump to Page:</span>
+                    <input
+                        type="number"
+                        id="jumpToPageInput"
+                        min="1"
+                        max="1"
+                        placeholder="1"
+                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-orange-400 focus:outline-none transition-all duration-300 text-center font-bold"
+                    >
+                    <button id="jumpToPageBtn" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Go
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Loading Indicator -->
@@ -444,9 +464,15 @@
         function updatePagination() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            
+            const jumpInput = document.getElementById('jumpToPageInput');
+
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === getTotalPages();
+
+            // Update jump input max value and placeholder
+            const totalPages = getTotalPages();
+            jumpInput.max = totalPages;
+            jumpInput.placeholder = currentPage.toString();
         }
 
         function showLoading() {
@@ -459,17 +485,52 @@
 
         function changePage(direction) {
             showLoading();
-            
+
             setTimeout(() => {
                 if (direction === 'next' && currentPage < getTotalPages()) {
                     currentPage++;
                 } else if (direction === 'prev' && currentPage > 1) {
                     currentPage--;
                 }
-                
+
                 renderCurrentPage();
                 hideLoading();
-                
+
+                // Smooth scroll to top with offset for sticky nav
+                window.scrollTo({ top: 150, behavior: 'smooth' });
+            }, 600);
+        }
+
+        function jumpToPage() {
+            const jumpInput = document.getElementById('jumpToPageInput');
+            const pageNumber = parseInt(jumpInput.value);
+
+            if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > getTotalPages()) {
+                // Invalid page number - show brief error styling
+                jumpInput.classList.add('border-red-500', 'bg-red-50');
+                setTimeout(() => {
+                    jumpInput.classList.remove('border-red-500', 'bg-red-50');
+                }, 1000);
+                return;
+            }
+
+            if (pageNumber === currentPage) {
+                // Already on that page - just clear input
+                jumpInput.value = '';
+                return;
+            }
+
+            showLoading();
+
+            setTimeout(() => {
+                currentPage = pageNumber;
+                renderCurrentPage();
+                hideLoading();
+
+                // Clear input and update placeholder
+                jumpInput.value = '';
+                jumpInput.placeholder = currentPage.toString();
+
                 // Smooth scroll to top with offset for sticky nav
                 window.scrollTo({ top: 150, behavior: 'smooth' });
             }, 600);
@@ -478,6 +539,14 @@
         // Event listeners
         document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
         document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Jump to page functionality
+        document.getElementById('jumpToPageBtn').addEventListener('click', jumpToPage);
+        document.getElementById('jumpToPageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                jumpToPage();
+            }
+        });
 
         // Search input event listener
         document.getElementById('searchInput').addEventListener('input', performSearch);
