@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node.js Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="qa-js/nodejsData.js"></script>
+    <!-- Level-specific script will be loaded dynamically -->
     <style>
         @keyframes slideInLeft {
             from {
@@ -118,7 +118,7 @@
                 <a href="practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
                 <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
                 <a href="react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap font-semibold">Node.js</a>
+                <a href="nodejs-details.html" class="hover:text-green-400 transition-colors whitespace-nowrap font-semibold">Node.js</a>
                 <a href="rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
                 <a href="flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
                 <a href="php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
@@ -142,7 +142,7 @@
             <a href="practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
             <a href="angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Node.js</a>
+            <a href="nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Node.js</a>
             <a href="rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
             <a href="flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
             <a href="php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
@@ -156,12 +156,20 @@
     <header class="glass-card shadow-2xl">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Node.js Q&A Hub
-                </h1>
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Levels
+                    </button>
+                    <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                        <svg class="w-8 h-8 mr-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Node.js Q&A Hub
+                    </h1>
+                </div>
                 <div class="text-white font-semibold bg-gradient-to-r from-green-400 to-emerald-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Ready
                 </div>
@@ -260,7 +268,6 @@
 
     <script>
         // Global variables
-        let nodejsData = [];
         let filteredData = [];
         let isDataLoaded = false;
         let currentPage = 1;
@@ -268,18 +275,58 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
+        // Function to go back to level selection
+        function goBackToLevels() {
+            window.location.href = 'nodejs-details.html';
+        }
+
         // Function to load JSON data
         async function loadNodeJSData() {
             showLoading();
             try {
-                // Load data from external file
-                nodejsData = window.nodejsData;
-                isDataLoaded = true;
-                filteredData = [...nodejsData];
-                hideLoading();
-                renderCurrentPage();
-                updateSearchStats();
-                setupSearch();
+                // Check URL parameters for level filtering
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedLevel = urlParams.get('level');
+
+                if (selectedLevel && ['beginner', 'intermediate', 'advanced'].includes(selectedLevel)) {
+                    // Load the appropriate script dynamically
+                    const script = document.createElement('script');
+                    script.src = `qa-js/NodeJS/nodejs-${selectedLevel}.js`;
+                    script.onload = function() {
+                        // Once script is loaded, set up the data
+                        isDataLoaded = true;
+                        filteredData = [...window[selectedLevel]];
+
+                        // Update page title to reflect the level
+                        document.title = `Node.js ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+
+                        // Update header
+                        const headerTitle = document.querySelector('header h1');
+                        if (headerTitle) {
+                            headerTitle.innerHTML = `
+                                <svg class="w-8 h-8 mr-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                                </svg>
+                                Node.js ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
+                            `;
+                        }
+
+                        hideLoading();
+                        renderCurrentPage();
+                        updateSearchStats();
+                        setupSearch();
+                    };
+                    script.onerror = function() {
+                        console.error(`Failed to load ${selectedLevel} level data`);
+                        hideLoading();
+                        showErrorMessage();
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    // Default behavior - redirect to details page
+                    window.location.href = 'nodejs-details.html';
+                    return;
+                }
             } catch (error) {
                 console.error('Error loading Node.js data:', error);
                 hideLoading();
@@ -327,10 +374,15 @@
             const searchInput = document.getElementById('searchInput');
             searchTerm = searchInput.value.toLowerCase().trim();
 
+            // Get the original level data for searching
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLevel = urlParams.get('level');
+            const originalData = window[selectedLevel] || [];
+
             if (searchTerm === '') {
-                filteredData = [...nodejsData];
+                filteredData = [...originalData];
             } else {
-                filteredData = nodejsData.filter(item =>
+                filteredData = originalData.filter(item =>
                     item.question.toLowerCase().includes(searchTerm) ||
                     (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
                 );
@@ -446,7 +498,7 @@
             document.getElementById('currentPage').textContent = currentPage;
             document.getElementById('displayedCount').textContent = getCurrentPageData().length;
             document.getElementById('totalPages').textContent = getTotalPages();
-            document.getElementById('totalQuestions').textContent = nodejsData.length;
+            document.getElementById('totalQuestions').textContent = filteredData.length;
             document.getElementById('currentPageDisplay').textContent = currentPage;
             document.getElementById('totalPagesDisplay').textContent = getTotalPages();
             updateSearchStats();

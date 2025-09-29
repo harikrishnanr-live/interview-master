@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeScript Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="qa-js/TypeScript/typescript-beginner.js"></script>
+    <script src="qa-js/TypeScript/typescript-intermediate.js"></script>
+    <script src="qa-js/TypeScript/typescript-advanced.js"></script>
     <style>
         @keyframes slideInLeft {
             from {
@@ -155,12 +158,20 @@
     <header class="glass-card shadow-2xl">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                    </svg>
-                    TypeScript Q&A Hub
-                </h1>
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Levels
+                    </button>
+                    <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                        <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                        TypeScript Q&A Hub
+                    </h1>
+                </div>
                 <div class="text-white font-semibold bg-gradient-to-r from-blue-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">10</span> Questions Ready
                 </div>
@@ -290,69 +301,48 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
+        // Function to go back to level selection
+        function goBackToLevels() {
+            window.location.href = 'typescript-details.html';
+        }
+
         // Function to load JSON data
         async function loadTypeScriptData() {
             showLoading();
             try {
-                // Embedded TypeScript Q&A data to avoid CORS issues
-                typescriptData = [
-                    {
-                        "id":297,
-                        "question": "What is TypeScript?",
-                        "answer": "TypeScript is a statically typed superset of JavaScript that adds optional types to JavaScript. It compiles down to plain JavaScript and can run anywhere JavaScript runs."
-                    },
-                    {
-                        "id":298,
-                        "question": "What are the advantages of using TypeScript over JavaScript?",
-                        "answer": "Type safety, better tooling (autocomplete, linting), supports modern JavaScript features, improved refactoring, and better error checking during development."
-                    },
-                    {
-                        "id":299,
-                        "question": "How do you define a variable in TypeScript?",
-                        "answer": "You define a variable with let, const, or var and specify the type if needed."
-                    },
-                    {
-                        "id":300,
-                        "question": "What are types in TypeScript?",
-                        "answer": "Types describe the shape or structure of data, such as string, number, boolean, and object. They are used to define variables, function parameters, and return types."
-                    },
-                    {
-                        "id":301,
-                        "question": "What is the difference between any and unknown in TypeScript?",
-                        "answer": "any allows any type and bypasses type checking. unknown is safer and forces the developer to check the type before using it."
-                    },
-                    {
-                        "id":302,
-                        "question": "What is a tuple in TypeScript?",
-                        "answer": "A tuple is an ordered collection of elements of different types. In TypeScript, a tuple is a special type of array where the number of elements and their types are fixed. Example: let person: [string, number] = [\"Alice\", 25];"
-                    },
-                    {
-                        "id":303,
-                        "question": "What are interfaces in TypeScript?",
-                        "answer": "Interfaces define the structure of an object, including its properties and methods."
-                    },
-                    {
-                        "id":304,
-                        "question": "What are the different ways to define types in TypeScript?",
-                        "answer": "Types can be defined using primitive types, arrays, tuples, enums, interfaces, or type aliases."
-                    },
-                    {
-                        "id":305,
-                        "question": "What is an Enum in TypeScript?",
-                        "answer": "An enum is a way to define a set of named constants."
-                    },
-                    {
-                        "id":306,
-                        "question": "How does TypeScript handle null and undefined?",
-                        "answer": "TypeScript has strict null checks that distinguish between null, undefined, and other types when configured with --strictNullChecks."
-                    }
-                ];
+                // Data is loaded from external file qa-js/typescriptData.js
                 isDataLoaded = true;
-                filteredData = [...typescriptData];
+
+                // Check URL parameters for level filtering
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedLevel = urlParams.get('level');
+
+                if (selectedLevel && window[selectedLevel]) {
+                    // Filter data based on selected level
+                    filteredData = [...window[selectedLevel]];
+                    // Update page title to reflect the level
+                    document.title = `TypeScript ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+                    // Update header
+                    const headerTitle = document.querySelector('header h1');
+                    if (headerTitle) {
+                        headerTitle.innerHTML = `
+                            <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                            TypeScript ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
+                        `;
+                    }
+                } else {
+                    // Default behavior - show all questions or redirect to details page
+                    window.location.href = 'typescript-details.html';
+                    return;
+                }
+
                 hideLoading();
                 renderCurrentPage();
+                setupSearch();
             } catch (error) {
-                console.error('Error loading typescript data:', error);
+                console.error('Error loading TypeScript data:', error);
                 hideLoading();
                 showErrorMessage();
             }
@@ -387,12 +377,17 @@
             const searchInput = document.getElementById('searchInput');
             searchTerm = searchInput.value.toLowerCase().trim();
 
+            // Get the original level data for searching
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLevel = urlParams.get('level');
+            const originalData = window[selectedLevel] || [];
+
             if (searchTerm === '') {
-                filteredData = [...typescriptData];
+                filteredData = [...originalData];
             } else {
-                filteredData = typescriptData.filter(item =>
+                filteredData = originalData.filter(item =>
                     item.question.toLowerCase().includes(searchTerm) ||
-                    item.answer.toLowerCase().includes(searchTerm)
+                    (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
                 );
             }
 
@@ -405,6 +400,19 @@
             document.getElementById('searchResultsCount').textContent = filteredData.length;
             document.getElementById('filteredCount').textContent = filteredData.length;
             document.getElementById('totalFilteredDisplay').textContent = filteredData.length;
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+
+            // Real-time search with debouncing
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    performSearch();
+                }, 300); // Debounce search for better performance
+            });
         }
 
         function getTotalPages() {
@@ -432,6 +440,93 @@
             ];
             const colorClass = colors[index % colors.length];
 
+            // Function to convert object/array answers to HTML table
+            function formatAnswer(answer) {
+                if (typeof answer === 'object' && answer !== null) {
+                    if (Array.isArray(answer)) {
+                        // Handle array answers
+                        if (answer.length > 0 && typeof answer[0] === 'string') {
+                            return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].aspect) {
+                            // Handle array of differentiation objects with aspect and comparison items
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            const keys = Object.keys(answer[0]).filter(key => key !== 'aspect');
+                            const headers = ['Aspect', ...keys.map(key => key.charAt(0).toUpperCase() + key.slice(1))];
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            headers.forEach(header => {
+                                tableHtml += `<th class="border border-gray-300 px-4 py-2 text-left font-semibold">${header}</th>`;
+                            });
+                            tableHtml += '</tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += '<tr class="hover:bg-gray-50">';
+                                tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${item.aspect}</td>`;
+                                keys.forEach(key => {
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${item[key]}</td>`;
+                                });
+                                tableHtml += '</tr>';
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].term && answer[0].definition) {
+                            // Handle array of {term, definition}
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Term</th><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Definition</th></tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += `<tr class="hover:bg-gray-50"><td class="border border-gray-300 px-4 py-2 font-medium">${item.term}</td><td class="border border-gray-300 px-4 py-2">${item.definition}</td></tr>`;
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        }
+                        return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
+                    } else {
+                        // Handle object answers - convert to table
+                        const entries = Object.entries(answer);
+                        if (entries.length > 0) {
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+                            tableHtml += '</tr></thead><tbody>';
+
+                            entries.forEach(([key, value]) => {
+                                if (typeof value === 'object' && value !== null) {
+                                    // Handle nested objects
+                                    const nestedEntries = Object.entries(value);
+                                    const nestedTable = '<table class="w-full border-collapse border border-gray-200 mt-2 mb-2">';
+                                    nestedTable += '<thead><tr class="bg-gray-50">';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Key</th>';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Value</th>';
+                                    nestedTable += '</tr></thead><tbody>';
+
+                                    nestedEntries.forEach(([nestedKey, nestedValue]) => {
+                                        nestedTable += `<tr class="hover:bg-gray-50">`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm font-medium">${nestedKey}</td>`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm">${nestedValue}</td>`;
+                                        nestedTable += '</tr>';
+                                    });
+                                    nestedTable += '</tbody></table>';
+
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${nestedTable}</td>`;
+                                    tableHtml += '</tr>';
+                                } else {
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                                    tableHtml += '</tr>';
+                                }
+                            });
+
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        }
+                    }
+                }
+                // Handle string answers
+                return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+            }
+
             return `
                 <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-gradient-to-r ${colorClass}">
                     <button
@@ -452,10 +547,10 @@
                             </div>
                         </div>
                     </button>
-                    <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                    <div class="accordion-content overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
                         <div class="px-8 pb-6">
                             <div class="bg-gradient-to-r from-indigo-50 via-blue-50 to-purple-50 border-l-4 border-blue-500 rounded-xl p-6 shadow-inner">
-                                <p class="leading-relaxed text-gray-800 font-medium text-lg">${item.answer}</p>
+                                ${formatAnswer(item.answer)}
                             </div>
                         </div>
                     </div>

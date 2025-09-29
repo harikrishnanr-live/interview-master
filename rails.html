@@ -118,7 +118,7 @@
                 <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
                 <a href="react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
                 <a href="nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap font-semibold">Rails</a>
+                <a href="rails-details.html" class="hover:text-red-600 transition-colors whitespace-nowrap font-semibold">Rails</a>
                 <a href="flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
                 <a href="php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
                 <a href="mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
@@ -142,7 +142,7 @@
             <a href="angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
             <a href="nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
-            <a href="rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Rails</a>
+            <a href="rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Rails</a>
             <a href="flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
             <a href="php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
             <a href="mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
@@ -155,12 +155,20 @@
     <header class="glass-card shadow-2xl">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Ruby on Rails Q&A Hub
-                </h1>
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Levels
+                    </button>
+                    <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                        <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Ruby on Rails Q&A Hub
+                    </h1>
+                </div>
                 <div class="text-white font-semibold bg-gradient-to-r from-red-400 to-rose-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Ready
                 </div>
@@ -228,24 +236,48 @@
         </div>
 
         <!-- Pagination Controls -->
-        <div class="flex justify-center items-center space-x-6 mb-8">
-            <button id="prevBtn" class="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-                Previous
-            </button>
+        <div class="flex flex-col items-center space-y-4 mb-8">
+            <div class="flex justify-center items-center space-x-6">
+                <button id="prevBtn" class="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                    <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    Previous
+                </button>
 
-            <div class="glass-card px-6 py-3 rounded-2xl text-white font-bold text-lg">
-                Page <span id="currentPageDisplay" class="text-red-300">1</span> of <span id="totalPagesDisplay" class="text-rose-300">1</span>
+                <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
+                    <span class="text-red-300">Page <span id="currentPageDisplay">1</span></span>
+                    <span class="text-gray-300 mx-2">of</span>
+                    <span class="text-pink-300"><span id="totalPagesDisplay">5</span></span>
+                    <span class="text-gray-300 ml-4">•</span>
+                    <span class="text-fuchsia-300 ml-4"><span id="totalFilteredDisplay">14</span> results</span>
+                </div>
+
+                <button id="nextBtn" class="bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                    Next
+                    <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
 
-            <button id="nextBtn" class="bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                Next
-                <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-            </button>
+            <!-- Jump to Page -->
+            <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-300 font-medium">Jump to Page:</span>
+                    <input
+                        type="number"
+                        id="jumpToPageInput"
+                        min="1"
+                        max="1"
+                        placeholder="1"
+                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 text-center font-bold"
+                    >
+                    <button id="jumpToPageBtn" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Go
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Loading Indicator -->
@@ -312,99 +344,59 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
         // Function to load JSON data
         async function loadRailsData() {
             showLoading();
             try {
-                // Embedded Rails Q&A data
-                railsData = [
-                    {
-                        "id":267,
-                        "question": "What is Ruby on Rails?",
-                        "answer": "Ruby on Rails is a web application framework written in Ruby that follows the MVC (Model-View-Controller) architectural pattern."
-                    },
-                    {
-                        "id":268,
-                        "question": "What is MVC in Rails?",
-                        "answer": "MVC stands for Model-View-Controller. Models handle data, Views handle presentation, and Controllers handle user input and business logic."
-                    },
-                    {
-                        "id":269,
-                        "question": "What is ActiveRecord?",
-                        "answer": "ActiveRecord is Rails' Object-Relational Mapping (ORM) system that provides an interface between database tables and Ruby objects."
-                    },
-                    {
-                        "id":270,
-                        "question": "What are migrations in Rails?",
-                        "answer": "Migrations are a way to alter the database schema over time in a consistent and easy way."
-                    },
-                    {
-                        "id":271,
-                        "question": "What is REST in Rails?",
-                        "answer": "REST (Representational State Transfer) is an architectural style for designing networked applications, commonly used in Rails for API development."
-                    },
-                    {
-                        "id":272,
-                        "question": "What are Rails routes?",
-                        "answer": "Routes in Rails map URLs to controller actions, defining how requests are handled by the application."
-                    },
-                    {
-                        "id":273,
-                        "question": "What is a Rails controller?",
-                        "answer": "A controller in Rails handles user requests, processes data, and returns responses, typically in the form of rendered views or JSON."
-                    },
-                    {
-                        "id":274,
-                        "question": "What are Rails helpers?",
-                        "answer": "Helpers are methods that can be used in views to perform common tasks, such as formatting dates or generating HTML."
-                    },
-                    {
-                        "id":275,
-                        "question": "What is the Rails asset pipeline?",
-                        "answer": "The asset pipeline provides a framework to concatenate and minify JavaScript and CSS assets."
-                    },
-                    {
-                        "id":276,
-                        "question": "What are Rails concerns?",
-                        "answer": "Concerns are modules that allow you to extract common functionality from models, controllers, or other classes."
-                    },
-                    {
-                        "id":277,
-                        "question": "What is Rails Active Job?",
-                        "answer": "Active Job is a framework for declaring jobs and making them run on a variety of queuing backends."
-                    },
-                    {
-                        "id":278,
-                        "question": "What are Rails validations?",
-                        "answer": "Validations are rules that ensure data integrity by checking the validity of data before it's saved to the database."
-                    },
-                    {
-                        "id":279,
-                        "question": "What is Rails scaffolding?",
-                        "answer": "Scaffolding is a quick way to generate the major pieces of an application: models, views, and controllers for a new resource."
-                    },
-                    {
-                        "id":280,
-                        "question": "What are Rails partials?",
-                        "answer": "Partials are reusable view templates that can be rendered within other views to avoid code duplication."
-                    },
-                    {
-                        "id":281,
-                        "question": "What is Rails Active Storage?",
-                        "answer": "Active Storage facilitates uploading files to a cloud storage service like Amazon S3, Google Cloud Storage, or Microsoft Azure Storage."
-                    }
-                ];
+                // Data is loaded from external file qa-js/railsData.js
                 isDataLoaded = true;
-                filteredData = [...railsData];
+
+                // Check URL parameters for level filtering
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedLevel = urlParams.get('level');
+
+                if (selectedLevel && window[selectedLevel]) {
+                    // Filter data based on selected level
+                    filteredData = [...window[selectedLevel]];
+                    // Update page title to reflect the level
+                    document.title = `Rails ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+                    // Update header
+                    const headerTitle = document.querySelector('header h1');
+                    if (headerTitle) {
+                        headerTitle.innerHTML = `
+                            <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Rails ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
+                        `;
+                    }
+                } else {
+                    // Default behavior - show all questions or redirect to details page
+                    window.location.href = 'rails-details.html';
+                    return;
+                }
+
                 hideLoading();
                 renderCurrentPage();
-                updateSearchStats();
                 setupSearch();
             } catch (error) {
                 console.error('Error loading Rails data:', error);
                 hideLoading();
                 showErrorMessage();
             }
+        }
+
+        // Function to go back to levels page
+        function goBackToLevels() {
+            window.location.href = 'rails-details.html';
         }
 
         function showErrorMessage() {
@@ -446,10 +438,15 @@
             const searchInput = document.getElementById('searchInput');
             searchTerm = searchInput.value.toLowerCase().trim();
 
+            // Get the original level data for searching
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLevel = urlParams.get('level');
+            const originalData = window[selectedLevel] || [];
+
             if (searchTerm === '') {
-                filteredData = [...railsData];
+                filteredData = [...originalData];
             } else {
-                filteredData = railsData.filter(item =>
+                filteredData = originalData.filter(item =>
                     item.question.toLowerCase().includes(searchTerm) ||
                     (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
                 );
@@ -462,7 +459,8 @@
 
         function updateSearchStats() {
             document.getElementById('searchResultsCount').textContent = filteredData.length;
-            document.getElementById('totalQuestions').textContent = filteredData.length;
+            document.getElementById('filteredCount').textContent = filteredData.length;
+            document.getElementById('totalFilteredDisplay').textContent = filteredData.length;
         }
 
         function setupSearch() {
@@ -492,6 +490,93 @@
             ];
             const colorClass = colors[index % colors.length];
 
+            // Function to convert object/array answers to HTML table
+            function formatAnswer(answer) {
+                if (typeof answer === 'object' && answer !== null) {
+                    if (Array.isArray(answer)) {
+                        // Handle array answers
+                        if (answer.length > 0 && typeof answer[0] === 'string') {
+                            return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].aspect) {
+                            // Handle array of differentiation objects with aspect and comparison items
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            const keys = Object.keys(answer[0]).filter(key => key !== 'aspect');
+                            const headers = ['Aspect', ...keys.map(key => key.charAt(0).toUpperCase() + key.slice(1))];
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            headers.forEach(header => {
+                                tableHtml += `<th class="border border-gray-300 px-4 py-2 text-left font-semibold">${header}</th>`;
+                            });
+                            tableHtml += '</tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += '<tr class="hover:bg-gray-50">';
+                                tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${item.aspect}</td>`;
+                                keys.forEach(key => {
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${item[key]}</td>`;
+                                });
+                                tableHtml += '</tr>';
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        } else if (answer.length > 0 && typeof answer[0] === 'object' && answer[0].term && answer[0].definition) {
+                            // Handle array of {term, definition}
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Term</th><th class="border border-gray-300 px-4 py-2 text-left font-semibold">Definition</th></tr></thead><tbody>';
+                            answer.forEach(item => {
+                                tableHtml += `<tr class="hover:bg-gray-50"><td class="border border-gray-300 px-4 py-2 font-medium">${item.term}</td><td class="border border-gray-300 px-4 py-2">${item.definition}</td></tr>`;
+                            });
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        }
+                        return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
+                    } else {
+                        // Handle object answers - convert to table
+                        const entries = Object.entries(answer);
+                        if (entries.length > 0) {
+                            let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                            tableHtml += '<thead><tr class="bg-gray-100">';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+                            tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+                            tableHtml += '</tr></thead><tbody>';
+
+                            entries.forEach(([key, value]) => {
+                                if (typeof value === 'object' && value !== null) {
+                                    // Handle nested objects
+                                    const nestedEntries = Object.entries(value);
+                                    const nestedTable = '<table class="w-full border-collapse border border-gray-200 mt-2 mb-2">';
+                                    nestedTable += '<thead><tr class="bg-gray-50">';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Key</th>';
+                                    nestedTable += '<th class="border border-gray-200 px-3 py-1 text-left text-sm font-medium">Value</th>';
+                                    nestedTable += '</tr></thead><tbody>';
+
+                                    nestedEntries.forEach(([nestedKey, nestedValue]) => {
+                                        nestedTable += `<tr class="hover:bg-gray-50">`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm font-medium">${nestedKey}</td>`;
+                                        nestedTable += `<td class="border border-gray-200 px-3 py-1 text-sm">${nestedValue}</td>`;
+                                        nestedTable += '</tr>';
+                                    });
+                                    nestedTable += '</tbody></table>';
+
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${nestedTable}</td>`;
+                                    tableHtml += '</tr>';
+                                } else {
+                                    tableHtml += `<tr class="hover:bg-gray-50">`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                                    tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                                    tableHtml += '</tr>';
+                                }
+                            });
+
+                            tableHtml += '</tbody></table>';
+                            return tableHtml;
+                        }
+                    }
+                }
+                // Handle string answers
+                return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+            }
+
             return `
                 <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-gradient-to-r ${colorClass}">
                     <button
@@ -515,7 +600,7 @@
                     <div class="accordion-content overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
                         <div class="px-8 pb-6">
                             <div class="bg-gradient-to-r from-red-50 via-rose-50 to-pink-50 border-l-4 border-red-500 rounded-xl p-6 shadow-inner">
-                                <p class="leading-relaxed text-gray-800 font-medium text-lg">${item.answer}</p>
+                                ${formatAnswer(item.answer)}
                             </div>
                         </div>
                     </div>
@@ -574,9 +659,15 @@
         function updatePagination() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
+            const jumpInput = document.getElementById('jumpToPageInput');
 
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === getTotalPages();
+
+            // Update jump input max value and placeholder
+            const totalPages = getTotalPages();
+            jumpInput.max = totalPages;
+            jumpInput.placeholder = currentPage.toString();
         }
 
         function showLoading() {
@@ -605,9 +696,52 @@
             }, 600);
         }
 
+        function jumpToPage() {
+            const jumpInput = document.getElementById('jumpToPageInput');
+            const pageNumber = parseInt(jumpInput.value);
+
+            if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > getTotalPages()) {
+                // Invalid page number - show brief error styling
+                jumpInput.classList.add('border-red-500', 'bg-red-50');
+                setTimeout(() => {
+                    jumpInput.classList.remove('border-red-500', 'bg-red-50');
+                }, 1000);
+                return;
+            }
+
+            if (pageNumber === currentPage) {
+                // Already on that page - just clear input
+                jumpInput.value = '';
+                return;
+            }
+
+            showLoading();
+
+            setTimeout(() => {
+                currentPage = pageNumber;
+                renderCurrentPage();
+                hideLoading();
+
+                // Clear input and update placeholder
+                jumpInput.value = '';
+                jumpInput.placeholder = currentPage.toString();
+
+                // Smooth scroll to top with offset for sticky header
+                window.scrollTo({ top: 100, behavior: 'smooth' });
+            }, 600);
+        }
+
         // Event listeners
         document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
         document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Jump to page functionality
+        document.getElementById('jumpToPageBtn').addEventListener('click', jumpToPage);
+        document.getElementById('jumpToPageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                jumpToPage();
+            }
+        });
 
         // Visitor tracking functionality
         function updateVisitorStats() {

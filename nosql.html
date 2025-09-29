@@ -122,7 +122,7 @@
                 <a href="flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
                 <a href="php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
                 <a href="mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap font-semibold">NoSQL</a>
+                <a href="nosql-details.html" class="hover:text-teal-400 transition-colors whitespace-nowrap font-semibold">NoSQL</a>
                 <a href="devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
 
@@ -146,7 +146,7 @@
             <a href="flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
             <a href="php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
             <a href="mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
-            <a href="nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">NoSQL</a>
+            <a href="nosql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">NoSQL</a>
             <a href="devops.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
@@ -155,12 +155,20 @@
     <header class="glass-card shadow-2xl">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    NoSQL Q&A Hub
-                </h1>
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Levels
+                    </button>
+                    <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+                        <svg class="w-8 h-8 mr-3 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+                        </svg>
+                        NoSQL Q&A Hub
+                    </h1>
+                </div>
                 <div class="text-white font-semibold bg-gradient-to-r from-teal-400 to-cyan-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Ready
                 </div>
@@ -259,7 +267,6 @@
 
     <script>
         // Global variables
-        let nosqlData = [];
         let filteredData = [];
         let isDataLoaded = false;
         let currentPage = 1;
@@ -267,94 +274,58 @@
         let openAccordions = new Set();
         let searchTerm = '';
 
+        // Function to go back to level selection
+        function goBackToLevels() {
+            window.location.href = 'nosql-details.html';
+        }
+
         // Function to load JSON data
         async function loadNoSQLData() {
             showLoading();
             try {
-                // Embedded NoSQL Q&A data
-                nosqlData = [
-                    {
-                        "id":197,
-                        "question": "What is NoSQL?",
-                        "answer": "NoSQL (Not Only SQL) is a database design approach that provides flexible schemas for storing and retrieving data beyond traditional relational databases."
-                    },
-                    {
-                        "id":198,
-                        "question": "What are the main types of NoSQL databases?",
-                        "answer": "Document stores (MongoDB), Key-value stores (Redis), Column-family stores (Cassandra), and Graph databases (Neo4j)."
-                    },
-                    {
-                        "id":199,
-                        "question": "What is MongoDB?",
-                        "answer": "MongoDB is a document-oriented NoSQL database that stores data in flexible, JSON-like documents with dynamic schemas."
-                    },
-                    {
-                        "id":200,
-                        "question": "What are documents in MongoDB?",
-                        "answer": "Documents are the basic unit of data in MongoDB, similar to rows in relational databases but with a flexible schema."
-                    },
-                    {
-                        "id":201,
-                        "question": "What are collections in MongoDB?",
-                        "answer": "Collections are groups of MongoDB documents, similar to tables in relational databases."
-                    },
-                    {
-                        "id":202,
-                        "question": "What is BSON in MongoDB?",
-                        "answer": "BSON (Binary JSON) is the binary-encoded serialization of JSON-like documents used by MongoDB for storage and network transfer."
-                    },
-                    {
-                        "id":203,
-                        "question": "What is the difference between SQL and NoSQL databases?",
-                        "answer": "SQL databases are relational with fixed schemas, while NoSQL databases are non-relational with flexible schemas and are better for handling large volumes of unstructured data."
-                    },
-                    {
-                        "id":204,
-                        "question": "What is sharding in MongoDB?",
-                        "answer": "Sharding is the process of distributing data across multiple machines to support deployments with very large data sets and high throughput operations."
-                    },
-                    {
-                        "id":205,
-                        "question": "What are indexes in MongoDB?",
-                        "answer": "Indexes support the efficient execution of queries in MongoDB by storing a small portion of the collection's data in an easy-to-traverse form."
-                    },
-                    {
-                        "id":206,
-                        "question": "What is aggregation in MongoDB?",
-                        "answer": "Aggregation operations process data records and return computed results. MongoDB provides aggregation pipeline for data processing."
-                    },
-                    {
-                        "id":207,
-                        "question": "What is Redis?",
-                        "answer": "Redis is an open-source, in-memory data structure store used as a database, cache, and message broker."
-                    },
-                    {
-                        "id":208,
-                        "question": "What are the advantages of NoSQL databases?",
-                        "answer": "Flexible schemas, horizontal scalability, better performance for certain workloads, and easier handling of large volumes of unstructured data."
-                    },
-                    {
-                        "id":209,
-                        "question": "What is eventual consistency?",
-                        "answer": "Eventual consistency is a consistency model used in distributed computing to achieve high availability that informally guarantees that, if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value."
-                    },
-                    {
-                        "id":210,
-                        "question": "What is CAP theorem?",
-                        "answer": "CAP theorem states that it is impossible for a distributed data store to simultaneously provide more than two out of the following three guarantees: Consistency, Availability, and Partition tolerance."
-                    },
-                    {
-                        "id":211,
-                        "question": "What is Cassandra?",
-                        "answer": "Apache Cassandra is a free and open-source, distributed, wide-column store, NoSQL database management system designed to handle large amounts of data across many commodity servers."
-                    }
-                ];
-                isDataLoaded = true;
-                filteredData = [...nosqlData];
-                hideLoading();
-                renderCurrentPage();
-                updateSearchStats();
-                setupSearch();
+                // Check URL parameters for level filtering
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedLevel = urlParams.get('level');
+
+                if (selectedLevel && ['beginner', 'intermediate', 'advanced'].includes(selectedLevel)) {
+                    // Load the appropriate script dynamically
+                    const script = document.createElement('script');
+                    script.src = `qa-js/NoSQL/nosql-${selectedLevel}.js`;
+                    script.onload = function() {
+                        // Once script is loaded, set up the data
+                        isDataLoaded = true;
+                        filteredData = [...window[selectedLevel]];
+
+                        // Update page title to reflect the level
+                        document.title = `NoSQL ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+
+                        // Update header
+                        const headerTitle = document.querySelector('header h1');
+                        if (headerTitle) {
+                            headerTitle.innerHTML = `
+                                <svg class="w-8 h-8 mr-3 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+                                </svg>
+                                NoSQL ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
+                            `;
+                        }
+
+                        hideLoading();
+                        renderCurrentPage();
+                        updateSearchStats();
+                        setupSearch();
+                    };
+                    script.onerror = function() {
+                        console.error(`Failed to load ${selectedLevel} level data`);
+                        hideLoading();
+                        showErrorMessage();
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    // Default behavior - redirect to details page
+                    window.location.href = 'nosql-details.html';
+                    return;
+                }
             } catch (error) {
                 console.error('Error loading NoSQL data:', error);
                 hideLoading();
@@ -402,10 +373,15 @@
             const searchInput = document.getElementById('searchInput');
             searchTerm = searchInput.value.toLowerCase().trim();
 
+            // Get the original level data for searching
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLevel = urlParams.get('level');
+            const originalData = window[selectedLevel] || [];
+
             if (searchTerm === '') {
-                filteredData = [...nosqlData];
+                filteredData = [...originalData];
             } else {
-                filteredData = nosqlData.filter(item =>
+                filteredData = originalData.filter(item =>
                     item.question.toLowerCase().includes(searchTerm) ||
                     (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
                 );
@@ -521,7 +497,7 @@
             document.getElementById('currentPage').textContent = currentPage;
             document.getElementById('displayedCount').textContent = getCurrentPageData().length;
             document.getElementById('totalPages').textContent = getTotalPages();
-            document.getElementById('totalQuestions').textContent = nosqlData.length;
+            document.getElementById('totalQuestions').textContent = filteredData.length;
             document.getElementById('currentPageDisplay').textContent = currentPage;
             document.getElementById('totalPagesDisplay').textContent = getTotalPages();
             updateSearchStats();
