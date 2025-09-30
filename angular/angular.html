@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angular Q&A Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../qa-js/Angular/angular-beginner.js"></script>
-    <script src="../qa-js/Angular/angular-intermediate.js"></script>
-    <script src="../qa-js/Angular/angular-advanced.js"></script>
+    <script src="js/angular-beginner.js"></script>
+    <script src="js/angular-intermediate.js"></script>
+    <script src="js/angular-advanced.js"></script>
     <style>
         @keyframes slideInLeft {
             from {
@@ -118,7 +118,7 @@
                 <a href="../javascript/javascript-details.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
                 <a href="../typescript/typescript-details.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
                 <a href="../practice/practice-details.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
-                <a href="../angular-details\.html" class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
+                <a href="../angular/angular-details.html" class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
                 <a href="../react/react-details.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
                 <a href="../nodejs/nodejs-details.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
                 <a href="../rails/rails-details.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
@@ -142,7 +142,7 @@
             <a href="../javascript/javascript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
             <a href="../typescript/typescript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
             <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
-            <a href="../angular-details\.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
+            <a href="../angular/angular-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
             <a href="../react/react-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
             <a href="../nodejs/nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
@@ -310,20 +310,15 @@
         async function loadAngularData() {
             showLoading();
             try {
-                // Data is loaded from external file qa-js/angularData.js
-                isDataLoaded = true;
-
-                // Check URL parameters for level filtering
                 const urlParams = new URLSearchParams(window.location.search);
                 const selectedLevel = urlParams.get('level');
 
                 if (selectedLevel && window[selectedLevel]) {
-                    // Filter data based on selected level
                     filteredData = [...window[selectedLevel]];
-                    // Update page title to reflect the level
-                    document.title = `Angular ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
-                    // Update header
-                    const headerTitle = document.querySelector('header h1');
+                    isDataLoaded = true;
+
+                    // Update header title
+                    const headerTitle = document.querySelector('h1');
                     if (headerTitle) {
                         headerTitle.innerHTML = `
                             <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
@@ -708,3 +703,9 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
