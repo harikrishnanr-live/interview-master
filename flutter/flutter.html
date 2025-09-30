@@ -1,661 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flutter Q&A Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Level-specific script will be loaded dynamically -->
-    <style>
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flutter Q&A Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/flutter-beginner.js"></script>
+  <script src="js/flutter-intermediate.js"></script>
+  <script src="js/flutter-advanced.js"></script>
+  <style>
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
       }
 
-      @keyframes bounceIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.1);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
       }
 
-      @keyframes expandAnswer {
-        from {
-          opacity: 0;
-          max-height: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          max-height: 300px;
-          transform: translateY(0);
-        }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
       }
 
-      @keyframes waveEffect {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes expandAnswer {
+      from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
       }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+      to {
+        opacity: 1;
+        max-height: 300px;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes waveEffect {
+      0% {
+        background-position: 0% 50%;
       }
 
-      .slide-in-left {
-        animation: slideInLeft 0.7s ease-out forwards;
+      50% {
+        background-position: 100% 50%;
       }
 
-      .bounce-in {
-        animation: bounceIn 0.8s ease-out forwards;
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      .expand-answer {
-        animation: expandAnswer 0.5s ease-out forwards;
+      50% {
+        transform: translateY(-10px);
       }
+    }
 
-      .wave-bg {
-        background: linear-gradient(-45deg, #03a9f4, #0288d1, #0277bd, #01579b);
-        background-size: 400% 400%;
-        animation: waveEffect 12s ease infinite;
-      }
+    .slide-in-left {
+      animation: slideInLeft 0.7s ease-out forwards;
+    }
 
-      .float-effect:hover {
-        animation: float 2s ease-in-out infinite;
-      }
+    .bounce-in {
+      animation: bounceIn 0.8s ease-out forwards;
+    }
 
-      .glass-card {
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
+    .expand-answer {
+      animation: expandAnswer 0.5s ease-out forwards;
+    }
 
-      .neon-glow {
-        box-shadow: 0 0 20px rgba(3, 169, 244, 0.5);
-      }
+    .wave-bg {
+      background: linear-gradient(-45deg, #03a9f4, #0288d1, #0277bd, #01579b);
+      background-size: 400% 400%;
+      animation: waveEffect 12s ease infinite;
+    }
 
-      .neon-glow:hover {
-        box-shadow: 0 0 30px rgba(3, 169, 244, 0.8);
-      }
-    </style>
-  </head>
-  <body class="wave-bg min-h-screen">
-    <!-- Navigation Menu -->
-    <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <a
-          href="../index.html"
-          class="text-xl font-bold hover:text-blue-400 transition-colors"
-          >Tech Learning Hub</a
-        >
+    .float-effect:hover {
+      animation: float 2s ease-in-out infinite;
+    }
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-4">
-          <a
-            href="javascript.html"
-            class="hover:text-yellow-400 transition-colors whitespace-nowrap"
-            >JavaScript</a
-          >
-          <a
-            href="../typescript/typescript.html"
-            class="hover:text-blue-400 transition-colors whitespace-nowrap"
-            >TypeScript</a
-          >
-          <a
-            href="../practice/practice.html"
-            class="hover:text-purple-400 transition-colors whitespace-nowrap"
-            >JS Practice</a
-          >
-          <a
-            href="angular.html"
-            class="hover:text-red-400 transition-colors whitespace-nowrap"
-            >Angular</a
-          >
-          <a
-            href="../react/react.html"
-            class="hover:text-cyan-400 transition-colors whitespace-nowrap"
-            >React</a
-          >
-          <a
-            href="../nodejs/nodejs.html"
-            class="hover:text-green-400 transition-colors whitespace-nowrap"
-            >Node.js</a
-          >
-          <a
-            href="../rails/rails.html"
-            class="hover:text-red-600 transition-colors whitespace-nowrap"
-            >Rails</a
-          >
-          <a
-            href="../flutter/flutter.html"
-            class="hover:text-blue-500 transition-colors whitespace-nowrap font-semibold"
-            >Flutter</a
-          >
-          <a
-            href="../php/php.html"
-            class="hover:text-indigo-400 transition-colors whitespace-nowrap"
-            >PHP</a
-          >
-          <a
-            href="../mysql/mysql.html"
-            class="hover:text-orange-400 transition-colors whitespace-nowrap"
-            >MySQL</a
-          >
-          <a
-            href="../nosql/nosql.html"
-            class="hover:text-teal-400 transition-colors whitespace-nowrap"
-            >NoSQL</a
-          >
-          <a
-            href="../devops/devops.html"
-            class="hover:text-gray-400 transition-colors whitespace-nowrap"
-            >DevOps</a
-          >
-        </div>
+    .glass-card {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
 
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobileMenuBtn"
-          class="md:hidden text-white focus:outline-none"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+    .neon-glow {
+      box-shadow: 0 0 20px rgba(3, 169, 244, 0.5);
+    }
+
+    .neon-glow:hover {
+      box-shadow: 0 0 30px rgba(3, 169, 244, 0.8);
+    }
+  </style>
+</head>
+
+<body class="wave-bg min-h-screen">
+  <!-- Navigation Menu -->
+  <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="../index.html" class="text-xl font-bold hover:text-blue-400 transition-colors">Tech Learning Hub</a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-4">
+        <a href="javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+        <a href="../typescript/typescript.html"
+          class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+        <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS
+          Practice</a>
+        <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
+        <a href="../react/react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
+        <a href="../nodejs/nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+        <a href="../rails/rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
+        <a href="../flutter/flutter.html"
+          class="hover:text-blue-500 transition-colors whitespace-nowrap font-semibold">Flutter</a>
+        <a href="../php/php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
+        <a href="../mysql/mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+        <a href="../nosql/nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
+        <a href="../devops/devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
       </div>
 
-      <!-- Mobile Menu -->
-      <div
-        id="mobileMenu"
-        class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden"
-      >
-        <a
-          href="javascript.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >JavaScript</a
-        >
-        <a
-          href="../typescript/typescript.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >TypeScript</a
-        >
-        <a
-          href="../practice/practice.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >JS Practice</a
-        >
-        <a
-          href="angular.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >Angular</a
-        >
-        <a
-          href="../react/react.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >React</a
-        >
-        <a
-          href="../nodejs/nodejs.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >Node.js</a
-        >
-        <a
-          href="../rails/rails.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >Rails</a
-        >
-        <a
-          href="../flutter/flutter.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold"
-          >Flutter</a
-        >
-        <a
-          href="../php/php.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >PHP</a
-        >
-        <a
-          href="../mysql/mysql.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >MySQL</a
-        >
-        <a
-          href="../nosql/nosql.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >NoSQL</a
-        >
-        <a
-          href="../devops/devops.html"
-          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
-          >DevOps</a
-        >
-      </div>
-    </nav>
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
-    <!-- Header -->
-    <header class="glass-card shadow-2xl">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-4">
-            <button
-              onclick="goBackToLevels()"
-              class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <svg
-                class="w-5 h-5 inline mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to Levels
-            </button>
-            <h1
-              class="text-3xl font-bold text-white flex items-center bounce-in"
-            >
-              <svg
-                class="w-8 h-8 mr-3 text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              Flutter Q&A Hub
-            </h1>
-          </div>
-          <div
-            class="text-white font-semibold bg-gradient-to-r from-blue-400 to-sky-500 px-4 py-2 rounded-full neon-glow"
-          >
-            <span id="totalQuestions">0</span> Questions Ready
-          </div>
-        </div>
-      </div>
-    </header>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
+      <a href="javascript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
+      <a href="../typescript/typescript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
+      <a href="../practice/practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
+      <a href="angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
+      <a href="../react/react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
+      <a href="../nodejs/nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+      <a href="../rails/rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
+      <a href="../flutter/flutter.html"
+        class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Flutter</a>
+      <a href="../php/php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
+      <a href="../mysql/mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
+      <a href="../nosql/nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
+      <a href="../devops/devops.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
+    </div>
+  </nav>
 
-    <div class="container mx-auto px-6 py-8">
-      <!-- Search Bar -->
-      <div class="mb-8 slide-in-left">
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-          <div
-            class="flex flex-col md:flex-row items-center justify-between gap-4"
-          >
-            <div class="flex-1 w-full md:w-auto">
-              <div class="relative">
-                <input
-                  type="text"
-                  id="searchInput"
-                  placeholder="🔍 Search Flutter questions..."
-                  class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                />
-                <svg
-                  class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="text-center">
-              <div
-                class="text-2xl font-bold text-blue-300"
-                id="searchResultsCount"
-              >
-                14
-              </div>
-              <div class="text-sm opacity-90 font-medium">Total Questions</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats Dashboard -->
-      <div class="mb-8 slide-in-left">
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-blue-300 mb-2"
-                id="currentPage"
-              >
-                1
-              </div>
-              <div class="text-sm opacity-90 font-medium">Current Page</div>
-              <div class="w-12 h-1 bg-blue-400 mx-auto mt-2 rounded-full"></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-sky-300 mb-2"
-                id="displayedCount"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Showing Now</div>
-              <div class="w-12 h-1 bg-sky-400 mx-auto mt-2 rounded-full"></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-indigo-300 mb-2"
-                id="totalPages"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Total Pages</div>
-              <div
-                class="w-12 h-1 bg-indigo-400 mx-auto mt-2 rounded-full"
-              ></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-cyan-300 mb-2"
-                id="totalQuestions"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">All Questions</div>
-              <div class="w-12 h-1 bg-cyan-400 mx-auto mt-2 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q&A Container -->
-      <div id="qaContainer" class="space-y-6 mb-8">
-        <!-- Q&A items will be inserted here -->
-      </div>
-
-      <!-- Pagination Controls -->
-      <div class="flex flex-col items-center space-y-4 mb-8">
-        <div class="flex justify-center items-center space-x-6">
-          <button
-            id="prevBtn"
-            class="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-          >
-            <svg
-              class="w-5 h-5 inline mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              />
+  <!-- Header -->
+  <header class="glass-card shadow-2xl">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <button onclick="goBackToLevels()"
+            class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
-            Previous
+            Back to Levels
           </button>
-
-          <div
-            class="glass-card px-6 py-3 rounded-2xl text-white font-bold text-lg"
-          >
-            Page <span id="currentPageDisplay" class="text-blue-300">1</span> of
-            <span id="totalPagesDisplay" class="text-sky-300">1</span>
-          </div>
-
-          <button
-            id="nextBtn"
-            class="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-          >
-            Next
-            <svg
-              class="w-5 h-5 inline ml-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
+          <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+            <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
             </svg>
-          </button>
+            Flutter Q&A Hub
+          </h1>
         </div>
-
-        <!-- Jump to Page -->
-        <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
-          <div class="flex items-center space-x-4">
-            <span class="text-gray-300 font-medium">Jump to Page:</span>
-            <input
-              type="number"
-              id="jumpToPageInput"
-              min="1"
-              max="1"
-              placeholder="1"
-              class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 text-center font-bold"
-            />
-            <button
-              id="jumpToPageBtn"
-              class="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              Go
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Loading Indicator -->
-      <div
-        id="loadingIndicator"
-        class="hidden flex justify-center items-center py-12"
-      >
-        <div class="relative">
-          <div
-            class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"
-          ></div>
-          <div
-            class="absolute inset-0 rounded-full h-16 w-16 border-4 border-blue-400 border-b-transparent animate-ping"
-          ></div>
+        <div
+          class="text-white font-semibold bg-gradient-to-r from-blue-400 to-sky-500 px-4 py-2 rounded-full neon-glow">
+          <span id="totalQuestions">0</span> Questions Ready
         </div>
       </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="glass-card mt-16">
-      <div class="container mx-auto px-6 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Developer Info -->
-          <div class="text-center md:text-left">
-            <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
-            <div class="text-gray-300">
-              <p class="font-semibold text-lg">Harikrishnan. R</p>
-              <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
-              <p class="text-xs mt-2 opacity-80 italic">
-                If any changes or corrections are required, please contact me.
-              </p>
-            </div>
+  <div class="container mx-auto px-6 py-8">
+      <!-- Level Selection View (shown when no level is selected) -->
+      <div id="levelSelectionView" class="hidden">
+          <!-- Level Selection Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <!-- Beginner Level -->
+              <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('beginner')">
+                  <div class="text-center">
+                      <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                          </svg>
+                      </div>
+                      <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner Level</h3>
+                      <p class="text-gray-300 mb-6 leading-relaxed">
+                          Start your Flutter journey with fundamental concepts like Flutter framework, Dart language, widgets, and basic UI components.
+                      </p>
+                      <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                          <div class="text-3xl font-bold text-green-300 mb-2" id="beginnerCount">0</div>
+                          <div class="text-sm opacity-90 font-medium">Questions</div>
+                      </div>
+                      <div class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
+                          Start Learning
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Intermediate Level -->
+              <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('intermediate')">
+                  <div class="text-center">
+                      <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                          </svg>
+                      </div>
+                      <h3 class="text-2xl font-bold mb-4 text-yellow-300">Intermediate Level</h3>
+                      <p class="text-gray-300 mb-6 leading-relaxed">
+                          Dive deeper into Flutter development with project configuration, hot reload, and advanced Dart language features like async programming.
+                      </p>
+                      <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                          <div class="text-3xl font-bold text-yellow-300 mb-2" id="intermediateCount">0</div>
+                          <div class="text-sm opacity-90 font-medium">Questions</div>
+                      </div>
+                      <div class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+                          Continue Learning
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Advanced Level -->
+              <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('advanced')">
+                  <div class="text-center">
+                      <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                          </svg>
+                      </div>
+                      <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
+                      <p class="text-gray-300 mb-6 leading-relaxed">
+                          Master advanced Flutter concepts including state management patterns (BLoC, Provider), advanced widgets, and complex Dart language features.
+                      </p>
+                      <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                          <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
+                          <div class="text-sm opacity-90 font-medium">Questions</div>
+                      </div>
+                      <div class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
+                          Master Flutter
+                      </div>
+                  </div>
+              </div>
           </div>
 
-          <!-- Visitor Stats -->
-          <div class="text-center">
-            <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
-            <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
-              <div
-                class="text-3xl font-bold text-blue-300 mb-2"
-                id="visitCount"
-              >
-                0
+          <!-- Quick Stats -->
+          <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
+              <div class="text-center">
+                  <h3 class="text-xl font-bold mb-4">Flutter Learning Path</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div class="text-center">
+                          <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
+                          <div class="text-sm opacity-90">Flutter Basics, Dart, Widgets</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-2xl font-bold text-yellow-300 mb-2">Intermediate</div>
+                          <div class="text-sm opacity-90">Configuration, Hot Reload, Async Dart</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
+                          <div class="text-sm opacity-90">State Management, Advanced Widgets</div>
+                      </div>
+                  </div>
               </div>
-              <div class="text-sm text-gray-400">Your Visits</div>
-              <div class="text-xs text-gray-500 mt-1" id="lastVisit">
-                First visit!
+          </div>
+      </div>
+
+      <!-- Q&A View (shown when a level is selected) -->
+      <div id="qaView" class="hidden">
+          <!-- Search Bar -->
+          <div class="mb-8 slide-in-left">
+              <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                  <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                      <div class="flex-1 w-full md:w-auto">
+                          <div class="relative">
+                              <input type="text" id="searchInput" placeholder="🔍 Search Flutter questions..."
+                                  class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-lg text-lg" />
+                              <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none"
+                                  stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                              </svg>
+                          </div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-2xl font-bold text-blue-300" id="searchResultsCount">
+                              14
+                          </div>
+                          <div class="text-sm opacity-90 font-medium">Total Questions</div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
 
-          <!-- Quick Links -->
-          <div class="text-center md:text-right">
-            <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
-            <div class="space-y-2">
-              <a
-                href="../index.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >🏠 Home</a
-              >
-              <a
-                href="javascript.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >📚 JavaScript</a
-              >
-              <a
-                href="../react/react.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >⚛️ React</a
-              >
-              <a
-                href="angular.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >🅰️ Angular</a
-              >
+          <!-- Stats Dashboard -->
+          <div class="mb-8 slide-in-left">
+              <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                      <div class="text-center float-effect">
+                          <div class="text-4xl font-bold text-blue-300 mb-2" id="currentPage">
+                              1
+                          </div>
+                          <div class="text-sm opacity-90 font-medium">Current Page</div>
+                          <div class="w-12 h-1 bg-blue-400 mx-auto mt-2 rounded-full"></div>
+                      </div>
+                      <div class="text-center float-effect">
+                          <div class="text-4xl font-bold text-sky-300 mb-2" id="displayedCount">
+                              0
+                          </div>
+                          <div class="text-sm opacity-90 font-medium">Showing Now</div>
+                          <div class="w-12 h-1 bg-sky-400 mx-auto mt-2 rounded-full"></div>
+                      </div>
+                      <div class="text-center float-effect">
+                          <div class="text-4xl font-bold text-indigo-300 mb-2" id="totalPages">
+                              0
+                          </div>
+                          <div class="text-sm opacity-90 font-medium">Total Pages</div>
+                          <div class="w-12 h-1 bg-indigo-400 mx-auto mt-2 rounded-full"></div>
+                      </div>
+                      <div class="text-center float-effect">
+                          <div class="text-4xl font-bold text-cyan-300 mb-2" id="totalQuestions">
+                              0
+                          </div>
+                          <div class="text-sm opacity-90 font-medium">All Questions</div>
+                          <div class="w-12 h-1 bg-cyan-400 mx-auto mt-2 rounded-full"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Q&A Container -->
+          <div id="qaContainer" class="space-y-6 mb-8">
+              <!-- Q&A items will be inserted here -->
+          </div>
+
+          <!-- Pagination Controls -->
+          <div class="flex flex-col items-center space-y-4 mb-8">
+              <div class="flex justify-center items-center space-x-6">
+                  <button id="prevBtn"
+                      class="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                      <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                      </svg>
+                      Previous
+                  </button>
+
+                  <div class="glass-card px-6 py-3 rounded-2xl text-white font-bold text-lg">
+                      Page <span id="currentPageDisplay" class="text-blue-300">1</span> of
+                      <span id="totalPagesDisplay" class="text-sky-300">1</span>
+                  </div>
+
+                  <button id="nextBtn"
+                      class="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                      Next
+                      <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                  </button>
+              </div>
+
+              <!-- Jump to Page -->
+              <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+                  <div class="flex items-center space-x-4">
+                      <span class="text-gray-300 font-medium">Jump to Page:</span>
+                      <input type="number" id="jumpToPageInput" min="1" max="1" placeholder="1"
+                          class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 text-center font-bold" />
+                      <button id="jumpToPageBtn"
+                          class="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                          Go
+                      </button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
+              <div class="relative">
+                  <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
+                  <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-blue-400 border-b-transparent animate-ping">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="glass-card mt-16">
+    <div class="container mx-auto px-6 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Developer Info -->
+        <div class="text-center md:text-left">
+          <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
+          <div class="text-gray-300">
+            <p class="font-semibold text-lg">Harikrishnan. R</p>
+            <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
+            <p class="text-xs mt-2 opacity-80 italic">
+              If any changes or corrections are required, please contact me.
+            </p>
+          </div>
+        </div>
+
+        <!-- Visitor Stats -->
+        <div class="text-center">
+          <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
+          <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
+            <div class="text-3xl font-bold text-blue-300 mb-2" id="visitCount">
+              0
+            </div>
+            <div class="text-sm text-gray-400">Your Visits</div>
+            <div class="text-xs text-gray-500 mt-1" id="lastVisit">
+              First visit!
             </div>
           </div>
         </div>
 
-        <div
-          class="border-t border-white border-opacity-20 mt-8 pt-6 text-center"
-        >
-          <p class="text-gray-400 text-sm">
-            © 2024 Tech Learning Hub. Built with ❤️ for developers.
-          </p>
+        <!-- Quick Links -->
+        <div class="text-center md:text-right">
+          <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+          <div class="space-y-2">
+            <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
+            <a href="javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
+            <a href="../react/react.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
+            <a href="angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
+          </div>
         </div>
       </div>
-    </footer>
 
-    <script>
-      // Global variables
-      let filteredData = [];
-      let isDataLoaded = false;
-      let currentPage = 1;
-      const itemsPerPage = 10;
-      let openAccordions = new Set();
-      let searchTerm = "";
+      <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
+        <p class="text-gray-400 text-sm">
+          © 2024 Tech Learning Hub. Built with ❤️ for developers.
+        </p>
+      </div>
+    </div>
+  </footer>
 
-      // Function to go back to level selection
-      function goBackToLevels() {
-        window.location.href = "flutter-details.html";
+  <script>
+    // Global variables
+    let filteredData = [];
+    let isDataLoaded = false;
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    let openAccordions = new Set();
+    let searchTerm = "";
+
+    // Function to go back to level selection
+    function goBackToLevels() {
+      showLevelSelection();
+    }
+
+    // Function to show level selection view
+    function showLevelSelection() {
+      document.getElementById('levelSelectionView').classList.remove('hidden');
+      document.getElementById('qaView').classList.add('hidden');
+      document.title = "Flutter Learning Levels";
+      const headerTitle = document.querySelector("header h1");
+      if (headerTitle) {
+        headerTitle.innerHTML = `
+          <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+          </svg>
+          Flutter Learning Levels
+        `;
       }
-
-      // Function to load data from JavaScript file
-      async function loadFlutterData() {
-        showLoading();
-        try {
-          // Check URL parameters for level filtering
-          const urlParams = new URLSearchParams(window.location.search);
-          const selectedLevel = urlParams.get("level");
-
-          if (
-            selectedLevel &&
-            ["beginner", "intermediate", "advanced"].includes(selectedLevel)
-          ) {
-            // Load the appropriate script dynamically
-            const script = document.createElement("script");
-            script.src = `js/flutter-${selectedLevel}.js`;
-            script.onload = function () {
-              // Once script is loaded, set up the data
-              isDataLoaded = true;
-              filteredData = [...window[selectedLevel]];
-
-              // Update page title to reflect the level
-              document.title = `Flutter ${
-                selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)
-              } Q&A Hub`;
-
-              // Update header
-              const headerTitle = document.querySelector("header h1");
-              if (headerTitle) {
-                headerTitle.innerHTML = `
-                                <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-                                </svg>
-                                Flutter ${
-                                  selectedLevel.charAt(0).toUpperCase() +
-                                  selectedLevel.slice(1)
-                                } Level
-                            `;
-              }
-
-              hideLoading();
-              renderCurrentPage();
-              updateSearchStats();
-              setupSearch();
-            };
-            script.onerror = function () {
-              console.error(`Failed to load ${selectedLevel} level data`);
-              hideLoading();
-              showErrorMessage();
-            };
-            document.head.appendChild(script);
-          } else {
-            // Default behavior - redirect to details page
-            window.location.href = "flutter-details.html";
-            return;
-          }
-        } catch (error) {
-          console.error("Error loading Flutter data:", error);
-          hideLoading();
-          showErrorMessage();
-        }
+      const backButton = document.querySelector('button[onclick="goBackToLevels()"]');
+      if (backButton) {
+        backButton.style.display = 'none';
       }
+      loadQuestionCounts();
+    }
 
-      function showErrorMessage() {
-        const container = document.getElementById("qaContainer");
-        container.innerHTML = `
+    // Function to show Q&A view
+    function showQAView(level) {
+      document.getElementById('levelSelectionView').classList.add('hidden');
+      document.getElementById('qaView').classList.remove('hidden');
+      document.title = `Flutter ${level.charAt(0).toUpperCase() + level.slice(1)} Q&A Hub`;
+      const headerTitle = document.querySelector("header h1");
+      if (headerTitle) {
+        headerTitle.innerHTML = `
+          <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+          </svg>
+          Flutter ${level.charAt(0).toUpperCase() + level.slice(1)} Level
+        `;
+      }
+      const backButton = document.querySelector('button[onclick="goBackToLevels()"]');
+      if (backButton) {
+        backButton.style.display = 'inline-flex';
+      }
+    }
+
+    // Load question counts
+    function loadQuestionCounts() {
+      if (window.beginner) {
+        document.getElementById("beginnerCount").textContent = window.beginner.length;
+      }
+      if (window.intermediate) {
+        document.getElementById("intermediateCount").textContent = window.intermediate.length;
+      }
+      if (window.advanced) {
+        document.getElementById("advancedCount").textContent = window.advanced.length;
+      }
+      updateTotalQuestions();
+    }
+
+    // Update total questions count
+    function updateTotalQuestions() {
+      let total = 0;
+      if (window.beginner) total += window.beginner.length;
+      if (window.intermediate) total += window.intermediate.length;
+      if (window.advanced) total += window.advanced.length;
+      document.getElementById("totalQuestions").textContent = total;
+    }
+
+    // Navigate to specific level
+    function selectLevel(level) {
+      // Store the selected level in localStorage or URL params
+      localStorage.setItem("flutterLevel", level);
+      // Update URL and show Q&A view
+      window.history.pushState({}, '', `?level=${level}`);
+      showQAView(level);
+      loadFlutterDataForLevel(level);
+    }
+
+    // Function to load data from JavaScript file
+    async function loadFlutterData() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedLevel = urlParams.get("level");
+
+      if (selectedLevel && window[selectedLevel]) {
+        showQAView(selectedLevel);
+        loadFlutterDataForLevel(selectedLevel);
+      } else {
+        showLevelSelection();
+      }
+    }
+
+    async function loadFlutterDataForLevel(level) {
+      showLoading();
+      try {
+        filteredData = [...window[level]];
+        isDataLoaded = true;
+
+        hideLoading();
+        renderCurrentPage();
+        updateSearchStats();
+        setupSearch();
+      } catch (error) {
+        console.error("Error loading Flutter data:", error);
+        hideLoading();
+        showErrorMessage();
+      }
+    }
+
+    function showErrorMessage() {
+      const container = document.getElementById("qaContainer");
+      container.innerHTML = `
                 <div class="bg-white bg-opacity-95 border-l-4 border-blue-500 rounded-2xl p-8 text-center shadow-xl">
                     <div class="text-blue-600 text-xl font-bold mb-4">
                         <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -672,113 +597,123 @@
                     </p>
                 </div>
             `;
+    }
+
+    function getTotalPages() {
+      return Math.ceil(filteredData.length / itemsPerPage);
+    }
+
+    function getCurrentPageData() {
+      if (!isDataLoaded || filteredData.length === 0) return [];
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      return filteredData.slice(startIndex, endIndex);
+    }
+
+    // Search functionality
+    function performSearch() {
+      const searchInput = document.getElementById("searchInput");
+      searchTerm = searchInput.value.toLowerCase().trim();
+
+      // Get the original data for searching
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedLevel = urlParams.get("level");
+
+      let originalData = [];
+      if (selectedLevel && window[selectedLevel]) {
+        // Search within specific level
+        originalData = window[selectedLevel] || [];
+      } else {
+        // Search across all levels
+        if (window.beginner) originalData.push(...window.beginner);
+        if (window.intermediate) originalData.push(...window.intermediate);
+        if (window.advanced) originalData.push(...window.advanced);
       }
 
-      function getTotalPages() {
-        return Math.ceil(filteredData.length / itemsPerPage);
-      }
+      if (searchTerm === "") {
+        filteredData = [...originalData];
+      } else {
+        filteredData = originalData.filter((item) => {
+          // Check question
+          if (item.question.toLowerCase().includes(searchTerm)) {
+            return true;
+          }
 
-      function getCurrentPageData() {
-        if (!isDataLoaded || filteredData.length === 0) return [];
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return filteredData.slice(startIndex, endIndex);
-      }
+          // Check answer
+          if (typeof item.answer === "string") {
+            return item.answer.toLowerCase().includes(searchTerm);
+          } else if (
+            typeof item.answer === "object" &&
+            item.answer !== null
+          ) {
+            // Search within object values
+            return Object.values(item.answer).some(
+              (value) =>
+                typeof value === "string" &&
+                value.toLowerCase().includes(searchTerm)
+            );
+          }
 
-      // Search functionality
-      function performSearch() {
-        const searchInput = document.getElementById("searchInput");
-        searchTerm = searchInput.value.toLowerCase().trim();
-
-        // Get the original level data for searching
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedLevel = urlParams.get("level");
-        const originalData = window[selectedLevel] || [];
-
-        if (searchTerm === "") {
-          filteredData = [...originalData];
-        } else {
-          filteredData = originalData.filter((item) => {
-            // Check question
-            if (item.question.toLowerCase().includes(searchTerm)) {
-              return true;
-            }
-
-            // Check answer
-            if (typeof item.answer === "string") {
-              return item.answer.toLowerCase().includes(searchTerm);
-            } else if (
-              typeof item.answer === "object" &&
-              item.answer !== null
-            ) {
-              // Search within object values
-              return Object.values(item.answer).some(
-                (value) =>
-                  typeof value === "string" &&
-                  value.toLowerCase().includes(searchTerm)
-              );
-            }
-
-            return false;
-          });
-        }
-
-        currentPage = 1; // Reset to first page when searching
-        renderCurrentPage();
-        updateSearchStats();
-      }
-
-      function updateSearchStats() {
-        document.getElementById("searchResultsCount").textContent =
-          filteredData.length;
-        document.getElementById("totalQuestions").textContent =
-          filteredData.length;
-      }
-
-      function setupSearch() {
-        const searchInput = document.getElementById("searchInput");
-        let searchTimeout;
-
-        // Real-time search with debouncing
-        searchInput.addEventListener("input", () => {
-          clearTimeout(searchTimeout);
-          searchTimeout = setTimeout(() => {
-            performSearch();
-          }, 300); // Debounce search for better performance
+          return false;
         });
       }
 
-      function createAccordionItem(item, index) {
-        const globalIndex = (currentPage - 1) * itemsPerPage + index;
-        const serialNumber = (currentPage - 1) * itemsPerPage + index + 1;
-        const isOpen = openAccordions.has(globalIndex);
+      currentPage = 1; // Reset to first page when searching
+      renderCurrentPage();
+      updateSearchStats();
+    }
 
-        const colors = [
-          "from-blue-400 to-sky-400",
-          "from-sky-400 to-indigo-400",
-          "from-indigo-400 to-blue-400",
-          "from-cyan-400 to-sky-400",
-          "from-sky-400 to-cyan-400",
-        ];
-        const colorClass = colors[index % colors.length];
+    function updateSearchStats() {
+      document.getElementById("searchResultsCount").textContent =
+        filteredData.length;
+      document.getElementById("totalQuestions").textContent =
+        filteredData.length;
+    }
 
-        // Function to render answer as table if it's an object or array, else as text
-        function renderAnswer(answer) {
-          if (Array.isArray(answer)) {
-            // Handle array of objects (like question 16)
-            let rows = "";
-            answer.forEach((item, index) => {
-              if (item.term && item.definition) {
-                const bgColor = index % 2 === 0 ? "bg-blue-50" : "bg-sky-50";
-                rows += `
+    function setupSearch() {
+      const searchInput = document.getElementById("searchInput");
+      let searchTimeout;
+
+      // Real-time search with debouncing
+      searchInput.addEventListener("input", () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          performSearch();
+        }, 300); // Debounce search for better performance
+      });
+    }
+
+    function createAccordionItem(item, index) {
+      const globalIndex = (currentPage - 1) * itemsPerPage + index;
+      const serialNumber = (currentPage - 1) * itemsPerPage + index + 1;
+      const isOpen = openAccordions.has(globalIndex);
+
+      const colors = [
+        "from-blue-400 to-sky-400",
+        "from-sky-400 to-indigo-400",
+        "from-indigo-400 to-blue-400",
+        "from-cyan-400 to-sky-400",
+        "from-sky-400 to-cyan-400",
+      ];
+      const colorClass = colors[index % colors.length];
+
+      // Function to render answer as table if it's an object or array, else as text
+      function renderAnswer(answer) {
+        if (Array.isArray(answer)) {
+          // Handle array of objects (like question 16)
+          let rows = "";
+          answer.forEach((item, index) => {
+            if (item.term && item.definition) {
+              const bgColor = index % 2 === 0 ? "bg-blue-50" : "bg-sky-50";
+              rows += `
                                 <tr class="${bgColor} hover:bg-indigo-100 transition-colors">
                                     <td class="font-bold px-4 py-3 align-top border-2 border-blue-300 text-blue-900">${item.term}</td>
                                     <td class="px-4 py-3 align-top border-2 border-blue-300 text-gray-800">${item.definition}</td>
                                 </tr>
                             `;
-              }
-            });
-            return `
+            }
+          });
+          return `
                         <div class="overflow-x-auto">
                             <table class="w-full text-gray-800 font-medium text-lg border-collapse border-4 border-blue-500 rounded-lg overflow-hidden shadow-lg bg-white min-w-full">
                                 <thead class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
@@ -793,21 +728,21 @@
                             </table>
                         </div>
                     `;
-          } else if (typeof answer === "object" && answer !== null) {
-            // Handle regular objects
-            let rows = "";
-            let index = 0;
-            for (const [key, value] of Object.entries(answer)) {
-              const bgColor = index % 2 === 0 ? "bg-green-50" : "bg-emerald-50";
-              rows += `
+        } else if (typeof answer === "object" && answer !== null) {
+          // Handle regular objects
+          let rows = "";
+          let index = 0;
+          for (const [key, value] of Object.entries(answer)) {
+            const bgColor = index % 2 === 0 ? "bg-green-50" : "bg-emerald-50";
+            rows += `
                             <tr class="${bgColor} hover:bg-teal-100 transition-colors">
                                 <td class="font-bold px-4 py-3 align-top border-2 border-green-300 text-green-900">${key}</td>
                                 <td class="px-4 py-3 align-top border-2 border-green-300 text-gray-800">${value}</td>
                             </tr>
                         `;
-              index++;
-            }
-            return `
+            index++;
+          }
+          return `
                         <div class="overflow-x-auto">
                             <table class="w-full text-gray-800 font-medium text-lg border-collapse border-4 border-green-500 rounded-lg overflow-hidden shadow-lg bg-white min-w-full">
                                 <thead class="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
@@ -822,12 +757,12 @@
                             </table>
                         </div>
                     `;
-          } else {
-            return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
-          }
+        } else {
+          return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
         }
+      }
 
-        return `
+      return `
                 <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-gradient-to-r ${colorClass}">
                     <button
                         class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50"
@@ -838,22 +773,19 @@
                                 <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
                                     ${serialNumber}
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800 leading-7">${
-                                  item.question
-                                }</h3>
+                                <h3 class="text-xl font-bold text-gray-800 leading-7">${item.question
+        }</h3>
                             </div>
                             <div class="flex-shrink-0">
-                                <svg class="w-8 h-8 text-blue-600 transform transition-transform duration-400 ${
-                                  isOpen ? "rotate-180" : ""
-                                }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 text-blue-600 transform transition-transform duration-400 ${isOpen ? "rotate-180" : ""
+        }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                                 </svg>
                             </div>
                         </div>
                     </button>
-                    <div class="accordion-content overflow-hidden transition-all duration-500 ${
-                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                    }">
+                    <div class="accordion-content overflow-hidden transition-all duration-500 ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }">
                         <div class="px-8 pb-6">
                             <div class="bg-gradient-to-r from-blue-50 via-sky-50 to-indigo-50 border-l-4 border-blue-500 rounded-xl p-6 shadow-inner">
                                 ${renderAnswer(item.answer)}
@@ -862,25 +794,25 @@
                     </div>
                 </div>
             `;
+    }
+
+    function toggleAccordion(globalIndex) {
+      if (openAccordions.has(globalIndex)) {
+        openAccordions.delete(globalIndex);
+      } else {
+        openAccordions.add(globalIndex);
       }
+      renderCurrentPage();
+    }
 
-      function toggleAccordion(globalIndex) {
-        if (openAccordions.has(globalIndex)) {
-          openAccordions.delete(globalIndex);
-        } else {
-          openAccordions.add(globalIndex);
-        }
-        renderCurrentPage();
-      }
+    function renderCurrentPage() {
+      if (!isDataLoaded) return;
 
-      function renderCurrentPage() {
-        if (!isDataLoaded) return;
+      const container = document.getElementById("qaContainer");
+      const currentData = getCurrentPageData();
 
-        const container = document.getElementById("qaContainer");
-        const currentData = getCurrentPageData();
-
-        if (currentData.length === 0) {
-          container.innerHTML = `
+      if (currentData.length === 0) {
+        container.innerHTML = `
                     <div class="bg-white bg-opacity-95 border-l-4 border-blue-500 rounded-2xl p-8 text-center shadow-xl">
                         <div class="text-blue-600 text-xl font-bold mb-2">
                             <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -891,110 +823,111 @@
                         <p class="text-gray-700">Please add some questions to your Flutter data files.</p>
                     </div>
                 `;
-          return;
+        return;
+      }
+
+      container.innerHTML = currentData
+        .map((item, index) => createAccordionItem(item, index))
+        .join("");
+
+      updateStats();
+      updatePagination();
+    }
+
+    function updateStats() {
+      document.getElementById("currentPage").textContent = currentPage;
+      document.getElementById("displayedCount").textContent =
+        getCurrentPageData().length;
+      document.getElementById("totalPages").textContent = getTotalPages();
+      document.getElementById("totalQuestions").textContent =
+        filteredData.length;
+      document.getElementById("currentPageDisplay").textContent = currentPage;
+      document.getElementById("totalPagesDisplay").textContent =
+        getTotalPages();
+      updateSearchStats();
+    }
+
+    function updatePagination() {
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === getTotalPages();
+    }
+
+    function showLoading() {
+      document.getElementById("loadingIndicator").classList.remove("hidden");
+    }
+
+    function hideLoading() {
+      document.getElementById("loadingIndicator").classList.add("hidden");
+    }
+
+    function changePage(direction) {
+      showLoading();
+
+      setTimeout(() => {
+        if (direction === "next" && currentPage < getTotalPages()) {
+          currentPage++;
+        } else if (direction === "prev" && currentPage > 1) {
+          currentPage--;
         }
 
-        container.innerHTML = currentData
-          .map((item, index) => createAccordionItem(item, index))
-          .join("");
+        renderCurrentPage();
+        hideLoading();
 
-        updateStats();
-        updatePagination();
-      }
+        // Smooth scroll to top with offset for sticky nav
+        window.scrollTo({ top: 150, behavior: "smooth" });
+      }, 600);
+    }
 
-      function updateStats() {
-        document.getElementById("currentPage").textContent = currentPage;
-        document.getElementById("displayedCount").textContent =
-          getCurrentPageData().length;
-        document.getElementById("totalPages").textContent = getTotalPages();
-        document.getElementById("totalQuestions").textContent =
-          filteredData.length;
-        document.getElementById("currentPageDisplay").textContent = currentPage;
-        document.getElementById("totalPagesDisplay").textContent =
-          getTotalPages();
-        updateSearchStats();
-      }
+    // Event listeners
+    document
+      .getElementById("prevBtn")
+      .addEventListener("click", () => changePage("prev"));
+    document
+      .getElementById("nextBtn")
+      .addEventListener("click", () => changePage("next"));
 
-      function updatePagination() {
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
+    // Search input event listener
+    document
+      .getElementById("searchInput")
+      .addEventListener("input", performSearch);
 
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === getTotalPages();
-      }
+    // Initialize the page
+    document.addEventListener("DOMContentLoaded", () => {
+      loadFlutterData();
+    });
 
-      function showLoading() {
-        document.getElementById("loadingIndicator").classList.remove("hidden");
-      }
+    // Mobile menu toggle functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-      function hideLoading() {
-        document.getElementById("loadingIndicator").classList.add("hidden");
-      }
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
 
-      function changePage(direction) {
-        showLoading();
-
-        setTimeout(() => {
-          if (direction === "next" && currentPage < getTotalPages()) {
-            currentPage++;
-          } else if (direction === "prev" && currentPage > 1) {
-            currentPage--;
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (event) => {
+          if (
+            !mobileMenuBtn.contains(event.target) &&
+            !mobileMenu.contains(event.target)
+          ) {
+            mobileMenu.classList.add("hidden");
           }
+        });
 
-          renderCurrentPage();
-          hideLoading();
-
-          // Smooth scroll to top with offset for sticky nav
-          window.scrollTo({ top: 150, behavior: "smooth" });
-        }, 600);
+        // Close mobile menu when clicking on a link
+        mobileMenu.addEventListener("click", (event) => {
+          if (event.target.tagName === "A") {
+            mobileMenu.classList.add("hidden");
+          }
+        });
       }
+    });
+  </script>
+</body>
 
-      // Event listeners
-      document
-        .getElementById("prevBtn")
-        .addEventListener("click", () => changePage("prev"));
-      document
-        .getElementById("nextBtn")
-        .addEventListener("click", () => changePage("next"));
-
-      // Search input event listener
-      document
-        .getElementById("searchInput")
-        .addEventListener("input", performSearch);
-
-      // Initialize the page
-      document.addEventListener("DOMContentLoaded", () => {
-        loadFlutterData();
-      });
-
-      // Mobile menu toggle functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (mobileMenuBtn && mobileMenu) {
-          mobileMenuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-          });
-
-          // Close mobile menu when clicking outside
-          document.addEventListener("click", (event) => {
-            if (
-              !mobileMenuBtn.contains(event.target) &&
-              !mobileMenu.contains(event.target)
-            ) {
-              mobileMenu.classList.add("hidden");
-            }
-          });
-
-          // Close mobile menu when clicking on a link
-          mobileMenu.addEventListener("click", (event) => {
-            if (event.target.tagName === "A") {
-              mobileMenu.classList.add("hidden");
-            }
-          });
-        }
-      });
-    </script>
-  </body>
 </html>
