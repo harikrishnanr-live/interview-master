@@ -59,11 +59,13 @@ let intermediate = [
     answer: [
       {
         term: "Eager Loading",
-        definition: "Eager loading means loading all the modules upfront before the application starts.",
+        definition:
+          "Eager loading means loading all the modules upfront before the application starts.",
       },
       {
         term: "Lazy Loading",
-        definition: "Lazy loading loads modules only when they are needed, improving the initial load time of the application.",
+        definition:
+          "Lazy loading loads modules only when they are needed, improving the initial load time of the application.",
       },
     ],
   },
@@ -105,8 +107,10 @@ let intermediate = [
     id: 7,
     question: "What are SYNCHRONOUS and ASYNCHRONOUS?",
     answer: {
-      SYNCHRONOUS: "Synchronous operations are executed one after another, blocking the execution of subsequent code until the current operation finishes.",
-      ASYNCHRONOUS: "Asynchronous operations allow other code to execute while waiting for a task to finish, such as HTTP requests or timers.",
+      SYNCHRONOUS:
+        "Synchronous operations are executed one after another, blocking the execution of subsequent code until the current operation finishes.",
+      ASYNCHRONOUS:
+        "Asynchronous operations allow other code to execute while waiting for a task to finish, such as HTTP requests or timers.",
     },
   },
   {
@@ -139,32 +143,39 @@ let intermediate = [
   {
     id: 10,
     question: "What is Bazel in Angular?",
-    answer: "Bazel is an advanced build and test tool. It supports a lot of features suitable for large projects, such as caching and parallel builds.",
+    answer:
+      "Bazel is an advanced build and test tool. It supports a lot of features suitable for large projects, such as caching and parallel builds.",
   },
   {
     id: 11,
     question: "How to implement lazy loading in Angular?",
-    answer: "Generate 2 modules named 'a' and 'b' using the following command: ng generate module modulea --route a --module app.module. Then configure routes in app-routing.module.ts for lazy loading:",
+    answer:
+      "Generate 2 modules named 'a' and 'b' using the following command: ng generate module modulea --route a --module app.module. Then configure routes in app-routing.module.ts for lazy loading:",
   },
   {
     id: 12,
     question: "What are Operators in RxJS?",
-    answer: "Operators are pure functions that take an Observable as input and return another Observable. Examples include map, first, interval, catchError, retry, retryWhen.",
+    answer:
+      "Operators are pure functions that take an Observable as input and return another Observable. Examples include map, first, interval, catchError, retry, retryWhen.",
   },
   {
     id: 13,
     question: "What is an Observable in RxJS?",
-    answer: "An Observable in RxJS is a stream that can emit multiple values over time, such as data from HTTP requests or user interactions.",
+    answer:
+      "An Observable in RxJS is a stream that can emit multiple values over time, such as data from HTTP requests or user interactions.",
   },
   {
     id: 14,
-    question: "What is the difference between Cold and Hot Observables in RxJS?",
-    answer: "Cold Observables produce data only when subscribed to, whereas Hot Observables emit data whether or not there are subscribers.",
+    question:
+      "What is the difference between Cold and Hot Observables in RxJS?",
+    answer:
+      "Cold Observables produce data only when subscribed to, whereas Hot Observables emit data whether or not there are subscribers.",
   },
   {
     id: 15,
     question: "What is the difference between scan() vs reduce()?",
-    answer: "scan() emits all values from the source Observable, while reduce() emits only the final value after processing all emitted values.",
+    answer:
+      "scan() emits all values from the source Observable, while reduce() emits only the final value after processing all emitted values.",
   },
   {
     id: 16,
@@ -172,51 +183,61 @@ let intermediate = [
     answer: [
       {
         term: "Parent to Child",
-        definition: "Use @Input() for passing data from parent to child component.",
+        definition:
+          "Use @Input() for passing data from parent to child component.",
       },
       {
         term: "Child to Parent",
-        definition: "Use @Output() with EventEmitter to pass data from child to parent component.",
+        definition:
+          "Use @Output() with EventEmitter to pass data from child to parent component.",
       },
       {
         term: "Unrelated Components",
-        definition: "Use a shared service to pass data between unrelated components.",
+        definition:
+          "Use a shared service to pass data between unrelated components.",
       },
     ],
   },
   {
     id: 17,
     question: "What is TAP() in Angular?",
-    answer: "The TAP() operator in RxJS allows you to perform side effects without affecting the stream of data.",
+    answer:
+      "The TAP() operator in RxJS allows you to perform side effects without affecting the stream of data.",
   },
   {
     id: 18,
     question: "What is the pipe function in Angular?",
-    answer: "The pipe function is used to chain multiple operators in RxJS and is essential for composing transformations in observables.",
+    answer:
+      "The pipe function is used to chain multiple operators in RxJS and is essential for composing transformations in observables.",
   },
   {
     id: 19,
     question: "What are interceptors?",
-    answer: "Interceptors are used to intercept and modify HTTP requests and responses in Angular, typically for adding headers or logging.",
+    answer:
+      "Interceptors are used to intercept and modify HTTP requests and responses in Angular, typically for adding headers or logging.",
   },
   {
     id: 20,
     question: "What is authguard?",
-    answer: "AuthGuard is used in Angular to prevent or allow access to certain routes based on conditions, such as whether a user is logged in.",
+    answer:
+      "AuthGuard is used in Angular to prevent or allow access to certain routes based on conditions, such as whether a user is logged in.",
   },
   {
     id: 21,
     question: "What is Angular CLI?",
-    answer: "Angular CLI (Command Line Interface) is a tool used to automate common tasks in Angular development, such as creating components, services, and deploying applications.",
+    answer:
+      "Angular CLI (Command Line Interface) is a tool used to automate common tasks in Angular development, such as creating components, services, and deploying applications.",
   },
   {
     id: 22,
     question: "What is ivy?",
-    answer: "Ivy is Angular's next-generation rendering engine, which provides better performance, smaller bundle sizes, and improved debugging.",
+    answer:
+      "Ivy is Angular's next-generation rendering engine, which provides better performance, smaller bundle sizes, and improved debugging.",
   },
   {
     id: 23,
-    question: "What is the difference between ElementRef, TemplateRef, and ViewContainerRef?",
+    question:
+      "What is the difference between ElementRef, TemplateRef, and ViewContainerRef?",
     answer: [
       {
         term: "ElementRef",
@@ -224,18 +245,21 @@ let intermediate = [
       },
       {
         term: "TemplateRef",
-        definition: "Represents an Angular template that can be used in structural directives.",
+        definition:
+          "Represents an Angular template that can be used in structural directives.",
       },
       {
         term: "ViewContainerRef",
-        definition: "Represents a container where views can be dynamically inserted.",
+        definition:
+          "Represents a container where views can be dynamically inserted.",
       },
     ],
   },
   {
     id: 24,
     question: "What is transpiling in Angular?",
-    answer: "Transpiling refers to the process of converting TypeScript code to JavaScript, allowing it to run in any browser.",
+    answer:
+      "Transpiling refers to the process of converting TypeScript code to JavaScript, allowing it to run in any browser.",
   },
   {
     id: 25,
@@ -245,67 +269,81 @@ let intermediate = [
   {
     id: 26,
     question: "What are some disadvantages of using Angular?",
-    answer: "Some disadvantages include slower load times for smaller applications, the complexity of learning and using all its features, and difficulties with SEO optimization.",
+    answer:
+      "Some disadvantages include slower load times for smaller applications, the complexity of learning and using all its features, and difficulties with SEO optimization.",
   },
   {
     id: 27,
     question: "What is HttpClient, and what are its benefits?",
-    answer: "HttpClient is a service in Angular for making HTTP requests, offering features like request/response interceptors, error handling, and response transformation.",
+    answer:
+      "HttpClient is a service in Angular for making HTTP requests, offering features like request/response interceptors, error handling, and response transformation.",
   },
   {
     id: 28,
     question: "What is multicasting in Angular?",
-    answer: "Multicasting in Angular allows sharing the same Observable execution between multiple subscribers.",
+    answer:
+      "Multicasting in Angular allows sharing the same Observable execution between multiple subscribers.",
   },
   {
     id: 29,
     question: "What are HttpInterceptors in Angular?",
-    answer: "HttpInterceptors allow you to inspect and transform HTTP requests and responses globally in your application.",
+    answer:
+      "HttpInterceptors allow you to inspect and transform HTTP requests and responses globally in your application.",
   },
   {
     id: 30,
-    question: "What is the difference between an Annotation and a Decorator in Angular?",
-    answer: "Annotations are metadata used to annotate classes, while decorators are used to modify class behavior without altering the original source code.",
+    question:
+      "What is the difference between an Annotation and a Decorator in Angular?",
+    answer:
+      "Annotations are metadata used to annotate classes, while decorators are used to modify class behavior without altering the original source code.",
   },
   {
     id: 31,
     question: "@Injectable",
-    answer: "@Injectable decorator tells Angular that a class can be used for dependency injection.",
+    answer:
+      "@Injectable decorator tells Angular that a class can be used for dependency injection.",
   },
   {
     id: 32,
     question: "@Inject()",
-    answer: "It manually specifies how Angular should inject a dependency into a constructor.",
+    answer:
+      "It manually specifies how Angular should inject a dependency into a constructor.",
   },
   {
     id: 33,
     question: "What do you understand as an observer in Angular?",
-    answer: "An observer listens for notifications from an Observable, reacting to data changes or events.",
+    answer:
+      "An observer listens for notifications from an Observable, reacting to data changes or events.",
   },
   {
     id: 34,
     question: "What is a router outlet?",
-    answer: "The RouterOutlet directive in Angular serves as a placeholder in templates where the router will display the activated components.",
+    answer:
+      "The RouterOutlet directive in Angular serves as a placeholder in templates where the router will display the activated components.",
   },
   {
     id: 35,
     question: "Explain the use of the 'this' operator in JavaScript",
-    answer: "The 'this' operator refers to the current context in which a function is executed, often used to reference the object the function is a part of.",
+    answer:
+      "The 'this' operator refers to the current context in which a function is executed, often used to reference the object the function is a part of.",
   },
   {
     id: 36,
     question: "What do you understand by 'Closure' in JavaScript?",
-    answer: "A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.",
+    answer:
+      "A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.",
   },
   {
     id: 37,
     question: "Explain the use of the 'TypeOf' operator in JavaScript.",
-    answer: "The 'typeof' operator is used to determine the type of a variable or expression and returns a string indicating the type.",
+    answer:
+      "The 'typeof' operator is used to determine the type of a variable or expression and returns a string indicating the type.",
   },
   {
     id: 38,
     question: "What are guards in angular?",
-    answer: "Guards are used to control access to routes. They can prevent or allow route activation based on conditions like user authentication.",
+    answer:
+      "Guards are used to control access to routes. They can prevent or allow route activation based on conditions like user authentication.",
   },
   {
     id: 39,

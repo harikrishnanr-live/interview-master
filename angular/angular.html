@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -25,10 +27,12 @@
                 opacity: 0;
                 transform: scale(0.3);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -41,6 +45,7 @@
                 max-height: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 max-height: 300px;
@@ -52,18 +57,23 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -107,6 +117,7 @@
         }
     </style>
 </head>
+
 <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
@@ -115,34 +126,47 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4">
-                <a href="../javascript/javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
-                <a href="../angular/angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
+                <a href="../javascript/javascript.html"
+                    class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="../typescript/typescript.html"
+                    class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+                <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS
+                    Practice</a>
+                <a href="../angular/angular.html"
+                    class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
                 <a href="../react/react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+                <a href="../nodejs/nodejs.html"
+                    class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
                 <a href="../rails/rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="../flutter/flutter.html"
+                    class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
                 <a href="../php/php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql/mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="../mysql/mysql.html"
+                    class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
                 <a href="../nosql/nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+                <a href="../devops/devops.html"
+                    class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
-            <a href="../angular/angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
+            <a href="../javascript/javascript.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
+            <a href="../typescript/typescript.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
+            <a href="../practice/practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS
+                Practice</a>
+            <a href="../angular/angular.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
             <a href="../react/react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
             <a href="../nodejs/nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
@@ -159,20 +183,24 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <button onclick="goBackToLevels()"
+                        class="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                         <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                         Back to Levels
                     </button>
                     <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
                         <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
                         </svg>
                         Angular Q&A Hub
                     </h1>
                 </div>
-                <div class="text-white font-semibold bg-gradient-to-r from-red-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
+                <div
+                    class="text-white font-semibold bg-gradient-to-r from-red-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Ready
                 </div>
             </div>
@@ -186,14 +214,12 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex-1 w-full md:w-auto">
                         <div class="relative">
-                            <input
-                                type="text"
-                                id="searchInput"
-                                placeholder="🔍 Search Angular questions..."
-                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                            >
-                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <input type="text" id="searchInput" placeholder="🔍 Search Angular questions..."
+                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 shadow-lg text-lg">
+                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
                     </div>
@@ -241,9 +267,10 @@
         <!-- Pagination Controls -->
         <div class="flex flex-col items-center space-y-4 mb-8">
             <div class="flex justify-center items-center space-x-6">
-                <button id="prevBtn" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <button id="prevBtn"
+                    class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                     <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     Previous
                 </button>
@@ -256,10 +283,11 @@
                     <span class="text-fuchsia-300 ml-4"><span id="totalFilteredDisplay">46</span> results</span>
                 </div>
 
-                <button id="nextBtn" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <button id="nextBtn"
+                    class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                     Next
                     <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
             </div>
@@ -268,15 +296,10 @@
             <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-300 font-medium">Jump to Page:</span>
-                    <input
-                        type="number"
-                        id="jumpToPageInput"
-                        min="1"
-                        max="1"
-                        placeholder="1"
-                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 text-center font-bold"
-                    >
-                    <button id="jumpToPageBtn" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <input type="number" id="jumpToPageInput" min="1" max="1" placeholder="1"
+                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-red-400 focus:outline-none transition-all duration-300 text-center font-bold">
+                    <button id="jumpToPageBtn"
+                        class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                         Go
                     </button>
                 </div>
@@ -287,7 +310,9 @@
         <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
             <div class="relative">
                 <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
-                <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-red-400 border-b-transparent animate-ping"></div>
+                <div
+                    class="absolute inset-0 rounded-full h-16 w-16 border-4 border-red-400 border-b-transparent animate-ping">
+                </div>
             </div>
         </div>
     </div>
@@ -702,10 +727,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -22,10 +24,12 @@
                 opacity: 0;
                 transform: scale(0.3);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -38,6 +42,7 @@
                 max-height: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 max-height: 300px;
@@ -49,18 +54,23 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -104,32 +114,46 @@
         }
     </style>
 </head>
+
 <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-indigo-400 transition-colors">Tech Learning Hub</a>
+            <a href="../index.html" class="text-xl font-bold hover:text-indigo-400 transition-colors">Tech Learning
+                Hub</a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4">
-                <a href="javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript-details.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice-details.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
+                <a href="javascript.html"
+                    class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="../typescript/typescript-details.html"
+                    class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+                <a href="../practice/practice-details.html"
+                    class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
                 <a href="angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
-                <a href="../react/react-details.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs-details.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="../rails/rails-details.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter-details.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php-details\.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap font-semibold">PHP</a>
-                <a href="../mysql/mysql-details.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="../nosql/nosql-details.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops-details.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+                <a href="../react/react-details.html"
+                    class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
+                <a href="../nodejs/nodejs-details.html"
+                    class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+                <a href="../rails/rails-details.html"
+                    class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
+                <a href="../flutter/flutter-details.html"
+                    class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="../php-details\.html"
+                    class="hover:text-indigo-400 transition-colors whitespace-nowrap font-semibold">PHP</a>
+                <a href="../mysql/mysql-details.html"
+                    class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="../nosql/nosql-details.html"
+                    class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
+                <a href="../devops/devops-details.html"
+                    class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </div>
@@ -137,17 +161,23 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
             <a href="javascript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
+            <a href="../typescript/typescript-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
+            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS
+                Practice</a>
             <a href="angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="../react/react-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs/nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+            <a href="../nodejs/nodejs-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php-details\.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">PHP</a>
+            <a href="../flutter/flutter-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
+            <a href="../php-details\.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">PHP</a>
             <a href="../mysql/mysql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
             <a href="../nosql/nosql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
+            <a href="../devops/devops-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
 
@@ -156,20 +186,24 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <button onclick="goBackToLevels()"
+                        class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                         <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                         Back to Levels
                     </button>
                     <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
                         <svg class="w-8 h-8 mr-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
                         </svg>
                         PHP Q&A Hub
                     </h1>
                 </div>
-                <div class="text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
+                <div
+                    class="text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Ready
                 </div>
             </div>
@@ -183,14 +217,12 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex-1 w-full md:w-auto">
                         <div class="relative">
-                            <input
-                                type="text"
-                                id="searchInput"
-                                placeholder="🔍 Search PHP questions..."
-                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-indigo-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                            >
-                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <input type="text" id="searchInput" placeholder="🔍 Search PHP questions..."
+                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-indigo-400 focus:outline-none transition-all duration-300 shadow-lg text-lg">
+                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
                     </div>
@@ -237,21 +269,24 @@
 
         <!-- Pagination Controls -->
         <div class="flex justify-center items-center space-x-6 mb-8">
-            <button id="prevBtn" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+            <button id="prevBtn"
+                class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                 <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
                 Previous
             </button>
 
             <div class="glass-card px-6 py-3 rounded-2xl text-white font-bold text-lg">
-                Page <span id="currentPageDisplay" class="text-indigo-300">1</span> of <span id="totalPagesDisplay" class="text-purple-300">1</span>
+                Page <span id="currentPageDisplay" class="text-indigo-300">1</span> of <span id="totalPagesDisplay"
+                    class="text-purple-300">1</span>
             </div>
 
-            <button id="nextBtn" class="bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+            <button id="nextBtn"
+                class="bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                 Next
                 <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
         </div>
@@ -260,7 +295,9 @@
         <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
             <div class="relative">
                 <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
-                <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-indigo-400 border-b-transparent animate-ping"></div>
+                <div
+                    class="absolute inset-0 rounded-full h-16 w-16 border-4 border-indigo-400 border-b-transparent animate-ping">
+                </div>
             </div>
         </div>
     </div>
@@ -295,10 +332,14 @@
                 <div class="text-center md:text-right">
                     <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
                     <div class="space-y-2">
-                        <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
-                        <a href="javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
-                        <a href="../react/react-details.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
-                        <a href="angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
+                        <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠
+                            Home</a>
+                        <a href="javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚
+                            JavaScript</a>
+                        <a href="../react/react-details.html"
+                            class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
+                        <a href="angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️
+                            Angular</a>
                     </div>
                 </div>
             </div>
@@ -337,7 +378,7 @@
                     // Load the appropriate script dynamically
                     const script = document.createElement('script');
                     script.src = `js/php-${selectedLevel}.js`;
-                    script.onload = function() {
+                    script.onload = function () {
                         // Once script is loaded, set up the data
                         isDataLoaded = true;
                         filteredData = [...window[selectedLevel]];
@@ -361,29 +402,29 @@
                         updateSearchStats();
                         setupSearch();
                     };
-                        }
-
-                        hideLoading();
-                        renderCurrentPage();
-                        updateSearchStats();
-                        setupSearch();
-                    };
-                    script.onerror = function() {
-                        console.error(`Failed to load ${selectedLevel} level data`);
-                        hideLoading();
-                        showErrorMessage();
-                    };
-                    document.head.appendChild(script);
-                } else {
-                    // Default behavior - redirect to details page
-                    window.location.href = 'php-details.html';
-                    return;
                 }
-            } catch (error) {
-                console.error('Error loading PHP data:', error);
+
+                hideLoading();
+                renderCurrentPage();
+                updateSearchStats();
+                setupSearch();
+            };
+            script.onerror = function () {
+                console.error(`Failed to load ${selectedLevel} level data`);
                 hideLoading();
                 showErrorMessage();
-            }
+            };
+            document.head.appendChild(script);
+        } else {
+            // Default behavior - redirect to details page
+            window.location.href = 'php-details.html';
+            return;
+        }
+            } catch (error) {
+            console.error('Error loading PHP data:', error);
+            hideLoading();
+            showErrorMessage();
+        }
         }
 
         function showErrorMessage() {
@@ -535,100 +576,99 @@
                     <p class="text-gray-700">Please add some questions to your PHP data files.</p>
                 </div>
             `;
-            return;
-        }
-
-        container.innerHTML = currentData.map((item, index) =>
-            createAccordionItem(item, index)
-        ).join('');
-
-        updateStats();
-        updatePagination();
-    }
-
-    function updateStats() {
-        document.getElementById('currentPage').textContent = currentPage;
-        document.getElementById('displayedCount').textContent = getCurrentPageData().length;
-        document.getElementById('totalPages').textContent = getTotalPages();
-        document.getElementById('totalQuestions').textContent = filteredData.length;
-        document.getElementById('currentPageDisplay').textContent = currentPage;
-        document.getElementById('totalPagesDisplay').textContent = getTotalPages();
-        updateSearchStats();
-    }
-
-    function updatePagination() {
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === getTotalPages();
-    }
-
-    function showLoading() {
-        document.getElementById('loadingIndicator').classList.remove('hidden');
-    }
-
-    function hideLoading() {
-        document.getElementById('loadingIndicator').classList.add('hidden');
-    }
-
-    function changePage(direction) {
-        showLoading();
-
-        setTimeout(() => {
-            if (direction === 'next' && currentPage < getTotalPages()) {
-                currentPage++;
-            } else if (direction === 'prev' && currentPage > 1) {
-                currentPage--;
+                return;
             }
 
-            renderCurrentPage();
-            hideLoading();
+            container.innerHTML = currentData.map((item, index) =>
+                createAccordionItem(item, index)
+            ).join('');
 
-            // Smooth scroll to top with offset for sticky nav
-            window.scrollTo({ top: 150, behavior: 'smooth' });
-        }, 600);
-    }
-
-    // Event listeners
-    document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
-    document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
-
-    // Search input event listener
-    document.getElementById('searchInput').addEventListener('input', performSearch);
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-        loadPHPData();
-    });
-
-    // Mobile menu toggle functionality
-    document.addEventListener('DOMContentLoaded', () => {
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-
-            // Close mobile menu when clicking on a link
-            mobileMenu.addEventListener('click', (event) => {
-                if (event.target.tagName === 'A') {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
+            updateStats();
+            updatePagination();
         }
-    });
-</script>
+
+        function updateStats() {
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('displayedCount').textContent = getCurrentPageData().length;
+            document.getElementById('totalPages').textContent = getTotalPages();
+            document.getElementById('totalQuestions').textContent = filteredData.length;
+            document.getElementById('currentPageDisplay').textContent = currentPage;
+            document.getElementById('totalPagesDisplay').textContent = getTotalPages();
+            updateSearchStats();
+        }
+
+        function updatePagination() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === getTotalPages();
+        }
+
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+        }
+
+        function changePage(direction) {
+            showLoading();
+
+            setTimeout(() => {
+                if (direction === 'next' && currentPage < getTotalPages()) {
+                    currentPage++;
+                } else if (direction === 'prev' && currentPage > 1) {
+                    currentPage--;
+                }
+
+                renderCurrentPage();
+                hideLoading();
+
+                // Smooth scroll to top with offset for sticky nav
+                window.scrollTo({ top: 150, behavior: 'smooth' });
+            }, 600);
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
+        document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Search input event listener
+        document.getElementById('searchInput').addEventListener('input', performSearch);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPHPData();
+        });
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                mobileMenu.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'A') {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
-
-

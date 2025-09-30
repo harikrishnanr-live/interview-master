@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Learning Levels</title>
-    <script src="https://cdn.tailwindcss.com"></script>    <script src="js/php-beginner.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/php-beginner.js"></script>
     <script src="js/php-intermediate.js"></script>
     <script src="js/php-advanced.js"></script>
     <script src="js/php-advanced.js"></script>
@@ -15,6 +17,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -26,10 +29,12 @@
                 opacity: 0;
                 transform: scale(0.3);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -42,6 +47,7 @@
                 max-height: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 max-height: 300px;
@@ -53,18 +59,23 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -108,50 +119,73 @@
         }
     </style>
 </head>
+
 <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-purple-400 transition-colors">Tech Learning Hub</a>
+            <a href="../index.html" class="text-xl font-bold hover:text-purple-400 transition-colors">Tech Learning
+                Hub</a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4">
-                <a href="../javascript/javascript-details.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript-details.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice-details.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
-                <a href="../angular/angular-details.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
-                <a href="../react/react-details.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs-details.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="../rails/rails-details.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter-details.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php/php-details.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap font-semibold">PHP</a>
-                <a href="../mysql/mysql-details.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="../nosql/nosql-details.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops-details.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+                <a href="../javascript/javascript-details.html"
+                    class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="../typescript/typescript-details.html"
+                    class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
+                <a href="../practice/practice-details.html"
+                    class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
+                <a href="../angular/angular-details.html"
+                    class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
+                <a href="../react/react-details.html"
+                    class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
+                <a href="../nodejs/nodejs-details.html"
+                    class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+                <a href="../rails/rails-details.html"
+                    class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
+                <a href="../flutter/flutter-details.html"
+                    class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="../php/php-details.html"
+                    class="hover:text-indigo-400 transition-colors whitespace-nowrap font-semibold">PHP</a>
+                <a href="../mysql/mysql-details.html"
+                    class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="../nosql/nosql-details.html"
+                    class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
+                <a href="../devops/devops-details.html"
+                    class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
-            <a href="../angular/angular-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
+            <a href="../javascript/javascript-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
+            <a href="../typescript/typescript-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
+            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS
+                Practice</a>
+            <a href="../angular/angular-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="../react/react-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs/nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+            <a href="../nodejs/nodejs-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php/php-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">PHP</a>
+            <a href="../flutter/flutter-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
+            <a href="../php/php-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">PHP</a>
             <a href="../mysql/mysql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
             <a href="../nosql/nosql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
+            <a href="../devops/devops-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
 
@@ -161,11 +195,14 @@
             <div class="flex items-center justify-between">
                 <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
                     <svg class="w-8 h-8 mr-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                     PHP Learning Levels
                 </h1>
-                <div class="text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
+                <div
+                    class="text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">0</span> Questions Available
                 </div>
             </div>
@@ -176,66 +213,81 @@
         <!-- Level Selection Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <!-- Beginner Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('beginner')">
+            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+                onclick="selectLevel('beginner')">
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-indigo-300">Beginner Level</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Start your PHP journey with fundamental concepts including what PHP is, data types, variables, superglobals, and file inclusion.
+                        Start your PHP journey with fundamental concepts including what PHP is, data types, variables,
+                        superglobals, and file inclusion.
                     </p>
                     <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
                         <div class="text-3xl font-bold text-indigo-300 mb-2" id="beginnerCount">0</div>
                         <div class="text-sm opacity-90 font-medium">Questions</div>
                     </div>
-                    <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-6 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-6 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                         Start Learning
                     </div>
                 </div>
             </div>
 
             <!-- Intermediate Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('intermediate')">
+            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+                onclick="selectLevel('intermediate')">
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-purple-300">Intermediate Level</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Dive deeper into PHP with sessions, cookies, PDO database connections, MySQLi vs PDO comparisons, and traits for code reuse.
+                        Dive deeper into PHP with sessions, cookies, PDO database connections, MySQLi vs PDO
+                        comparisons, and traits for code reuse.
                     </p>
                     <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
                         <div class="text-3xl font-bold text-purple-300 mb-2" id="intermediateCount">0</div>
                         <div class="text-sm opacity-90 font-medium">Questions</div>
                     </div>
-                    <div class="bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
                         Continue Learning
                     </div>
                 </div>
             </div>
 
             <!-- Advanced Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('advanced')">
+            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+                onclick="selectLevel('advanced')">
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-pink-300">Advanced Level</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Master advanced PHP concepts including abstract classes vs interfaces, autoloading, Composer dependency management, namespaces, and HTTP methods.
+                        Master advanced PHP concepts including abstract classes vs interfaces, autoloading, Composer
+                        dependency management, namespaces, and HTTP methods.
                     </p>
                     <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
                         <div class="text-3xl font-bold text-pink-300 mb-2" id="advancedCount">0</div>
                         <div class="text-sm opacity-90 font-medium">Questions</div>
                     </div>
-                    <div class="bg-gradient-to-r from-pink-500 to-red-600 text-white font-bold py-3 px-6 rounded-xl hover:from-pink-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="bg-gradient-to-r from-pink-500 to-red-600 text-white font-bold py-3 px-6 rounded-xl hover:from-pink-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105">
                         Master PHP
                     </div>
                 </div>
@@ -270,14 +322,12 @@
             // Load the appropriate script dynamically
             const script = document.createElement('script');
             script.src = `js/php-${level}.js`;
-            script.onload = function() {
+            script.onload = function () {
                 // Once script is loaded, navigate to the Q&A page
                 window.location.href = `php.html?level=${level}`;
             };
-            script.onerror = function() {
+            script.onerror = function () {
                 alert(`Failed to load ${level} level data. Please try again.`);
             };
             document.head.appendChild(script);
         }
-
-

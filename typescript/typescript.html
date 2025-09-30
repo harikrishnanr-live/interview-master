@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -23,10 +25,12 @@
                 opacity: 0;
                 transform: scale(0.3);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -39,6 +43,7 @@
                 max-height: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 max-height: 300px;
@@ -50,18 +55,23 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -105,50 +115,68 @@
         }
     </style>
 </head>
+
 <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-blue-400 transition-colors">Tech Learning Hub</a>
+            <a href="../index.html" class="text-xl font-bold hover:text-blue-400 transition-colors">Tech Learning
+                Hub</a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4">
-                <a href="../javascript/javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap font-semibold">TypeScript</a>
-                <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
-                <a href="../angular/angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
+                <a href="../javascript/javascript.html"
+                    class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
+                <a href="../typescript/typescript.html"
+                    class="hover:text-blue-400 transition-colors whitespace-nowrap font-semibold">TypeScript</a>
+                <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS
+                    Practice</a>
+                <a href="../angular/angular.html"
+                    class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
                 <a href="../react/react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
+                <a href="../nodejs/nodejs.html"
+                    class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
                 <a href="../rails/rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
+                <a href="../flutter/flutter.html"
+                    class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
                 <a href="../php/php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql/mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
+                <a href="../mysql/mysql.html"
+                    class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
                 <a href="../nosql/nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
+                <a href="../devops/devops.html"
+                    class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">TypeScript</a>
-            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
-            <a href="../angular/angular-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
+            <a href="../javascript/javascript-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
+            <a href="../typescript/typescript-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">TypeScript</a>
+            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS
+                Practice</a>
+            <a href="../angular/angular-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="../react/react-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs/nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+            <a href="../nodejs/nodejs-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
+            <a href="../flutter/flutter-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
             <a href="../php/php-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
             <a href="../mysql/mysql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
             <a href="../nosql/nosql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
+            <a href="../devops/devops-details.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
 
@@ -157,20 +185,23 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <button onclick="goBackToLevels()" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <button onclick="goBackToLevels()"
+                        class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                         <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                         Back to Levels
                     </button>
                     <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
                         <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            <path
+                                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
                         </svg>
                         TypeScript Q&A Hub
                     </h1>
                 </div>
-                <div class="text-white font-semibold bg-gradient-to-r from-blue-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
+                <div
+                    class="text-white font-semibold bg-gradient-to-r from-blue-400 to-purple-500 px-4 py-2 rounded-full neon-glow">
                     <span id="totalQuestions">10</span> Questions Ready
                 </div>
             </div>
@@ -184,14 +215,12 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex-1 w-full md:w-auto">
                         <div class="relative">
-                            <input
-                                type="text"
-                                id="searchInput"
-                                placeholder="🔍 Search TypeScript questions..."
-                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                            >
-                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <input type="text" id="searchInput" placeholder="🔍 Search TypeScript questions..."
+                                class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-lg text-lg">
+                            <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
                     </div>
@@ -239,9 +268,10 @@
         <!-- Pagination Controls -->
         <div class="flex flex-col items-center space-y-4 mb-8">
             <div class="flex justify-center items-center space-x-6">
-                <button id="prevBtn" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <button id="prevBtn"
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                     <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     Previous
                 </button>
@@ -254,10 +284,11 @@
                     <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">10</span> results</span>
                 </div>
 
-                <button id="nextBtn" class="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                <button id="nextBtn"
+                    class="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
                     Next
                     <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
             </div>
@@ -266,15 +297,10 @@
             <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-300 font-medium">Jump to Page:</span>
-                    <input
-                        type="number"
-                        id="jumpToPageInput"
-                        min="1"
-                        max="1"
-                        placeholder="1"
-                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 text-center font-bold"
-                    >
-                    <button id="jumpToPageBtn" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <input type="number" id="jumpToPageInput" min="1" max="1" placeholder="1"
+                        class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 text-center font-bold">
+                    <button id="jumpToPageBtn"
+                        class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                         Go
                     </button>
                 </div>
@@ -285,7 +311,9 @@
         <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
             <div class="relative">
                 <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
-                <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-blue-400 border-b-transparent animate-ping"></div>
+                <div
+                    class="absolute inset-0 rounded-full h-16 w-16 border-4 border-blue-400 border-b-transparent animate-ping">
+                </div>
             </div>
         </div>
     </div>
@@ -312,48 +340,49 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const selectedLevel = urlParams.get('level');
 
-                if (selectedLevel && ['beginner', 'intermediate', 'advanced'].includes(selectedLevel)) {
-                    // Load the appropriate script dynamically
-                    const script = document.createElement('script');
-                    script.src = `js/typescript-${selectedLevel}.js`;
-                    script.onload = function() {
-                        // Once script is loaded, set up the data
-                        isDataLoaded = true;
-                        filteredData = [...window[selectedLevel]];
+                // Default to beginner level if no level specified
+                const levelToLoad = selectedLevel && ['beginner', 'intermediate', 'advanced'].includes(selectedLevel) ? selectedLevel : 'beginner';
+                // Load the appropriate script dynamically
+                const script = document.createElement('script');
+                script.src = `js/typescript-${selectedLevel}.js`;
+                script.onload = function () {
+                    // Once script is loaded, set up the data
+                    isDataLoaded = true;
+                    filteredData = [...window[selectedLevel]];
 
-                        // Update page title to reflect the level
-                        document.title = `TypeScript ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+                    // Update page title to reflect the level
+                    document.title = `TypeScript ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
 
-                        // Update header
-                        const headerTitle = document.querySelector('header h1');
-                        if (headerTitle) {
-                            headerTitle.innerHTML = `
+                    // Update header
+                    const headerTitle = document.querySelector('header h1');
+                    if (headerTitle) {
+                        headerTitle.innerHTML = `
                                 <svg class="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
                                 </svg>
                                 TypeScript ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
                             `;
-                        }
+                    }
 
-                        hideLoading();
-                        renderCurrentPage();
-                    };
-                    script.onerror = function() {
-                        console.error(`Failed to load ${selectedLevel} level data`);
-                        hideLoading();
-                        showErrorMessage();
-                    };
-                    document.head.appendChild(script);
-                } else {
-                    // Default behavior - redirect to details page
-                    window.location.href = 'typescript-details.html';
-                    return;
-                }
-            } catch (error) {
-                console.error('Error loading TypeScript data:', error);
-                hideLoading();
-                showErrorMessage();
+                    hideLoading();
+                    renderCurrentPage();
+                };
+                script.onerror = function () {
+                    console.error(`Failed to load ${selectedLevel} level data`);
+                    hideLoading();
+                    showErrorMessage();
+                };
+                document.head.appendChild(script);
+            } else {
+                // Default behavior - redirect to details page
+                window.location.href = 'typescript-details.html';
+                return;
             }
+        } catch (error) {
+            console.error('Error loading TypeScript data:', error);
+            hideLoading();
+            showErrorMessage();
+        }
         }
 
         function showErrorMessage() {
@@ -806,10 +835,14 @@
                 <div class="text-center md:text-right">
                     <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
                     <div class="space-y-2">
-                        <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
-                        <a href="../javascript/javascript-details.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
-                        <a href="../react/react-details.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
-                        <a href="../angular/angular-details.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
+                        <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠
+                            Home</a>
+                        <a href="../javascript/javascript-details.html"
+                            class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
+                        <a href="../react/react-details.html"
+                            class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
+                        <a href="../angular/angular-details.html"
+                            class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
                     </div>
                 </div>
             </div>
@@ -862,4 +895,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,337 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Angular Learning Levels</title>
-    <script src="https://cdn.tailwindcss.com"></script>    <script src="js/angular-beginner.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/angular-beginner.js"></script>
     <script src="js/angular-intermediate.js"></script>
     <script src="js/angular-advanced.js"></script>
     <script src="js/angular-advanced.js"></script>
-    
-    
-    
+
     <style>
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
         }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
         }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-        @keyframes expandAnswer {
-            from {
-                opacity: 0;
-                max-height: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                max-height: 300px;
-                transform: translateY(0);
-            }
+      @keyframes expandAnswer {
+        from {
+          opacity: 0;
+          max-height: 0;
+          transform: translateY(-20px);
         }
+        to {
+          opacity: 1;
+          max-height: 300px;
+          transform: translateY(0);
+        }
+      }
 
-        @keyframes waveEffect {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+      @keyframes waveEffect {
+        0% {
+          background-position: 0% 50%;
         }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
         }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
 
-        .slide-in-left {
-            animation: slideInLeft 0.7s ease-out forwards;
-        }
+      .slide-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
 
-        .bounce-in {
-            animation: bounceIn 0.8s ease-out forwards;
-        }
+      .bounce-in {
+        animation: bounceIn 0.8s ease-out forwards;
+      }
 
-        .expand-answer {
-            animation: expandAnswer 0.5s ease-out forwards;
-        }
+      .expand-answer {
+        animation: expandAnswer 0.5s ease-out forwards;
+      }
 
-        .wave-bg {
-            background: linear-gradient(-45deg, #e91e63, #c2185b, #ad1457, #880e4f);
-            background-size: 400% 400%;
-            animation: waveEffect 12s ease infinite;
-        }
+      .wave-bg {
+        background: linear-gradient(-45deg, #e91e63, #c2185b, #ad1457, #880e4f);
+        background-size: 400% 400%;
+        animation: waveEffect 12s ease infinite;
+      }
 
-        .float-effect:hover {
-            animation: float 2s ease-in-out infinite;
-        }
+      .float-effect:hover {
+        animation: float 2s ease-in-out infinite;
+      }
 
-        .glass-card {
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+      .glass-card {
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
 
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
-        }
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+      }
 
-        .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
-        }
+      .neon-glow:hover {
+        box-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
+      }
     </style>
-</head>
-<body class="wave-bg min-h-screen">
+  </head>
+  <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-red-400 transition-colors">Tech Learning Hub</a>
+      <div class="container mx-auto flex justify-between items-center">
+        <a
+          href="../index.html"
+          class="text-xl font-bold hover:text-red-400 transition-colors"
+          >Tech Learning Hub</a
+        >
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-<a href="../javascript/javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript-details.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice-details.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">JS Practice</a>
-                <a href="../angular/angular-details.html" class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold">Angular</a>
-                <a href="../react/react-details.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs-details.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="../rails/rails-details.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter-details.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php/php-details.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql/mysql-details.html" class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="../nosql/nosql-details.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops-details.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-4">
+          <a
+            href="../javascript/javascript.html"
+            class="hover:text-yellow-400 transition-colors whitespace-nowrap"
+            >JavaScript</a
+          >
+          <a
+            href="../typescript/typescript.html"
+            class="hover:text-blue-400 transition-colors whitespace-nowrap"
+            >TypeScript</a
+          >
+          <a
+            href="../practice/practice.html"
+            class="hover:text-purple-400 transition-colors whitespace-nowrap"
+            >JS Practice</a
+          >
+          <a
+            href="../angular/angular.html"
+            class="hover:text-red-400 transition-colors whitespace-nowrap font-semibold"
+            >Angular</a
+          >
+          <a
+            href="../react/react.html"
+            class="hover:text-cyan-400 transition-colors whitespace-nowrap"
+            >React</a
+          >
+          <a
+            href="../nodejs/nodejs.html"
+            class="hover:text-green-400 transition-colors whitespace-nowrap"
+            >Node.js</a
+          >
+          <a
+            href="../rails/rails.html"
+            class="hover:text-red-600 transition-colors whitespace-nowrap"
+            >Rails</a
+          >
+          <a
+            href="../flutter/flutter.html"
+            class="hover:text-blue-500 transition-colors whitespace-nowrap"
+            >Flutter</a
+          >
+          <a
+            href="../php/php.html"
+            class="hover:text-indigo-400 transition-colors whitespace-nowrap"
+            >PHP</a
+          >
+          <a
+            href="../mysql/mysql.html"
+            class="hover:text-orange-400 transition-colors whitespace-nowrap"
+            >MySQL</a
+          >
+          <a
+            href="../nosql/nosql.html"
+            class="hover:text-teal-400 transition-colors whitespace-nowrap"
+            >NoSQL</a
+          >
+          <a
+            href="../devops/devops.html"
+            class="hover:text-gray-400 transition-colors whitespace-nowrap"
+            >DevOps</a
+          >
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JS Practice</a>
-            <a href="../angular/angular-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Angular</a>
-            <a href="../react/react-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs/nodejs-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
-            <a href="../rails/rails-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php/php-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
-            <a href="../mysql/mysql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
-            <a href="../nosql/nosql-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops-details.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
-        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-white focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden"
+      >
+        <a
+          href="../javascript/javascript-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >JavaScript</a
+        >
+        <a
+          href="../typescript/typescript-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >TypeScript</a
+        >
+        <a
+          href="../practice/practice-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >JS Practice</a
+        >
+        <a
+          href="../angular/angular-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold"
+          >Angular</a
+        >
+        <a
+          href="../react/react-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >React</a
+        >
+        <a
+          href="../nodejs/nodejs-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Node.js</a
+        >
+        <a
+          href="../rails/rails-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Rails</a
+        >
+        <a
+          href="../flutter/flutter-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Flutter</a
+        >
+        <a
+          href="../php/php-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >PHP</a
+        >
+        <a
+          href="../mysql/mysql-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >MySQL</a
+        >
+        <a
+          href="../nosql/nosql-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >NoSQL</a
+        >
+        <a
+          href="../devops/devops-details.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >DevOps</a
+        >
+      </div>
     </nav>
 
     <!-- Header -->
     <header class="glass-card shadow-2xl">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Angular Learning Levels
-                </h1>
-                <div class="text-white font-semibold bg-gradient-to-r from-red-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
-                    Choose Your Level
-                </div>
-            </div>
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+            <svg
+              class="w-8 h-8 mr-3 text-red-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Angular Learning Levels
+          </h1>
+          <div
+            class="text-white font-semibold bg-gradient-to-r from-red-400 to-pink-500 px-4 py-2 rounded-full neon-glow"
+          >
+            Choose Your Level
+          </div>
         </div>
+      </div>
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Beginner Card -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer" onclick="navigateToLevel('beginner')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner</h3>
-                    <p class="text-gray-200 mb-6 leading-relaxed">
-                        Perfect for those new to Angular. Learn the fundamentals, basic concepts, and core building blocks of Angular applications.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-green-300 mb-2" id="beginnerCount">0</div>
-                        <div class="text-sm opacity-90">Questions Available</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300">
-                        Start Learning
-                    </div>
-                </div>
+      <!-- Level Selection Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Beginner Card -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('beginner')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
             </div>
-
-            <!-- Intermediate Card -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer" onclick="navigateToLevel('intermediate')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-300">Intermediate</h3>
-                    <p class="text-gray-200 mb-6 leading-relaxed">
-                        For developers with basic Angular knowledge. Dive deeper into advanced concepts, RxJS, and real-world implementation patterns.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-yellow-300 mb-2" id="intermediateCount">0</div>
-                        <div class="text-sm opacity-90">Questions Available</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300">
-                        Advance Skills
-                    </div>
-                </div>
+            <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner</h3>
+            <p class="text-gray-200 mb-6 leading-relaxed">
+              Perfect for those new to Angular. Learn the fundamentals, basic
+              concepts, and core building blocks of Angular applications.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-green-300 mb-2"
+                id="beginnerCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90">Questions Available</div>
             </div>
-
-            <!-- Advanced Card -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer" onclick="navigateToLevel('advanced')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced</h3>
-                    <p class="text-gray-200 mb-6 leading-relaxed">
-                        For Angular experts. Master performance optimization, advanced patterns, cutting-edge features, and complex architectural decisions.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
-                        <div class="text-sm opacity-90">Questions Available</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300">
-                        Master Angular
-                    </div>
-                </div>
+            <div
+              class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300"
+            >
+              Start Learning
             </div>
+          </div>
         </div>
 
-        <!-- Stats Overview -->
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
-            <h3 class="text-xl font-bold mb-6 text-center">Learning Progress Overview</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-green-300 mb-2" id="totalBeginner">0</div>
-                    <div class="text-sm opacity-90">Beginner Questions</div>
-                    <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                        <div class="bg-green-400 h-2 rounded-full" style="width: 100%"></div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-yellow-300 mb-2" id="totalIntermediate">0</div>
-                    <div class="text-sm opacity-90">Intermediate Questions</div>
-                    <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                        <div class="bg-yellow-400 h-2 rounded-full" style="width: 100%"></div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-red-300 mb-2" id="totalAdvanced">0</div>
-                    <div class="text-sm opacity-90">Advanced Questions</div>
-                    <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                        <div class="bg-red-400 h-2 rounded-full" style="width: 100%"></div>
-                    </div>
-                </div>
+        <!-- Intermediate Card -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('intermediate')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
             </div>
+            <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+              Intermediate
+            </h3>
+            <p class="text-gray-200 mb-6 leading-relaxed">
+              For developers with basic Angular knowledge. Dive deeper into
+              advanced concepts, RxJS, and real-world implementation patterns.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-yellow-300 mb-2"
+                id="intermediateCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90">Questions Available</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300"
+            >
+              Advance Skills
+            </div>
+          </div>
         </div>
+
+        <!-- Advanced Card -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('advanced')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced</h3>
+            <p class="text-gray-200 mb-6 leading-relaxed">
+              For Angular experts. Master performance optimization, advanced
+              patterns, cutting-edge features, and complex architectural
+              decisions.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-red-300 mb-2"
+                id="advancedCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90">Questions Available</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300"
+            >
+              Master Angular
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Overview -->
+      <div
+        class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
+      >
+        <h3 class="text-xl font-bold mb-6 text-center">
+          Learning Progress Overview
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-green-300 mb-2"
+              id="totalBeginner"
+            >
+              0
+            </div>
+            <div class="text-sm opacity-90">Beginner Questions</div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div
+                class="bg-green-400 h-2 rounded-full"
+                style="width: 100%"
+              ></div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-yellow-300 mb-2"
+              id="totalIntermediate"
+            >
+              0
+            </div>
+            <div class="text-sm opacity-90">Intermediate Questions</div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div
+                class="bg-yellow-400 h-2 rounded-full"
+                style="width: 100%"
+              ></div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-red-300 mb-2"
+              id="totalAdvanced"
+            >
+              0
+            </div>
+            <div class="text-sm opacity-90">Advanced Questions</div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div
+                class="bg-red-400 h-2 rounded-full"
+                style="width: 100%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Load question counts
-        function loadQuestionCounts() {
-            if (window.beginner) {
-                document.getElementById('beginnerCount').textContent = window.beginner.length;
-                document.getElementById('totalBeginner').textContent = window.beginner.length;
-            }
-            if (window.intermediate) {
-                document.getElementById('intermediateCount').textContent = window.intermediate.length;
-                document.getElementById('totalIntermediate').textContent = window.intermediate.length;
-            }
-            if (window.advanced) {
-                document.getElementById('advancedCount').textContent = window.advanced.length;
-                document.getElementById('totalAdvanced').textContent = window.advanced.length;
-            }
+      // Load question counts
+      function loadQuestionCounts() {
+        if (window.beginner) {
+          document.getElementById("beginnerCount").textContent =
+            window.beginner.length;
+          document.getElementById("totalBeginner").textContent =
+            window.beginner.length;
         }
-
-        // Navigate to specific level
-        function navigateToLevel(level) {
-            // Store the selected level in localStorage or URL params
-            localStorage.setItem('angularLevel', level);
-            // Redirect to angular.html with level parameter
-            window.location.href = `angular.html?level=${level}`;
+        if (window.intermediate) {
+          document.getElementById("intermediateCount").textContent =
+            window.intermediate.length;
+          document.getElementById("totalIntermediate").textContent =
+            window.intermediate.length;
         }
+        if (window.advanced) {
+          document.getElementById("advancedCount").textContent =
+            window.advanced.length;
+          document.getElementById("totalAdvanced").textContent =
+            window.advanced.length;
+        }
+      }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadQuestionCounts();
-        });
+      // Navigate to specific level
+      function navigateToLevel(level) {
+        // Store the selected level in localStorage or URL params
+        localStorage.setItem("angularLevel", level);
+        // Redirect to angular.html with level parameter
+        window.location.href = `angular.html?level=${level}`;
+      }
 
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", () => {
+        loadQuestionCounts();
+      });
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+      // Mobile menu toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', (event) => {
-                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
 
-                // Close mobile menu when clicking on a link
-                mobileMenu.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'A') {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileMenuBtn.contains(event.target) &&
+              !mobileMenu.contains(event.target)
+            ) {
+              mobileMenu.classList.add("hidden");
             }
-        });
+          });
+
+          // Close mobile menu when clicking on a link
+          mobileMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
-
-
-
-
