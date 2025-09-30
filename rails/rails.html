@@ -356,21 +356,48 @@
         async function loadRailsData() {
             showLoading();
             try {
-                // Data is loaded from external file js/"w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            Rails ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
-                        `;
-                    }
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedLevel = urlParams.get('level');
+
+                if (selectedLevel && ['beginner', 'intermediate', 'advanced'].includes(selectedLevel)) {
+                    // Load the appropriate script dynamically
+                    const script = document.createElement('script');
+                    script.src = `js/rails-${selectedLevel}.js`;
+                    script.onload = function() {
+                        // Once script is loaded, set up the data
+                        isDataLoaded = true;
+                        filteredData = [...window[selectedLevel]];
+
+                        // Update page title to reflect the level
+                        document.title = `Ruby on Rails ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Q&A Hub`;
+
+                        // Update header
+                        const headerTitle = document.querySelector('header h1');
+                        if (headerTitle) {
+                            headerTitle.innerHTML = `
+                                <svg class="w-8 h-8 mr-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Rails ${selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
+                            `;
+                        }
+
+                        hideLoading();
+                        renderCurrentPage();
+                        updateSearchStats();
+                        setupSearch();
+                    };
+                    script.onerror = function() {
+                        console.error(`Failed to load ${selectedLevel} level data`);
+                        hideLoading();
+                        showErrorMessage();
+                    };
+                    document.head.appendChild(script);
                 } else {
                     // Default behavior - show all questions or redirect to details page
                     window.location.href = 'rails-details.html';
                     return;
                 }
-
-                hideLoading();
-                renderCurrentPage();
-                setupSearch();
             } catch (error) {
                 console.error('Error loading Rails data:', error);
                 hideLoading();
@@ -614,6 +641,103 @@
                             </svg>
                             No Ruby on Rails Questions Available
                         </div>
-                        <p class="text-gray-700">Please add some questions to your js/
+                        <p class="text-gray-700">Please add some questions to your Rails data files.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = currentData.map((item, index) =>
+                createAccordionItem(item, index)
+            ).join('');
+
+            updateStats();
+            updatePagination();
+        }
+
+        function updateStats() {
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('displayedCount').textContent = getCurrentPageData().length;
+            document.getElementById('totalPages').textContent = getTotalPages();
+            document.getElementById('totalQuestions').textContent = filteredData.length;
+            document.getElementById('currentPageDisplay').textContent = currentPage;
+            document.getElementById('totalPagesDisplay').textContent = getTotalPages();
+            updateSearchStats();
+        }
+
+        function updatePagination() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === getTotalPages();
+        }
+
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+        }
+
+        function changePage(direction) {
+            showLoading();
+
+            setTimeout(() => {
+                if (direction === 'next' && currentPage < getTotalPages()) {
+                    currentPage++;
+                } else if (direction === 'prev' && currentPage > 1) {
+                    currentPage--;
+                }
+
+                renderCurrentPage();
+                hideLoading();
+
+                // Smooth scroll to top with offset for sticky nav
+                window.scrollTo({ top: 150, behavior: 'smooth' });
+            }, 600);
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => changePage('prev'));
+        document.getElementById('nextBtn').addEventListener('click', () => changePage('next'));
+
+        // Search input event listener
+        document.getElementById('searchInput').addEventListener('input', performSearch);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRailsData();
+        });
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                mobileMenu.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'A') {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
 
 
