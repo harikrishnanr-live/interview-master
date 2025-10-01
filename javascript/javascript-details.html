@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Learning Levels</title>
+    <title>JavaScript Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/javascript-beginner.js"></script>
     <script src="js/javascript-intermediate.js"></script>
@@ -292,7 +292,7 @@
                 d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
               />
             </svg>
-            JavaScript Learning Levels
+            JavaScript Details
           </h1>
           <div
             class="text-white font-semibold bg-gradient-to-r from-orange-400 to-red-500 px-4 py-2 rounded-full neon-glow"
@@ -304,148 +304,6 @@
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection Cards -->
-        <div id="levelSelection">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-        <!-- Beginner Level -->
-        <div
-          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-          onclick="selectLevel('beginner')"
-        >
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-            >
-              <svg
-                class="w-10 h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-green-300">
-              Beginner Level
-            </h3>
-            <p class="text-gray-300 mb-6 leading-relaxed">
-              Start your JavaScript journey with fundamental concepts like
-              variables, functions, objects, and basic programming constructs.
-            </p>
-            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div
-                class="text-3xl font-bold text-green-300 mb-2"
-                id="beginnerCount"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Questions</div>
-            </div>
-            <div
-              class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105"
-            >
-              Start Learning
-            </div>
-          </div>
-        </div>
-
-        <!-- Intermediate Level -->
-        <div
-          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-          onclick="selectLevel('intermediate')"
-        >
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-            >
-              <svg
-                class="w-10 h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-yellow-300">
-              Intermediate Level
-            </h3>
-            <p class="text-gray-300 mb-6 leading-relaxed">
-              Dive deeper into advanced topics like asynchronous programming,
-              closures, prototypes, and modern ES6+ features.
-            </p>
-            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div
-                class="text-3xl font-bold text-yellow-300 mb-2"
-                id="intermediateCount"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Questions</div>
-            </div>
-            <div
-              class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Continue Learning
-            </div>
-            </div>
-        </div>
-
-        <!-- Advanced Level -->
-        <div
-          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-          onclick="selectLevel('advanced')"
-        >
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-            >
-              <svg
-                class="w-10 h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
-            <p class="text-gray-300 mb-6 leading-relaxed">
-              Master expert-level concepts including the event loop, performance
-              optimization, design patterns, and advanced APIs.
-            </p>
-            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div
-                class="text-3xl font-bold text-red-300 mb-2"
-                id="advancedCount"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Questions</div>
-            </div>
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Master JavaScript
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Q&A Interface -->
       <div id="qaInterface" style="display: none;">
@@ -474,33 +332,6 @@
               </div>
           </div>
 
-          <!-- Stats Dashboard -->
-          <div class="mb-8 slide-in-left">
-              <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-                  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                      <div class="text-center float-effect">
-                          <div class="text-4xl font-bold text-yellow-300 mb-2" id="currentPage">1</div>
-                          <div class="text-sm opacity-90 font-medium">Current Page</div>
-                          <div class="w-12 h-1 bg-yellow-400 mx-auto mt-2 rounded-full"></div>
-                      </div>
-                      <div class="text-center float-effect">
-                          <div class="text-4xl font-bold text-orange-300 mb-2" id="displayedCount">0</div>
-                          <div class="text-sm opacity-90 font-medium">Showing Now</div>
-                          <div class="w-12 h-1 bg-orange-400 mx-auto mt-2 rounded-full"></div>
-                      </div>
-                      <div class="text-center float-effect">
-                          <div class="text-4xl font-bold text-red-300 mb-2" id="totalPages">0</div>
-                          <div class="text-sm opacity-90 font-medium">Total Pages</div>
-                          <div class="w-12 h-1 bg-red-400 mx-auto mt-2 rounded-full"></div>
-                      </div>
-                      <div class="text-center float-effect">
-                          <div class="text-4xl font-bold text-pink-300 mb-2" id="filteredCount">0</div>
-                          <div class="text-sm opacity-90 font-medium">Filtered Results</div>
-                          <div class="w-12 h-1 bg-pink-400 mx-auto mt-2 rounded-full"></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
 
           <!-- Q&A Container -->
           <div id="qaContainer" class="space-y-6 mb-8">
@@ -553,51 +384,9 @@
           </div>
       </div>
 
-      <!-- Quick Stats -->
-      <div
-        class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
-      >
-        <div class="text-center">
-          <h3 class="text-xl font-bold mb-4">JavaScript Learning Path</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="text-center">
-              <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
-              <div class="text-sm opacity-90">
-                Variables, Functions, Objects
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-yellow-300 mb-2">
-                Intermediate
-              </div>
-              <div class="text-sm opacity-90">Async, Closures, ES6+</div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
-              <div class="text-sm opacity-90">
-                Event Loop, Performance, APIs
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script>
-      // Function to select a level and navigate to the Q&A page
-      function selectLevel(level) {
-        // Load the appropriate script dynamically
-        const script = document.createElement("script");
-        script.src = `js/javascript-${level}.js`;
-        script.onload = function () {
-          // Once script is loaded, navigate to the Q&A page
-          window.location.href = `javascript.html?level=${level}`;
-        };
-        script.onerror = function () {
-          alert(`Failed to load ${level} level data. Please try again.`);
-        };
-        document.head.appendChild(script);
-      }
 
       // Initialize page based on URL parameters
       document.addEventListener("DOMContentLoaded", () => {
@@ -612,8 +401,8 @@
           // Show Q&A content for the selected level
           showQAContent(selectedLevel);
         } else {
-          // Show level selection cards
-          showLevelSelection();
+          // Redirect to main page
+          window.location.href = 'javascript.html';
         }
       });
 
@@ -625,8 +414,7 @@
           return;
         }
 
-        // Hide level selection and show Q&A interface
-        document.getElementById("levelSelection").style.display = "none";
+        // Show Q&A interface
         document.getElementById("qaInterface").style.display = "block";
 
         // Update header
@@ -644,27 +432,6 @@
         initializeQA(data, level);
       }
 
-      // Function to show level selection
-      function showLevelSelection() {
-        document.getElementById("levelSelection").style.display = "block";
-        document.getElementById("qaInterface").style.display = "none";
-
-        // Update question counts
-        document.getElementById("beginnerCount").textContent = window.beginner
-          ? window.beginner.length
-          : 0;
-        document.getElementById("intermediateCount").textContent =
-          window.intermediate ? window.intermediate.length : 0;
-        document.getElementById("advancedCount").textContent = window.advanced
-          ? window.advanced.length
-          : 0;
-
-        const total =
-          (window.beginner ? window.beginner.length : 0) +
-          (window.intermediate ? window.intermediate.length : 0) +
-          (window.advanced ? window.advanced.length : 0);
-        document.getElementById("totalQuestions").textContent = total;
-      }
 
       // Function to show error message
       function showErrorMessage() {
@@ -715,6 +482,7 @@
 
       // Q&A functionality variables
       let qaData = [];
+      let filteredData = [];
       let currentPage = 1;
       const itemsPerPage = 10;
       let openAccordions = new Set();
@@ -723,6 +491,7 @@
       // Function to initialize Q&A interface
       function initializeQA(data, level) {
           qaData = [...data];
+          filteredData = [...qaData];
           currentPage = 1;
           openAccordions.clear();
           searchTerm = '';
@@ -741,6 +510,9 @@
 
           // Render initial page
           renderCurrentPage();
+
+          // Update search stats
+          updateSearchStats();
       }
 
       // Function to perform search
@@ -766,7 +538,7 @@
       function updateSearchStats() {
           const searchResultsCount = document.getElementById('searchResultsCount');
           if (searchResultsCount) {
-              searchResultsCount.textContent = filteredData.length;
+              searchResultsCount.textContent = qaData.length;
           }
       }
 
