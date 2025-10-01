@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Practice Levels</title>
+    <title>Practice Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/practice-beginner.js"></script>
     <script src="js/practice-intermediate.js"></script>
-    <script src="js/practice-advanced.js"></script>
     <script src="js/practice-advanced.js"></script>
     <!-- Level-specific scripts will be loaded dynamically -->
     <style>
@@ -94,7 +93,14 @@
         }
 
         .wave-bg {
-            background: linear-gradient(-45deg, #a855f7, #7c3aed, #5b21b6, #4c1d95, #6d28d9);
+            background: linear-gradient(
+                -45deg,
+                #ff6b6b,
+                #4ecdc4,
+                #45b7d1,
+                #f9ca24,
+                #6c5ce7
+            );
             background-size: 400% 400%;
             animation: waveEffect 12s ease infinite;
         }
@@ -111,11 +117,11 @@
         }
 
         .neon-glow {
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
         }
 
         .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
         }
     </style>
 </head>
@@ -133,22 +139,22 @@
                     class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
                 <a href="../typescript/typescript.html"
                     class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice.html"
-                    class="hover:text-purple-400 transition-colors whitespace-nowrap font-semibold">JS Practice</a>
+                <a href="../practice/practice.html"
+                    class="hover:text-purple-400 transition-colors whitespace-nowrap font-semibold">Practice</a>
                 <a href="../angular/angular.html"
                     class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
                 <a href="../react/react.html"
                     class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs.html"
+                <a href="../nodejs/nodejs.html"
                     class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
                 <a href="../rails/rails.html"
                     class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter.html"
+                <a href="../flutter/flutter.html"
                     class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql.html"
+                <a href="../php/php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
+                <a href="../mysql/mysql.html"
                     class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="../nosql.html"
+                <a href="../nosql/nosql.html"
                     class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
                 <a href="../devops.html"
                     class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
@@ -169,17 +175,17 @@
                 class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
             <a href="../typescript/typescript.html"
                 class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">JS Practice</a>
+            <a href="../practice/practice.html"
+                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">Practice</a>
             <a href="../angular/angular.html"
                 class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
             <a href="../react/react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
+            <a href="../nodejs/nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
             <a href="../rails/rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
-            <a href="../mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
-            <a href="../nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
+            <a href="../flutter/flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
+            <a href="../php/php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
+            <a href="../mysql/mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
+            <a href="../nosql/nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
             <a href="../devops.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
         </div>
     </nav>
@@ -189,12 +195,16 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-                            clip-rule="evenodd" />
+                    <svg
+                        class="w-8 h-8 mr-3 text-yellow-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+                        />
                     </svg>
-                    JS Practice Levels
+                    Practice Details
                 </h1>
                 <div
                     class="text-white font-semibold bg-gradient-to-r from-purple-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
@@ -205,124 +215,415 @@
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Beginner Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="selectLevel('beginner')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-purple-300">Beginner Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Start with fundamental JavaScript concepts including type checking, operators, object copying,
-                        and event delegation.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-purple-300 mb-2" id="beginnerCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                        Start Practicing
+
+        <!-- Q&A Interface -->
+        <div id="qaInterface" style="display: none;">
+            <!-- Search Bar -->
+            <div class="mb-8 slide-in-left">
+                <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex-1 w-full md:w-auto">
+                            <div class="relative">
+                                <input
+                                    type="text"
+                                    id="searchInput"
+                                    placeholder="🔍 Search JavaScript Practice questions..."
+                                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-yellow-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
+                                >
+                                <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-yellow-300" id="searchResultsCount">0</div>
+                            <div class="text-sm opacity-90 font-medium">Total Questions</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Intermediate Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="selectLevel('intermediate')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-pink-300">Intermediate Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Dive into array manipulation, closures, type conversion, function binding, and object property
-                        checking techniques.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-pink-300 mb-2" id="intermediateCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-pink-500 to-red-600 text-white font-bold py-3 px-6 rounded-xl hover:from-pink-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105">
-                        Continue Practicing
-                    </div>
-                </div>
+
+            <!-- Q&A Container -->
+            <div id="qaContainer" class="space-y-6 mb-8">
+                <!-- Q&A items will be inserted here -->
             </div>
 
-            <!-- Advanced Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="selectLevel('advanced')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            <!-- Pagination Controls -->
+            <div class="flex flex-col items-center space-y-4 mb-8">
+                <div class="flex justify-center items-center space-x-6">
+                    <button id="prevBtn" class="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
+                        Previous
+                    </button>
+
+                    <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
+                        <span class="text-yellow-300">Page <span id="currentPageDisplay">1</span></span>
+                        <span class="text-gray-300 mx-2">of</span>
+                        <span class="text-orange-300"><span id="totalPagesDisplay">1</span></span>
+                        <span class="text-gray-300 ml-4">•</span>
+                        <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">0</span> results</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Master advanced JavaScript concepts including variable scoping, asynchronous operations, event
-                        loop, promises, and destructuring.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-red-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                        Master JS
+
+                    <button id="nextBtn" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+                        Next
+                        <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Jump to Page -->
+                <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-300 font-medium">Jump to Page:</span>
+                        <input
+                            type="number"
+                            id="jumpToPageInput"
+                            min="1"
+                            max="1"
+                            placeholder="1"
+                            class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-yellow-400 focus:outline-none transition-all duration-300 text-center font-bold"
+                        >
+                        <button id="jumpToPageBtn" class="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            Go
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
-            <div class="text-center">
-                <h3 class="text-xl font-bold mb-4">JavaScript Practice Path</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-purple-300 mb-2">Beginner</div>
-                        <div class="text-sm opacity-90">Core Concepts, Operators</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-pink-300 mb-2">Intermediate</div>
-                        <div class="text-sm opacity-90">Arrays, Functions, Objects</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
-                        <div class="text-sm opacity-90">Async, Scoping, Patterns</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
-        // Function to select a level and navigate to the Q&A page
-        function selectLevel(level) {
-            // Load the appropriate script dynamically
-            const script = document.createElement('script');
-            script.src = `js/practice-${level}.js`;
-            script.onload = function () {
-                // Once script is loaded, navigate to the Q&A page
-                window.location.href = `practice.html?level=${level}`;
-            };
-            script.onerror = function () {
-                alert(`Failed to load ${level} level data. Please try again.`);
-            };
-            document.head.appendChild(script);
+
+        // Initialize page based on URL parameters
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLevel = urlParams.get("level");
+
+            if (
+                selectedLevel &&
+                ["beginner", "intermediate", "advanced"].includes(selectedLevel) &&
+                window[selectedLevel]
+            ) {
+                // Show Q&A content for the selected level
+                showQAContent(selectedLevel);
+            } else {
+                // Redirect to main page
+                window.location.href = 'practice.html';
+            }
+        });
+
+        // Function to show Q&A content
+        function showQAContent(level) {
+            const data = window[level];
+            if (!data || data.length === 0) {
+                showErrorMessage();
+                return;
+            }
+
+            // Show Q&A interface
+            document.getElementById("qaInterface").style.display = "block";
+
+            // Update header
+            const headerTitle = document.querySelector("header h1");
+            headerTitle.innerHTML = `
+                    <svg class="w-8 h-8 mr-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                    </svg>
+                    Practice ${
+                        level.charAt(0).toUpperCase() + level.slice(1)
+                    } Level
+                `;
+
+            // Initialize Q&A functionality
+            initializeQA(data, level);
         }
+
+
+        // Function to show error message
+        function showErrorMessage() {
+            const container = document.getElementById("qaContainer");
+            container.innerHTML = `
+                    <div class="bg-white bg-opacity-95 border-l-4 border-red-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-red-600 text-xl font-bold mb-4">
+                            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            No Questions Available
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Could not load questions for this level. Please try selecting a different level.
+                        </p>
+                    </div>
+                `;
+        }
+
+        // Mobile menu toggle functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener("click", (event) => {
+                    if (
+                        !mobileMenuBtn.contains(event.target) &&
+                        !mobileMenu.contains(event.target)
+                    ) {
+                        mobileMenu.classList.add("hidden");
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                mobileMenu.addEventListener("click", (event) => {
+                    if (event.target.tagName === "A") {
+                        mobileMenu.classList.add("hidden");
+                    }
+                });
+            }
+        });
+
+        // Q&A functionality variables
+        let qaData = [];
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let openAccordions = new Set();
+        let searchTerm = '';
+
+        // Function to initialize Q&A interface
+        function initializeQA(data, level) {
+            qaData = [...data];
+            filteredData = [...qaData];
+            currentPage = 1;
+            openAccordions.clear();
+            searchTerm = '';
+
+            // Update total questions
+            document.getElementById('totalQuestions').textContent = qaData.length;
+
+            // Setup search functionality
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', performSearch);
+            }
+
+            // Setup pagination
+            setupPagination();
+
+            // Render initial page
+            renderCurrentPage();
+
+            // Update search stats
+            updateSearchStats();
+        }
+
+        // Function to perform search
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                filteredData = [...qaData];
+            } else {
+                filteredData = qaData.filter(item =>
+                    item.question.toLowerCase().includes(searchTerm) ||
+                    (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            currentPage = 1;
+            renderCurrentPage();
+            updateSearchStats();
+        }
+
+        // Function to update search stats
+        function updateSearchStats() {
+            const searchResultsCount = document.getElementById('searchResultsCount');
+            if (searchResultsCount) {
+                searchResultsCount.textContent = qaData.length;
+            }
+        }
+
+        // Function to get current page data
+        function getCurrentPageData() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            return filteredData.slice(startIndex, endIndex);
+        }
+
+        // Function to render current page
+        function renderCurrentPage() {
+            const container = document.getElementById('qaContainer');
+            const currentData = getCurrentPageData();
+
+            if (currentData.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white bg-opacity-95 border-l-4 border-yellow-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-yellow-600 text-xl font-bold mb-4">No Questions Found</div>
+                        <p class="text-gray-700">Try adjusting your search terms.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = currentData.map((item, index) =>
+                createAccordionItem(item, index)
+            ).join('');
+
+            updatePagination();
+        }
+
+        // Function to create accordion item
+        function createAccordionItem(item, index) {
+            const globalIndex = (currentPage - 1) * itemsPerPage + index;
+            const serialNumber = globalIndex + 1;
+            const isOpen = openAccordions.has(globalIndex);
+
+            return `
+                <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-yellow-400">
+                    <button
+                        class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50"
+                        onclick="toggleAccordion(${globalIndex})"
+                    >
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                    ${serialNumber}
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 leading-7">${item.question}</h3>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-yellow-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                        <div class="px-8 pb-6">
+                            <div class="bg-gradient-to-r from-yellow-50 via-orange-50 to-red-50 border-l-4 border-yellow-500 rounded-xl p-6 shadow-inner">
+                                ${formatAnswer(item.answer)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to toggle accordion
+        function toggleAccordion(globalIndex) {
+            if (openAccordions.has(globalIndex)) {
+                openAccordions.delete(globalIndex);
+            } else {
+                openAccordions.add(globalIndex);
+            }
+            renderCurrentPage();
+        }
+
+        // Function to format answer
+        function formatAnswer(answer) {
+            if (typeof answer === 'object' && answer !== null) {
+                if (Array.isArray(answer)) {
+                    if (answer.length > 0 && typeof answer[0] === 'string') {
+                        return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
+                    }
+                    return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
+                } else {
+                    const entries = Object.entries(answer);
+                    if (entries.length > 0) {
+                        let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+                        tableHtml += '<thead><tr class="bg-gray-100">';
+                        tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+                        tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+                        tableHtml += '</tr></thead><tbody>';
+
+                        entries.forEach(([key, value]) => {
+                            tableHtml += `<tr class="hover:bg-gray-50">`;
+                            tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                            tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                            tableHtml += '</tr>';
+                        });
+
+                        tableHtml += '</tbody></table>';
+                        return tableHtml;
+                    }
+                }
+            }
+            return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+        }
+
+        // Function to setup pagination
+        function setupPagination() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const jumpInput = document.getElementById('jumpToPageInput');
+
+            if (prevBtn) prevBtn.addEventListener('click', () => changePage('prev'));
+            if (nextBtn) nextBtn.addEventListener('click', () => changePage('next'));
+            if (jumpInput) {
+                jumpInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') jumpToPage();
+                });
+                const jumpBtn = document.getElementById('jumpToPageBtn');
+                if (jumpBtn) jumpBtn.addEventListener('click', jumpToPage);
+            }
+        }
+
+        // Function to change page
+        function changePage(direction) {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            if (direction === 'next' && currentPage < totalPages) {
+                currentPage++;
+            } else if (direction === 'prev' && currentPage > 1) {
+                currentPage--;
+            }
+            renderCurrentPage();
+            updatePagination();
+        }
+
+        // Function to jump to page
+        function jumpToPage() {
+            const jumpInput = document.getElementById('jumpToPageInput');
+            const pageNumber = parseInt(jumpInput.value);
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+            if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+                jumpInput.classList.add('border-red-500', 'bg-red-50');
+                setTimeout(() => {
+                    jumpInput.classList.remove('border-red-500', 'bg-red-50');
+                }, 1000);
+                return;
+            }
+
+            currentPage = pageNumber;
+            renderCurrentPage();
+            updatePagination();
+            jumpInput.value = '';
+            jumpInput.placeholder = currentPage.toString();
+        }
+
+        // Function to update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const jumpInput = document.getElementById('jumpToPageInput');
+            const currentPageDisplay = document.getElementById('currentPageDisplay');
+            const totalPagesDisplay = document.getElementById('totalPagesDisplay');
+
+            if (prevBtn) prevBtn.disabled = currentPage === 1;
+            if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+            if (jumpInput) jumpInput.max = totalPages;
+            if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
+            if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
+        }
+    </script>
