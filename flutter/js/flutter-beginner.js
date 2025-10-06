@@ -45,10 +45,10 @@ let beginner = [
   },
   {
     id: 8,
-    question: "What is the difference between `Future<List<Product>>` and `List<Product>`?",
+    question: "What is the difference between Future&lt;List&lt;Product&gt;&gt; and List&lt;Product&gt;?",
     answer: [
-      "Future<List<Product>>: Represents a list that will be available later (asynchronous). Used with FutureBuilder for one-time data loading.",
-      "List<Product>: Represents an immediately available list that can be modified. Better for scenarios like infinite scroll where you add more items dynamically.",
+      "Future&lt;List&lt;Product&gt;&gt;: Represents a list that will be available later (asynchronous). Used with FutureBuilder for one-time data loading.",
+      "List&lt;Product&gt;: Represents an immediately available list that can be modified. Better for scenarios like infinite scroll where you add more items dynamically.",
       "Key difference: Future is for waiting on data, List is for immediate access and modification."
     ]
   },
