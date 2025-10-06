@@ -328,218 +328,390 @@
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection View (shown when no level is selected) -->
-        <div id="levelSelectionView" class="hidden">
-            <!-- Level Selection Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Beginner Level -->
-                <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="window.location.href='javascript-details.html?level=beginner'">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner Level</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Start your JavaScript journey with fundamental concepts like variables, functions, objects, and basic programming constructs.
-                        </p>
-                        <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-green-300 mb-2" id="beginnerCount">0</div>
-                            <div class="text-sm opacity-90 font-medium">Questions</div>
-                        </div>
-                        <div class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
-                            Start Learning
-                        </div>
-                    </div>
+      <!-- Level Selection View (shown when no level is selected) -->
+      <div id="levelSelectionView" class="hidden">
+        <!-- Level Selection Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <!-- Beginner Level -->
+          <div
+            class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+            onclick="window.location.href='javascript-details.html?level=beginner'"
+          >
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-green-300">
+                Beginner Level
+              </h3>
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Start your JavaScript journey with fundamental concepts like
+                variables, functions, objects, and basic programming constructs.
+              </p>
+              <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                <div
+                  class="text-3xl font-bold text-green-300 mb-2"
+                  id="beginnerCount"
+                >
+                  0
                 </div>
-
-                <!-- Intermediate Level -->
-                <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="window.location.href='javascript-details.html?level=intermediate'">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-yellow-300">Intermediate Level</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Dive deeper into advanced topics like asynchronous programming, closures, prototypes, and modern ES6+ features.
-                        </p>
-                        <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-yellow-300 mb-2" id="intermediateCount">0</div>
-                            <div class="text-sm opacity-90 font-medium">Questions</div>
-                        </div>
-                        <div class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                            Continue Learning
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Advanced Level -->
-                <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="window.location.href='javascript-details.html?level=advanced'">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Master expert-level concepts including the event loop, performance optimization, design patterns, and advanced APIs.
-                        </p>
-                        <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                            <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
-                            <div class="text-sm opacity-90 font-medium">Questions</div>
-                        </div>
-                        <div class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                            Master JavaScript
-                        </div>
-                    </div>
-                </div>
+                <div class="text-sm opacity-90 font-medium">Questions</div>
+              </div>
+              <div
+                class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105"
+              >
+                Start Learning
+              </div>
             </div>
+          </div>
 
-            <!-- Quick Stats -->
-            <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
-                <div class="text-center">
-                    <h3 class="text-xl font-bold mb-4">JavaScript Learning Path</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
-                            <div class="text-sm opacity-90">Variables, Functions, Objects</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-yellow-300 mb-2">Intermediate</div>
-                            <div class="text-sm opacity-90">Async, Closures, ES6+</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
-                            <div class="text-sm opacity-90">Event Loop, Performance, APIs</div>
-                        </div>
-                    </div>
+          <!-- Intermediate Level -->
+          <div
+            class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+            onclick="window.location.href='javascript-details.html?level=intermediate'"
+          >
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+                Intermediate Level
+              </h3>
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Dive deeper into advanced topics like asynchronous programming,
+                closures, prototypes, and modern ES6+ features.
+              </p>
+              <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                <div
+                  class="text-3xl font-bold text-yellow-300 mb-2"
+                  id="intermediateCount"
+                >
+                  0
                 </div>
+                <div class="text-sm opacity-90 font-medium">Questions</div>
+              </div>
+              <div
+                class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105"
+              >
+                Continue Learning
+              </div>
             </div>
+          </div>
+
+          <!-- Advanced Level -->
+          <div
+            class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+            onclick="window.location.href='javascript-details.html?level=advanced'"
+          >
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-red-300">
+                Advanced Level
+              </h3>
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Master expert-level concepts including the event loop,
+                performance optimization, design patterns, and advanced APIs.
+              </p>
+              <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+                <div
+                  class="text-3xl font-bold text-red-300 mb-2"
+                  id="advancedCount"
+                >
+                  0
+                </div>
+                <div class="text-sm opacity-90 font-medium">Questions</div>
+              </div>
+              <div
+                class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+              >
+                Master JavaScript
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Q&A View (shown when a level is selected) -->
-        <div id="qaView" class="hidden">
-            <!-- Search Bar -->
-            <div class="mb-8 slide-in-left">
-                <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <div class="flex-1 w-full md:w-auto">
-                            <div class="relative">
-                                <input type="text" id="searchInput" placeholder="🔍 Search JavaScript questions..."
-                                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-orange-400 focus:outline-none transition-all duration-300 shadow-lg text-lg" />
-                                <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-orange-300" id="searchResultsCount">
-                                72
-                            </div>
-                            <div class="text-sm opacity-90 font-medium">Total Questions</div>
-                        </div>
-                    </div>
+        <!-- Quick Stats -->
+        <div
+          class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
+        >
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">JavaScript Learning Path</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-300 mb-2">
+                  Beginner
                 </div>
-            </div>
-
-            <!-- Stats Dashboard -->
-            <div class="mb-8 slide-in-left">
-                <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <div class="text-center float-effect">
-                            <div class="text-4xl font-bold text-orange-300 mb-2" id="currentPage">
-                                1
-                            </div>
-                            <div class="text-sm opacity-90 font-medium">Current Page</div>
-                            <div class="w-12 h-1 bg-orange-400 mx-auto mt-2 rounded-full"></div>
-                        </div>
-                        <div class="text-center float-effect">
-                            <div class="text-4xl font-bold text-cyan-300 mb-2" id="displayedCount">
-                                0
-                            </div>
-                            <div class="text-sm opacity-90 font-medium">Showing Now</div>
-                            <div class="w-12 h-1 bg-cyan-400 mx-auto mt-2 rounded-full"></div>
-                        </div>
-                        <div class="text-center float-effect">
-                            <div class="text-4xl font-bold text-lime-300 mb-2" id="totalPages">
-                                0
-                            </div>
-                            <div class="text-sm opacity-90 font-medium">Total Pages</div>
-                            <div class="w-12 h-1 bg-lime-400 mx-auto mt-2 rounded-full"></div>
-                        </div>
-                        <div class="text-center float-effect">
-                            <div class="text-4xl font-bold text-pink-300 mb-2" id="filteredCount">
-                                72
-                            </div>
-                            <div class="text-sm opacity-90 font-medium">Filtered Results</div>
-                            <div class="w-12 h-1 bg-pink-400 mx-auto mt-2 rounded-full"></div>
-                        </div>
-                    </div>
+                <div class="text-sm opacity-90">
+                  Variables, Functions, Objects
                 </div>
-            </div>
-
-            <!-- Q&A Container -->
-            <div id="qaContainer" class="space-y-6 mb-8">
-                <!-- Q&A items will be inserted here -->
-            </div>
-
-            <!-- Pagination Controls -->
-            <div class="flex flex-col items-center space-y-4 mb-8">
-                <div class="flex justify-center items-center space-x-6">
-                    <button id="prevBtn"
-                        class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                        <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        Previous
-                    </button>
-
-                    <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
-                        <span class="text-orange-300">Page <span id="currentPageDisplay">1</span></span>
-                        <span class="text-gray-300 mx-2">of</span>
-                        <span class="text-cyan-300"><span id="totalPagesDisplay">8</span></span>
-                        <span class="text-gray-300 ml-4">•</span>
-                        <span class="text-pink-300 ml-4"><span id="totalFilteredDisplay">72</span> results</span>
-                    </div>
-
-                    <button id="nextBtn"
-                        class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                        Next
-                        <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-yellow-300 mb-2">
+                  Intermediate
                 </div>
-
-                <!-- Jump to Page -->
-                <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
-                    <div class="flex items-center space-x-4">
-                        <span class="text-gray-300 font-medium">Jump to Page:</span>
-                        <input type="number" id="jumpToPageInput" min="1" max="1" placeholder="1"
-                            class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-orange-400 focus:outline-none transition-all duration-300 text-center font-bold" />
-                        <button id="jumpToPageBtn"
-                            class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                            Go
-                        </button>
-                    </div>
+                <div class="text-sm opacity-90">Async, Closures, ES6+</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
+                <div class="text-sm opacity-90">
+                  Event Loop, Performance, APIs
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- Loading Indicator -->
-            <div id="loadingIndicator" class="hidden flex justify-center items-center py-12">
+      <!-- Q&A View (shown when a level is selected) -->
+      <div id="qaView" class="hidden">
+        <!-- Search Bar -->
+        <div class="mb-8 slide-in-left">
+          <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+            <div
+              class="flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+              <div class="flex-1 w-full md:w-auto">
                 <div class="relative">
-                    <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
-                    <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-orange-400 border-b-transparent animate-ping">
-                    </div>
+                  <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search JavaScript questions..."
+                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-orange-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
+                  />
+                  <svg
+                    class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
                 </div>
+              </div>
+              <div class="text-center">
+                <div
+                  class="text-2xl font-bold text-orange-300"
+                  id="searchResultsCount"
+                >
+                  72
+                </div>
+                <div class="text-sm opacity-90 font-medium">
+                  Total Questions
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+
+        <!-- Stats Dashboard -->
+        <div class="mb-8 slide-in-left">
+          <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div class="text-center float-effect">
+                <div
+                  class="text-4xl font-bold text-orange-300 mb-2"
+                  id="currentPage"
+                >
+                  1
+                </div>
+                <div class="text-sm opacity-90 font-medium">Current Page</div>
+                <div
+                  class="w-12 h-1 bg-orange-400 mx-auto mt-2 rounded-full"
+                ></div>
+              </div>
+              <div class="text-center float-effect">
+                <div
+                  class="text-4xl font-bold text-cyan-300 mb-2"
+                  id="displayedCount"
+                >
+                  0
+                </div>
+                <div class="text-sm opacity-90 font-medium">Showing Now</div>
+                <div
+                  class="w-12 h-1 bg-cyan-400 mx-auto mt-2 rounded-full"
+                ></div>
+              </div>
+              <div class="text-center float-effect">
+                <div
+                  class="text-4xl font-bold text-lime-300 mb-2"
+                  id="totalPages"
+                >
+                  0
+                </div>
+                <div class="text-sm opacity-90 font-medium">Total Pages</div>
+                <div
+                  class="w-12 h-1 bg-lime-400 mx-auto mt-2 rounded-full"
+                ></div>
+              </div>
+              <div class="text-center float-effect">
+                <div
+                  class="text-4xl font-bold text-pink-300 mb-2"
+                  id="filteredCount"
+                >
+                  72
+                </div>
+                <div class="text-sm opacity-90 font-medium">
+                  Filtered Results
+                </div>
+                <div
+                  class="w-12 h-1 bg-pink-400 mx-auto mt-2 rounded-full"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q&A Container -->
+        <div id="qaContainer" class="space-y-6 mb-8">
+          <!-- Q&A items will be inserted here -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex flex-col items-center space-y-4 mb-8">
+          <div class="flex justify-center items-center space-x-6">
+            <button
+              id="prevBtn"
+              class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+            >
+              <svg
+                class="w-5 h-5 inline mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Previous
+            </button>
+
+            <div
+              class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg"
+            >
+              <span class="text-orange-300"
+                >Page <span id="currentPageDisplay">1</span></span
+              >
+              <span class="text-gray-300 mx-2">of</span>
+              <span class="text-cyan-300"
+                ><span id="totalPagesDisplay">8</span></span
+              >
+              <span class="text-gray-300 ml-4">•</span>
+              <span class="text-pink-300 ml-4"
+                ><span id="totalFilteredDisplay">72</span> results</span
+              >
+            </div>
+
+            <button
+              id="nextBtn"
+              class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+            >
+              Next
+              <svg
+                class="w-5 h-5 inline ml-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Jump to Page -->
+          <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+            <div class="flex items-center space-x-4">
+              <span class="text-gray-300 font-medium">Jump to Page:</span>
+              <input
+                type="number"
+                id="jumpToPageInput"
+                min="1"
+                max="1"
+                placeholder="1"
+                class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-orange-400 focus:outline-none transition-all duration-300 text-center font-bold"
+              />
+              <button
+                id="jumpToPageBtn"
+                class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Go
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div
+          id="loadingIndicator"
+          class="hidden flex justify-center items-center py-12"
+        >
+          <div class="relative">
+            <div
+              class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"
+            ></div>
+            <div
+              class="absolute inset-0 rounded-full h-16 w-16 border-4 border-orange-400 border-b-transparent animate-ping"
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -558,8 +730,10 @@
 
       // Function to show level selection view
       function showLevelSelection() {
-        document.getElementById('levelSelectionView').classList.remove('hidden');
-        document.getElementById('qaView').classList.add('hidden');
+        document
+          .getElementById("levelSelectionView")
+          .classList.remove("hidden");
+        document.getElementById("qaView").classList.add("hidden");
         document.title = "JavaScript Learning Levels";
         const headerTitle = document.querySelector("header h1");
         if (headerTitle) {
@@ -570,18 +744,22 @@
             JavaScript Learning Levels
           `;
         }
-        const backButton = document.querySelector('button[onclick="goBackToLevels()"]');
+        const backButton = document.querySelector(
+          'button[onclick="goBackToLevels()"]'
+        );
         if (backButton) {
-          backButton.style.display = 'none';
+          backButton.style.display = "none";
         }
         loadQuestionCounts();
       }
 
       // Function to show Q&A view
       function showQAView(level) {
-        document.getElementById('levelSelectionView').classList.add('hidden');
-        document.getElementById('qaView').classList.remove('hidden');
-        document.title = `JavaScript ${level.charAt(0).toUpperCase() + level.slice(1)} Q&A Hub`;
+        document.getElementById("levelSelectionView").classList.add("hidden");
+        document.getElementById("qaView").classList.remove("hidden");
+        document.title = `JavaScript ${
+          level.charAt(0).toUpperCase() + level.slice(1)
+        } Q&A Hub`;
         const headerTitle = document.querySelector("header h1");
         if (headerTitle) {
           headerTitle.innerHTML = `
@@ -591,22 +769,27 @@
             JavaScript ${level.charAt(0).toUpperCase() + level.slice(1)} Level
           `;
         }
-        const backButton = document.querySelector('button[onclick="goBackToLevels()"]');
+        const backButton = document.querySelector(
+          'button[onclick="goBackToLevels()"]'
+        );
         if (backButton) {
-          backButton.style.display = 'inline-flex';
+          backButton.style.display = "inline-flex";
         }
       }
 
       // Load question counts
       function loadQuestionCounts() {
         if (window.beginner) {
-          document.getElementById("beginnerCount").textContent = window.beginner.length;
+          document.getElementById("beginnerCount").textContent =
+            window.beginner.length;
         }
         if (window.intermediate) {
-          document.getElementById("intermediateCount").textContent = window.intermediate.length;
+          document.getElementById("intermediateCount").textContent =
+            window.intermediate.length;
         }
         if (window.advanced) {
-          document.getElementById("advancedCount").textContent = window.advanced.length;
+          document.getElementById("advancedCount").textContent =
+            window.advanced.length;
         }
         updateTotalQuestions();
       }
@@ -625,7 +808,7 @@
         // Store the selected level in localStorage or URL params
         localStorage.setItem("javascriptLevel", level);
         // Update URL and show Q&A view
-        window.history.pushState({}, '', `?level=${level}`);
+        window.history.pushState({}, "", `?level=${level}`);
         showQAView(level);
         loadJavaScriptDataForLevel(level);
       }
@@ -661,11 +844,11 @@
       }
 
       function setupSearch() {
-        const searchInput = document.getElementById('searchInput');
+        const searchInput = document.getElementById("searchInput");
         let searchTimeout;
 
         // Real-time search with debouncing
-        searchInput.addEventListener('input', () => {
+        searchInput.addEventListener("input", () => {
           clearTimeout(searchTimeout);
           searchTimeout = setTimeout(() => {
             performSearch();

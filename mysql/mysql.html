@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MySQL Learning Levels</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/mysql-beginner.js"></script>
@@ -10,405 +10,658 @@
     <script src="js/mysql-advanced.js"></script>
     <!-- Level-specific scripts will be loaded dynamically -->
     <style>
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
         }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
         }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-        @keyframes expandAnswer {
-            from {
-                opacity: 0;
-                max-height: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                max-height: 300px;
-                transform: translateY(0);
-            }
+      @keyframes expandAnswer {
+        from {
+          opacity: 0;
+          max-height: 0;
+          transform: translateY(-20px);
         }
+        to {
+          opacity: 1;
+          max-height: 300px;
+          transform: translateY(0);
+        }
+      }
 
-        @keyframes waveEffect {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+      @keyframes waveEffect {
+        0% {
+          background-position: 0% 50%;
         }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
         }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
 
-        .slide-in-left {
-            animation: slideInLeft 0.7s ease-out forwards;
-        }
+      .slide-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
 
-        .bounce-in {
-            animation: bounceIn 0.8s ease-out forwards;
-        }
+      .bounce-in {
+        animation: bounceIn 0.8s ease-out forwards;
+      }
 
-        .expand-answer {
-            animation: expandAnswer 0.5s ease-out forwards;
-        }
+      .expand-answer {
+        animation: expandAnswer 0.5s ease-out forwards;
+      }
 
-        .wave-bg {
-            background: linear-gradient(-45deg, #f39c12, #e67e22, #d35400, #e74c3c, #c0392b);
-            background-size: 400% 400%;
-            animation: waveEffect 12s ease infinite;
-        }
+      .wave-bg {
+        background: linear-gradient(
+          -45deg,
+          #f39c12,
+          #e67e22,
+          #d35400,
+          #e74c3c,
+          #c0392b
+        );
+        background-size: 400% 400%;
+        animation: waveEffect 12s ease infinite;
+      }
 
-        .float-effect:hover {
-            animation: float 2s ease-in-out infinite;
-        }
+      .float-effect:hover {
+        animation: float 2s ease-in-out infinite;
+      }
 
-        .glass-card {
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+      .glass-card {
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
 
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
-        }
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+      }
 
-        .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(243, 156, 18, 0.8);
-        }
+      .neon-glow:hover {
+        box-shadow: 0 0 30px rgba(243, 156, 18, 0.8);
+      }
     </style>
-</head>
-<body class="wave-bg min-h-screen">
+  </head>
+  <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-orange-400 transition-colors">Tech Learning Hub</a>
+      <div class="container mx-auto flex justify-between items-center">
+        <a
+          href="../index.html"
+          class="text-xl font-bold hover:text-orange-400 transition-colors"
+          >Tech Learning Hub</a
+        >
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-                <a href="../javascript/javascript.html" class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript.html" class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice.html" class="hover:text-purple-400 transition-colors whitespace-nowrap">Practice</a>
-                <a href="../angular/angular.html" class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
-                <a href="../react/react.html" class="hover:text-cyan-400 transition-colors whitespace-nowrap">React</a>
-                <a href="../nodejs/nodejs.html" class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="../rails/rails.html" class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter.html" class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php/php.html" class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql/mysql.html" class="hover:text-orange-400 transition-colors whitespace-nowrap font-semibold">MySQL</a>
-                <a href="../nosql/nosql.html" class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops.html" class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-4">
+          <a
+            href="../javascript/javascript.html"
+            class="hover:text-yellow-400 transition-colors whitespace-nowrap"
+            >JavaScript</a
+          >
+          <a
+            href="../typescript/typescript.html"
+            class="hover:text-blue-400 transition-colors whitespace-nowrap"
+            >TypeScript</a
+          >
+          <a
+            href="../practice/practice.html"
+            class="hover:text-purple-400 transition-colors whitespace-nowrap"
+            >Practice</a
+          >
+          <a
+            href="../angular/angular.html"
+            class="hover:text-red-400 transition-colors whitespace-nowrap"
+            >Angular</a
+          >
+          <a
+            href="../react/react.html"
+            class="hover:text-cyan-400 transition-colors whitespace-nowrap"
+            >React</a
+          >
+          <a
+            href="../nodejs/nodejs.html"
+            class="hover:text-green-400 transition-colors whitespace-nowrap"
+            >Node.js</a
+          >
+          <a
+            href="../rails/rails.html"
+            class="hover:text-red-600 transition-colors whitespace-nowrap"
+            >Rails</a
+          >
+          <a
+            href="../flutter/flutter.html"
+            class="hover:text-blue-500 transition-colors whitespace-nowrap"
+            >Flutter</a
+          >
+          <a
+            href="../php/php.html"
+            class="hover:text-indigo-400 transition-colors whitespace-nowrap"
+            >PHP</a
+          >
+          <a
+            href="../mysql/mysql.html"
+            class="hover:text-orange-400 transition-colors whitespace-nowrap font-semibold"
+            >MySQL</a
+          >
+          <a
+            href="../nosql/nosql.html"
+            class="hover:text-teal-400 transition-colors whitespace-nowrap"
+            >NoSQL</a
+          >
+          <a
+            href="../devops/devops.html"
+            class="hover:text-gray-400 transition-colors whitespace-nowrap"
+            >DevOps</a
+          >
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Practice</a>
-            <a href="../angular/angular.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
-            <a href="../react/react.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">React</a>
-            <a href="../nodejs/nodejs.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
-            <a href="../rails/rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php/php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
-            <a href="../mysql/mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">MySQL</a>
-            <a href="../nosql/nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
-        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-white focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden"
+      >
+        <a
+          href="../javascript/javascript.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >JavaScript</a
+        >
+        <a
+          href="../typescript/typescript.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >TypeScript</a
+        >
+        <a
+          href="../practice/practice.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Practice</a
+        >
+        <a
+          href="../angular/angular.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Angular</a
+        >
+        <a
+          href="../react/react.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >React</a
+        >
+        <a
+          href="../nodejs/nodejs.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Node.js</a
+        >
+        <a
+          href="../rails/rails.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Rails</a
+        >
+        <a
+          href="../flutter/flutter.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Flutter</a
+        >
+        <a
+          href="../php/php.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >PHP</a
+        >
+        <a
+          href="../mysql/mysql.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold"
+          >MySQL</a
+        >
+        <a
+          href="../nosql/nosql.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >NoSQL</a
+        >
+        <a
+          href="../devops/devops.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >DevOps</a
+        >
+      </div>
     </nav>
 
     <!-- Header -->
     <header class="glass-card shadow-2xl">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-                    </svg>
-                    MySQL Learning Levels
-                </h1>
-                <div class="text-white font-semibold bg-gradient-to-r from-orange-400 to-red-500 px-4 py-2 rounded-full neon-glow">
-                    <span id="totalQuestions">0</span> Questions Available
-                </div>
-            </div>
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+            <svg
+              class="w-8 h-8 mr-3 text-orange-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            MySQL Learning Levels
+          </h1>
+          <div
+            class="text-white font-semibold bg-gradient-to-r from-orange-400 to-red-500 px-4 py-2 rounded-full neon-glow"
+          >
+            <span id="totalQuestions">0</span> Questions Available
+          </div>
         </div>
+      </div>
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Beginner Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('beginner')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Start your MySQL journey with fundamental database concepts like primary keys, foreign keys, data types, and indexing basics.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-green-300 mb-2" id="beginnerCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
-                        Start Learning
-                    </div>
-                </div>
+      <!-- Level Selection Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Beginner Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('beginner')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
             </div>
-
-            <!-- Intermediate Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('intermediate')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-300">Intermediate Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Dive deeper into SQL operations with JOINs, normalization principles, normal forms, and stored procedures for efficient database design.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-yellow-300 mb-2" id="intermediateCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                        Continue Learning
-                    </div>
-                </div>
+            <h3 class="text-2xl font-bold mb-4 text-green-300">
+              Beginner Level
+            </h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Start your MySQL journey with fundamental database concepts like
+              primary keys, foreign keys, data types, and indexing basics.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-green-300 mb-2"
+                id="beginnerCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
             </div>
-
-            <!-- Advanced Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('advanced')">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Master advanced database concepts including triggers, ACID properties, query optimization with EXPLAIN, and advanced SQL clauses.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                        Master MySQL
-                    </div>
-                </div>
+            <div
+              class="bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-xl hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105"
+            >
+              Start Learning
             </div>
+          </div>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
+        <!-- Intermediate Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('intermediate')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+              Intermediate Level
+            </h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Dive deeper into SQL operations with JOINs, normalization
+              principles, normal forms, and stored procedures for efficient
+              database design.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-yellow-300 mb-2"
+                id="intermediateCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105"
+            >
+              Continue Learning
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('advanced')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Master advanced database concepts including triggers, ACID
+              properties, query optimization with EXPLAIN, and advanced SQL
+              clauses.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-red-300 mb-2"
+                id="advancedCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+            >
+              Master MySQL
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div
+        class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
+      >
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-4">MySQL Learning Path</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center">
-                <h3 class="text-xl font-bold mb-4">MySQL Learning Path</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
-                        <div class="text-sm opacity-90">Database Basics, Keys, Data Types</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-yellow-300 mb-2">Intermediate</div>
-                        <div class="text-sm opacity-90">SQL Operations, Normalization</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
-                        <div class="text-sm opacity-90">Triggers, ACID, Query Optimization</div>
-                    </div>
-                </div>
+              <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
+              <div class="text-sm opacity-90">
+                Database Basics, Keys, Data Types
+              </div>
             </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-yellow-300 mb-2">
+                Intermediate
+              </div>
+              <div class="text-sm opacity-90">
+                SQL Operations, Normalization
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
+              <div class="text-sm opacity-90">
+                Triggers, ACID, Query Optimization
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="glass-card mt-16">
-        <div class="container mx-auto px-6 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Developer Info -->
-                <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
-                    <div class="text-gray-300">
-                        <p class="font-semibold text-lg">Harikrishnan. R</p>
-                        <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
-                        <p class="text-xs mt-2 opacity-80 italic">
-                            If any changes or corrections are required, please contact me.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Visitor Stats -->
-                <div class="text-center">
-                    <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
-                    <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
-                        <div class="text-3xl font-bold text-orange-300 mb-2" id="visitCount">0</div>
-                        <div class="text-sm text-gray-400">Your Visits</div>
-                        <div class="text-xs text-gray-500 mt-1" id="lastVisit">First visit!</div>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="text-center md:text-right">
-                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
-                    <div class="space-y-2">
-                        <a href="../index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
-                        <a href="../javascript/javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
-                        <a href="../react/react.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
-                        <a href="../angular/angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
-                    </div>
-                </div>
+      <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Developer Info -->
+          <div class="text-center md:text-left">
+            <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
+            <div class="text-gray-300">
+              <p class="font-semibold text-lg">Harikrishnan. R</p>
+              <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
+              <p class="text-xs mt-2 opacity-80 italic">
+                If any changes or corrections are required, please contact me.
+              </p>
             </div>
+          </div>
 
-            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
-                <p class="text-gray-400 text-sm">
-                    © 2024 Tech Learning Hub. Built with ❤️ for developers.
-                </p>
+          <!-- Visitor Stats -->
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
+            <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
+              <div
+                class="text-3xl font-bold text-orange-300 mb-2"
+                id="visitCount"
+              >
+                0
+              </div>
+              <div class="text-sm text-gray-400">Your Visits</div>
+              <div class="text-xs text-gray-500 mt-1" id="lastVisit">
+                First visit!
+              </div>
             </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="text-center md:text-right">
+            <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <div class="space-y-2">
+              <a
+                href="../index.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >🏠 Home</a
+              >
+              <a
+                href="../javascript/javascript.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >📚 JavaScript</a
+              >
+              <a
+                href="../react/react.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >⚛️ React</a
+              >
+              <a
+                href="../angular/angular.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >🅰️ Angular</a
+              >
+            </div>
+          </div>
         </div>
+
+        <div
+          class="border-t border-white border-opacity-20 mt-8 pt-6 text-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2024 Tech Learning Hub. Built with ❤️ for developers.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Load question counts
-        function loadQuestionCounts() {
-            if (window.beginner) {
-                document.getElementById('beginnerCount').textContent = window.beginner.length;
-            }
-            if (window.intermediate) {
-                document.getElementById('intermediateCount').textContent = window.intermediate.length;
-            }
-            if (window.advanced) {
-                document.getElementById('advancedCount').textContent = window.advanced.length;
-            }
+      // Load question counts
+      function loadQuestionCounts() {
+        if (window.beginner) {
+          document.getElementById("beginnerCount").textContent =
+            window.beginner.length;
         }
-
-        // Function to select a level and navigate to the Q&A page
-        function selectLevel(level) {
-            // Load the appropriate script dynamically
-            const script = document.createElement('script');
-            script.src = `js/mysql-${level}.js`;
-            script.onload = function() {
-                // Once script is loaded, navigate to the Q&A page
-                window.location.href = `mysql-details.html?level=${level}`;
-            };
-            script.onerror = function() {
-                alert(`Failed to load ${level} level data. Please try again.`);
-            };
-            document.head.appendChild(script);
+        if (window.intermediate) {
+          document.getElementById("intermediateCount").textContent =
+            window.intermediate.length;
         }
+        if (window.advanced) {
+          document.getElementById("advancedCount").textContent =
+            window.advanced.length;
+        }
+      }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadQuestionCounts();
-        });
+      // Function to select a level and navigate to the Q&A page
+      function selectLevel(level) {
+        // Load the appropriate script dynamically
+        const script = document.createElement("script");
+        script.src = `js/mysql-${level}.js`;
+        script.onload = function () {
+          // Once script is loaded, navigate to the Q&A page
+          window.location.href = `mysql-details.html?level=${level}`;
+        };
+        script.onerror = function () {
+          alert(`Failed to load ${level} level data. Please try again.`);
+        };
+        document.head.appendChild(script);
+      }
 
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", () => {
+        loadQuestionCounts();
+      });
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+      // Mobile menu toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', (event) => {
-                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
 
-                // Close mobile menu when clicking on a link
-                mobileMenu.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'A') {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileMenuBtn.contains(event.target) &&
+              !mobileMenu.contains(event.target)
+            ) {
+              mobileMenu.classList.add("hidden");
             }
-        });
+          });
+
+          // Close mobile menu when clicking on a link
+          mobileMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+        }
+      });
     </script>
 
     <script>
-        // Visitor tracking functionality for mysql.html
-        function updateVisitorStats() {
-            const now = new Date();
-            const visitKey = 'mysql_visits';
-            const lastVisitKey = 'mysql_last_visit';
+      // Visitor tracking functionality for mysql.html
+      function updateVisitorStats() {
+        const now = new Date();
+        const visitKey = "mysql_visits";
+        const lastVisitKey = "mysql_last_visit";
 
-            // Get existing visit data
-            let visits = parseInt(localStorage.getItem(visitKey)) || 0;
-            const lastVisit = localStorage.getItem(lastVisitKey);
+        // Get existing visit data
+        let visits = parseInt(localStorage.getItem(visitKey)) || 0;
+        const lastVisit = localStorage.getItem(lastVisitKey);
 
-            // Increment visit count
-            visits += 1;
-            localStorage.setItem(visitKey, visits.toString());
-            localStorage.setItem(lastVisitKey, now.toISOString());
+        // Increment visit count
+        visits += 1;
+        localStorage.setItem(visitKey, visits.toString());
+        localStorage.setItem(lastVisitKey, now.toISOString());
 
-            // Update display
-            document.getElementById('visitCount').textContent = visits;
+        // Update display
+        document.getElementById("visitCount").textContent = visits;
 
-            if (lastVisit) {
-                const lastVisitDate = new Date(lastVisit);
-                const timeDiff = now - lastVisitDate;
-                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        if (lastVisit) {
+          const lastVisitDate = new Date(lastVisit);
+          const timeDiff = now - lastVisitDate;
+          const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-                if (daysDiff === 0) {
-                    document.getElementById('lastVisit').textContent = 'Visited today';
-                } else if (daysDiff === 1) {
-                    document.getElementById('lastVisit').textContent = 'Visited yesterday';
-                } else {
-                    document.getElementById('lastVisit').textContent = `${daysDiff} days ago`;
-                }
-            }
+          if (daysDiff === 0) {
+            document.getElementById("lastVisit").textContent = "Visited today";
+          } else if (daysDiff === 1) {
+            document.getElementById("lastVisit").textContent =
+              "Visited yesterday";
+          } else {
+            document.getElementById(
+              "lastVisit"
+            ).textContent = `${daysDiff} days ago`;
+          }
         }
+      }
 
-        // Initialize visitor stats
-        document.addEventListener('DOMContentLoaded', () => {
-            updateVisitorStats();
-        });
+      // Initialize visitor stats
+      document.addEventListener("DOMContentLoaded", () => {
+        updateVisitorStats();
+      });
     </script>
-</body>
+  </body>
 </html>

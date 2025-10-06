@@ -1,622 +1,998 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Learning Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
         }
-        @keyframes gradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        50% {
+          transform: translateY(-20px);
         }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.3); }
+      }
+      @keyframes gradient {
+        0%,
+        100% {
+          background-position: 0% 50%;
         }
-        .floating { animation: float 6s ease-in-out infinite; }
-        .floating:nth-child(2) { animation-delay: -2s; }
-        .floating:nth-child(3) { animation-delay: -4s; }
-        .floating:nth-child(4) { animation-delay: -1s; }
-        .floating:nth-child(5) { animation-delay: -3s; }
-        .gradient-bg { 
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        50% {
+          background-position: 100% 50%;
         }
-        .glow { animation: pulse-glow 2s ease-in-out infinite; }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.8),
+            0 0 40px rgba(59, 130, 246, 0.3);
+        }
+      }
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+      .floating:nth-child(2) {
+        animation-delay: -2s;
+      }
+      .floating:nth-child(3) {
+        animation-delay: -4s;
+      }
+      .floating:nth-child(4) {
+        animation-delay: -1s;
+      }
+      .floating:nth-child(5) {
+        animation-delay: -3s;
+      }
+      .gradient-bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
     </style>
-</head>
-<body class="gradient-bg min-h-screen">
+  </head>
+  <body class="gradient-bg min-h-screen">
     <!-- Animated background elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-10 left-10 w-20 h-20 bg-pink-400 rounded-full opacity-20 floating"></div>
-        <div class="absolute top-32 right-20 w-16 h-16 bg-blue-400 rounded-full opacity-20 floating"></div>
-        <div class="absolute bottom-20 left-32 w-24 h-24 bg-yellow-400 rounded-full opacity-20 floating"></div>
-        <div class="absolute bottom-40 right-10 w-18 h-18 bg-green-400 rounded-full opacity-20 floating"></div>
-        <div class="absolute top-1/2 left-1/4 w-14 h-14 bg-purple-400 rounded-full opacity-20 floating"></div>
-        <div class="absolute top-3/4 right-1/3 w-22 h-22 bg-indigo-400 rounded-full opacity-20 floating"></div>
+      <div
+        class="absolute top-10 left-10 w-20 h-20 bg-pink-400 rounded-full opacity-20 floating"
+      ></div>
+      <div
+        class="absolute top-32 right-20 w-16 h-16 bg-blue-400 rounded-full opacity-20 floating"
+      ></div>
+      <div
+        class="absolute bottom-20 left-32 w-24 h-24 bg-yellow-400 rounded-full opacity-20 floating"
+      ></div>
+      <div
+        class="absolute bottom-40 right-10 w-18 h-18 bg-green-400 rounded-full opacity-20 floating"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/4 w-14 h-14 bg-purple-400 rounded-full opacity-20 floating"
+      ></div>
+      <div
+        class="absolute top-3/4 right-1/3 w-22 h-22 bg-indigo-400 rounded-full opacity-20 floating"
+      ></div>
     </div>
-    
+
     <div class="container mx-auto px-4 py-8 relative z-10">
-        <!-- Hero Section -->
-        <div class="text-center mb-16">
-            <div class="mb-8">
-                <h1 class="text-7xl font-extrabold mb-6 text-white drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 leading-tight">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500">
-                        Tech Learning Hub
-                    </span>
-                </h1>
-                <p class="text-2xl text-white/90 font-semibold mb-4 max-w-4xl mx-auto leading-relaxed">
-                    Master the fundamentals with interactive learning
-                </p>
-                <p class="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-                    Explore comprehensive tutorials, practice questions, and hands-on projects across multiple programming languages and frameworks.
-                </p>
-            </div>
-
-            <!-- Global Visitor Stats -->
-            <div class="mb-12">
-                <div class="inline-flex items-center space-x-8 bg-white/10 backdrop-blur-lg rounded-2xl px-8 py-6 shadow-2xl border border-white/20">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-yellow-300 mb-2" id="globalUniqueVisitors">0</div>
-                        <div class="text-sm text-white/80 font-medium">Unique Visitors Worldwide</div>
-                        <div class="text-xs text-white/60 mt-1">Since launch</div>
-                    </div>
-                    <div class="w-px h-12 bg-white/30"></div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-blue-300 mb-2" id="totalPages">13</div>
-                        <div class="text-sm text-white/80 font-medium">Learning Modules</div>
-                        <div class="text-xs text-white/60 mt-1">Comprehensive coverage</div>
-                    </div>
-                </div>
-            </div>
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <div class="mb-8">
+          <h1
+            class="text-7xl font-extrabold mb-6 text-white drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 leading-tight"
+          >
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500"
+            >
+              Tech Learning Hub
+            </span>
+          </h1>
+          <p
+            class="text-2xl text-white/90 font-semibold mb-4 max-w-4xl mx-auto leading-relaxed"
+          >
+            Master the fundamentals with interactive learning
+          </p>
+          <p class="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+            Explore comprehensive tutorials, practice questions, and hands-on
+            projects across multiple programming languages and frameworks.
+          </p>
         </div>
 
-        <!-- Featured Technologies Section -->
-        <div class="mb-16">
-            <h2 class="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">
-                Choose Your Learning Path
+        <!-- Global Visitor Stats -->
+        <div class="mb-12">
+          <div
+            class="inline-flex items-center space-x-8 bg-white/10 backdrop-blur-lg rounded-2xl px-8 py-6 shadow-2xl border border-white/20"
+          >
+            <div class="text-center">
+              <div
+                class="text-4xl font-bold text-yellow-300 mb-2"
+                id="globalUniqueVisitors"
+              >
+                0
+              </div>
+              <div class="text-sm text-white/80 font-medium">
+                Unique Visitors Worldwide
+              </div>
+              <div class="text-xs text-white/60 mt-1">Since launch</div>
+            </div>
+            <div class="w-px h-12 bg-white/30"></div>
+            <div class="text-center">
+              <div
+                class="text-4xl font-bold text-blue-300 mb-2"
+                id="totalPages"
+              >
+                13
+              </div>
+              <div class="text-sm text-white/80 font-medium">
+                Learning Modules
+              </div>
+              <div class="text-xs text-white/60 mt-1">
+                Comprehensive coverage
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Technologies Section -->
+      <div class="mb-16">
+        <h2
+          class="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg"
+        >
+          Choose Your Learning Path
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto"
+      >
+        <!-- JavaScript Box -->
+        <div
+          class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-rotate-1 glow border border-white/10"
+          onclick="redirectToJavaScript()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-yellow-400/30 to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8 h-full flex flex-col">
+            <div
+              class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl"
+            >
+              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.77l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"
+                />
+              </svg>
+            </div>
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <h2
+                  class="text-2xl font-bold text-center mb-4 text-white group-hover:text-yellow-200 transition-colors duration-300"
+                >
+                  JavaScript
+                </h2>
+                <p
+                  class="text-white/90 text-center leading-relaxed text-base mb-6"
+                >
+                  Master JavaScript fundamentals, ES6+, and modern development
+                  techniques with interactive examples.
+                </p>
+              </div>
+              <div class="text-center">
+                <span
+                  class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                  >Programming Language</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-3 -right-3 w-24 h-24 bg-yellow-500/30 rounded-full blur-2xl group-hover:bg-yellow-500/50 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- TypeScript Box -->
+        <div
+          class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:rotate-1 glow border border-white/10"
+          onclick="redirectToTypeScript()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-indigo-400/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8 h-full flex flex-col">
+            <div
+              class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl"
+            >
+              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                />
+              </svg>
+            </div>
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <h2
+                  class="text-2xl font-bold text-center mb-4 text-white group-hover:text-indigo-200 transition-colors duration-300"
+                >
+                  TypeScript
+                </h2>
+                <p
+                  class="text-white/90 text-center leading-relaxed text-base mb-6"
+                >
+                  Learn TypeScript for type-safe JavaScript development and
+                  enhanced code quality with advanced features.
+                </p>
+              </div>
+              <div class="text-center">
+                <span
+                  class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                  >Type-Safe Superset</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-3 -right-3 w-24 h-24 bg-indigo-500/30 rounded-full blur-2xl group-hover:bg-indigo-500/50 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- Practice JavaScript Questions Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-2 glow"
+          onclick="redirectToPractice()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-fuchsia-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-violet-300 transition-colors duration-300"
+            >
+              Practice
             </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Test your JavaScript skills with coding challenges and interview
+              questions
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Practice</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-violet-500/20 rounded-full blur-xl group-hover:bg-violet-500/40 transition-all duration-500"
+          ></div>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <!-- JavaScript Box -->
-            <div class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-rotate-1 glow border border-white/10" onclick="redirectToJavaScript()">
-                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/30 to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8 h-full flex flex-col">
-                    <div class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
-                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.77l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <h2 class="text-2xl font-bold text-center mb-4 text-white group-hover:text-yellow-200 transition-colors duration-300">JavaScript</h2>
-                            <p class="text-white/90 text-center leading-relaxed text-base mb-6">Master JavaScript fundamentals, ES6+, and modern development techniques with interactive examples.</p>
-                        </div>
-                        <div class="text-center">
-                            <span class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Programming Language</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-yellow-500/30 rounded-full blur-2xl group-hover:bg-yellow-500/50 transition-all duration-500"></div>
-            </div>
 
-            <!-- TypeScript Box -->
-            <div class="group relative overflow-hidden bg-white/15 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:rotate-1 glow border border-white/10" onclick="redirectToTypeScript()">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8 h-full flex flex-col">
-                    <div class="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
-                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <h2 class="text-2xl font-bold text-center mb-4 text-white group-hover:text-indigo-200 transition-colors duration-300">TypeScript</h2>
-                            <p class="text-white/90 text-center leading-relaxed text-base mb-6">Learn TypeScript for type-safe JavaScript development and enhanced code quality with advanced features.</p>
-                        </div>
-                        <div class="text-center">
-                            <span class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Type-Safe Superset</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-indigo-500/30 rounded-full blur-2xl group-hover:bg-indigo-500/50 transition-all duration-500"></div>
+        <!-- Angular Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow"
+          onclick="redirectToAngular()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-red-400/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2L2 6v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V6l-10-4z"
+                />
+              </svg>
             </div>
-
-            <!-- Practice JavaScript Questions Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-2 glow" onclick="redirectToPractice()">
-                <div class="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-fuchsia-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-violet-300 transition-colors duration-300">Practice</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Test your JavaScript skills with coding challenges and interview questions</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Practice</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-violet-500/20 rounded-full blur-xl group-hover:bg-violet-500/40 transition-all duration-500"></div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-red-300 transition-colors duration-300"
+            >
+              Angular
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Learn Angular framework concepts, components, and best practices
+              with interactive examples
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Framework</span
+              >
             </div>
-
-            <!-- Angular Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow" onclick="redirectToAngular()">
-                <div class="absolute inset-0 bg-gradient-to-br from-red-400/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2L2 6v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V6l-10-4z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-red-300 transition-colors duration-300">Angular</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Learn Angular framework concepts, components, and best practices with interactive examples</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Framework</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-red-500/20 rounded-full blur-xl group-hover:bg-red-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- React Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow" onclick="redirectToReact()">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM6.008 16.255l-.472-.12C2.018 15.246 0 13.737 0 11.996s2.018-3.25 5.536-4.139l.472-.119.133.468a23.53 23.53 0 0 0 1.363 3.578l.101.213-.101.213a23.307 23.307 0 0 0-1.363 3.578l-.133.467zM5.317 8.95c-2.674.751-4.315 1.9-4.315 3.046 0 1.145 1.641 2.294 4.315 3.046a24.95 24.95 0 0 1 1.182-3.046A24.752 24.752 0 0 1 5.317 8.95zM17.992 16.255l-.133-.469a23.357 23.357 0 0 0-1.364-3.577l-.101-.213.101-.213a23.42 23.42 0 0 0 1.364-3.578l.133-.468.473.119c3.517.889 5.535 2.398 5.535 4.139s-2.018 3.25-5.535 4.139l-.473.121zm-.491-4.259c.48 1.039.877 2.06 1.182 3.046 2.675-.752 4.315-1.901 4.315-3.046 0-1.146-1.64-2.294-4.315-3.046a24.788 24.788 0 0 1-1.182 3.046z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-blue-300 transition-colors duration-300">React</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Learn React components, hooks, and modern patterns for building dynamic UIs</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Library</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- Node.js Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow" onclick="redirectToNodeJS()">
-                <div class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 1.85c-.27 0-.55.07-.78.2l-7.44 4.3c-.48.28-.78.8-.78 1.36v8.58c0 .56.3 1.08.78 1.36l7.44 4.3c.46.26 1.04.26 1.5 0l7.44-4.3c.48-.28.78-.8.78-1.36V7.71c0-.56-.3-1.08-.78-1.36l-7.44-4.3c-.23-.13-.51-.2-.78-.2zm0 1.5c.1 0 .2.02.28.06l7.44 4.3c.16.09.28.26.28.45v8.58c0 .19-.12.36-.28.45l-7.44 4.3c-.18.1-.38.1-.56 0l-7.44-4.3c-.16-.09-.28-.26-.28-.45V7.86c0-.19.12-.36.28-.45l7.44-4.3c.08-.04.18-.06.28-.06z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-green-300 transition-colors duration-300">Node.js</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Master server-side JavaScript, APIs, and backend development with Node.js</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Runtime</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- Ruby on Rails Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow" onclick="redirectToRails()">
-                <div class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-rose-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-600 to-rose-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-red-300 transition-colors duration-300">Ruby on Rails</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Learn Rails framework, MVC pattern, and rapid web application development</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-red-600 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Framework</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-red-600/20 rounded-full blur-xl group-hover:bg-red-600/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- Flutter Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow" onclick="redirectToFlutter()">
-                <div class="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.37zm.159 11.871L11.3 14.04l-4.907-4.907 2.864-2.864 4.907 4.907 1.309 1.309zm8.963-.001l-4.907 4.907-1.309-1.309L20.186 12l-2.966-2.966 1.309-1.309L23.436 12z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-sky-300 transition-colors duration-300">Flutter</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Build cross-platform mobile apps with Flutter and Dart programming</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-sky-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Mobile</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500/20 rounded-full blur-xl group-hover:bg-sky-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- PHP Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow" onclick="redirectToPHP()">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.941.565-.365.127-.794.19-1.287.19h-.428l-.449 2.312H3.66l1.621-8.336h2.814c.797 0 1.378.209 1.744.628.365.418.435 1.004.209 1.755-.173.565-.789 1.41-1.525 1.886zm7.28.711c.024-.548-.188-1.044-.637-1.487-.448-.443-1.085-.665-1.912-.665-.484 0-.866.12-1.148.359-.282.24-.466.613-.55 1.119-.085.488-.003.886.245 1.192.248.307.572.46.974.46.440 0 .806-.113 1.097-.34.291-.227.463-.548.515-.963h-1.169c-.044.127-.120.207-.228.240-.108.033-.224-.003-.348-.108-.124-.105-.186-.232-.186-.38 0-.079.016-.145.048-.198.032-.053.08-.086.144-.099.064-.013.155-.019.273-.019h2.443c.016-.128.016-.213.016-.213zm2.098.178h-1.356c.029-.135.068-.231.117-.289.049-.058.128-.087.237-.087.18 0 .291.087.333.26h1.002c-.077-.49-.267-.86-.569-1.109-.302-.249-.688-.374-1.158-.374-.48 0-.891.151-1.234.452-.343.301-.549.688-.618 1.161-.069.473.042.85.333 1.132.291.282.704.423 1.239.423.649 0 1.13-.282 1.443-.847.314-.565.412-1.212.295-1.942l-.043-.38z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-sky-300 transition-colors duration-300">PHP</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Build dynamic and secure web applications with PHP programming</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-sky-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Language</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500/20 rounded-full blur-xl group-hover:bg-sky-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- MySQL/RDBMS Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow" onclick="redirectToMySQL()">
-                <div class="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M5.15 0c-.74 0-1.34.6-1.34 1.34v21.32c0 .74.6 1.34 1.34 1.34h13.7c.74 0 1.34-.6 1.34-1.34V1.34c0-.74-.6-1.34-1.34-1.34H5.15zm2.68 2.68h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67V3.35c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67V7.37c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-orange-300 transition-colors duration-300">MySQL/RDBMS</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Learn relational database concepts, SQL queries, and database design principles</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Database</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-orange-500/20 rounded-full blur-xl group-hover:bg-orange-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- NoSQL Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow" onclick="redirectToNoSQL()">
-                <div class="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-13h2v6h-2v-6zm0 8h2v2h-2v-2z"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-teal-300 transition-colors duration-300">NoSQL</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Explore MongoDB, document databases, and non-relational data modeling</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">NoSQL DB</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-teal-500/20 rounded-full blur-xl group-hover:bg-teal-500/40 transition-all duration-500"></div>
-            </div>
-
-            <!-- DevOps Box -->
-            <div class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow" onclick="redirectToDevOps()">
-                <div class="absolute inset-0 bg-gradient-to-br from-slate-400/20 to-gray-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative p-8">
-                    <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-slate-500 to-gray-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h2 class="text-3xl font-bold text-center mb-3 text-white group-hover:text-slate-300 transition-colors duration-300">DevOps</h2>
-                    <p class="text-white/80 text-center leading-relaxed">Master CI/CD, Docker, Kubernetes, and deployment automation practices</p>
-                    <div class="mt-6 text-center">
-                        <span class="inline-block bg-gradient-to-r from-slate-500 to-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300">Operations</span>
-                    </div>
-                </div>
-                <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-slate-500/20 rounded-full blur-xl group-hover:bg-slate-500/40 transition-all duration-500"></div>
-            </div>
-
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-red-500/20 rounded-full blur-xl group-hover:bg-red-500/40 transition-all duration-500"
+          ></div>
         </div>
+
+        <!-- React Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow"
+          onclick="redirectToReact()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM6.008 16.255l-.472-.12C2.018 15.246 0 13.737 0 11.996s2.018-3.25 5.536-4.139l.472-.119.133.468a23.53 23.53 0 0 0 1.363 3.578l.101.213-.101.213a23.307 23.307 0 0 0-1.363 3.578l-.133.467zM5.317 8.95c-2.674.751-4.315 1.9-4.315 3.046 0 1.145 1.641 2.294 4.315 3.046a24.95 24.95 0 0 1 1.182-3.046A24.752 24.752 0 0 1 5.317 8.95zM17.992 16.255l-.133-.469a23.357 23.357 0 0 0-1.364-3.577l-.101-.213.101-.213a23.42 23.42 0 0 0 1.364-3.578l.133-.468.473.119c3.517.889 5.535 2.398 5.535 4.139s-2.018 3.25-5.535 4.139l-.473.121zm-.491-4.259c.48 1.039.877 2.06 1.182 3.046 2.675-.752 4.315-1.901 4.315-3.046 0-1.146-1.64-2.294-4.315-3.046a24.788 24.788 0 0 1-1.182 3.046z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-blue-300 transition-colors duration-300"
+            >
+              React
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Learn React components, hooks, and modern patterns for building
+              dynamic UIs
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Library</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- Node.js Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow"
+          onclick="redirectToNodeJS()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 1.85c-.27 0-.55.07-.78.2l-7.44 4.3c-.48.28-.78.8-.78 1.36v8.58c0 .56.3 1.08.78 1.36l7.44 4.3c.46.26 1.04.26 1.5 0l7.44-4.3c.48-.28.78-.8.78-1.36V7.71c0-.56-.3-1.08-.78-1.36l-7.44-4.3c-.23-.13-.51-.2-.78-.2zm0 1.5c.1 0 .2.02.28.06l7.44 4.3c.16.09.28.26.28.45v8.58c0 .19-.12.36-.28.45l-7.44 4.3c-.18.1-.38.1-.56 0l-7.44-4.3c-.16-.09-.28-.26-.28-.45V7.86c0-.19.12-.36.28-.45l7.44-4.3c.08-.04.18-.06.28-.06z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-green-300 transition-colors duration-300"
+            >
+              Node.js
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Master server-side JavaScript, APIs, and backend development with
+              Node.js
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Runtime</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- Ruby on Rails Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow"
+          onclick="redirectToRails()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-rose-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-600 to-rose-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-red-300 transition-colors duration-300"
+            >
+              Ruby on Rails
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Learn Rails framework, MVC pattern, and rapid web application
+              development
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-red-600 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Framework</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-red-600/20 rounded-full blur-xl group-hover:bg-red-600/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- Flutter Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow"
+          onclick="redirectToFlutter()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.37zm.159 11.871L11.3 14.04l-4.907-4.907 2.864-2.864 4.907 4.907 1.309 1.309zm8.963-.001l-4.907 4.907-1.309-1.309L20.186 12l-2.966-2.966 1.309-1.309L23.436 12z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-sky-300 transition-colors duration-300"
+            >
+              Flutter
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Build cross-platform mobile apps with Flutter and Dart programming
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-sky-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Mobile</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500/20 rounded-full blur-xl group-hover:bg-sky-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- PHP Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow"
+          onclick="redirectToPHP()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.941.565-.365.127-.794.19-1.287.19h-.428l-.449 2.312H3.66l1.621-8.336h2.814c.797 0 1.378.209 1.744.628.365.418.435 1.004.209 1.755-.173.565-.789 1.41-1.525 1.886zm7.28.711c.024-.548-.188-1.044-.637-1.487-.448-.443-1.085-.665-1.912-.665-.484 0-.866.12-1.148.359-.282.24-.466.613-.55 1.119-.085.488-.003.886.245 1.192.248.307.572.46.974.46.440 0 .806-.113 1.097-.34.291-.227.463-.548.515-.963h-1.169c-.044.127-.120.207-.228.240-.108.033-.224-.003-.348-.108-.124-.105-.186-.232-.186-.38 0-.079.016-.145.048-.198.032-.053.08-.086.144-.099.064-.013.155-.019.273-.019h2.443c.016-.128.016-.213.016-.213zm2.098.178h-1.356c.029-.135.068-.231.117-.289.049-.058.128-.087.237-.087.18 0 .291.087.333.26h1.002c-.077-.49-.267-.86-.569-1.109-.302-.249-.688-.374-1.158-.374-.48 0-.891.151-1.234.452-.343.301-.549.688-.618 1.161-.069.473.042.85.333 1.132.291.282.704.423 1.239.423.649 0 1.13-.282 1.443-.847.314-.565.412-1.212.295-1.942l-.043-.38z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-sky-300 transition-colors duration-300"
+            >
+              PHP
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Build dynamic and secure web applications with PHP programming
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-sky-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Language</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500/20 rounded-full blur-xl group-hover:bg-sky-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- MySQL/RDBMS Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 glow"
+          onclick="redirectToMySQL()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M5.15 0c-.74 0-1.34.6-1.34 1.34v21.32c0 .74.6 1.34 1.34 1.34h13.7c.74 0 1.34-.6 1.34-1.34V1.34c0-.74-.6-1.34-1.34-1.34H5.15zm2.68 2.68h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67V3.35c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67V7.37c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67zm0 4.02h8.34c.37 0 .67.3.67.67v1.34c0 .37-.3.67-.67.67H7.83c-.37 0-.67-.3-.67-.67v-1.34c0-.37.3-.67.67-.67z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-orange-300 transition-colors duration-300"
+            >
+              MySQL/RDBMS
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Learn relational database concepts, SQL queries, and database
+              design principles
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Database</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-orange-500/20 rounded-full blur-xl group-hover:bg-orange-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- NoSQL Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:-rotate-1 glow"
+          onclick="redirectToNoSQL()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-13h2v6h-2v-6zm0 8h2v2h-2v-2z"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-teal-300 transition-colors duration-300"
+            >
+              NoSQL
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Explore MongoDB, document databases, and non-relational data
+              modeling
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >NoSQL DB</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-teal-500/20 rounded-full blur-xl group-hover:bg-teal-500/40 transition-all duration-500"
+          ></div>
+        </div>
+
+        <!-- DevOps Box -->
+        <div
+          class="group relative overflow-hidden bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-2 glow"
+          onclick="redirectToDevOps()"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-slate-400/20 to-gray-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative p-8">
+            <div
+              class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-slate-500 to-gray-700 text-white rounded-2xl mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-lg"
+            >
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                />
+              </svg>
+            </div>
+            <h2
+              class="text-3xl font-bold text-center mb-3 text-white group-hover:text-slate-300 transition-colors duration-300"
+            >
+              DevOps
+            </h2>
+            <p class="text-white/80 text-center leading-relaxed">
+              Master CI/CD, Docker, Kubernetes, and deployment automation
+              practices
+            </p>
+            <div class="mt-6 text-center">
+              <span
+                class="inline-block bg-gradient-to-r from-slate-500 to-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                >Operations</span
+              >
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-20 h-20 bg-slate-500/20 rounded-full blur-xl group-hover:bg-slate-500/40 transition-all duration-500"
+          ></div>
+        </div>
+      </div>
     </div>
 
     <script>
-        function redirectToAngular() {
-            window.location.href = 'angular/angular.html';
-        }
+      function redirectToAngular() {
+        window.location.href = "angular/angular.html";
+      }
 
-        function redirectToJavaScript() {
-            window.location.href = 'javascript/javascript.html';
-        }
+      function redirectToJavaScript() {
+        window.location.href = "javascript/javascript.html";
+      }
 
-        function redirectToReact() {
-            window.location.href = 'react/react.html';
-        }
+      function redirectToReact() {
+        window.location.href = "react/react.html";
+      }
 
-        function redirectToNodeJS() {
-            window.location.href = 'nodejs/nodejs.html';
-        }
+      function redirectToNodeJS() {
+        window.location.href = "nodejs/nodejs.html";
+      }
 
-        function redirectToTypeScript() {
-            window.location.href = 'typescript/typescript.html';
-        }
+      function redirectToTypeScript() {
+        window.location.href = "typescript/typescript.html";
+      }
 
-        function redirectToPractice() {
-            window.location.href = 'practice/practice.html';
-        }
+      function redirectToPractice() {
+        window.location.href = "practice/practice.html";
+      }
 
-        function redirectToRails() {
-            window.location.href = 'rails/rails.html';
-        }
+      function redirectToRails() {
+        window.location.href = "rails/rails.html";
+      }
 
-        function redirectToFlutter() {
-            window.location.href = 'flutter/flutter.html';
-        }
+      function redirectToFlutter() {
+        window.location.href = "flutter/flutter.html";
+      }
 
-        function redirectToPHP() {
-            window.location.href = 'php/php.html';
-        }
+      function redirectToPHP() {
+        window.location.href = "php/php.html";
+      }
 
-        function redirectToMySQL() {
-            window.location.href = 'mysql/mysql.html';
-        }
+      function redirectToMySQL() {
+        window.location.href = "mysql/mysql.html";
+      }
 
-        function redirectToNoSQL() {
-            window.location.href = 'nosql/nosql.html';
-        }
+      function redirectToNoSQL() {
+        window.location.href = "nosql/nosql.html";
+      }
 
-        function redirectToDevOps() {
-            window.location.href = 'devops/devops.html';
-        }
+      function redirectToDevOps() {
+        window.location.href = "devops/devops.html";
+      }
     </script>
 
     <!-- Footer -->
     <footer class="glass-card mt-16">
-        <div class="container mx-auto px-6 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Developer Info -->
-                <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
-                    <div class="text-gray-300">
-                        <p class="font-semibold text-lg">Harikrishnan. R</p>
-                        <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
-                        <p class="text-xs mt-2 opacity-80 italic">
-                            If any changes or corrections are required, please contact me.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Visitor Stats -->
-                <div class="text-center">
-                    <h3 class="text-xl font-bold text-white mb-4">Visitor Analytics</h3>
-                    <div class="space-y-3">
-                        <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
-                            <div class="text-2xl font-bold text-yellow-300 mb-1" id="globalUniqueVisitorsFooter">0</div>
-                            <div class="text-sm text-gray-300">Global Unique Visitors</div>
-                            <div class="text-xs text-gray-400 mt-1">Worldwide reach</div>
-                        </div>
-                        <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
-                            <div class="text-2xl font-bold text-indigo-300 mb-1" id="visitCount">0</div>
-                            <div class="text-sm text-gray-300">Your Page Visits</div>
-                            <div class="text-xs text-gray-400 mt-1" id="lastVisit">First visit!</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="text-center md:text-right">
-                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
-                    <div class="space-y-2">
-                        <a href="index.html" class="block text-gray-300 hover:text-white transition-colors">🏠 Home</a>
-                        <a href="javascript/javascript.html" class="block text-gray-300 hover:text-white transition-colors">📚 JavaScript</a>
-                        <a href="react/react.html" class="block text-gray-300 hover:text-white transition-colors">⚛️ React</a>
-                        <a href="angular/angular.html" class="block text-gray-300 hover:text-white transition-colors">🅰️ Angular</a>
-                    </div>
-                </div>
+      <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Developer Info -->
+          <div class="text-center md:text-left">
+            <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
+            <div class="text-gray-300">
+              <p class="font-semibold text-lg">Harikrishnan. R</p>
+              <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
+              <p class="text-xs mt-2 opacity-80 italic">
+                If any changes or corrections are required, please contact me.
+              </p>
             </div>
+          </div>
 
-            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
-                <p class="text-gray-400 text-sm">
-                    © 2024 Tech Learning Hub. Built with ❤️ for developers.
-                </p>
+          <!-- Visitor Stats -->
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-4">Visitor Analytics</h3>
+            <div class="space-y-3">
+              <div
+                class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm"
+              >
+                <div
+                  class="text-2xl font-bold text-yellow-300 mb-1"
+                  id="globalUniqueVisitorsFooter"
+                >
+                  0
+                </div>
+                <div class="text-sm text-gray-300">Global Unique Visitors</div>
+                <div class="text-xs text-gray-400 mt-1">Worldwide reach</div>
+              </div>
+              <div
+                class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm"
+              >
+                <div
+                  class="text-2xl font-bold text-indigo-300 mb-1"
+                  id="visitCount"
+                >
+                  0
+                </div>
+                <div class="text-sm text-gray-300">Your Page Visits</div>
+                <div class="text-xs text-gray-400 mt-1" id="lastVisit">
+                  First visit!
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="text-center md:text-right">
+            <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <div class="space-y-2">
+              <a
+                href="index.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >🏠 Home</a
+              >
+              <a
+                href="javascript/javascript.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >📚 JavaScript</a
+              >
+              <a
+                href="react/react.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >⚛️ React</a
+              >
+              <a
+                href="angular/angular.html"
+                class="block text-gray-300 hover:text-white transition-colors"
+                >🅰️ Angular</a
+              >
+            </div>
+          </div>
         </div>
+
+        <div
+          class="border-t border-white border-opacity-20 mt-8 pt-6 text-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2024 Tech Learning Hub. Built with ❤️ for developers.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Global Unique Visitor Tracking System
-        function generateUniqueVisitorId() {
-            try {
-                // Create a unique ID based on browser fingerprinting
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                if (!ctx) {
-                    // Fallback if canvas is not available
-                    return Date.now().toString(36) + Math.random().toString(36).substr(2);
-                }
+      // Global Unique Visitor Tracking System
+      function generateUniqueVisitorId() {
+        try {
+          // Create a unique ID based on browser fingerprinting
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            // Fallback if canvas is not available
+            return (
+              Date.now().toString(36) + Math.random().toString(36).substr(2)
+            );
+          }
 
-                ctx.textBaseline = 'top';
-                ctx.font = '14px Arial';
-                ctx.fillText('fingerprint', 2, 2);
+          ctx.textBaseline = "top";
+          ctx.font = "14px Arial";
+          ctx.fillText("fingerprint", 2, 2);
 
-                const fingerprint = [
-                    navigator.userAgent || 'unknown',
-                    navigator.language || 'unknown',
-                    (screen.width || 0) + 'x' + (screen.height || 0),
-                    new Date().getTimezoneOffset(),
-                    !!window.sessionStorage,
-                    !!window.localStorage,
-                    !!window.indexedDB,
-                    canvas.toDataURL()
-                ].join('|');
+          const fingerprint = [
+            navigator.userAgent || "unknown",
+            navigator.language || "unknown",
+            (screen.width || 0) + "x" + (screen.height || 0),
+            new Date().getTimezoneOffset(),
+            !!window.sessionStorage,
+            !!window.localStorage,
+            !!window.indexedDB,
+            canvas.toDataURL(),
+          ].join("|");
 
-                // Create hash from fingerprint
-                let hash = 0;
-                for (let i = 0; i < fingerprint.length; i++) {
-                    const char = fingerprint.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + char;
-                    hash = hash & hash; // Convert to 32-bit integer
-                }
+          // Create hash from fingerprint
+          let hash = 0;
+          for (let i = 0; i < fingerprint.length; i++) {
+            const char = fingerprint.charCodeAt(i);
+            hash = (hash << 5) - hash + char;
+            hash = hash & hash; // Convert to 32-bit integer
+          }
 
-                return Math.abs(hash).toString(36);
-            } catch (error) {
-                console.error('Error generating visitor ID:', error);
-                // Fallback ID generation
-                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+          return Math.abs(hash).toString(36);
+        } catch (error) {
+          console.error("Error generating visitor ID:", error);
+          // Fallback ID generation
+          return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+      }
+
+      function trackUniqueVisitor() {
+        const VISITOR_ID_KEY = "global_visitor_id";
+        const VISITOR_COUNT_KEY = "global_unique_visitors";
+        const SESSION_TRACKED_KEY = "session_tracked";
+
+        try {
+          // Check if this session has already been tracked
+          if (sessionStorage.getItem(SESSION_TRACKED_KEY)) {
+            // Return current count without incrementing
+            const currentCount =
+              parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+            return isNaN(currentCount) ? 0 : currentCount;
+          }
+
+          // Get or create unique visitor ID
+          let visitorId = localStorage.getItem(VISITOR_ID_KEY);
+          if (!visitorId) {
+            visitorId = generateUniqueVisitorId();
+            localStorage.setItem(VISITOR_ID_KEY, visitorId);
+
+            // Increment global unique visitor count
+            let currentCount =
+              parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+            if (isNaN(currentCount)) {
+              currentCount = 0;
             }
+            currentCount += 1;
+            localStorage.setItem(VISITOR_COUNT_KEY, currentCount.toString());
+          }
+
+          // Mark this session as tracked
+          sessionStorage.setItem(SESSION_TRACKED_KEY, "true");
+
+          // Return the current count
+          const finalCount =
+            parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
+          return isNaN(finalCount) ? 0 : finalCount;
+        } catch (error) {
+          console.error("Error tracking visitor:", error);
+          return 0;
+        }
+      }
+
+      function updateGlobalVisitorStats() {
+        try {
+          const uniqueVisitors = trackUniqueVisitor();
+
+          // Ensure we have a valid number
+          const validCount =
+            typeof uniqueVisitors === "number" && !isNaN(uniqueVisitors)
+              ? uniqueVisitors
+              : 0;
+
+          // Update the global visitor count display in hero section
+          const visitorElement = document.getElementById(
+            "globalUniqueVisitors"
+          );
+          if (visitorElement) {
+            // Animate the counter
+            animateCounter(visitorElement, 0, validCount, 2000);
+          }
+
+          // Update the global visitor count display in footer
+          const footerVisitorElement = document.getElementById(
+            "globalUniqueVisitorsFooter"
+          );
+          if (footerVisitorElement) {
+            footerVisitorElement.textContent = validCount.toLocaleString();
+          }
+
+          // Update individual page visitor stats
+          updatePageVisitorStats();
+        } catch (error) {
+          console.error("Error updating global visitor stats:", error);
+          // Set fallback values
+          const visitorElement = document.getElementById(
+            "globalUniqueVisitors"
+          );
+          if (visitorElement) {
+            visitorElement.textContent = "0";
+          }
+          const footerVisitorElement = document.getElementById(
+            "globalUniqueVisitorsFooter"
+          );
+          if (footerVisitorElement) {
+            footerVisitorElement.textContent = "0";
+          }
+        }
+      }
+
+      function updatePageVisitorStats() {
+        const now = new Date();
+        const visitKey = "index_visits";
+        const lastVisitKey = "index_last_visit";
+
+        // Get existing visit data
+        let visits = parseInt(localStorage.getItem(visitKey)) || 0;
+        const lastVisit = localStorage.getItem(lastVisitKey);
+
+        // Increment page visit count
+        visits += 1;
+        localStorage.setItem(visitKey, visits.toString());
+        localStorage.setItem(lastVisitKey, now.toISOString());
+
+        // Update display
+        const visitCountElement = document.getElementById("visitCount");
+        if (visitCountElement) {
+          visitCountElement.textContent = visits;
         }
 
-        function trackUniqueVisitor() {
-            const VISITOR_ID_KEY = 'global_visitor_id';
-            const VISITOR_COUNT_KEY = 'global_unique_visitors';
-            const SESSION_TRACKED_KEY = 'session_tracked';
+        const lastVisitElement = document.getElementById("lastVisit");
+        if (lastVisitElement && lastVisit) {
+          const lastVisitDate = new Date(lastVisit);
+          const timeDiff = now - lastVisitDate;
+          const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-            try {
-                // Check if this session has already been tracked
-                if (sessionStorage.getItem(SESSION_TRACKED_KEY)) {
-                    // Return current count without incrementing
-                    const currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
-                    return isNaN(currentCount) ? 0 : currentCount;
-                }
+          if (daysDiff === 0) {
+            lastVisitElement.textContent = "Visited today";
+          } else if (daysDiff === 1) {
+            lastVisitElement.textContent = "Visited yesterday";
+          } else {
+            lastVisitElement.textContent = `${daysDiff} days ago`;
+          }
+        }
+      }
 
-                // Get or create unique visitor ID
-                let visitorId = localStorage.getItem(VISITOR_ID_KEY);
-                if (!visitorId) {
-                    visitorId = generateUniqueVisitorId();
-                    localStorage.setItem(VISITOR_ID_KEY, visitorId);
+      function animateCounter(element, start, end, duration) {
+        if (start === end) return;
 
-                    // Increment global unique visitor count
-                    let currentCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
-                    if (isNaN(currentCount)) {
-                        currentCount = 0;
-                    }
-                    currentCount += 1;
-                    localStorage.setItem(VISITOR_COUNT_KEY, currentCount.toString());
-                }
+        const range = end - start;
+        const minTimer = 50;
+        const stepTime = Math.abs(Math.floor(duration / range));
+        const timer = stepTime < minTimer ? minTimer : stepTime;
 
-                // Mark this session as tracked
-                sessionStorage.setItem(SESSION_TRACKED_KEY, 'true');
+        const startTime = new Date().getTime();
+        const endTime = startTime + duration;
 
-                // Return the current count
-                const finalCount = parseInt(localStorage.getItem(VISITOR_COUNT_KEY)) || 0;
-                return isNaN(finalCount) ? 0 : finalCount;
-            } catch (error) {
-                console.error('Error tracking visitor:', error);
-                return 0;
-            }
+        function run() {
+          const now = new Date().getTime();
+          const remaining = Math.max((endTime - now) / duration, 0);
+          const value = Math.round(end - remaining * range);
+
+          element.textContent = value.toLocaleString();
+
+          if (value == end) {
+            clearInterval(timer);
+          }
         }
 
-        function updateGlobalVisitorStats() {
-            try {
-                const uniqueVisitors = trackUniqueVisitor();
+        const timer_id = setInterval(run, timer);
+        run();
+      }
 
-                // Ensure we have a valid number
-                const validCount = (typeof uniqueVisitors === 'number' && !isNaN(uniqueVisitors)) ? uniqueVisitors : 0;
+      // Initialize visitor counter if it doesn't exist
+      function initializeVisitorCounter() {
+        const VISITOR_COUNT_KEY = "global_unique_visitors";
+        const currentCount = localStorage.getItem(VISITOR_COUNT_KEY);
 
-                // Update the global visitor count display in hero section
-                const visitorElement = document.getElementById('globalUniqueVisitors');
-                if (visitorElement) {
-                    // Animate the counter
-                    animateCounter(visitorElement, 0, validCount, 2000);
-                }
-
-                // Update the global visitor count display in footer
-                const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
-                if (footerVisitorElement) {
-                    footerVisitorElement.textContent = validCount.toLocaleString();
-                }
-
-                // Update individual page visitor stats
-                updatePageVisitorStats();
-            } catch (error) {
-                console.error('Error updating global visitor stats:', error);
-                // Set fallback values
-                const visitorElement = document.getElementById('globalUniqueVisitors');
-                if (visitorElement) {
-                    visitorElement.textContent = '0';
-                }
-                const footerVisitorElement = document.getElementById('globalUniqueVisitorsFooter');
-                if (footerVisitorElement) {
-                    footerVisitorElement.textContent = '0';
-                }
-            }
+        if (
+          !currentCount ||
+          currentCount === "NaN" ||
+          isNaN(parseInt(currentCount))
+        ) {
+          localStorage.setItem(VISITOR_COUNT_KEY, "0");
         }
+      }
 
-        function updatePageVisitorStats() {
-            const now = new Date();
-            const visitKey = 'index_visits';
-            const lastVisitKey = 'index_last_visit';
+      // Initialize all visitor stats
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize counter first
+        initializeVisitorCounter();
 
-            // Get existing visit data
-            let visits = parseInt(localStorage.getItem(visitKey)) || 0;
-            const lastVisit = localStorage.getItem(lastVisitKey);
-
-            // Increment page visit count
-            visits += 1;
-            localStorage.setItem(visitKey, visits.toString());
-            localStorage.setItem(lastVisitKey, now.toISOString());
-
-            // Update display
-            const visitCountElement = document.getElementById('visitCount');
-            if (visitCountElement) {
-                visitCountElement.textContent = visits;
-            }
-
-            const lastVisitElement = document.getElementById('lastVisit');
-            if (lastVisitElement && lastVisit) {
-                const lastVisitDate = new Date(lastVisit);
-                const timeDiff = now - lastVisitDate;
-                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-                if (daysDiff === 0) {
-                    lastVisitElement.textContent = 'Visited today';
-                } else if (daysDiff === 1) {
-                    lastVisitElement.textContent = 'Visited yesterday';
-                } else {
-                    lastVisitElement.textContent = `${daysDiff} days ago`;
-                }
-            }
-        }
-
-        function animateCounter(element, start, end, duration) {
-            if (start === end) return;
-
-            const range = end - start;
-            const minTimer = 50;
-            const stepTime = Math.abs(Math.floor(duration / range));
-            const timer = stepTime < minTimer ? minTimer : stepTime;
-
-            const startTime = new Date().getTime();
-            const endTime = startTime + duration;
-
-            function run() {
-                const now = new Date().getTime();
-                const remaining = Math.max((endTime - now) / duration, 0);
-                const value = Math.round(end - (remaining * range));
-
-                element.textContent = value.toLocaleString();
-
-                if (value == end) {
-                    clearInterval(timer);
-                }
-            }
-
-            const timer_id = setInterval(run, timer);
-            run();
-        }
-
-        // Initialize visitor counter if it doesn't exist
-        function initializeVisitorCounter() {
-            const VISITOR_COUNT_KEY = 'global_unique_visitors';
-            const currentCount = localStorage.getItem(VISITOR_COUNT_KEY);
-
-            if (!currentCount || currentCount === 'NaN' || isNaN(parseInt(currentCount))) {
-                localStorage.setItem(VISITOR_COUNT_KEY, '0');
-            }
-        }
-
-        // Initialize all visitor stats
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize counter first
-            initializeVisitorCounter();
-
-            // Small delay to ensure DOM is fully ready
-            setTimeout(() => {
-                updateGlobalVisitorStats();
-            }, 100);
-        });
+        // Small delay to ensure DOM is fully ready
+        setTimeout(() => {
+          updateGlobalVisitorStats();
+        }, 100);
+      });
     </script>
-</body>
+  </body>
 </html>

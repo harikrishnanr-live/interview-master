@@ -1,345 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/react-beginner.js"></script>
     <script src="js/react-intermediate.js"></script>
     <script src="js/react-advanced.js"></script>
     <style>
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
         }
 
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
         }
 
-        @keyframes expandAnswer {
-            from {
-                opacity: 0;
-                max-height: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                max-height: 300px;
-                transform: translateY(0);
-            }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
         }
 
-        @keyframes waveEffect {
-            0% {
-                background-position: 0% 50%;
-            }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+      @keyframes expandAnswer {
+        from {
+          opacity: 0;
+          max-height: 0;
+          transform: translateY(-20px);
         }
 
-        @keyframes float {
+        to {
+          opacity: 1;
+          max-height: 300px;
+          transform: translateY(0);
+        }
+      }
 
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+      @keyframes waveEffect {
+        0% {
+          background-position: 0% 50%;
         }
 
-        .slide-in-left {
-            animation: slideInLeft 0.7s ease-out forwards;
+        50% {
+          background-position: 100% 50%;
         }
 
-        .bounce-in {
-            animation: bounceIn 0.8s ease-out forwards;
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
         }
 
-        .expand-answer {
-            animation: expandAnswer 0.5s ease-out forwards;
+        50% {
+          transform: translateY(-10px);
         }
+      }
 
-        .wave-bg {
-            background: linear-gradient(-45deg, #00bcd4, #0097a7, #00acc1, #26c6da);
-            background-size: 400% 400%;
-            animation: waveEffect 12s ease infinite;
-        }
+      .slide-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
 
-        .float-effect:hover {
-            animation: float 2s ease-in-out infinite;
-        }
+      .bounce-in {
+        animation: bounceIn 0.8s ease-out forwards;
+      }
 
-        .glass-card {
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+      .expand-answer {
+        animation: expandAnswer 0.5s ease-out forwards;
+      }
 
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
-        }
+      .wave-bg {
+        background: linear-gradient(-45deg, #00bcd4, #0097a7, #00acc1, #26c6da);
+        background-size: 400% 400%;
+        animation: waveEffect 12s ease infinite;
+      }
 
-        .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
-        }
+      .float-effect:hover {
+        animation: float 2s ease-in-out infinite;
+      }
+
+      .glass-card {
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+      }
+
+      .neon-glow:hover {
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
+      }
     </style>
-</head>
+  </head>
 
-<body class="wave-bg min-h-screen">
+  <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-xl font-bold hover:text-cyan-400 transition-colors">Tech Learning
-                Hub</a>
+      <div class="container mx-auto flex justify-between items-center">
+        <a
+          href="../index.html"
+          class="text-xl font-bold hover:text-cyan-400 transition-colors"
+          >Tech Learning Hub</a
+        >
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-                <a href="../javascript/javascript.html"
-                    class="hover:text-yellow-400 transition-colors whitespace-nowrap">JavaScript</a>
-                <a href="../typescript/typescript.html"
-                    class="hover:text-blue-400 transition-colors whitespace-nowrap">TypeScript</a>
-                <a href="../practice/practice.html"
-                    class="hover:text-purple-400 transition-colors whitespace-nowrap">Practice</a>
-                <a href="../angular/angular.html"
-                    class="hover:text-red-400 transition-colors whitespace-nowrap">Angular</a>
-                <a href="../react/react.html"
-                    class="hover:text-cyan-400 transition-colors whitespace-nowrap font-semibold">React</a>
-                <a href="../nodejs/nodejs.html"
-                    class="hover:text-green-400 transition-colors whitespace-nowrap">Node.js</a>
-                <a href="../rails/rails.html"
-                    class="hover:text-red-600 transition-colors whitespace-nowrap">Rails</a>
-                <a href="../flutter/flutter.html"
-                    class="hover:text-blue-500 transition-colors whitespace-nowrap">Flutter</a>
-                <a href="../php/php.html"
-                    class="hover:text-indigo-400 transition-colors whitespace-nowrap">PHP</a>
-                <a href="../mysql/mysql.html"
-                    class="hover:text-orange-400 transition-colors whitespace-nowrap">MySQL</a>
-                <a href="../nosql/nosql.html"
-                    class="hover:text-teal-400 transition-colors whitespace-nowrap">NoSQL</a>
-                <a href="../devops/devops.html"
-                    class="hover:text-gray-400 transition-colors whitespace-nowrap">DevOps</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-4">
+          <a
+            href="../javascript/javascript.html"
+            class="hover:text-yellow-400 transition-colors whitespace-nowrap"
+            >JavaScript</a
+          >
+          <a
+            href="../typescript/typescript.html"
+            class="hover:text-blue-400 transition-colors whitespace-nowrap"
+            >TypeScript</a
+          >
+          <a
+            href="../practice/practice.html"
+            class="hover:text-purple-400 transition-colors whitespace-nowrap"
+            >Practice</a
+          >
+          <a
+            href="../angular/angular.html"
+            class="hover:text-red-400 transition-colors whitespace-nowrap"
+            >Angular</a
+          >
+          <a
+            href="../react/react.html"
+            class="hover:text-cyan-400 transition-colors whitespace-nowrap font-semibold"
+            >React</a
+          >
+          <a
+            href="../nodejs/nodejs.html"
+            class="hover:text-green-400 transition-colors whitespace-nowrap"
+            >Node.js</a
+          >
+          <a
+            href="../rails/rails.html"
+            class="hover:text-red-600 transition-colors whitespace-nowrap"
+            >Rails</a
+          >
+          <a
+            href="../flutter/flutter.html"
+            class="hover:text-blue-500 transition-colors whitespace-nowrap"
+            >Flutter</a
+          >
+          <a
+            href="../php/php.html"
+            class="hover:text-indigo-400 transition-colors whitespace-nowrap"
+            >PHP</a
+          >
+          <a
+            href="../mysql/mysql.html"
+            class="hover:text-orange-400 transition-colors whitespace-nowrap"
+            >MySQL</a
+          >
+          <a
+            href="../nosql/nosql.html"
+            class="hover:text-teal-400 transition-colors whitespace-nowrap"
+            >NoSQL</a
+          >
+          <a
+            href="../devops/devops.html"
+            class="hover:text-gray-400 transition-colors whitespace-nowrap"
+            >DevOps</a
+          >
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden">
-            <a href="../javascript/javascript.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">JavaScript</a>
-            <a href="../typescript/typescript.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">TypeScript</a>
-            <a href="../practice/practice.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Practice</a>
-            <a href="../angular/angular.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Angular</a>
-            <a href="../react/react.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold">React</a>
-            <a href="../nodejs/nodejs.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Node.js</a>
-            <a href="../rails/rails.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">Rails</a>
-            <a href="../flutter/flutter.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">Flutter</a>
-            <a href="../php/php.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">PHP</a>
-            <a href="../mysql/mysql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">MySQL</a>
-            <a href="../nosql/nosql.html" class="block px-4 py-3 hover:bg-gray-600 transition-colors">NoSQL</a>
-            <a href="../devops/devops.html"
-                class="block px-4 py-3 hover:bg-gray-600 transition-colors">DevOps</a>
-        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-white focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden bg-gray-700 mt-4 rounded-lg overflow-hidden"
+      >
+        <a
+          href="../javascript/javascript.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >JavaScript</a
+        >
+        <a
+          href="../typescript/typescript.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >TypeScript</a
+        >
+        <a
+          href="../practice/practice.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Practice</a
+        >
+        <a
+          href="../angular/angular.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Angular</a
+        >
+        <a
+          href="../react/react.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors font-semibold"
+          >React</a
+        >
+        <a
+          href="../nodejs/nodejs.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Node.js</a
+        >
+        <a
+          href="../rails/rails.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Rails</a
+        >
+        <a
+          href="../flutter/flutter.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >Flutter</a
+        >
+        <a
+          href="../php/php.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >PHP</a
+        >
+        <a
+          href="../mysql/mysql.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >MySQL</a
+        >
+        <a
+          href="../nosql/nosql.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >NoSQL</a
+        >
+        <a
+          href="../devops/devops.html"
+          class="block px-4 py-3 hover:bg-gray-600 transition-colors"
+          >DevOps</a
+        >
+      </div>
     </nav>
 
     <!-- Header -->
     <header class="glass-card shadow-2xl">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-                    <svg class="w-8 h-8 mr-3 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    React Details
-                </h1>
-                <div
-                    class="text-white font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 rounded-full neon-glow">
-                    <span id="totalQuestions">0</span> Questions Available
-                </div>
-            </div>
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+            <svg
+              class="w-8 h-8 mr-3 text-cyan-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            React Details
+          </h1>
+          <div
+            class="text-white font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 rounded-full neon-glow"
+          >
+            <span id="totalQuestions">0</span> Questions Available
+          </div>
         </div>
+      </div>
     </header>
 
     <div class="container mx-auto px-6 py-8">
-
-        <!-- Q&A Interface -->
-        <div id="qaInterface" style="display: none;">
-            <!-- Search Bar -->
-            <div class="mb-8 slide-in-left">
-                <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <div class="flex-1 w-full md:w-auto">
-                            <div class="relative">
-                                <input
-                                    type="text"
-                                    id="searchInput"
-                                    placeholder="🔍 Search React questions..."
-                                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-cyan-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                                >
-                                <svg class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-cyan-300" id="searchResultsCount">0</div>
-                            <div class="text-sm opacity-90 font-medium">Total Questions</div>
-                        </div>
-                    </div>
+      <!-- Q&A Interface -->
+      <div id="qaInterface" style="display: none">
+        <!-- Search Bar -->
+        <div class="mb-8 slide-in-left">
+          <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+            <div
+              class="flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+              <div class="flex-1 w-full md:w-auto">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search React questions..."
+                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-cyan-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
+                  />
+                  <svg
+                    class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
                 </div>
-            </div>
-
-
-            <!-- Q&A Container -->
-            <div id="qaContainer" class="space-y-6 mb-8">
-                <!-- Q&A items will be inserted here -->
-            </div>
-
-            <!-- Pagination Controls -->
-            <div class="flex flex-col items-center space-y-4 mb-8">
-                <div class="flex justify-center items-center space-x-6">
-                    <button id="prevBtn" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                        <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                        </svg>
-                        Previous
-                    </button>
-
-                    <div class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg">
-                        <span class="text-cyan-300">Page <span id="currentPageDisplay">1</span></span>
-                        <span class="text-gray-300 mx-2">of</span>
-                        <span class="text-blue-300"><span id="totalPagesDisplay">1</span></span>
-                        <span class="text-gray-300 ml-4">•</span>
-                        <span class="text-sky-300 ml-4"><span id="totalFilteredDisplay">0</span> results</span>
-                    </div>
-
-                    <button id="nextBtn" class="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
-                        Next
-                        <svg class="w-5 h-5 inline ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </button>
+              </div>
+              <div class="text-center">
+                <div
+                  class="text-2xl font-bold text-cyan-300"
+                  id="searchResultsCount"
+                >
+                  0
                 </div>
-
-                <!-- Jump to Page -->
-                <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
-                    <div class="flex items-center space-x-4">
-                        <span class="text-gray-300 font-medium">Jump to Page:</span>
-                        <input
-                            type="number"
-                            id="jumpToPageInput"
-                            min="1"
-                            max="1"
-                            placeholder="1"
-                            class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-cyan-400 focus:outline-none transition-all duration-300 text-center font-bold"
-                        >
-                        <button id="jumpToPageBtn" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                            Go
-                        </button>
-                    </div>
+                <div class="text-sm opacity-90 font-medium">
+                  Total Questions
                 </div>
+              </div>
             </div>
+          </div>
         </div>
 
+        <!-- Q&A Container -->
+        <div id="qaContainer" class="space-y-6 mb-8">
+          <!-- Q&A items will be inserted here -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex flex-col items-center space-y-4 mb-8">
+          <div class="flex justify-center items-center space-x-6">
+            <button
+              id="prevBtn"
+              class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+            >
+              <svg
+                class="w-5 h-5 inline mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Previous
+            </button>
+
+            <div
+              class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg"
+            >
+              <span class="text-cyan-300"
+                >Page <span id="currentPageDisplay">1</span></span
+              >
+              <span class="text-gray-300 mx-2">of</span>
+              <span class="text-blue-300"
+                ><span id="totalPagesDisplay">1</span></span
+              >
+              <span class="text-gray-300 ml-4">•</span>
+              <span class="text-sky-300 ml-4"
+                ><span id="totalFilteredDisplay">0</span> results</span
+              >
+            </div>
+
+            <button
+              id="nextBtn"
+              class="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+            >
+              Next
+              <svg
+                class="w-5 h-5 inline ml-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Jump to Page -->
+          <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+            <div class="flex items-center space-x-4">
+              <span class="text-gray-300 font-medium">Jump to Page:</span>
+              <input
+                type="number"
+                id="jumpToPageInput"
+                min="1"
+                max="1"
+                placeholder="1"
+                class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-cyan-400 focus:outline-none transition-all duration-300 text-center font-bold"
+              />
+              <button
+                id="jumpToPageBtn"
+                class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Go
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
+      // Initialize page based on URL parameters
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedLevel = urlParams.get("level");
 
-        // Initialize page based on URL parameters
-        document.addEventListener("DOMContentLoaded", () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const selectedLevel = urlParams.get("level");
+        if (
+          selectedLevel &&
+          ["beginner", "intermediate", "advanced"].includes(selectedLevel) &&
+          window[selectedLevel]
+        ) {
+          // Show Q&A content for the selected level
+          showQAContent(selectedLevel);
+        } else {
+          // Redirect to main page
+          window.location.href = "react.html";
+        }
+      });
 
-            if (
-                selectedLevel &&
-                ["beginner", "intermediate", "advanced"].includes(selectedLevel) &&
-                window[selectedLevel]
-            ) {
-                // Show Q&A content for the selected level
-                showQAContent(selectedLevel);
-            } else {
-                // Redirect to main page
-                window.location.href = 'react.html';
-            }
-        });
+      // Function to show Q&A content
+      function showQAContent(level) {
+        const data = window[level];
+        if (!data || data.length === 0) {
+          showErrorMessage();
+          return;
+        }
 
-        // Function to show Q&A content
-        function showQAContent(level) {
-            const data = window[level];
-            if (!data || data.length === 0) {
-                showErrorMessage();
-                return;
-            }
+        // Show Q&A interface
+        document.getElementById("qaInterface").style.display = "block";
 
-            // Show Q&A interface
-            document.getElementById("qaInterface").style.display = "block";
-
-            // Update header
-            const headerTitle = document.querySelector("header h1");
-            headerTitle.innerHTML = `
+        // Update header
+        const headerTitle = document.querySelector("header h1");
+        headerTitle.innerHTML = `
                     <svg class="w-8 h-8 mr-3 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
                     React ${
-                        level.charAt(0).toUpperCase() + level.slice(1)
+                      level.charAt(0).toUpperCase() + level.slice(1)
                     } Level
                 `;
 
-            // Initialize Q&A functionality
-            initializeQA(data, level);
-        }
+        // Initialize Q&A functionality
+        initializeQA(data, level);
+      }
 
-
-        // Function to show error message
-        function showErrorMessage() {
-            const container = document.getElementById("qaContainer");
-            container.innerHTML = `
+      // Function to show error message
+      function showErrorMessage() {
+        const container = document.getElementById("qaContainer");
+        container.innerHTML = `
                     <div class="bg-white bg-opacity-95 border-l-4 border-cyan-500 rounded-2xl p-8 text-center shadow-xl">
                         <div class="text-cyan-600 text-xl font-bold mb-4">
                             <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -352,144 +503,147 @@
                         </p>
                     </div>
                 `;
-        }
+      }
 
-        // Mobile menu toggle functionality
-        document.addEventListener("DOMContentLoaded", () => {
-            const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-            const mobileMenu = document.getElementById("mobileMenu");
+      // Mobile menu toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener("click", () => {
-                    mobileMenu.classList.toggle("hidden");
-                });
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
 
-                // Close mobile menu when clicking outside
-                document.addEventListener("click", (event) => {
-                    if (
-                        !mobileMenuBtn.contains(event.target) &&
-                        !mobileMenu.contains(event.target)
-                    ) {
-                        mobileMenu.classList.add("hidden");
-                    }
-                });
-
-                // Close mobile menu when clicking on a link
-                mobileMenu.addEventListener("click", (event) => {
-                    if (event.target.tagName === "A") {
-                        mobileMenu.classList.add("hidden");
-                    }
-                });
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileMenuBtn.contains(event.target) &&
+              !mobileMenu.contains(event.target)
+            ) {
+              mobileMenu.classList.add("hidden");
             }
-        });
+          });
 
-        // Q&A functionality variables
-        let qaData = [];
-        let filteredData = [];
-        let currentPage = 1;
-        const itemsPerPage = 10;
-        let openAccordions = new Set();
-        let searchTerm = '';
-
-        // Function to initialize Q&A interface
-        function initializeQA(data, level) {
-            qaData = [...data];
-            filteredData = [...qaData];
-            currentPage = 1;
-            openAccordions.clear();
-            searchTerm = '';
-
-            // Update total questions
-            document.getElementById('totalQuestions').textContent = qaData.length;
-
-            // Setup search functionality
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('input', performSearch);
+          // Close mobile menu when clicking on a link
+          mobileMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+              mobileMenu.classList.add("hidden");
             }
+          });
+        }
+      });
 
-            // Setup pagination
-            setupPagination();
+      // Q&A functionality variables
+      let qaData = [];
+      let filteredData = [];
+      let currentPage = 1;
+      const itemsPerPage = 10;
+      let openAccordions = new Set();
+      let searchTerm = "";
 
-            // Render initial page
-            renderCurrentPage();
+      // Function to initialize Q&A interface
+      function initializeQA(data, level) {
+        qaData = [...data];
+        filteredData = [...qaData];
+        currentPage = 1;
+        openAccordions.clear();
+        searchTerm = "";
 
-            // Update search stats
-            updateSearchStats();
+        // Update total questions
+        document.getElementById("totalQuestions").textContent = qaData.length;
+
+        // Setup search functionality
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+          searchInput.addEventListener("input", performSearch);
         }
 
-        // Function to perform search
-        function performSearch() {
-            const searchInput = document.getElementById('searchInput');
-            searchTerm = searchInput.value.toLowerCase().trim();
+        // Setup pagination
+        setupPagination();
 
-            if (searchTerm === '') {
-                filteredData = [...qaData];
-            } else {
-                filteredData = qaData.filter(item =>
-                    item.question.toLowerCase().includes(searchTerm) ||
-                    (typeof item.answer === 'string' && item.answer.toLowerCase().includes(searchTerm))
-                );
-            }
+        // Render initial page
+        renderCurrentPage();
 
-            currentPage = 1;
-            renderCurrentPage();
-            updateSearchStats();
+        // Update search stats
+        updateSearchStats();
+      }
+
+      // Function to perform search
+      function performSearch() {
+        const searchInput = document.getElementById("searchInput");
+        searchTerm = searchInput.value.toLowerCase().trim();
+
+        if (searchTerm === "") {
+          filteredData = [...qaData];
+        } else {
+          filteredData = qaData.filter(
+            (item) =>
+              item.question.toLowerCase().includes(searchTerm) ||
+              (typeof item.answer === "string" &&
+                item.answer.toLowerCase().includes(searchTerm))
+          );
         }
 
-        // Function to update search stats
-        function updateSearchStats() {
-            const searchResultsCount = document.getElementById('searchResultsCount');
-            if (searchResultsCount) {
-                searchResultsCount.textContent = qaData.length;
-            }
+        currentPage = 1;
+        renderCurrentPage();
+        updateSearchStats();
+      }
+
+      // Function to update search stats
+      function updateSearchStats() {
+        const searchResultsCount =
+          document.getElementById("searchResultsCount");
+        if (searchResultsCount) {
+          searchResultsCount.textContent = qaData.length;
         }
+      }
 
-        // Function to get current page data
-        function getCurrentPageData() {
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            return filteredData.slice(startIndex, endIndex);
-        }
+      // Function to get current page data
+      function getCurrentPageData() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return filteredData.slice(startIndex, endIndex);
+      }
 
-        // Function to render current page
-        function renderCurrentPage() {
-            const container = document.getElementById('qaContainer');
-            const currentData = getCurrentPageData();
+      // Function to render current page
+      function renderCurrentPage() {
+        const container = document.getElementById("qaContainer");
+        const currentData = getCurrentPageData();
 
-            if (currentData.length === 0) {
-                container.innerHTML = `
+        if (currentData.length === 0) {
+          container.innerHTML = `
                     <div class="bg-white bg-opacity-95 border-l-4 border-yellow-500 rounded-2xl p-8 text-center shadow-xl">
                         <div class="text-yellow-600 text-xl font-bold mb-4">No Questions Found</div>
                         <p class="text-gray-700">Try adjusting your search terms.</p>
                     </div>
                 `;
-                return;
-            }
-
-            container.innerHTML = currentData.map((item, index) =>
-                createAccordionItem(item, index)
-            ).join('');
-
-            updatePagination();
+          return;
         }
 
-        // Function to create accordion item
-        function createAccordionItem(item, index) {
-            const globalIndex = (currentPage - 1) * itemsPerPage + index;
-            const serialNumber = globalIndex + 1;
-            const isOpen = openAccordions.has(globalIndex);
+        container.innerHTML = currentData
+          .map((item, index) => createAccordionItem(item, index))
+          .join("");
 
-            const colors = [
-                'from-cyan-400 to-blue-400',
-                'from-blue-400 to-teal-400',
-                'from-teal-400 to-cyan-400',
-                'from-sky-400 to-blue-400',
-                'from-blue-400 to-sky-400'
-            ];
-            const colorClass = colors[index % colors.length];
+        updatePagination();
+      }
 
-            return `
+      // Function to create accordion item
+      function createAccordionItem(item, index) {
+        const globalIndex = (currentPage - 1) * itemsPerPage + index;
+        const serialNumber = globalIndex + 1;
+        const isOpen = openAccordions.has(globalIndex);
+
+        const colors = [
+          "from-cyan-400 to-blue-400",
+          "from-blue-400 to-teal-400",
+          "from-teal-400 to-cyan-400",
+          "from-sky-400 to-blue-400",
+          "from-blue-400 to-sky-400",
+        ];
+        const colorClass = colors[index % colors.length];
+
+        return `
                 <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 border-l-4 border-gradient-to-r ${colorClass}">
                     <button
                         class="w-full px-8 py-6 text-left focus:outline-none focus:ring-4 focus:ring-cyan-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50"
@@ -500,16 +654,22 @@
                                 <div class="flex-shrink-0 w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
                                     ${serialNumber}
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800 leading-7">${item.question}</h3>
+                                <h3 class="text-xl font-bold text-gray-800 leading-7">${
+                                  item.question
+                                }</h3>
                             </div>
                             <div class="flex-shrink-0">
-                                <svg class="w-8 h-8 text-cyan-600 transform transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 text-cyan-600 transform transition-transform duration-400 ${
+                                  isOpen ? "rotate-180" : ""
+                                }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                                 </svg>
                             </div>
                         </div>
                     </button>
-                    <div class="accordion-content overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}">
+                    <div class="accordion-content overflow-hidden ${
+                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }">
                         <div class="px-8 pb-6">
                             <div class="bg-gradient-to-r from-cyan-50 via-blue-50 to-teal-50 border-l-4 border-cyan-500 rounded-xl p-6 shadow-inner">
                                 ${formatAnswer(item.answer)}
@@ -518,116 +678,127 @@
                     </div>
                 </div>
             `;
-        }
+      }
 
-        // Function to toggle accordion
-        function toggleAccordion(globalIndex) {
-            if (openAccordions.has(globalIndex)) {
-                openAccordions.delete(globalIndex);
-            } else {
-                openAccordions.add(globalIndex);
+      // Function to toggle accordion
+      function toggleAccordion(globalIndex) {
+        if (openAccordions.has(globalIndex)) {
+          openAccordions.delete(globalIndex);
+        } else {
+          openAccordions.add(globalIndex);
+        }
+        renderCurrentPage();
+      }
+
+      // Function to format answer
+      function formatAnswer(answer) {
+        if (typeof answer === "object" && answer !== null) {
+          if (Array.isArray(answer)) {
+            if (answer.length > 0 && typeof answer[0] === "string") {
+              return `<ul class="list-disc list-inside space-y-2">${answer
+                .map((item) => `<li class="text-gray-700">${item}</li>`)
+                .join("")}</ul>`;
             }
-            renderCurrentPage();
-        }
+            return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(
+              answer,
+              null,
+              2
+            )}</pre>`;
+          } else {
+            const entries = Object.entries(answer);
+            if (entries.length > 0) {
+              let tableHtml =
+                '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+              tableHtml += '<thead><tr class="bg-gray-100">';
+              tableHtml +=
+                '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+              tableHtml +=
+                '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+              tableHtml += "</tr></thead><tbody>";
 
-        // Function to format answer
-        function formatAnswer(answer) {
-            if (typeof answer === 'object' && answer !== null) {
-                if (Array.isArray(answer)) {
-                    if (answer.length > 0 && typeof answer[0] === 'string') {
-                        return `<ul class="list-disc list-inside space-y-2">${answer.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`;
-                    }
-                    return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(answer, null, 2)}</pre>`;
-                } else {
-                    const entries = Object.entries(answer);
-                    if (entries.length > 0) {
-                        let tableHtml = '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
-                        tableHtml += '<thead><tr class="bg-gray-100">';
-                        tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
-                        tableHtml += '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
-                        tableHtml += '</tr></thead><tbody>';
+              entries.forEach(([key, value]) => {
+                tableHtml += `<tr class="hover:bg-gray-50">`;
+                tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                tableHtml += "</tr>";
+              });
 
-                        entries.forEach(([key, value]) => {
-                            tableHtml += `<tr class="hover:bg-gray-50">`;
-                            tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
-                            tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
-                            tableHtml += '</tr>';
-                        });
-
-                        tableHtml += '</tbody></table>';
-                        return tableHtml;
-                    }
-                }
+              tableHtml += "</tbody></table>";
+              return tableHtml;
             }
-            return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+          }
+        }
+        return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+      }
+
+      // Function to setup pagination
+      function setupPagination() {
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const jumpInput = document.getElementById("jumpToPageInput");
+
+        if (prevBtn)
+          prevBtn.addEventListener("click", () => changePage("prev"));
+        if (nextBtn)
+          nextBtn.addEventListener("click", () => changePage("next"));
+        if (jumpInput) {
+          jumpInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") jumpToPage();
+          });
+          const jumpBtn = document.getElementById("jumpToPageBtn");
+          if (jumpBtn) jumpBtn.addEventListener("click", jumpToPage);
+        }
+      }
+
+      // Function to change page
+      function changePage(direction) {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        if (direction === "next" && currentPage < totalPages) {
+          currentPage++;
+        } else if (direction === "prev" && currentPage > 1) {
+          currentPage--;
+        }
+        renderCurrentPage();
+        updatePagination();
+      }
+
+      // Function to jump to page
+      function jumpToPage() {
+        const jumpInput = document.getElementById("jumpToPageInput");
+        const pageNumber = parseInt(jumpInput.value);
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+          jumpInput.classList.add("border-red-500", "bg-red-50");
+          setTimeout(() => {
+            jumpInput.classList.remove("border-red-500", "bg-red-50");
+          }, 1000);
+          return;
         }
 
-        // Function to setup pagination
-        function setupPagination() {
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const jumpInput = document.getElementById('jumpToPageInput');
+        currentPage = pageNumber;
+        renderCurrentPage();
+        updatePagination();
+        jumpInput.value = "";
+        jumpInput.placeholder = currentPage.toString();
+      }
 
-            if (prevBtn) prevBtn.addEventListener('click', () => changePage('prev'));
-            if (nextBtn) nextBtn.addEventListener('click', () => changePage('next'));
-            if (jumpInput) {
-                jumpInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') jumpToPage();
-                });
-                const jumpBtn = document.getElementById('jumpToPageBtn');
-                if (jumpBtn) jumpBtn.addEventListener('click', jumpToPage);
-            }
-        }
+      // Function to update pagination
+      function updatePagination() {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const jumpInput = document.getElementById("jumpToPageInput");
+        const currentPageDisplay =
+          document.getElementById("currentPageDisplay");
+        const totalPagesDisplay = document.getElementById("totalPagesDisplay");
 
-        // Function to change page
-        function changePage(direction) {
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            if (direction === 'next' && currentPage < totalPages) {
-                currentPage++;
-            } else if (direction === 'prev' && currentPage > 1) {
-                currentPage--;
-            }
-            renderCurrentPage();
-            updatePagination();
-        }
-
-        // Function to jump to page
-        function jumpToPage() {
-            const jumpInput = document.getElementById('jumpToPageInput');
-            const pageNumber = parseInt(jumpInput.value);
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-
-            if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
-                jumpInput.classList.add('border-red-500', 'bg-red-50');
-                setTimeout(() => {
-                    jumpInput.classList.remove('border-red-500', 'bg-red-50');
-                }, 1000);
-                return;
-            }
-
-            currentPage = pageNumber;
-            renderCurrentPage();
-            updatePagination();
-            jumpInput.value = '';
-            jumpInput.placeholder = currentPage.toString();
-        }
-
-        // Function to update pagination
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const jumpInput = document.getElementById('jumpToPageInput');
-            const currentPageDisplay = document.getElementById('currentPageDisplay');
-            const totalPagesDisplay = document.getElementById('totalPagesDisplay');
-
-            if (prevBtn) prevBtn.disabled = currentPage === 1;
-            if (nextBtn) nextBtn.disabled = currentPage === totalPages;
-            if (jumpInput) jumpInput.max = totalPages;
-            if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
-            if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
-        }
+        if (prevBtn) prevBtn.disabled = currentPage === 1;
+        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+        if (jumpInput) jumpInput.max = totalPages;
+        if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
+        if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
+      }
     </script>
-</body>
-
+  </body>
 </html>

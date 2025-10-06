@@ -10,111 +10,110 @@
     <script src="js/devops-advanced.js"></script>
     <!-- Level-specific scripts will be loaded dynamically -->
     <style>
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
         }
 
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
         }
 
-        @keyframes expandAnswer {
-            from {
-                opacity: 0;
-                max-height: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                max-height: 300px;
-                transform: translateY(0);
-            }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
         }
 
-        @keyframes waveEffect {
-            0% {
-                background-position: 0% 50%;
-            }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+      @keyframes expandAnswer {
+        from {
+          opacity: 0;
+          max-height: 0;
+          transform: translateY(-20px);
         }
 
-        @keyframes float {
+        to {
+          opacity: 1;
+          max-height: 300px;
+          transform: translateY(0);
+        }
+      }
 
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+      @keyframes waveEffect {
+        0% {
+          background-position: 0% 50%;
         }
 
-        .slide-in-left {
-            animation: slideInLeft 0.7s ease-out forwards;
+        50% {
+          background-position: 100% 50%;
         }
 
-        .bounce-in {
-            animation: bounceIn 0.8s ease-out forwards;
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
         }
 
-        .expand-answer {
-            animation: expandAnswer 0.5s ease-out forwards;
+        50% {
+          transform: translateY(-10px);
         }
+      }
 
-        .wave-bg {
-            background: linear-gradient(-45deg, #6b7280, #4b5563, #374151, #1f2937);
-            background-size: 400% 400%;
-            animation: waveEffect 12s ease infinite;
-        }
+      .slide-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
 
-        .float-effect:hover {
-            animation: float 2s ease-in-out infinite;
-        }
+      .bounce-in {
+        animation: bounceIn 0.8s ease-out forwards;
+      }
 
-        .glass-card {
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+      .expand-answer {
+        animation: expandAnswer 0.5s ease-out forwards;
+      }
 
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(107, 114, 128, 0.5);
-        }
+      .wave-bg {
+        background: linear-gradient(-45deg, #6b7280, #4b5563, #374151, #1f2937);
+        background-size: 400% 400%;
+        animation: waveEffect 12s ease infinite;
+      }
 
-        .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(107, 114, 128, 0.8);
-        }
+      .float-effect:hover {
+        animation: float 2s ease-in-out infinite;
+      }
+
+      .glass-card {
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(107, 114, 128, 0.5);
+      }
+
+      .neon-glow:hover {
+        box-shadow: 0 0 30px rgba(107, 114, 128, 0.8);
+      }
     </style>
   </head>
   <body class="wave-bg min-h-screen">
@@ -311,21 +310,42 @@
       <!-- Level Selection Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
         <!-- Beginner Level -->
-        <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('beginner')">
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('beginner')"
+        >
           <div class="text-center">
             <div
               class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
             >
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 text-green-300">Beginner Level</h3>
+            <h3 class="text-2xl font-bold mb-4 text-green-300">
+              Beginner Level
+            </h3>
             <p class="text-gray-300 mb-6 leading-relaxed">
-              Start your DevOps journey with fundamental concepts like DevOps principles, CI/CD, Docker, containers, and Kubernetes basics.
+              Start your DevOps journey with fundamental concepts like DevOps
+              principles, CI/CD, Docker, containers, and Kubernetes basics.
             </p>
             <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div class="text-3xl font-bold text-green-300 mb-2" id="beginnerCount">0</div>
+              <div
+                class="text-3xl font-bold text-green-300 mb-2"
+                id="beginnerCount"
+              >
+                0
+              </div>
               <div class="text-sm opacity-90 font-medium">Questions</div>
             </div>
             <div
@@ -337,21 +357,43 @@
         </div>
 
         <!-- Intermediate Level -->
-        <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('intermediate')">
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('intermediate')"
+        >
           <div class="text-center">
             <div
               class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
             >
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 text-yellow-300">Intermediate Level</h3>
+            <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+              Intermediate Level
+            </h3>
             <p class="text-gray-300 mb-6 leading-relaxed">
-              Dive deeper into DevOps tools and practices including Infrastructure as Code, Git, monitoring, and automation with Jenkins.
+              Dive deeper into DevOps tools and practices including
+              Infrastructure as Code, Git, monitoring, and automation with
+              Jenkins.
             </p>
             <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div class="text-3xl font-bold text-yellow-300 mb-2" id="intermediateCount">0</div>
+              <div
+                class="text-3xl font-bold text-yellow-300 mb-2"
+                id="intermediateCount"
+              >
+                0
+              </div>
               <div class="text-sm opacity-90 font-medium">Questions</div>
             </div>
             <div
@@ -363,21 +405,41 @@
         </div>
 
         <!-- Advanced Level -->
-        <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer" onclick="selectLevel('advanced')">
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="selectLevel('advanced')"
+        >
           <div class="text-center">
             <div
               class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
             >
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
               </svg>
             </div>
             <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
             <p class="text-gray-300 mb-6 leading-relaxed">
-              Master advanced DevOps concepts including configuration management with Ansible, infrastructure provisioning with Terraform, and cloud architectures.
+              Master advanced DevOps concepts including configuration management
+              with Ansible, infrastructure provisioning with Terraform, and
+              cloud architectures.
             </p>
             <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-              <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
+              <div
+                class="text-3xl font-bold text-red-300 mb-2"
+                id="advancedCount"
+              >
+                0
+              </div>
               <div class="text-sm opacity-90 font-medium">Questions</div>
             </div>
             <div
@@ -390,17 +452,25 @@
       </div>
 
       <!-- Quick Stats -->
-      <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
+      <div
+        class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
+      >
         <div class="text-center">
           <h3 class="text-xl font-bold mb-4">DevOps Learning Path</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center">
               <div class="text-2xl font-bold text-green-300 mb-2">Beginner</div>
-              <div class="text-sm opacity-90">DevOps Basics, CI/CD, Containers</div>
+              <div class="text-sm opacity-90">
+                DevOps Basics, CI/CD, Containers
+              </div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-yellow-300 mb-2">Intermediate</div>
-              <div class="text-sm opacity-90">IaC, Git, Monitoring, Jenkins</div>
+              <div class="text-2xl font-bold text-yellow-300 mb-2">
+                Intermediate
+              </div>
+              <div class="text-sm opacity-90">
+                IaC, Git, Monitoring, Jenkins
+              </div>
             </div>
             <div class="text-center">
               <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
@@ -486,7 +556,7 @@
       // Function to select a level and navigate to the Q&A page
       function selectLevel(level) {
         // Load the appropriate script dynamically
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = `js/devops-${level}.js`;
         script.onload = function () {
           // Once script is loaded, navigate to the Q&A page
@@ -501,11 +571,19 @@
       // Initialize page
       document.addEventListener("DOMContentLoaded", () => {
         // Update question counts
-        document.getElementById("beginnerCount").textContent = window.beginner ? window.beginner.length : 0;
-        document.getElementById("intermediateCount").textContent = window.intermediate ? window.intermediate.length : 0;
-        document.getElementById("advancedCount").textContent = window.advanced ? window.advanced.length : 0;
+        document.getElementById("beginnerCount").textContent = window.beginner
+          ? window.beginner.length
+          : 0;
+        document.getElementById("intermediateCount").textContent =
+          window.intermediate ? window.intermediate.length : 0;
+        document.getElementById("advancedCount").textContent = window.advanced
+          ? window.advanced.length
+          : 0;
 
-        const total = (window.beginner ? window.beginner.length : 0) + (window.intermediate ? window.intermediate.length : 0) + (window.advanced ? window.advanced.length : 0);
+        const total =
+          (window.beginner ? window.beginner.length : 0) +
+          (window.intermediate ? window.intermediate.length : 0) +
+          (window.advanced ? window.advanced.length : 0);
         document.getElementById("totalQuestions").textContent = total;
       });
 

@@ -283,15 +283,22 @@
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
-            <svg class="w-8 h-8 mr-3 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
+            <svg
+              class="w-8 h-8 mr-3 text-purple-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
                 d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-                clip-rule="evenodd" />
+                clip-rule="evenodd"
+              />
             </svg>
             Practice Levels
           </h1>
           <div
-            class="text-white font-semibold bg-gradient-to-r from-purple-400 to-pink-500 px-4 py-2 rounded-full neon-glow">
+            class="text-white font-semibold bg-gradient-to-r from-purple-400 to-pink-500 px-4 py-2 rounded-full neon-glow"
+          >
             Choose Your Level
           </div>
         </div>
@@ -299,162 +306,234 @@
     </header>
 
     <div class="container mx-auto px-6 py-8">
-        <!-- Level Selection Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Beginner Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="navigateToLevel('beginner')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-purple-300">Beginner Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Start with fundamental JavaScript concepts including type checking, operators, object copying,
-                        and event delegation.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-purple-300 mb-2" id="beginnerCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                        Start Practicing
-                    </div>
-                </div>
+      <!-- Level Selection Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Beginner Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('beginner')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
             </div>
-
-            <!-- Intermediate Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="navigateToLevel('intermediate')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-pink-300">Intermediate Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Dive into array manipulation, closures, type conversion, function binding, and object property
-                        checking techniques.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-pink-300 mb-2" id="intermediateCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-pink-500 to-red-600 text-white font-bold py-3 px-6 rounded-xl hover:from-pink-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105">
-                        Continue Practicing
-                    </div>
-                </div>
+            <h3 class="text-2xl font-bold mb-4 text-purple-300">
+              Beginner Level
+            </h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Start with fundamental JavaScript concepts including type
+              checking, operators, object copying, and event delegation.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-purple-300 mb-2"
+                id="beginnerCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
             </div>
-
-            <!-- Advanced Level -->
-            <div class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
-                onclick="navigateToLevel('advanced')">
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Master advanced JavaScript concepts including variable scoping, asynchronous operations, event
-                        loop, promises, and destructuring.
-                    </p>
-                    <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
-                        <div class="text-3xl font-bold text-red-300 mb-2" id="advancedCount">0</div>
-                        <div class="text-sm opacity-90 font-medium">Questions</div>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-red-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                        Master JS
-                    </div>
-                </div>
+            <div
+              class="bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+            >
+              Start Practicing
             </div>
+          </div>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left">
+        <!-- Intermediate Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('intermediate')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-pink-300">
+              Intermediate Level
+            </h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Dive into array manipulation, closures, type conversion, function
+              binding, and object property checking techniques.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-pink-300 mb-2"
+                id="intermediateCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-pink-500 to-red-600 text-white font-bold py-3 px-6 rounded-xl hover:from-pink-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
+            >
+              Continue Practicing
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Level -->
+        <div
+          class="glass-card rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 float-effect cursor-pointer"
+          onclick="navigateToLevel('advanced')"
+        >
+          <div class="text-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-red-300">Advanced Level</h3>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              Master advanced JavaScript concepts including variable scoping,
+              asynchronous operations, event loop, promises, and destructuring.
+            </p>
+            <div class="bg-white bg-opacity-20 rounded-xl p-4 mb-6">
+              <div
+                class="text-3xl font-bold text-red-300 mb-2"
+                id="advancedCount"
+              >
+                0
+              </div>
+              <div class="text-sm opacity-90 font-medium">Questions</div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-red-500 to-orange-600 text-white font-bold py-3 px-6 rounded-xl hover:from-red-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105"
+            >
+              Master JS
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div
+        class="glass-card rounded-3xl p-6 text-white shadow-2xl slide-in-left"
+      >
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-4">JavaScript Practice Path</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center">
-                <h3 class="text-xl font-bold mb-4">JavaScript Practice Path</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-purple-300 mb-2">Beginner</div>
-                        <div class="text-sm opacity-90">Core Concepts, Operators</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-pink-300 mb-2">Intermediate</div>
-                        <div class="text-sm opacity-90">Arrays, Functions, Objects</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
-                        <div class="text-sm opacity-90">Async, Scoping, Patterns</div>
-                    </div>
-                </div>
+              <div class="text-2xl font-bold text-purple-300 mb-2">
+                Beginner
+              </div>
+              <div class="text-sm opacity-90">Core Concepts, Operators</div>
             </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-pink-300 mb-2">
+                Intermediate
+              </div>
+              <div class="text-sm opacity-90">Arrays, Functions, Objects</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-red-300 mb-2">Advanced</div>
+              <div class="text-sm opacity-90">Async, Scoping, Patterns</div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script>
-        // Load question counts
-        function loadQuestionCounts() {
-            if (window.beginner) {
-                document.getElementById('beginnerCount').textContent = window.beginner.length;
-            }
-            if (window.intermediate) {
-                document.getElementById('intermediateCount').textContent = window.intermediate.length;
-            }
-            if (window.advanced) {
-                document.getElementById('advancedCount').textContent = window.advanced.length;
-            }
+      // Load question counts
+      function loadQuestionCounts() {
+        if (window.beginner) {
+          document.getElementById("beginnerCount").textContent =
+            window.beginner.length;
         }
-
-        // Navigate to specific level
-        function navigateToLevel(level) {
-            // Store the selected level in localStorage or URL params
-            localStorage.setItem('practiceLevel', level);
-            // Redirect to practice-details.html with level parameter
-            window.location.href = `practice-details.html?level=${level}`;
+        if (window.intermediate) {
+          document.getElementById("intermediateCount").textContent =
+            window.intermediate.length;
         }
+        if (window.advanced) {
+          document.getElementById("advancedCount").textContent =
+            window.advanced.length;
+        }
+      }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadQuestionCounts();
-        });
+      // Navigate to specific level
+      function navigateToLevel(level) {
+        // Store the selected level in localStorage or URL params
+        localStorage.setItem("practiceLevel", level);
+        // Redirect to practice-details.html with level parameter
+        window.location.href = `practice-details.html?level=${level}`;
+      }
 
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", () => {
+        loadQuestionCounts();
+      });
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+      // Mobile menu toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', (event) => {
-                    if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
 
-                // Close mobile menu when clicking on a link
-                mobileMenu.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'A') {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileMenuBtn.contains(event.target) &&
+              !mobileMenu.contains(event.target)
+            ) {
+              mobileMenu.classList.add("hidden");
             }
-        });
+          });
+
+          // Close mobile menu when clicking on a link
+          mobileMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+        }
+      });
     </script>
+  </body>
+</html>
