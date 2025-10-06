@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NoSQL Q&A Hub</title>
+    <title>NoSQL Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Level-specific script will be loaded dynamically -->
+    <script src="js/nosql-beginner.js"></script>
+    <script src="js/nosql-intermediate.js"></script>
+    <script src="js/nosql-advanced.js"></script>
     <style>
       @keyframes slideInLeft {
         from {
@@ -281,13 +283,90 @@
     <header class="glass-card shadow-2xl">
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-4">
+          <h1 class="text-3xl font-bold text-white flex items-center bounce-in">
+            <svg
+              class="w-8 h-8 mr-3 text-teal-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            NoSQL Details
+          </h1>
+          <div
+            class="text-white font-semibold bg-gradient-to-r from-teal-400 to-cyan-500 px-4 py-2 rounded-full neon-glow"
+          >
+            <span id="totalQuestions">0</span> Questions Available
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+      <!-- Q&A Interface -->
+      <div id="qaInterface" style="display: none">
+        <!-- Search Bar -->
+        <div class="mb-8 slide-in-left">
+          <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
+            <div
+              class="flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+              <div class="flex-1 w-full md:w-auto">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search NoSQL questions..."
+                    class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-teal-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
+                  />
+                  <svg
+                    class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="text-center">
+                <div
+                  class="text-2xl font-bold text-teal-300"
+                  id="searchResultsCount"
+                >
+                  0
+                </div>
+                <div class="text-sm opacity-90 font-medium">
+                  Total Questions
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q&A Container -->
+        <div id="qaContainer" class="space-y-6 mb-8">
+          <!-- Q&A items will be inserted here -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex flex-col items-center space-y-4 mb-8">
+          <div class="flex justify-center items-center space-x-6">
             <button
-              onclick="goBackToLevels()"
-              class="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              id="prevBtn"
+              class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
             >
               <svg
-                class="w-5 h-5 inline mr-2"
+                class="w-5 h-5 inline mr-3"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -299,423 +378,206 @@
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Back to Levels
+              Previous
             </button>
-            <h1
-              class="text-3xl font-bold text-white flex items-center bounce-in"
+
+            <div
+              class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg"
             >
+              <span class="text-teal-300"
+                >Page <span id="currentPageDisplay">1</span></span
+              >
+              <span class="text-gray-300 mx-2">of</span>
+              <span class="text-cyan-300"
+                ><span id="totalPagesDisplay">1</span></span
+              >
+              <span class="text-gray-300 ml-4">•</span>
+              <span class="text-emerald-300 ml-4"
+                ><span id="totalFilteredDisplay">0</span> results</span
+              >
+            </div>
+
+            <button
+              id="nextBtn"
+              class="bg-gradient-to-r from-cyan-500 to-emerald-600 hover:from-cyan-600 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+            >
+              Next
               <svg
-                class="w-8 h-8 mr-3 text-teal-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+                class="w-5 h-5 inline ml-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
                 />
               </svg>
-              NoSQL Q&A Hub
-            </h1>
-          </div>
-          <div
-            class="text-white font-semibold bg-gradient-to-r from-teal-400 to-cyan-500 px-4 py-2 rounded-full neon-glow"
-          >
-            <span id="totalQuestions">0</span> Questions Ready
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="container mx-auto px-6 py-8">
-      <!-- Search Bar -->
-      <div class="mb-8 slide-in-left">
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-          <div
-            class="flex flex-col md:flex-row items-center justify-between gap-4"
-          >
-            <div class="flex-1 w-full md:w-auto">
-              <div class="relative">
-                <input
-                  type="text"
-                  id="searchInput"
-                  placeholder="🔍 Search NoSQL questions..."
-                  class="w-full px-6 py-4 pl-12 text-gray-800 bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-transparent focus:border-teal-400 focus:outline-none transition-all duration-300 shadow-lg text-lg"
-                />
-                <svg
-                  class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="text-center">
-              <div
-                class="text-2xl font-bold text-teal-300"
-                id="searchResultsCount"
-              >
-                15
-              </div>
-              <div class="text-sm opacity-90 font-medium">Total Questions</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats Dashboard -->
-      <div class="mb-8 slide-in-left">
-        <div class="glass-card rounded-3xl p-6 text-white shadow-2xl">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-teal-300 mb-2"
-                id="currentPage"
-              >
-                1
-              </div>
-              <div class="text-sm opacity-90 font-medium">Current Page</div>
-              <div class="w-12 h-1 bg-teal-400 mx-auto mt-2 rounded-full"></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-cyan-300 mb-2"
-                id="displayedCount"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Showing Now</div>
-              <div class="w-12 h-1 bg-cyan-400 mx-auto mt-2 rounded-full"></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-emerald-300 mb-2"
-                id="totalPages"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">Total Pages</div>
-              <div
-                class="w-12 h-1 bg-emerald-400 mx-auto mt-2 rounded-full"
-              ></div>
-            </div>
-            <div class="text-center float-effect">
-              <div
-                class="text-4xl font-bold text-green-300 mb-2"
-                id="totalQuestions"
-              >
-                0
-              </div>
-              <div class="text-sm opacity-90 font-medium">All Questions</div>
-              <div
-                class="w-12 h-1 bg-green-400 mx-auto mt-2 rounded-full"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q&A Container -->
-      <div id="qaContainer" class="space-y-6 mb-8">
-        <!-- Q&A items will be inserted here -->
-      </div>
-
-      <!-- Pagination Controls -->
-      <div class="flex flex-col items-center space-y-4 mb-8">
-        <div class="flex justify-center items-center space-x-6">
-          <button
-            id="prevBtn"
-            class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-          >
-            <svg
-              class="w-5 h-5 inline mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Previous
-          </button>
-
-          <div
-            class="glass-card px-8 py-4 rounded-2xl text-white font-bold text-xl shadow-lg"
-          >
-            <span class="text-teal-300"
-              >Page <span id="currentPageDisplay">1</span></span
-            >
-            <span class="text-gray-300 mx-2">of</span>
-            <span class="text-cyan-300"
-              ><span id="totalPagesDisplay">5</span></span
-            >
-            <span class="text-gray-300 ml-4">•</span>
-            <span class="text-emerald-300 ml-4"
-              ><span id="totalFilteredDisplay">15</span> results</span
-            >
-          </div>
-
-          <button
-            id="nextBtn"
-            class="bg-gradient-to-r from-cyan-500 to-emerald-600 hover:from-cyan-600 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-          >
-            Next
-            <svg
-              class="w-5 h-5 inline ml-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Jump to Page -->
-        <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
-          <div class="flex items-center space-x-4">
-            <span class="text-gray-300 font-medium">Jump to Page:</span>
-            <input
-              type="number"
-              id="jumpToPageInput"
-              min="1"
-              max="1"
-              placeholder="1"
-              class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-teal-400 focus:outline-none transition-all duration-300 text-center font-bold"
-            />
-            <button
-              id="jumpToPageBtn"
-              class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              Go
             </button>
           </div>
-        </div>
-      </div>
 
-      <!-- Loading Indicator -->
-      <div
-        id="loadingIndicator"
-        class="hidden flex justify-center items-center py-12"
-      >
-        <div class="relative">
-          <div
-            class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"
-          ></div>
-          <div
-            class="absolute inset-0 rounded-full h-16 w-16 border-4 border-teal-400 border-b-transparent animate-ping"
-          ></div>
+          <!-- Jump to Page -->
+          <div class="glass-card px-6 py-4 rounded-2xl text-white shadow-lg">
+            <div class="flex items-center space-x-4">
+              <span class="text-gray-300 font-medium">Jump to Page:</span>
+              <input
+                type="number"
+                id="jumpToPageInput"
+                min="1"
+                max="1"
+                placeholder="1"
+                class="w-20 px-3 py-2 text-gray-800 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-transparent focus:border-teal-400 focus:outline-none transition-all duration-300 text-center font-bold"
+              />
+              <button
+                id="jumpToPageBtn"
+                class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Go
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="glass-card mt-16">
-      <div class="container mx-auto px-6 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Developer Info -->
-          <div class="text-center md:text-left">
-            <h3 class="text-xl font-bold text-white mb-4">Developer</h3>
-            <div class="text-gray-300">
-              <p class="font-semibold text-lg">Harikrishnan. R</p>
-              <p class="text-sm">📧 harikrishnanrlive@gmail.com</p>
-              <p class="text-xs mt-2 opacity-80 italic">
-                If any changes or corrections are required, please contact me.
-              </p>
-            </div>
-          </div>
-
-          <!-- Visitor Stats -->
-          <div class="text-center">
-            <h3 class="text-xl font-bold text-white mb-4">Visitor Stats</h3>
-            <div class="bg-white bg-opacity-10 rounded-xl p-4 backdrop-blur-sm">
-              <div
-                class="text-3xl font-bold text-teal-300 mb-2"
-                id="visitCount"
-              >
-                0
-              </div>
-              <div class="text-sm text-gray-400">Your Visits</div>
-              <div class="text-xs text-gray-500 mt-1" id="lastVisit">
-                First visit!
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div class="text-center md:text-right">
-            <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
-            <div class="space-y-2">
-              <a
-                href="../index.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >🏠 Home</a
-              >
-              <a
-                href="../javascript/javascript.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >📚 JavaScript</a
-              >
-              <a
-                href="../react/react.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >⚛️ React</a
-              >
-              <a
-                href="../angular/angular.html"
-                class="block text-gray-300 hover:text-white transition-colors"
-                >🅰️ Angular</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="border-t border-white border-opacity-20 mt-8 pt-6 text-center"
-        >
-          <p class="text-gray-400 text-sm">
-            © 2024 Tech Learning Hub. Built with ❤️ for developers.
-          </p>
-        </div>
-      </div>
-    </footer>
-
     <script>
-      // Global variables
+      // Initialize page based on URL parameters
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedLevel = urlParams.get("level");
+
+        if (
+          selectedLevel &&
+          ["beginner", "intermediate", "advanced"].includes(selectedLevel) &&
+          window[selectedLevel]
+        ) {
+          // Show Q&A content for the selected level
+          showQAContent(selectedLevel);
+        } else {
+          // Redirect to main page
+          window.location.href = "nosql.html";
+        }
+      });
+
+      // Function to show Q&A content
+      function showQAContent(level) {
+        const data = window[level];
+        if (!data || data.length === 0) {
+          showErrorMessage();
+          return;
+        }
+
+        // Show Q&A interface
+        document.getElementById("qaInterface").style.display = "block";
+
+        // Update header
+        const headerTitle = document.querySelector("header h1");
+        headerTitle.innerHTML = `
+                    <svg class="w-8 h-8 mr-3 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    NoSQL ${
+                      level.charAt(0).toUpperCase() + level.slice(1)
+                    } Level
+                `;
+
+        // Initialize Q&A functionality
+        initializeQA(data, level);
+      }
+
+      // Function to show error message
+      function showErrorMessage() {
+        const container = document.getElementById("qaContainer");
+        container.innerHTML = `
+                    <div class="bg-white bg-opacity-95 border-l-4 border-teal-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-teal-600 text-xl font-bold mb-4">
+                            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            No Questions Available
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Could not load questions for this level. Please try selecting a different level.
+                        </p>
+                    </div>
+                `;
+      }
+
+      // Mobile menu toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileMenuBtn.contains(event.target) &&
+              !mobileMenu.contains(event.target)
+            ) {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+
+          // Close mobile menu when clicking on a link
+          mobileMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+        }
+      });
+
+      // Q&A functionality variables
+      let qaData = [];
       let filteredData = [];
-      let isDataLoaded = false;
       let currentPage = 1;
       const itemsPerPage = 10;
       let openAccordions = new Set();
       let searchTerm = "";
 
-      // Function to go back to levels page
-      function goBackToLevels() {
-        window.location.href = "nosql.html";
-      }
+      // Function to initialize Q&A interface
+      function initializeQA(data, level) {
+        qaData = [...data];
+        filteredData = [...qaData];
+        currentPage = 1;
+        openAccordions.clear();
+        searchTerm = "";
 
-      // Function to load JSON data
-      async function loadNoSQLData() {
-        showLoading();
-        try {
-          const urlParams = new URLSearchParams(window.location.search);
-          const selectedLevel = urlParams.get("level");
+        // Update total questions
+        document.getElementById("totalQuestions").textContent = qaData.length;
 
-          if (
-            selectedLevel &&
-            ["beginner", "intermediate", "advanced"].includes(selectedLevel)
-          ) {
-            // Load the appropriate script dynamically
-            const script = document.createElement("script");
-            script.src = `js/nosql-${selectedLevel}.js`;
-            script.onload = function () {
-              // Once script is loaded, set up the data
-              isDataLoaded = true;
-              filteredData = [...window[selectedLevel]];
-
-              // Update page title to reflect the level
-              document.title = `NoSQL ${
-                selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)
-              } Q&A Hub`;
-
-              // Update header
-              const headerTitle = document.querySelector("header h1");
-              if (headerTitle) {
-                headerTitle.innerHTML = `
-                                <svg class="w-8 h-8 mr-3 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                NoSQL ${
-                                  selectedLevel.charAt(0).toUpperCase() +
-                                  selectedLevel.slice(1)
-                                } Level
-                            `;
-              }
-
-              hideLoading();
-              renderCurrentPage();
-              updateSearchStats();
-              setupSearch();
-            };
-            script.onerror = function () {
-              console.error(`Failed to load ${selectedLevel} level data`);
-              hideLoading();
-              showErrorMessage();
-            };
-            document.head.appendChild(script);
-          } else {
-            // Default behavior - show all questions or redirect to details page
-            window.location.href = "nosql.html";
-            return;
-          }
-        } catch (error) {
-          console.error("Error loading NoSQL data:", error);
-          hideLoading();
-          showErrorMessage();
+        // Setup search functionality
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+          searchInput.addEventListener("input", performSearch);
         }
+
+        // Setup pagination
+        setupPagination();
+
+        // Render initial page
+        renderCurrentPage();
+
+        // Update search stats
+        updateSearchStats();
       }
 
-      function showErrorMessage() {
-        const container = document.getElementById("qaContainer");
-        container.innerHTML = `
-                <div class="bg-white bg-opacity-95 border-l-4 border-teal-500 rounded-2xl p-8 text-center shadow-xl">
-                    <div class="text-teal-600 text-xl font-bold mb-4">
-                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        Oops! Unable to Load NoSQL Data
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">
-                        Could not load <span class="font-mono bg-gray-100 px-2 py-1 rounded">js/"inline-block text-left">
-                        • The file exists in the qa-js directory<br>
-                        • The file contains valid JavaScript syntax<br>
-                        • The nosqlData variable is properly defined
-                    </p>
-                </div>
-            `;
-      }
-
-      function getTotalPages() {
-        return Math.ceil(filteredData.length / itemsPerPage);
-      }
-
-      function getCurrentPageData() {
-        if (!isDataLoaded || filteredData.length === 0) return [];
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return filteredData.slice(startIndex, endIndex);
-      }
-
-      // Search functionality
+      // Function to perform search
       function performSearch() {
         const searchInput = document.getElementById("searchInput");
         searchTerm = searchInput.value.toLowerCase().trim();
 
-        // Get the original level data for searching
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedLevel = urlParams.get("level");
-        const originalData = window[selectedLevel] || [];
-
         if (searchTerm === "") {
-          filteredData = [...originalData];
+          filteredData = [...qaData];
         } else {
-          filteredData = originalData.filter(
+          filteredData = qaData.filter(
             (item) =>
               item.question.toLowerCase().includes(searchTerm) ||
               (typeof item.answer === "string" &&
@@ -723,34 +585,53 @@
           );
         }
 
-        currentPage = 1; // Reset to first page when searching
+        currentPage = 1;
         renderCurrentPage();
         updateSearchStats();
       }
 
+      // Function to update search stats
       function updateSearchStats() {
-        document.getElementById("searchResultsCount").textContent =
-          filteredData.length;
-        document.getElementById("totalFilteredDisplay").textContent =
-          filteredData.length;
+        const searchResultsCount =
+          document.getElementById("searchResultsCount");
+        if (searchResultsCount) {
+          searchResultsCount.textContent = qaData.length;
+        }
       }
 
-      function setupSearch() {
-        const searchInput = document.getElementById("searchInput");
-        let searchTimeout;
-
-        // Real-time search with debouncing
-        searchInput.addEventListener("input", () => {
-          clearTimeout(searchTimeout);
-          searchTimeout = setTimeout(() => {
-            performSearch();
-          }, 300); // Debounce search for better performance
-        });
+      // Function to get current page data
+      function getCurrentPageData() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return filteredData.slice(startIndex, endIndex);
       }
 
+      // Function to render current page
+      function renderCurrentPage() {
+        const container = document.getElementById("qaContainer");
+        const currentData = getCurrentPageData();
+
+        if (currentData.length === 0) {
+          container.innerHTML = `
+                    <div class="bg-white bg-opacity-95 border-l-4 border-yellow-500 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="text-yellow-600 text-xl font-bold mb-4">No Questions Found</div>
+                        <p class="text-gray-700">Try adjusting your search terms.</p>
+                    </div>
+                `;
+          return;
+        }
+
+        container.innerHTML = currentData
+          .map((item, index) => createAccordionItem(item, index))
+          .join("");
+
+        updatePagination();
+      }
+
+      // Function to create accordion item
       function createAccordionItem(item, index) {
         const globalIndex = (currentPage - 1) * itemsPerPage + index;
-        const serialNumber = (currentPage - 1) * itemsPerPage + index + 1;
+        const serialNumber = globalIndex + 1;
         const isOpen = openAccordions.has(globalIndex);
 
         const colors = [
@@ -791,9 +672,7 @@
                     }">
                         <div class="px-8 pb-6">
                             <div class="bg-gradient-to-r from-teal-50 via-cyan-50 to-emerald-50 border-l-4 border-teal-500 rounded-xl p-6 shadow-inner">
-                                <p class="leading-relaxed text-gray-800 font-medium text-lg">${
-                                  item.answer
-                                }</p>
+                                ${formatAnswer(item.answer)}
                             </div>
                         </div>
                     </div>
@@ -801,6 +680,7 @@
             `;
       }
 
+      // Function to toggle accordion
       function toggleAccordion(globalIndex) {
         if (openAccordions.has(globalIndex)) {
           openAccordions.delete(globalIndex);
@@ -810,171 +690,115 @@
         renderCurrentPage();
       }
 
-      function renderCurrentPage() {
-        if (!isDataLoaded) return;
+      // Function to format answer
+      function formatAnswer(answer) {
+        if (typeof answer === "object" && answer !== null) {
+          if (Array.isArray(answer)) {
+            if (answer.length > 0 && typeof answer[0] === "string") {
+              return `<ul class="list-disc list-inside space-y-2">${answer
+                .map((item) => `<li class="text-gray-700">${item}</li>`)
+                .join("")}</ul>`;
+            }
+            return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(
+              answer,
+              null,
+              2
+            )}</pre>`;
+          } else {
+            const entries = Object.entries(answer);
+            if (entries.length > 0) {
+              let tableHtml =
+                '<table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">';
+              tableHtml += '<thead><tr class="bg-gray-100">';
+              tableHtml +=
+                '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Property</th>';
+              tableHtml +=
+                '<th class="border border-gray-300 px-4 py-2 text-left font-semibold">Description</th>';
+              tableHtml += "</tr></thead><tbody>";
 
-        const container = document.getElementById("qaContainer");
-        const currentData = getCurrentPageData();
+              entries.forEach(([key, value]) => {
+                tableHtml += `<tr class="hover:bg-gray-50">`;
+                tableHtml += `<td class="border border-gray-300 px-4 py-2 font-medium">${key}</td>`;
+                tableHtml += `<td class="border border-gray-300 px-4 py-2">${value}</td>`;
+                tableHtml += "</tr>";
+              });
 
-        if (currentData.length === 0) {
-          container.innerHTML = `
-                    <div class="bg-white bg-opacity-95 border-l-4 border-teal-500 rounded-2xl p-8 text-center shadow-xl">
-                        <div class="text-teal-600 text-xl font-bold mb-2">
-                            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            No NoSQL Questions Available
-                        </div>
-                        <p class="text-gray-700">Please add some questions to your NoSQL data files.</p>
-                    </div>
-                `;
-          return;
+              tableHtml += "</tbody></table>";
+              return tableHtml;
+            }
+          }
         }
+        return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+      }
 
-        container.innerHTML = currentData
-          .map((item, index) => createAccordionItem(item, index))
-          .join("");
+      // Function to setup pagination
+      function setupPagination() {
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const jumpInput = document.getElementById("jumpToPageInput");
 
-        updateStats();
+        if (prevBtn)
+          prevBtn.addEventListener("click", () => changePage("prev"));
+        if (nextBtn)
+          nextBtn.addEventListener("click", () => changePage("next"));
+        if (jumpInput) {
+          jumpInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") jumpToPage();
+          });
+          const jumpBtn = document.getElementById("jumpToPageBtn");
+          if (jumpBtn) jumpBtn.addEventListener("click", jumpToPage);
+        }
+      }
+
+      // Function to change page
+      function changePage(direction) {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        if (direction === "next" && currentPage < totalPages) {
+          currentPage++;
+        } else if (direction === "prev" && currentPage > 1) {
+          currentPage--;
+        }
+        renderCurrentPage();
         updatePagination();
       }
 
-      function updateStats() {
-        document.getElementById("currentPage").textContent = currentPage;
-        document.getElementById("displayedCount").textContent =
-          getCurrentPageData().length;
-        document.getElementById("totalPages").textContent = getTotalPages();
-        document.getElementById("totalQuestions").textContent =
-          filteredData.length;
-        document.getElementById("currentPageDisplay").textContent = currentPage;
-        document.getElementById("totalPagesDisplay").textContent =
-          getTotalPages();
-        updateSearchStats();
+      // Function to jump to page
+      function jumpToPage() {
+        const jumpInput = document.getElementById("jumpToPageInput");
+        const pageNumber = parseInt(jumpInput.value);
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+          jumpInput.classList.add("border-red-500", "bg-red-50");
+          setTimeout(() => {
+            jumpInput.classList.remove("border-red-500", "bg-red-50");
+          }, 1000);
+          return;
+        }
+
+        currentPage = pageNumber;
+        renderCurrentPage();
+        updatePagination();
+        jumpInput.value = "";
+        jumpInput.placeholder = currentPage.toString();
       }
 
+      // Function to update pagination
       function updatePagination() {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
+        const jumpInput = document.getElementById("jumpToPageInput");
+        const currentPageDisplay =
+          document.getElementById("currentPageDisplay");
+        const totalPagesDisplay = document.getElementById("totalPagesDisplay");
 
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === getTotalPages();
+        if (prevBtn) prevBtn.disabled = currentPage === 1;
+        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+        if (jumpInput) jumpInput.max = totalPages;
+        if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
+        if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
       }
-
-      function showLoading() {
-        document.getElementById("loadingIndicator").classList.remove("hidden");
-      }
-
-      function hideLoading() {
-        document.getElementById("loadingIndicator").classList.add("hidden");
-      }
-
-      function changePage(direction) {
-        showLoading();
-
-        setTimeout(() => {
-          if (direction === "next" && currentPage < getTotalPages()) {
-            currentPage++;
-          } else if (direction === "prev" && currentPage > 1) {
-            currentPage--;
-          }
-
-          renderCurrentPage();
-          hideLoading();
-
-          // Smooth scroll to top with offset for sticky nav
-          window.scrollTo({ top: 150, behavior: "smooth" });
-        }, 600);
-      }
-
-      // Event listeners
-      document
-        .getElementById("prevBtn")
-        .addEventListener("click", () => changePage("prev"));
-      document
-        .getElementById("nextBtn")
-        .addEventListener("click", () => changePage("next"));
-
-      // Search input event listener
-      document
-        .getElementById("searchInput")
-        .addEventListener("input", performSearch);
-
-      // Initialize the page
-      document.addEventListener("DOMContentLoaded", () => {
-        loadNoSQLData();
-      });
-
-      // Mobile menu toggle functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (mobileMenuBtn && mobileMenu) {
-          mobileMenuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-          });
-
-          // Close mobile menu when clicking outside
-          document.addEventListener("click", (event) => {
-            if (
-              !mobileMenuBtn.contains(event.target) &&
-              !mobileMenu.contains(event.target)
-            ) {
-              mobileMenu.classList.add("hidden");
-            }
-          });
-
-          // Close mobile menu when clicking on a link
-          mobileMenu.addEventListener("click", (event) => {
-            if (event.target.tagName === "A") {
-              mobileMenu.classList.add("hidden");
-            }
-          });
-        }
-      });
-    </script>
-
-    <script>
-      // Visitor tracking functionality for nosql.html
-      function updateVisitorStats() {
-        const now = new Date();
-        const visitKey = "nosql_visits";
-        const lastVisitKey = "nosql_last_visit";
-
-        // Get existing visit data
-        let visits = parseInt(localStorage.getItem(visitKey)) || 0;
-        const lastVisit = localStorage.getItem(lastVisitKey);
-
-        // Increment visit count
-        visits += 1;
-        localStorage.setItem(visitKey, visits.toString());
-        localStorage.setItem(lastVisitKey, now.toISOString());
-
-        // Update display
-        document.getElementById("visitCount").textContent = visits;
-
-        if (lastVisit) {
-          const lastVisitDate = new Date(lastVisit);
-          const timeDiff = now - lastVisitDate;
-          const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-          if (daysDiff === 0) {
-            document.getElementById("lastVisit").textContent = "Visited today";
-          } else if (daysDiff === 1) {
-            document.getElementById("lastVisit").textContent =
-              "Visited yesterday";
-          } else {
-            document.getElementById(
-              "lastVisit"
-            ).textContent = `${daysDiff} days ago`;
-          }
-        }
-      }
-
-      // Initialize visitor stats
-      document.addEventListener("DOMContentLoaded", () => {
-        updateVisitorStats();
-      });
     </script>
   </body>
 </html>
