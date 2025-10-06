@@ -43,6 +43,15 @@ let beginner = [
     answer:
       "Keys are identifiers for widgets that help Flutter identify which widgets have changed, been added, or removed when rebuilding the widget tree.",
   },
+  {
+    id: 8,
+    question: "What is the difference between `Future<List<Product>>` and `List<Product>`?",
+    answer: [
+      "Future<List<Product>>: Represents a list that will be available later (asynchronous). Used with FutureBuilder for one-time data loading.",
+      "List<Product>: Represents an immediately available list that can be modified. Better for scenarios like infinite scroll where you add more items dynamically.",
+      "Key difference: Future is for waiting on data, List is for immediate access and modification."
+    ]
+  },
 ];
 
 // Make data available globally

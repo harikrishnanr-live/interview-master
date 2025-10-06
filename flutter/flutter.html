@@ -783,10 +783,8 @@
       function selectLevel(level) {
         // Store the selected level in localStorage or URL params
         localStorage.setItem("flutterLevel", level);
-        // Update URL and show Q&A view
-        window.history.pushState({}, "", `?level=${level}`);
-        showQAView(level);
-        loadFlutterDataForLevel(level);
+        // Redirect to flutter-details.html with level parameter
+        window.location.href = `flutter-details.html?level=${level}`;
       }
 
       // Function to load data from JavaScript file

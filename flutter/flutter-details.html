@@ -569,7 +569,7 @@
                                 <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
                                     ${serialNumber}
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800 leading-7">${
+                                <h3 class="text-xl font-bold text-gray-800 leading-7 whitespace-normal break-words">${
                                   item.question
                                 }</h3>
                             </div>
@@ -643,7 +643,14 @@
             }
           }
         }
-        return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer}</p>`;
+                                if (Array.isArray(answer)) {
+                                  // If answer is an array of strings, join with <br> to preserve line breaks and inline code formatting
+                                  return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${answer
+                                    .map(line => line.replace(/`([^`]+)`/g, '<code>$1</code>'))
+                                    .join('<br>')}</p>`;
+                                }
+                                // Otherwise, render as normal paragraph with inline code formatting
+                                return `<p class="leading-relaxed text-gray-800 font-medium text-lg">${String(answer).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>`;
       }
 
       // Function to setup pagination
