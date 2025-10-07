@@ -22,12 +22,18 @@ let advanced = [
     question: "What is Zone.js in Angular?",
     answer:
       "Zone.js is a library used by Angular to detect asynchronous operations and trigger change detection automatically.",
+    example: "Zone.js patches setTimeout, Promise, etc., to run change detection.",
+    realTimeExample: "Zone.js is like a watchman that notices when things happen in the background, like waiting for a server response, and tells Angular to update the screen.",
+    codeExample: "// Zone.js is included automatically\nimport 'zone.js/dist/zone';\n\n// It patches async operations\nsetTimeout(() => {\n  // change detection runs here\n}, 1000);"
   },
   {
     id: 4,
     question: "What are Angular Schematics?",
     answer:
       "Schematics are templates for code scaffolding, used by Angular CLI to generate components, services, and modules quickly.",
+    example: "ng generate component my-component uses schematics.",
+    realTimeExample: "Schematics are like cookie cutters that shape code. They help create new parts of your app quickly, like cutting out shapes for a puzzle.",
+    codeExample: "ng generate schematic my-schematic\n\n// Creates a custom schematic for generating code"
   },
   {
     id: 5,
@@ -129,6 +135,9 @@ let advanced = [
     question: "What is Angular RouterModule?",
     answer:
       "RouterModule is a library in Angular responsible for routing and navigation between different components in a single-page application.",
+    example: "RouterModule.forRoot(routes) sets up routing.",
+    realTimeExample: "RouterModule is like a map that shows how to go from one room to another in a house. It helps users move between pages without reloading the whole site.",
+    codeExample: "import { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [\n  { path: 'home', component: HomeComponent },\n  { path: 'about', component: AboutComponent }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {}"
   },
   {
     id: 16,

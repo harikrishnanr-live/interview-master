@@ -6,14 +6,16 @@ let intermediate = [
     question: "Differentiate between var, const, and let variables.",
     answer: "Var can be changed and made again. Let can be changed but not made again. Const can't be changed or made again.",
     example: "var x = 1; x = 2; var x = 3; // ok, let y = 1; y = 2; // ok, but let y = 3; // error, const z = 1; z = 2; // error",
-    realTimeExample: "Variables are like boxes for storing things. Var is like an old box that lets you change what's inside and even replace the box. Let is like a new box that lets you change inside but not replace the box. Const is like a locked box that you can't change at all."
+    realTimeExample: "Variables are like boxes for storing things. Var is like an old box that lets you change what's inside and even replace the box. Let is like a new box that lets you change inside but not replace the box. Const is like a locked box that you can't change at all.",
+    codeExample: "var x = 1;\nvar x = 2; // ok\nlet y = 1;\nlet y = 2; // error\nconst z = 1;\nz = 2; // error"
   },
   {
     id: 2,
     question: "Differentiate between Angular and AngularJS",
     answer: "Angular uses TypeScript and supports phones. AngularJS uses JavaScript and doesn't support phones. Angular has components, AngularJS has MVC. Angular has dependency injection, AngularJS doesn't.",
     example: "AngularJS uses JavaScript like plain talk, Angular uses TypeScript like typed talk for better checks.",
-    realTimeExample: "Angular is like a modern car with safety features, AngularJS is like an old car without them. Angular supports phones, AngularJS doesn't. Angular has parts like Lego blocks, AngularJS has a different way."
+    realTimeExample: "Angular is like a modern car with safety features, AngularJS is like an old car without them. Angular supports phones, AngularJS doesn't. Angular has parts like Lego blocks, AngularJS has a different way.",
+    codeExample: "// AngularJS\nangular.module('app', []);\n\n// Angular\nimport { NgModule } from '@angular/core';\n@NgModule({})\nexport class AppModule {}"
   },
   {
     id: 3,
@@ -23,7 +25,8 @@ let intermediate = [
       "ng serve --prod: Serves the application in production mode.",
     ],
     example: "ng build --prod creates a ready-to-use version of your app, ng serve --prod runs it for testing.",
-    realTimeExample: "Commands are like instructions to a robot. Ng build --prod tells the robot to make a clean, fast version of the app. Ng serve --prod tells it to show the app in a special way for checking."
+    realTimeExample: "Commands are like instructions to a robot. Ng build --prod tells the robot to make a clean, fast version of the app. Ng serve --prod tells it to show the app in a special way for checking.",
+    codeExample: "ng build --prod\nng serve --prod --port 4200"
   },
   {
     id: 4,
@@ -40,6 +43,9 @@ let intermediate = [
           "Lazy loading loads modules only when they are needed, improving the initial load time of the application.",
       },
     ],
+    example: "Eager: all modules load at start. Lazy: modules load when needed.",
+    realTimeExample: "Eager loading is like unpacking all toys at once, lazy loading is like unpacking toys only when you want to play with them.",
+    codeExample: "// Lazy Loading\nconst routes: Routes = [\n  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }\n];"
   },
   {
     id: 5,
@@ -58,6 +64,9 @@ let intermediate = [
         definition: "cookies.delete('cookieName')",
       },
     ],
+    example: "Use CookieService to manage cookies.",
+    realTimeExample: "Cookies are like notes that remember things on your computer. Setting a cookie saves information, getting it reads the note, deleting it throws the note away.",
+    codeExample: "import { CookieService } from 'ngx-cookie-service';\n\nconstructor(private cookies: CookieService) {}\n\nsetCookie() {\n  this.cookies.set('name', 'value');\n}\n\ngetCookie() {\n  return this.cookies.get('name');\n}\n\ndeleteCookie() {\n  this.cookies.delete('name');\n}"
   },
   {
     id: 6,

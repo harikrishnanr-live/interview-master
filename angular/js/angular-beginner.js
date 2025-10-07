@@ -10,7 +10,8 @@ let beginner = [
       "Imagine you are building a big toy house with lots of rooms. Angular is like a magic kit that gives you all the pieces you need, like doors, windows, and walls. You use it to make websites that look nice and do things when you click buttons. For example, you can make a website that shows pictures of animals. When you click a button that says 'more cats', the website brings new pictures of cats from the internet and shows them to you right away. It's like having a helper that brings toys when you ask for them.",
     realTimeExample:
       "Angular is like a big organizer for websites. It has parts called components that handle different jobs, like showing buttons or lists. Modules are like folders that group these parts together. Services are like helpers that share information. In real time, when you click a button, Angular checks the component, updates the data, and refreshes the screen. This happens quickly, like a team working together to show you new information right away.",
-    codeExample: "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  template: '<h1>Hello Angular</h1>'\n})\nexport class AppComponent {}"
+    codeExample:
+      "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  template: '<h1>Hello Angular</h1>'\n})\nexport class AppComponent {}",
   },
   {
     id: 2,
@@ -21,6 +22,8 @@ let beginner = [
       "Think of your website as a puppet show. The puppets need strings to move. AnimationsModule is like the strings. To make the puppets dance, you go to the control room, which is your app.module.ts file, and you say 'bring in the strings from the box called BrowserAnimationsModule'. You write: import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; Then you put it in the list of things to use. Now when you click a button, it can bounce like a ball or spin like a top. It's like giving life to your website pictures!",
     realTimeExample:
       "AnimationsModule is like a switch that turns on movement in websites. It uses BrowserAnimationsModule to make elements animate. In real time, when you click a button, the module checks the animation rules, calculates the movement, and updates the screen frame by frame. This creates smooth transitions, like a ball bouncing or a door opening slowly.",
+    codeExample:
+      "import { BrowserAnimationsModule } from '@angular/platform-browser/animations';\n\n@NgModule({\n  imports: [BrowserAnimationsModule]\n})\nexport class AppModule {}",
   },
   {
     id: 3,
@@ -31,6 +34,8 @@ let beginner = [
       "Sometimes you don't want your website to have fancy animations, maybe to make it load faster or look simple. You can turn off the animation machine. In app.module.ts, you write: import { NoopAnimationsModule } from '@angular/platform-browser/animations'; Then, add NoopAnimationsModule to imports instead. It's like telling the toy to stop moving so you can play quietly.",
     realTimeExample:
       "NoopAnimationsModule is like a placeholder that skips animations. It replaces BrowserAnimationsModule to disable movements. In real time, when animations would run, this module does nothing, so the elements change instantly without transitions. This speeds up the app, like jumping directly to the end instead of walking step by step.",
+    codeExample:
+      "import { NoopAnimationsModule } from '@angular/platform-browser/animations';\n\n@NgModule({\n  imports: [NoopAnimationsModule]\n})\nexport class AppModule {}",
   },
   {
     id: 4,
@@ -39,6 +44,7 @@ let beginner = [
       "@NgModule is one of the decorators in Angular. It takes a metadata object that tells Angular how to compile and launch the application.",
     example:
       "@NgModule is like the captain of a spaceship. It tells Angular what parts to bring on the trip. You write @NgModule({ declarations: [AppComponent], imports: [BrowserModule], providers: [], bootstrap: [AppComponent] }) and it says 'Hey Angular, use these components, bring these tools, and start with AppComponent!' Without it, Angular wouldn't know how to launch your app.",
+    codeExample: "@NgModule({\n  declarations: [AppComponent],\n  imports: [BrowserModule],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}"
   },
   {
     id: 5,
@@ -47,6 +53,7 @@ let beginner = [
       "Declarations in Angular list the components, directives, and pipes that belong to this module.",
     example:
       "Declarations are like telling your friends who is coming to the party. In app.module.ts, you list declarations: [AppComponent, HeaderComponent, FooterComponent]. This tells Angular 'These are my special parts: the main app, the header, and the footer.' Angular uses this list to know what to include in your website.",
+    codeExample: "@NgModule({\n  declarations: [AppComponent, HeaderComponent, FooterComponent]\n})\nexport class AppModule {}"
   },
   {
     id: 6,
@@ -373,6 +380,7 @@ let beginner = [
       "Routing in Angular is like having different rooms in a house. It lets users move from one part of your app to another without reloading the whole page. You use RouterModule to set up paths, like '/home' or '/about'. When someone clicks a link, Angular shows the right component. It's like teleporting between rooms in a video game!",
     example:
       "const routes: Routes = [{ path: 'home', component: HomeComponent }]; <router-outlet></router-outlet>",
+    codeExample: "const routes: Routes = [\n  { path: 'home', component: HomeComponent },\n  { path: 'about', component: AboutComponent }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)]\n})\nexport class AppModule {}"
   },
   {
     id: 49,
