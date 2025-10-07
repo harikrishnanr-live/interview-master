@@ -576,11 +576,14 @@
                         </div>
                     </button>
                     <div class="accordion-content overflow-hidden ${
-                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                     }">
-                        <div class="px-8 pb-6">
+                        <div class="px-8 pb-6 max-h-96 overflow-y-auto">
                             <div class="bg-gradient-to-r from-red-50 via-pink-50 to-rose-50 border-l-4 border-red-500 rounded-xl p-6 shadow-inner">
                                 ${formatAnswer(item.answer)}
+                                ${item.example ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Example:</strong><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.example}</pre></div>` : ''}
+                                ${item.realTimeExample ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Real-Time Example:</strong><p class="text-gray-800 mt-2">${item.realTimeExample}</p></div>` : ''}
+                                ${item.codeExample ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Code Example:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.codeExample}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.codeExample.replace(/`/g, '\\`')}\`)">Copy</button></div></div>` : ''}
                             </div>
                         </div>
                     </div>
@@ -706,6 +709,15 @@
         if (jumpInput) jumpInput.max = totalPages;
         if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
         if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
+      }
+
+      // Function to copy code to clipboard
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Code copied to clipboard!');
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+        });
       }
     </script>
   </body>

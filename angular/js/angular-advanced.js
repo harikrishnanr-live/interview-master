@@ -5,13 +5,17 @@ let advanced = [
     id: 1,
     question: "What is Angular Universal?",
     answer:
-      "Angular Universal is a technology used for server-side rendering (SSR) of Angular applications, improving performance and SEO.",
+      "Angular Universal makes websites on the server first, then sends them to the browser. This makes sites faster and better for search engines.",
+    example: "Angular Universal renders pages on the server first, then sends HTML to the browser, making sites load faster and better for search engines.",
+    realTimeExample: "Angular Universal is like a chef preparing food in the kitchen before serving. It cooks the page on the server, so when you order, it's ready quickly. This helps websites appear faster and be found easier by Google."
   },
   {
     id: 2,
     question: "What is Change Detection in Angular?",
     answer:
       "Change Detection is the mechanism by which Angular determines what parts of the user interface need to be updated when application data changes.",
+    example: "When data changes, Angular checks the view and updates only what's needed.",
+    realTimeExample: "Change detection is like a mirror that reflects changes. When you change your shirt, the mirror shows the new look. Angular checks data changes and updates the screen like a smart mirror."
   },
   {
     id: 3,
@@ -178,6 +182,66 @@ let advanced = [
     question: "What is Angular's OnPush change detection strategy?",
     answer:
       "OnPush change detection strategy tells Angular to check a component's view only when its inputs change or an event triggers inside it, reducing unnecessary checks.",
+  },
+  {
+    id: 23,
+    question: "What is Angular's Control Flow Syntax?",
+    answer:
+      "Control Flow Syntax is a new way to handle conditional rendering and loops in templates using @if, @for, and @switch directives.",
+  },
+  {
+    id: 24,
+    question: "What is Angular's deferrable views?",
+    answer:
+      "Deferrable views allow loading parts of the template only when needed, improving initial load performance.",
+  },
+  {
+    id: 25,
+    question: "What is Angular's inject() function?",
+    answer:
+      "inject() is a function used in standalone components and services to inject dependencies without constructors.",
+  },
+  {
+    id: 26,
+    question: "What is Angular's standalone API?",
+    answer:
+      "Standalone API allows building Angular applications without NgModules, using standalone components, directives, and pipes.",
+  },
+  {
+    id: 27,
+    question: "What is Angular's new control flow?",
+    answer:
+      "New control flow uses @if, @for, @switch, @defer for better template syntax and performance.",
+  },
+  {
+    id: 28,
+    question: "What is Angular's hydration?",
+    answer:
+      "Hydration is the process of attaching event listeners and making server-rendered pages interactive on the client.",
+  },
+  {
+    id: 29,
+    question: "What is Angular's incremental hydration?",
+    answer:
+      "Incremental hydration loads and hydrates parts of the application progressively, improving performance.",
+  },
+  {
+    id: 30,
+    question: "What is Angular's non-destructive hydration?",
+    answer:
+      "Non-destructive hydration preserves server-rendered DOM and adds interactivity without re-rendering.",
+  },
+  {
+    id: 31,
+    question: "What is Angular's partial hydration?",
+    answer:
+      "Partial hydration hydrates only interactive parts of the page, leaving static parts as-is.",
+  },
+  {
+    id: 32,
+    question: "What is Angular's server-side rendering (SSR)?",
+    answer:
+      "SSR renders Angular applications on the server, sending HTML to the client for faster initial loads and better SEO.",
   },
 ];
 

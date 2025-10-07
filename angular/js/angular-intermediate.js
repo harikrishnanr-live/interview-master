@@ -4,46 +4,16 @@ let intermediate = [
   {
     id: 1,
     question: "Differentiate between var, const, and let variables.",
-    answer: [
-      {
-        term: "Var",
-        definition: "var variables can be re-declared and updated.",
-      },
-      {
-        term: "Let",
-        definition: "let can be updated but not re-declared.",
-      },
-      {
-        term: "Const",
-        definition: "const cannot be updated or re-declared.",
-      },
-    ],
+    answer: "Var can be changed and made again. Let can be changed but not made again. Const can't be changed or made again.",
+    example: "var x = 1; x = 2; var x = 3; // ok, let y = 1; y = 2; // ok, but let y = 3; // error, const z = 1; z = 2; // error",
+    realTimeExample: "Variables are like boxes for storing things. Var is like an old box that lets you change what's inside and even replace the box. Let is like a new box that lets you change inside but not replace the box. Const is like a locked box that you can't change at all."
   },
   {
     id: 2,
     question: "Differentiate between Angular and AngularJS",
-    answer: [
-      {
-        aspect: "Language",
-        angular: "TypeScript",
-        angularjs: "JavaScript",
-      },
-      {
-        aspect: "Mobile support",
-        angular: "Supports",
-        angularjs: "Not supported",
-      },
-      {
-        aspect: "Architecture",
-        angular: "Uses components and directives",
-        angularjs: "Model-View-Controller design",
-      },
-      {
-        aspect: "Dependency Injection",
-        angular: "Supports",
-        angularjs: "Doesn't support",
-      },
-    ],
+    answer: "Angular uses TypeScript and supports phones. AngularJS uses JavaScript and doesn't support phones. Angular has components, AngularJS has MVC. Angular has dependency injection, AngularJS doesn't.",
+    example: "AngularJS uses JavaScript like plain talk, Angular uses TypeScript like typed talk for better checks.",
+    realTimeExample: "Angular is like a modern car with safety features, AngularJS is like an old car without them. Angular supports phones, AngularJS doesn't. Angular has parts like Lego blocks, AngularJS has a different way."
   },
   {
     id: 3,
@@ -52,6 +22,8 @@ let intermediate = [
       "ng build --prod: Builds the application in production mode.",
       "ng serve --prod: Serves the application in production mode.",
     ],
+    example: "ng build --prod creates a ready-to-use version of your app, ng serve --prod runs it for testing.",
+    realTimeExample: "Commands are like instructions to a robot. Ng build --prod tells the robot to make a clean, fast version of the app. Ng serve --prod tells it to show the app in a special way for checking."
   },
   {
     id: 4,
@@ -355,6 +327,66 @@ let intermediate = [
       "Resolve",
       "CanLoad",
     ],
+  },
+  {
+    id: 40,
+    question: "What is Change Detection in Angular?",
+    answer:
+      "Change detection is the process Angular uses to check when data changes and update the view accordingly.",
+  },
+  {
+    id: 41,
+    question: "What is OnPush Change Detection Strategy?",
+    answer:
+      "OnPush strategy only checks for changes when input properties change or when an event occurs, improving performance.",
+  },
+  {
+    id: 42,
+    question: "What is the difference between Subject and BehaviorSubject?",
+    answer:
+      "Subject does not have an initial value, while BehaviorSubject has an initial value and emits it to new subscribers.",
+  },
+  {
+    id: 43,
+    question: "What is the purpose of ngZone?",
+    answer:
+      "NgZone helps Angular run change detection when asynchronous operations occur outside Angular's context.",
+  },
+  {
+    id: 44,
+    question: "What is the difference between ngOnInit and ngAfterViewInit?",
+    answer:
+      "ngOnInit is called after component initialization, ngAfterViewInit after the view and child views are initialized.",
+  },
+  {
+    id: 45,
+    question: "What is the purpose of ViewChild?",
+    answer:
+      "ViewChild decorator allows accessing child components or DOM elements in the component class.",
+  },
+  {
+    id: 46,
+    question: "What is Content Projection?",
+    answer:
+      "Content projection allows passing content from parent to child components using ng-content.",
+  },
+  {
+    id: 47,
+    question: "What is the difference between ng-content and ng-template?",
+    answer:
+      "ng-content projects content into a component, ng-template defines reusable templates.",
+  },
+  {
+    id: 48,
+    question: "What is the purpose of HostBinding?",
+    answer:
+      "HostBinding binds a property to the host element of a directive or component.",
+  },
+  {
+    id: 49,
+    question: "What is HostListener?",
+    answer:
+      "HostListener listens for events on the host element and calls a method when they occur.",
   },
 ];
 
