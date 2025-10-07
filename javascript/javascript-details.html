@@ -572,11 +572,15 @@
                       </div>
                   </button>
                   <div class="accordion-content overflow-hidden ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    isOpen ? "max-h-96 opacity-100 overflow-y-auto" : "max-h-0 opacity-0"
                   }">
                       <div class="px-8 pb-6">
                           <div class="bg-gradient-to-r from-yellow-50 via-orange-50 to-red-50 border-l-4 border-yellow-500 rounded-xl p-6 shadow-inner">
+                              ${item.syntax ? `<div class="mb-4"><strong class="text-gray-700">Syntax:</strong><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.syntax}</pre></div>` : ''}
                               ${formatAnswer(item.answer)}
+                              ${item.example ? `<div class="mt-4"><strong class="text-gray-700">Example:</strong><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.example}</pre></div>` : ''}
+                              ${item.realTimeExample ? `<div class="mt-4"><strong class="text-gray-700">Real-Time Example:</strong><p class="text-gray-700 mt-2">${item.realTimeExample}</p></div>` : ''}
+                              ${item.codeExample ? `<div class="mt-4"><strong class="text-gray-700">Code Example:</strong><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.codeExample}</pre></div>` : ''}
                           </div>
                       </div>
                   </div>
