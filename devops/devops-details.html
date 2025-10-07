@@ -478,7 +478,11 @@
             (item) =>
               item.question.toLowerCase().includes(searchTerm) ||
               (typeof item.answer === "string" &&
-                item.answer.toLowerCase().includes(searchTerm))
+                item.answer.toLowerCase().includes(searchTerm)) ||
+              (item.syntax && item.syntax.toLowerCase().includes(searchTerm)) ||
+              (item.example && item.example.toLowerCase().includes(searchTerm)) ||
+              (item.realTimeExample && item.realTimeExample.toLowerCase().includes(searchTerm)) ||
+              (item.codeExample && item.codeExample.toLowerCase().includes(searchTerm))
           );
         }
 
@@ -556,7 +560,7 @@
                       </div>
                   </button>
                   <div class="accordion-content overflow-hidden ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                   }">
                       <div class="px-8 pb-6">
                           <div class="bg-gradient-to-r from-gray-50 via-slate-50 to-zinc-50 border-l-4 border-gray-500 rounded-xl p-6 shadow-inner">
@@ -564,6 +568,30 @@
                                 item.answer
                               )}</p>
                           </div>
+                          ${item.syntax ? `
+                          <div class="mt-4 bg-blue-50 border-l-4 border-blue-500 rounded-xl p-6 shadow-inner">
+                              <h4 class="font-bold text-blue-800 mb-2">Syntax:</h4>
+                              <pre class="text-blue-700 font-mono text-sm">${item.syntax}</pre>
+                          </div>
+                          ` : ''}
+                          ${item.example ? `
+                          <div class="mt-4 bg-green-50 border-l-4 border-green-500 rounded-xl p-6 shadow-inner">
+                              <h4 class="font-bold text-green-800 mb-2">Example:</h4>
+                              <p class="text-green-700">${item.example}</p>
+                          </div>
+                          ` : ''}
+                          ${item.realTimeExample ? `
+                          <div class="mt-4 bg-purple-50 border-l-4 border-purple-500 rounded-xl p-6 shadow-inner">
+                              <h4 class="font-bold text-purple-800 mb-2">Real-Time Example:</h4>
+                              <p class="text-purple-700">${item.realTimeExample}</p>
+                          </div>
+                          ` : ''}
+                          ${item.codeExample ? `
+                          <div class="mt-4 bg-red-50 border-l-4 border-red-500 rounded-xl p-6 shadow-inner">
+                              <h4 class="font-bold text-red-800 mb-2">Code Example:</h4>
+                              <pre class="text-red-700 font-mono text-sm overflow-x-auto">${item.codeExample}</pre>
+                          </div>
+                          ` : ''}
                       </div>
                   </div>
               </div>
