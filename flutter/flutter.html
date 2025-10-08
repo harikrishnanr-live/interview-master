@@ -754,20 +754,34 @@
       }
 
       // Load question counts
-      function loadQuestionCounts() {
-        if (window.beginner) {
+      function loadQuestionCounts(retryCount = 0) {
+        const maxRetries = 10;
+        const retryDelay = 100; // ms
+
+        console.log("Loading question counts, retry:", retryCount);
+        console.log("window.beginner:", window.beginner, "length:", window.beginner ? window.beginner.length : "undefined");
+        console.log("window.intermediate:", window.intermediate, "length:", window.intermediate ? window.intermediate.length : "undefined");
+        console.log("window.advanced:", window.advanced, "length:", window.advanced ? window.advanced.length : "undefined");
+
+        if (window.beginner && window.intermediate && window.advanced) {
           document.getElementById("beginnerCount").textContent =
             window.beginner.length;
-        }
-        if (window.intermediate) {
           document.getElementById("intermediateCount").textContent =
             window.intermediate.length;
-        }
-        if (window.advanced) {
           document.getElementById("advancedCount").textContent =
             window.advanced.length;
+          updateTotalQuestions();
+          console.log("Question counts loaded successfully");
+        } else if (retryCount < maxRetries) {
+          setTimeout(() => loadQuestionCounts(retryCount + 1), retryDelay);
+        } else {
+          console.warn("Failed to load Flutter question data after", maxRetries, "retries");
+          // Set defaults or show error
+          document.getElementById("beginnerCount").textContent = "0";
+          document.getElementById("intermediateCount").textContent = "0";
+          document.getElementById("advancedCount").textContent = "0";
+          updateTotalQuestions();
         }
-        updateTotalQuestions();
       }
 
       // Update total questions count
