@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevOps Details</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/devops-beginner.js"></script>
     <script src="js/devops-intermediate.js"></script>
@@ -480,9 +480,12 @@
               (typeof item.answer === "string" &&
                 item.answer.toLowerCase().includes(searchTerm)) ||
               (item.syntax && item.syntax.toLowerCase().includes(searchTerm)) ||
-              (item.example && item.example.toLowerCase().includes(searchTerm)) ||
-              (item.realTimeExample && item.realTimeExample.toLowerCase().includes(searchTerm)) ||
-              (item.codeExample && item.codeExample.toLowerCase().includes(searchTerm))
+              (item.example &&
+                item.example.toLowerCase().includes(searchTerm)) ||
+              (item.realTimeExample &&
+                item.realTimeExample.toLowerCase().includes(searchTerm)) ||
+              (item.codeExample &&
+                item.codeExample.toLowerCase().includes(searchTerm))
           );
         }
 
@@ -568,30 +571,46 @@
                                 item.answer
                               )}</p>
                           </div>
-                          ${item.syntax ? `
+                          ${
+                            item.syntax
+                              ? `
                           <div class="mt-4 bg-blue-50 border-l-4 border-blue-500 rounded-xl p-6 shadow-inner">
                               <h4 class="font-bold text-blue-800 mb-2">Syntax:</h4>
                               <pre class="text-blue-700 font-mono text-sm">${item.syntax}</pre>
                           </div>
-                          ` : ''}
-                          ${item.example ? `
+                          `
+                              : ""
+                          }
+                          ${
+                            item.example
+                              ? `
                           <div class="mt-4 bg-green-50 border-l-4 border-green-500 rounded-xl p-6 shadow-inner">
                               <h4 class="font-bold text-green-800 mb-2">Example:</h4>
                               <p class="text-green-700">${item.example}</p>
                           </div>
-                          ` : ''}
-                          ${item.realTimeExample ? `
+                          `
+                              : ""
+                          }
+                          ${
+                            item.realTimeExample
+                              ? `
                           <div class="mt-4 bg-purple-50 border-l-4 border-purple-500 rounded-xl p-6 shadow-inner">
                               <h4 class="font-bold text-purple-800 mb-2">Real-Time Example:</h4>
                               <p class="text-purple-700">${item.realTimeExample}</p>
                           </div>
-                          ` : ''}
-                          ${item.codeExample ? `
+                          `
+                              : ""
+                          }
+                          ${
+                            item.codeExample
+                              ? `
                           <div class="mt-4 bg-red-50 border-l-4 border-red-500 rounded-xl p-6 shadow-inner">
                               <h4 class="font-bold text-red-800 mb-2">Code Example:</h4>
                               <pre class="text-red-700 font-mono text-sm overflow-x-auto">${item.codeExample}</pre>
                           </div>
-                          ` : ''}
+                          `
+                              : ""
+                          }
                       </div>
                   </div>
               </div>
