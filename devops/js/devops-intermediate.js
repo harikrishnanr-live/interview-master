@@ -51,7 +51,8 @@ let intermediate = [
     answer:
       "Jenkins is an open-source automation server that enables developers to build, test, and deploy their software reliably.",
     syntax: "jenkins pipeline",
-    example: "pipeline { agent any; stages { stage('Build') { steps { sh 'make' } } } }",
+    example:
+      "pipeline { agent any; stages { stage('Build') { steps { sh 'make' } } } }",
     realTimeExample:
       "Like an automated assembly line that takes raw materials (code) and produces finished products (deployed software) without manual intervention.",
     codeExample: "jenkinsfile",

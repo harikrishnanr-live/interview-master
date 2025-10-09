@@ -10,7 +10,8 @@ let advanced = [
     example: "ansible-playbook deploy.yml",
     realTimeExample:
       "Like a conductor directing an orchestra, Ansible automates the configuration of multiple servers simultaneously.",
-    codeExample: "---\n- hosts: webservers\n  tasks:\n  - name: Install nginx\n    apt:\n      name: nginx\n      state: present",
+    codeExample:
+      "---\n- hosts: webservers\n  tasks:\n  - name: Install nginx\n    apt:\n      name: nginx\n      state: present",
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ let advanced = [
     example: "terraform plan",
     realTimeExample:
       "Like a blueprint for building a house, Terraform defines and provisions infrastructure in a repeatable way.",
-    codeExample: "resource \"aws_instance\" \"example\" {\n  ami           = \"ami-0c55b159cbfafe1d0\"\n  instance_type = \"t2.micro\"\n}",
+    codeExample:
+      'resource "aws_instance" "example" {\n  ami           = "ami-0c55b159cbfafe1d0"\n  instance_type = "t2.micro"\n}',
   },
   {
     id: 3,
@@ -65,7 +67,8 @@ let advanced = [
     example: "istioctl proxy-config clusters",
     realTimeExample:
       "Like a traffic control system for microservices, Istio manages communication, security, and observability between services.",
-    codeExample: "apiVersion: networking.istio.io/v1alpha3\nkind: Gateway\nmetadata:\n  name: my-gateway\nspec:\n  selector:\n    istio: ingressgateway",
+    codeExample:
+      "apiVersion: networking.istio.io/v1alpha3\nkind: Gateway\nmetadata:\n  name: my-gateway\nspec:\n  selector:\n    istio: ingressgateway",
   },
   {
     id: 7,
@@ -76,7 +79,8 @@ let advanced = [
     example: "prometheus --web.listen-address=:9090",
     realTimeExample:
       "Like a vigilant watchman, Prometheus collects and stores metrics from applications and infrastructure for monitoring and alerting.",
-    codeExample: "global:\n  scrape_interval: 15s\n\nscrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets: ['localhost:9090']",
+    codeExample:
+      "global:\n  scrape_interval: 15s\n\nscrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets: ['localhost:9090']",
   },
   {
     id: 8,
@@ -98,7 +102,8 @@ let advanced = [
     example: "logstash -f logstash.conf",
     realTimeExample:
       "Like a library system: Elasticsearch stores and searches data, Logstash processes incoming logs, Kibana visualizes the information.",
-    codeExample: "input {\n  file {\n    path => \"/var/log/*.log\"\n  }\n}\n\noutput {\n  elasticsearch {\n    hosts => [\"localhost:9200\"]\n  }\n}",
+    codeExample:
+      'input {\n  file {\n    path => "/var/log/*.log"\n  }\n}\n\noutput {\n  elasticsearch {\n    hosts => ["localhost:9200"]\n  }\n}',
   },
   {
     id: 10,

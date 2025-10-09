@@ -437,8 +437,7 @@ let beginner = [
       "Recovery is the process of restoring systems and data after a failure or disaster.",
     syntax: "N/A",
     example: "N/A",
-    realTimeExample:
-      "Like fixing a broken toy and getting it working again.",
+    realTimeExample: "Like fixing a broken toy and getting it working again.",
     codeExample: "N/A",
   },
   {
