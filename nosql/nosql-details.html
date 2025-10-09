@@ -4,106 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NoSQL Details</title>
+    <link rel="stylesheet" href="../style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/nosql-beginner.js"></script>
     <script src="js/nosql-intermediate.js"></script>
     <script src="js/nosql-advanced.js"></script>
     <style>
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes bounceIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-
-        50% {
-          opacity: 1;
-          transform: scale(1.1);
-        }
-
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes expandAnswer {
-        from {
-          opacity: 0;
-          max-height: 0;
-          transform: translateY(-20px);
-        }
-
-        to {
-          opacity: 1;
-          max-height: 300px;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes waveEffect {
-        0% {
-          background-position: 0% 50%;
-        }
-
-        50% {
-          background-position: 100% 50%;
-        }
-
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .slide-in-left {
-        animation: slideInLeft 0.7s ease-out forwards;
-      }
-
-      .bounce-in {
-        animation: bounceIn 0.8s ease-out forwards;
-      }
-
-      .expand-answer {
-        animation: expandAnswer 0.5s ease-out forwards;
-      }
-
       .wave-bg {
         background: linear-gradient(-45deg, #009688, #00796b, #004d40, #00695c);
-        background-size: 400% 400%;
-        animation: waveEffect 12s ease infinite;
-      }
-
-      .float-effect:hover {
-        animation: float 2s ease-in-out infinite;
-      }
-
-      .glass-card {
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       }
 
       .neon-glow {
@@ -668,11 +576,26 @@
                         </div>
                     </button>
                     <div class="accordion-content overflow-hidden ${
-                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                     }">
-                        <div class="px-8 pb-6">
+                        <div class="px-8 pb-6 max-h-96 overflow-y-auto">
                             <div class="bg-gradient-to-r from-teal-50 via-cyan-50 to-emerald-50 border-l-4 border-teal-500 rounded-xl p-6 shadow-inner">
                                 ${formatAnswer(item.answer)}
+                                ${
+                                  item.syntax
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Syntax:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.syntax}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.syntax.replace(/`/g, "\\`")}\`)">Copy</button></div></div>`
+                                    : ""
+                                }
+                                ${
+                                  item.example
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Example:</strong>${Array.isArray(item.example) ? `<ol class="list-decimal list-inside space-y-2 mt-2">${item.example.map((ex) => `<li class="text-gray-700">${ex}</li>`).join("")}</ol>` : `<div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.example}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.example.replace(/`/g, "\\`")}\`)">Copy</button></div>`}</div>`
+                                    : ""
+                                }
+                                ${
+                                  item.realtimeExample
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Real-Time Example:</strong>${Array.isArray(item.realtimeExample) ? `<ol class="list-decimal list-inside space-y-2 mt-2">${item.realtimeExample.map((rte) => `<li class="text-gray-800">${rte}</li>`).join("")}</ol>` : `<p class="text-gray-800 mt-2">${item.realtimeExample}</p>`}</div>`
+                                    : ""
+                                }
                             </div>
                         </div>
                     </div>
@@ -695,9 +618,9 @@
         if (typeof answer === "object" && answer !== null) {
           if (Array.isArray(answer)) {
             if (answer.length > 0 && typeof answer[0] === "string") {
-              return `<ul class="list-disc list-inside space-y-2">${answer
+              return `<ol class="list-decimal list-inside space-y-2">${answer
                 .map((item) => `<li class="text-gray-700">${item}</li>`)
-                .join("")}</ul>`;
+                .join("")}</ol>`;
             }
             return `<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">${JSON.stringify(
               answer,
