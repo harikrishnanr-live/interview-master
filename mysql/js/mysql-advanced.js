@@ -89,8 +89,15 @@ let advanced = [
   {
     id: 6,
     question: "How do you optimize a slow-running MySQL query?",
-    answer:
-      "1. Use EXPLAIN to identify bottlenecks. 2. Add indexes on WHERE, JOIN, and ORDER BY columns. 3. Avoid SELECT *; fetch only needed columns. 4. Limit result sets with LIMIT. 5. Denormalize if joins are too expensive. 6. Use query caching for repeated reads. 7. Partition large tables by range or hash.",
+    answer: [
+      "Use EXPLAIN to identify bottlenecks.",
+      "Add indexes on WHERE, JOIN, and ORDER BY columns.",
+      "Avoid SELECT *; fetch only needed columns.",
+      "Limit result sets with LIMIT.",
+      "Denormalize if joins are too expensive.",
+      "Use query caching for repeated reads.",
+      "Partition large tables by range or hash."
+    ],
     syntax: "EXPLAIN, CREATE INDEX, LIMIT, PARTITION BY",
     example: "Example: Adding an index on email for a slow user lookup query.",
     realTimeExample:
@@ -122,8 +129,13 @@ let advanced = [
   {
     id: 8,
     question: "How do you use the MySQL query cache effectively?",
-    answer:
-      "The query cache stores results of SELECT queries to speed up repeated identical queries. To use it: 1. Enable with query_cache_type=1 and set query_cache_size. 2. Avoid caching dynamic queries (e.g., with NOW()). 3. Monitor cache hit ratio with SHOW STATUS LIKE 'Qcache%'. Note: Disabled by default in MySQL 8.0+.",
+    answer: [
+      "The query cache stores results of SELECT queries to speed up repeated identical queries.",
+      "To use it: Enable with query_cache_type=1 and set query_cache_size.",
+      "Avoid caching dynamic queries (e.g., with NOW()).",
+      "Monitor cache hit ratio with SHOW STATUS LIKE 'Qcache%'.",
+      "Note: Disabled by default in MySQL 8.0+."
+    ],
     syntax:
       "SET GLOBAL query_cache_type=1; SET GLOBAL query_cache_size=1048576;",
     example:
@@ -152,8 +164,13 @@ let advanced = [
   {
     id: 10,
     question: "How do you implement full-text search in MySQL?",
-    answer:
-      "Full-text search enables efficient text-based queries using MATCH ... AGAINST. Steps: 1. Create a FULLTEXT index on text columns. 2. Use MATCH(column) AGAINST('search_term') in queries. 3. Supports natural language (relevance-ranked) and boolean (exact) modes. Note: Requires MyISAM or InnoDB (MySQL 5.6+) tables.",
+    answer: [
+      "Full-text search enables efficient text-based queries using MATCH ... AGAINST.",
+      "Steps: Create a FULLTEXT index on text columns.",
+      "Use MATCH(column) AGAINST('search_term') in queries.",
+      "Supports natural language (relevance-ranked) and boolean (exact) modes.",
+      "Note: Requires MyISAM or InnoDB (MySQL 5.6+) tables."
+    ],
     syntax:
       "CREATE FULLTEXT INDEX idx_name ON table_name(column); MATCH(column) AGAINST('term' [IN NATURAL LANGUAGE MODE|IN BOOLEAN MODE]);",
     example:
@@ -204,8 +221,14 @@ let advanced = [
   {
     id: 12,
     question: "How do you set up MySQL replication for high availability?",
-    answer:
-      "MySQL replication copies data from a master to one or more slaves, improving availability and read scalability. Steps: 1. Configure the master: Set server-id, enable binary logging (log_bin). 2. Create a replication user on the master. 3. Configure the slave: Set server-id, relay-log. 4. Start replication on the slave with START SLAVE. 5. Monitor with SHOW SLAVE STATUS.",
+    answer: [
+      "MySQL replication copies data from a master to one or more slaves, improving availability and read scalability.",
+      "Steps: Configure the master: Set server-id, enable binary logging (log_bin).",
+      "Create a replication user on the master.",
+      "Configure the slave: Set server-id, relay-log.",
+      "Start replication on the slave with START SLAVE.",
+      "Monitor with SHOW SLAVE STATUS."
+    ],
     syntax: `
       -- Master config (my.cnf):
       server-id = 1
@@ -231,16 +254,23 @@ let advanced = [
       "A deadlock occurs when two or more transactions wait indefinitely for locks held by each other. MySQL automatically detects and resolves deadlocks by rolling back one transaction. Prevention tips: Design transactions to acquire locks in a consistent order, keep transactions short, avoid user interaction mid-transaction, and use lower isolation levels (e.g., READ COMMITTED). Diagnosis: Use SHOW ENGINE INNODB STATUS to analyze deadlocks.",
     syntax:
       "SHOW ENGINE INNODB STATUS; SET TRANSACTION ISOLATION LEVEL READ COMMITTED;",
-    example:
-      "Example: Transaction A locks row 1 and waits for row 2, while Transaction B locks row 2 and waits for row 1.",
+    example: [
+      "Transaction A locks row 1 and waits for row 2",
+      "Transaction B locks row 2 and waits for row 1"
+    ],
     realTimeExample:
       "Like a traffic gridlock: Cars (transactions) block each other, and traffic police (MySQL) intervene to clear the jam (rollback).",
   },
   {
     id: 14,
     question: "How do you implement row-level locking in MySQL?",
-    answer:
-      "Row-level locking (used by InnoDB) allows multiple transactions to access different rows simultaneously, improving concurrency. To use it: 1. Use InnoDB tables (default in MySQL 8.0+). 2. Ensure transactions are short and efficient. 3. Avoid long-running queries that hold locks. 4. Use SELECT ... FOR UPDATE to manually lock rows for writing.",
+    answer: [
+      "Row-level locking (used by InnoDB) allows multiple transactions to access different rows simultaneously, improving concurrency.",
+      "To use it: Use InnoDB tables (default in MySQL 8.0+).",
+      "Ensure transactions are short and efficient.",
+      "Avoid long-running queries that hold locks.",
+      "Use SELECT ... FOR UPDATE to manually lock rows for writing."
+    ],
     syntax: "SELECT ... FOR UPDATE; BEGIN; COMMIT;",
     example:
       "Example: Locking a user’s row during a balance update to prevent concurrent modifications.",
@@ -278,8 +308,12 @@ let advanced = [
   {
     id: 16,
     question: "How do you perform point-in-time recovery in MySQL?",
-    answer:
-      "Point-in-time recovery (PITR) restores data to a specific moment using binary logs. Steps: 1. Restore the latest backup. 2. Apply binary logs up to the desired time: mysqlbinlog --start-datetime='2023-01-01 12:00:00' /var/log/mysql/mysql-bin.000001 | mysql -u root -p. 3. Verify data integrity.",
+    answer: [
+      "Point-in-time recovery (PITR) restores data to a specific moment using binary logs.",
+      "Steps: Restore the latest backup.",
+      "Apply binary logs up to the desired time: mysqlbinlog --start-datetime='2023-01-01 12:00:00' /var/log/mysql/mysql-bin.000001 | mysql -u root -p.",
+      "Verify data integrity."
+    ],
     syntax: "mysqlbinlog, --start-datetime, --stop-datetime, FLUSH BINARY LOGS",
     example:
       "Example: Recovering a database to the state just before a corrupt UPDATE.",
@@ -289,8 +323,13 @@ let advanced = [
   {
     id: 17,
     question: "What is the InnoDB buffer pool and how do you tune it?",
-    answer:
-      "The InnoDB buffer pool is a memory area that caches data and indexes to reduce disk I/O. Tuning it: 1. Set innodb_buffer_pool_size to 50-70% of available RAM (e.g., 4GB on an 8GB server). 2. Monitor hit ratio with SHOW ENGINE INNODB STATUS. 3. Adjust innodb_buffer_pool_instances (default: 8) for large pools (>1GB). Aim for a hit ratio > 95% (cache efficiency).",
+    answer: [
+      "The InnoDB buffer pool is a memory area that caches data and indexes to reduce disk I/O.",
+      "Tuning it: Set innodb_buffer_pool_size to 50-70% of available RAM (e.g., 4GB on an 8GB server).",
+      "Monitor hit ratio with SHOW ENGINE INNODB STATUS.",
+      "Adjust innodb_buffer_pool_instances (default: 8) for large pools (>1GB).",
+      "Aim for a hit ratio > 95% (cache efficiency)."
+    ],
     syntax: "innodb_buffer_pool_size, SHOW ENGINE INNODB STATUS",
     example:
       "Example: Increasing buffer pool size for a high-traffic e-commerce site.",
@@ -300,8 +339,13 @@ let advanced = [
   {
     id: 18,
     question: "How do you monitor MySQL performance metrics?",
-    answer:
-      "Monitor MySQL performance using: 1. SHOW STATUS: Global server metrics (e.g., Com_select, Innodb_rows_read). 2. SHOW PROCESSLIST: Active connections and queries. 3. Performance Schema: Detailed low-level metrics (enabled by default in MySQL 5.6+). 4. Slow Query Log: Logs queries exceeding long_query_time. 5. Third-party tools: Percona PMM, MySQL Workbench, Prometheus + Grafana.",
+    answer: [
+      "Monitor MySQL performance using: SHOW STATUS: Global server metrics (e.g., Com_select, Innodb_rows_read).",
+      "SHOW PROCESSLIST: Active connections and queries.",
+      "Performance Schema: Detailed low-level metrics (enabled by default in MySQL 5.6+).",
+      "Slow Query Log: Logs queries exceeding long_query_time.",
+      "Third-party tools: Percona PMM, MySQL Workbench, Prometheus + Grafana."
+    ],
     syntax: `
       SHOW GLOBAL STATUS LIKE 'Com_%';
       SHOW PROCESSLIST;
@@ -315,8 +359,12 @@ let advanced = [
   {
     id: 19,
     question: "What is the slow query log and how do you analyze it?",
-    answer:
-      "The slow query log records queries exceeding long_query_time (default: 10 seconds). To analyze it: 1. Enable the log: SET GLOBAL slow_query_log = ON; SET GLOBAL long_query_time = 2; 2. Use mysqldumpslow or pt-query-digest (Percona Toolkit) to summarize logs: mysqldumpslow -s t -t 10 /var/log/mysql/mysql-slow.log. 3. Optimize identified queries (e.g., add indexes).",
+    answer: [
+      "The slow query log records queries exceeding long_query_time (default: 10 seconds).",
+      "To analyze it: Enable the log: SET GLOBAL slow_query_log = ON; SET GLOBAL long_query_time = 2;",
+      "Use mysqldumpslow or pt-query-digest (Percona Toolkit) to summarize logs: mysqldumpslow -s t -t 10 /var/log/mysql/mysql-slow.log.",
+      "Optimize identified queries (e.g., add indexes)."
+    ],
     syntax: "slow_query_log, long_query_time, mysqldumpslow, pt-query-digest",
     example: "Example: Finding and optimizing a slow JOIN query from the log.",
     realTimeExample:
@@ -325,8 +373,13 @@ let advanced = [
   {
     id: 20,
     question: "How do you use the Performance Schema in MySQL?",
-    answer:
-      "Performance Schema is a low-level monitoring tool for server events (e.g., queries, locks, I/O). To use it: 1. Check if enabled: SHOW VARIABLES LIKE 'performance_schema'; 2. Query tables like events_waits_current for real-time metrics. 3. Use setup_consumers and setup_instruments to configure monitoring. Example use cases: Identify lock contention, slow queries, or I/O bottlenecks.",
+    answer: [
+      "Performance Schema is a low-level monitoring tool for server events (e.g., queries, locks, I/O).",
+      "To use it: Check if enabled: SHOW VARIABLES LIKE 'performance_schema';",
+      "Query tables like events_waits_current for real-time metrics.",
+      "Use setup_consumers and setup_instruments to configure monitoring.",
+      "Example use cases: Identify lock contention, slow queries, or I/O bottlenecks."
+    ],
     syntax: `
       SHOW VARIABLES LIKE 'performance_schema';
       SELECT * FROM performance_schema.events_waits_current;
@@ -339,8 +392,15 @@ let advanced = [
   {
     id: 21,
     question: "What are the best practices for MySQL indexing?",
-    answer:
-      "1. Index columns used in WHERE, JOIN, and ORDER BY clauses. 2. Use composite indexes for multiple columns (order matters: leftmost prefix rule). 3. Avoid over-indexing: Each index slows down writes. 4. Use covering indexes to avoid table lookups. 5. Monitor index usage with SHOW INDEX and EXPLAIN. 6. Consider index types: B-tree (default), Hash (memory tables), Full-text (text search). 7. Drop unused indexes to reduce overhead.",
+    answer: [
+      "Index columns used in WHERE, JOIN, and ORDER BY clauses.",
+      "Use composite indexes for multiple columns (order matters: leftmost prefix rule).",
+      "Avoid over-indexing: Each index slows down writes.",
+      "Use covering indexes to avoid table lookups.",
+      "Monitor index usage with SHOW INDEX and EXPLAIN.",
+      "Consider index types: B-tree (default), Hash (memory tables), Full-text (text search).",
+      "Drop unused indexes to reduce overhead."
+    ],
     syntax: "CREATE INDEX, SHOW INDEX, DROP INDEX, EXPLAIN",
     example:
       "Example: Creating a composite index on (last_name, first_name) for a common query pattern.",
@@ -350,8 +410,14 @@ let advanced = [
   {
     id: 22,
     question: "How do you implement sharding in MySQL?",
-    answer:
-      "Sharding horizontally partitions data across multiple servers (shards) to improve scalability. Steps: 1. Choose a shard key (e.g., user_id modulo N). 2. Distribute data evenly across shards. 3. Use a proxy (e.g., ProxySQL, Vitess) or application logic to route queries. 4. Handle cross-shard queries carefully (e.g., joins). Tools: MySQL Fabric, Vitess, or custom application logic.",
+    answer: [
+      "Sharding horizontally partitions data across multiple servers (shards) to improve scalability.",
+      "Steps: Choose a shard key (e.g., user_id modulo N).",
+      "Distribute data evenly across shards.",
+      "Use a proxy (e.g., ProxySQL, Vitess) or application logic to route queries.",
+      "Handle cross-shard queries carefully (e.g., joins).",
+      "Tools: MySQL Fabric, Vitess, or custom application logic."
+    ],
     syntax: "Shard key: user_id % 4, ProxySQL, Vitess",
     example: "Example: Sharding a users table by user_id % 4 across 4 servers.",
     realTimeExample:
@@ -372,8 +438,14 @@ let advanced = [
   {
     id: 24,
     question: "How do you set up a MySQL cluster for high availability?",
-    answer:
-      "A MySQL cluster (e.g., InnoDB Cluster or NDB Cluster) provides high availability and scalability. Steps for InnoDB Cluster: 1. Deploy MySQL Servers (3+ nodes). 2. Set up Group Replication for synchronous multi-master replication. 3. Add MySQL Router to route queries to the cluster. 4. Use MySQL Shell to manage the cluster. Tools: MySQL InnoDB Cluster, NDB Cluster (for real-time apps).",
+    answer: [
+      "A MySQL cluster (e.g., InnoDB Cluster or NDB Cluster) provides high availability and scalability.",
+      "Steps for InnoDB Cluster: Deploy MySQL Servers (3+ nodes).",
+      "Set up Group Replication for synchronous multi-master replication.",
+      "Add MySQL Router to route queries to the cluster.",
+      "Use MySQL Shell to manage the cluster.",
+      "Tools: MySQL InnoDB Cluster, NDB Cluster (for real-time apps)."
+    ],
     syntax: `
       -- Install MySQL Shell and create cluster
       dba.createCluster('myCluster');
@@ -395,8 +467,15 @@ let advanced = [
   {
     id: 26,
     question: "How do you configure MySQL for read-heavy workloads?",
-    answer:
-      "Optimize MySQL for read-heavy workloads (e.g., reporting, analytics) with: 1. Use MyISAM for read-only tables (if no transactions needed). 2. Increase key_buffer_size (for MyISAM index caching). 3. Enable query cache (query_cache_type=1). 4. Add read replicas to distribute read load. 5. Use covering indexes to avoid table scans. 6. Tune innodb_buffer_pool_size (even for MyISAM, it caches InnoDB metadata). 7. Schedule backups during low-traffic periods.",
+    answer: [
+      "Optimize MySQL for read-heavy workloads (e.g., reporting, analytics) with: Use MyISAM for read-only tables (if no transactions needed).",
+      "Increase key_buffer_size (for MyISAM index caching).",
+      "Enable query cache (query_cache_type=1).",
+      "Add read replicas to distribute read load.",
+      "Use covering indexes to avoid table scans.",
+      "Tune innodb_buffer_pool_size (even for MyISAM, it caches InnoDB metadata).",
+      "Schedule backups during low-traffic periods."
+    ],
     syntax: `
       key_buffer_size = 1G
       query_cache_size = 256M
@@ -411,8 +490,13 @@ let advanced = [
   {
     id: 27,
     question: "What is the thread pool in MySQL and how do you configure it?",
-    answer:
-      "The thread pool (available in Percona Server or MySQL Enterprise) reduces overhead by reusing threads for multiple connections, improving scalability under high concurrency. Configure with: 1. thread_pool_size: Number of thread groups (default: auto). 2. thread_pool_max_threads: Max threads per group (default: 1000). 3. thread_pool_stall_limit: Time (ms) to wait for a free thread (default: 500). Note: Not available in standard MySQL Community Edition.",
+    answer: [
+      "The thread pool (available in Percona Server or MySQL Enterprise) reduces overhead by reusing threads for multiple connections, improving scalability under high concurrency.",
+      "Configure with: thread_pool_size: Number of thread groups (default: auto).",
+      "thread_pool_max_threads: Max threads per group (default: 1000).",
+      "thread_pool_stall_limit: Time (ms) to wait for a free thread (default: 500).",
+      "Note: Not available in standard MySQL Community Edition."
+    ],
     syntax:
       "thread_pool_size, thread_pool_max_threads, thread_pool_stall_limit",
     example:
@@ -423,8 +507,14 @@ let advanced = [
   {
     id: 28,
     question: "How do you handle large BLOB or TEXT data in MySQL?",
-    answer:
-      "For large BLOB/TEXT data (e.g., images, JSON): 1. Store in separate tables to avoid bloating main tables. 2. Use MEDIUMBLOB/LONGBLOB for data >64KB. 3. Compress data with COMPRESS()/UNCOMPRESS(). 4. Store externally: Save only file paths in MySQL; store files on disk/CDN. 5. Stream data: Fetch in chunks with SELECT SUBSTRING(blob_column, 1, 1024). 6. Index metadata: Add columns for searchable attributes (e.g., image_type).",
+    answer: [
+      "For large BLOB/TEXT data (e.g., images, JSON): Store in separate tables to avoid bloating main tables.",
+      "Use MEDIUMBLOB/LONGBLOB for data >64KB.",
+      "Compress data with COMPRESS()/UNCOMPRESS().",
+      "Store externally: Save only file paths in MySQL; store files on disk/CDN.",
+      "Stream data: Fetch in chunks with SELECT SUBSTRING(blob_column, 1, 1024).",
+      "Index metadata: Add columns for searchable attributes (e.g., image_type)."
+    ],
     syntax: "BLOB, TEXT, MEDIUMBLOB, LONGBLOB, COMPRESS(), UNCOMPRESS()",
     example:
       "Example: Storing user-uploaded videos with metadata in a separate user_media table.",
@@ -441,8 +531,13 @@ let advanced = [
   {
     id: 30,
     question: "How do you implement a read/write split in MySQL?",
-    answer:
-      "Read/write split directs read queries to replicas and write queries to the master, improving performance. Implement with: 1. Application-level routing: Configure connection pools for reads/writes. 2. ProxySQL: Route queries based on rules (e.g., SELECT → replicas). 3. MySQL Router: Part of InnoDB Cluster, routes reads to replicas. Best practices: Monitor replica lag (SHOW SLAVE STATUS), use connection pooling (e.g., HikariCP), and handle failover gracefully.",
+    answer: [
+      "Read/write split directs read queries to replicas and write queries to the master, improving performance.",
+      "Implement with: Application-level routing: Configure connection pools for reads/writes.",
+      "ProxySQL: Route queries based on rules (e.g., SELECT → replicas).",
+      "MySQL Router: Part of InnoDB Cluster, routes reads to replicas.",
+      "Best practices: Monitor replica lag (SHOW SLAVE STATUS), use connection pooling (e.g., HikariCP), and handle failover gracefully."
+    ],
     syntax: "ProxySQL, MySQL Router, connection pooling",
     example:
       "Example: Using ProxySQL to route SELECT queries to 3 replicas and INSERT/UPDATE to the master.",
@@ -453,8 +548,13 @@ let advanced = [
     id: 31,
     question:
       "What is the binlog format in MySQL and how do you choose the right one?",
-    answer:
-      "The binary log (binlog) format determines how changes are recorded: 1. STATEMENT: Logs SQL statements (compact, but unsafe for some functions like UUID()). 2. ROW: Logs row changes (default in MySQL 8.0+, safe but larger). 3. MIXED: Uses STATEMENT for safe queries, ROW otherwise. Choose ROW for replication, point-in-time recovery, or when using functions like UUID(). Choose STATEMENT for simple environments with no unsafe functions.",
+    answer: [
+      "The binary log (binlog) format determines how changes are recorded: STATEMENT: Logs SQL statements (compact, but unsafe for some functions like UUID()).",
+      "ROW: Logs row changes (default in MySQL 8.0+, safe but larger).",
+      "MIXED: Uses STATEMENT for safe queries, ROW otherwise.",
+      "Choose ROW for replication, point-in-time recovery, or when using functions like UUID().",
+      "Choose STATEMENT for simple environments with no unsafe functions."
+    ],
     syntax: "binlog_format = ROW|STATEMENT|MIXED",
     example:
       "Example: Setting binlog_format=ROW for a replicated database with UUID().",
@@ -464,8 +564,13 @@ let advanced = [
   {
     id: 32,
     question: "How do you use the MySQL Performance Schema to diagnose issues?",
-    answer:
-      "Performance Schema provides low-level metrics for queries, locks, and I/O. Steps to diagnose issues: 1. Check enabled instruments: SELECT * FROM performance_schema.setup_instruments; 2. Monitor current waits: SELECT * FROM performance_schema.events_waits_current; 3. Analyze long-running queries: SELECT * FROM performance_schema.events_statements_summary_by_digest ORDER BY SUM_TIMER_WAIT DESC; 4. Enable/disable consumers: UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%wait%';",
+    answer: [
+      "Performance Schema provides low-level metrics for queries, locks, and I/O.",
+      "Steps to diagnose issues: Check enabled instruments: SELECT * FROM performance_schema.setup_instruments;",
+      "Monitor current waits: SELECT * FROM performance_schema.events_waits_current;",
+      "Analyze long-running queries: SELECT * FROM performance_schema.events_statements_summary_by_digest ORDER BY SUM_TIMER_WAIT DESC;",
+      "Enable/disable consumers: UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%wait%';"
+    ],
     syntax: "performance_schema, setup_instruments, events_waits_current",
     example: "Example: Identifying lock contention in a high-traffic app.",
     realTimeExample:
@@ -475,8 +580,14 @@ let advanced = [
     id: 33,
     question:
       "What is the MySQL optimizer and how does it choose execution plans?",
-    answer:
-      "The MySQL optimizer determines the most efficient way to execute a query by: 1. Parsing the query into an internal structure. 2. Generating possible execution plans (e.g., join orders, index usage). 3. Estimating costs for each plan (based on statistics). 4. Choosing the lowest-cost plan. Influencing factors: Indexes, table statistics, join types, and query hints (e.g., FORCE INDEX). Debug with: EXPLAIN, OPTIMIZER_TRACE.",
+    answer: [
+      "The MySQL optimizer determines the most efficient way to execute a query by: Parsing the query into an internal structure.",
+      "Generating possible execution plans (e.g., join orders, index usage).",
+      "Estimating costs for each plan (based on statistics).",
+      "Choosing the lowest-cost plan.",
+      "Influencing factors: Indexes, table statistics, join types, and query hints (e.g., FORCE INDEX).",
+      "Debug with: EXPLAIN, OPTIMIZER_TRACE."
+    ],
   },
   {
     id: 34,
@@ -491,8 +602,13 @@ let advanced = [
   {
     id: 35,
     question: "What is the MySQL query rewrite plugin and how do you use it?",
-    answer:
-      "The query rewrite plugin intercepts and modifies queries before execution. Use cases: Fixing deprecated syntax (e.g., TYPE=InnoDB → ENGINE=InnoDB), adding hints (e.g., FORCE INDEX), or rewriting schema names for multi-tenancy. Steps: 1. Install the plugin: INSTALL PLUGIN rewrite_query SONAME 'rewrite_query.so'; 2. Add rewrite rules to rewrite_rules table. 3. Enable with SET GLOBAL rewrite_query_enabled=1;",
+    answer: [
+      "The query rewrite plugin intercepts and modifies queries before execution.",
+      "Use cases: Fixing deprecated syntax (e.g., TYPE=InnoDB → ENGINE=InnoDB), adding hints (e.g., FORCE INDEX), or rewriting schema names for multi-tenancy.",
+      "Steps: Install the plugin: INSTALL PLUGIN rewrite_query SONAME 'rewrite_query.so';",
+      "Add rewrite rules to rewrite_rules table.",
+      "Enable with SET GLOBAL rewrite_query_enabled=1;"
+    ],
     syntax: "INSTALL PLUGIN rewrite_query, rewrite_rules table",
     example:
       "Example: Automatically adding FORCE INDEX to queries on a specific table.",
@@ -502,8 +618,15 @@ let advanced = [
   {
     id: 36,
     question: "How do you implement multi-tenancy in MySQL?",
-    answer:
-      "Multi-tenancy strategies for MySQL: 1. Separate Databases: One database per tenant (high isolation, easy backups). 2. Shared Database, Separate Schemas: One schema per tenant. 3. Shared Schema with Tenant ID: Add tenant_id to all tables (scalable, but requires row-level security). 4. Query Rewrite Plugin: Dynamically rewrite queries to include tenant_id. Best practices: Use connection pooling per tenant. Implement row-level security (e.g., views with WHERE tenant_id = current_tenant()). Monitor performance per tenant.",
+    answer: [
+      "Multi-tenancy strategies for MySQL: Separate Databases: One database per tenant (high isolation, easy backups).",
+      "Shared Database, Separate Schemas: One schema per tenant.",
+      "Shared Schema with Tenant ID: Add tenant_id to all tables (scalable, but requires row-level security).",
+      "Query Rewrite Plugin: Dynamically rewrite queries to include tenant_id.",
+      "Best practices: Use connection pooling per tenant.",
+      "Implement row-level security (e.g., views with WHERE tenant_id = current_tenant()).",
+      "Monitor performance per tenant."
+    ],
     syntax: "tenant_id column, row-level security, connection pooling",
     example:
       "Example: Using a shared schema with tenant_id and row-level security.",
@@ -514,32 +637,64 @@ let advanced = [
     id: 37,
     question:
       "What is the MySQL Enterprise Audit plugin and how do you use it?",
-    answer:
-      'The Enterprise Audit plugin logs database activity (e.g., logins, queries, schema changes) for compliance and security. Steps: 1. Install the plugin: INSTALL PLUGIN audit_log SONAME \'audit_log.so\'; 2. Configure audit policies in audit_log_filter: INSERT INTO mysql.audit_log_filter (NAME, FILTER) VALUES (\'log_connections\', \'{ "filter": { "class": { "name": "connection" } } }\'); 3. Enable auditing: SET GLOBAL audit_log_enabled = ON; 4. View logs in the audit log file (default: audit.log).',
+    answer: [
+      "The Enterprise Audit plugin logs database activity (e.g., logins, queries, schema changes) for compliance and security.",
+      "Steps: Install the plugin: INSTALL PLUGIN audit_log SONAME 'audit_log.so';",
+      "Configure audit policies in audit_log_filter: INSERT INTO mysql.audit_log_filter (NAME, FILTER) VALUES ('log_connections', '{ \"filter\": { \"class\": { \"name\": \"connection\" } } }');",
+      "Enable auditing: SET GLOBAL audit_log_enabled = ON;",
+      "View logs in the audit log file (default: audit.log)."
+    ],
   },
   {
     id: 38,
     question: "How do you secure MySQL against SQL injection?",
-    answer:
-      "Prevent SQL injection with: 1. Prepared Statements (parameterized queries): PREPARE stmt FROM 'SELECT * FROM users WHERE id = ?'; 2. Stored Procedures: Encapsulate logic in the database. 3. Input Validation: Reject or sanitize user input. 4. Least Privilege: Grant only necessary permissions. 5. ORM Frameworks: Use tools like Hibernate or SQLAlchemy. 6. Disable Dynamic SQL: Avoid concatenating SQL strings. Example of vulnerability: SELECT * FROM users WHERE name = '$user_input';",
+    answer: [
+      "Prepared Statements (parameterized queries): PREPARE stmt FROM 'SELECT * FROM users WHERE id = ?';",
+      "Stored Procedures: Encapsulate logic in the database.",
+      "Input Validation: Reject or sanitize user input.",
+      "Least Privilege: Grant only necessary permissions.",
+      "ORM Frameworks: Use tools like Hibernate or SQLAlchemy.",
+      "Disable Dynamic SQL: Avoid concatenating SQL strings.",
+      "Example of vulnerability: SELECT * FROM users WHERE name = '$user_input';"
+    ],
   },
   {
     id: 39,
     question: "What is the MySQL Enterprise Firewall and how does it work?",
-    answer:
-      "The Enterprise Firewall blocks SQL injection and unauthorized queries by: 1. Learning Mode: Analyzes and whitelists normal query patterns. 2. Protecting Mode: Blocks queries not in the whitelist. 3. Auditing: Logs blocked queries for review. Steps to enable: 1. Install the plugin: INSTALL PLUGIN mysql_firewall SONAME 'mysql_firewall.so'; 2. Configure users: CALL mysql.sp_set_firewall_mode('user@host', 'PROTECTING'); 3. Monitor with mysql_firewall_users and mysql_firewall_whitelist.",
+    answer: [
+      "Learning Mode: Analyzes and whitelists normal query patterns.",
+      "Protecting Mode: Blocks queries not in the whitelist.",
+      "Auditing: Logs blocked queries for review.",
+      "Steps to enable:",
+      "Install the plugin: INSTALL PLUGIN mysql_firewall SONAME 'mysql_firewall.so';",
+      "Configure users: CALL mysql.sp_set_firewall_mode('user@host', 'PROTECTING');",
+      "Monitor with mysql_firewall_users and mysql_firewall_whitelist."
+    ],
   },
   {
     id: 40,
     question: "How do you implement row-level security in MySQL?",
-    answer:
-      "Row-level security (RLS) restricts data access at the row level based on user attributes. Implement with: 1. Views with WHERE clauses: CREATE VIEW my_data AS SELECT * FROM data WHERE tenant_id = SUBSTRING_INDEX(USER(), '@', 1); 2. Stored Procedures: Encapsulate logic with user checks. 3. Application Logic: Filter rows in the app code. 4. ProxySQL: Route queries with RLS rules. MySQL 8.0+: Use CREATE POLICY (if available in your fork, e.g., MariaDB).",
+    answer: [
+      "Row-level security (RLS) restricts data access at the row level based on user attributes.",
+      "Implement with: Views with WHERE clauses: CREATE VIEW my_data AS SELECT * FROM data WHERE tenant_id = SUBSTRING_INDEX(USER(), '@', 1);",
+      "Stored Procedures: Encapsulate logic with user checks.",
+      "Application Logic: Filter rows in the app code.",
+      "ProxySQL: Route queries with RLS rules.",
+      "MySQL 8.0+: Use CREATE POLICY (if available in your fork, e.g., MariaDB)."
+    ],
   },
   {
     id: 41,
     question: "What is the MySQL Document Store and how do you use it?",
-    answer:
-      'MySQL Document Store allows storing and querying JSON documents alongside relational data. Key features: 1. JSON Data Type: Store and index JSON documents. 2. X DevAPI: Modern API for document operations (CRUD, find, modify). 3. NoSQL and SQL: Query JSON with SQL (JSON_EXTRACT) or NoSQL-style methods. Steps to use: 1. Create a table with a JSON column: CREATE TABLE user_profiles (id INT PRIMARY KEY, data JSON); 2. Insert JSON data: INSERT INTO user_profiles VALUES (1, \'{"name": "Alice", "preferences": {"theme": "dark"}}\'); 3. Query with JSON_EXTRACT or X DevAPI.',
+    answer: [
+      "MySQL Document Store allows storing and querying JSON documents alongside relational data.",
+      "Key features: JSON Data Type: Store and index JSON documents.",
+      "X DevAPI: Modern API for document operations (CRUD, find, modify).",
+      "NoSQL and SQL: Query JSON with SQL (JSON_EXTRACT) or NoSQL-style methods.",
+      "Steps to use: Create a table with a JSON column: CREATE TABLE user_profiles (id INT PRIMARY KEY, data JSON);",
+      "Insert JSON data: INSERT INTO user_profiles VALUES (1, '{\"name\": \"Alice\", \"preferences\": {\"theme\": \"dark\"}}');",
+      "Query with JSON_EXTRACT or X DevAPI."
+    ],
   },
   {
     id: 42,
@@ -568,8 +723,13 @@ let advanced = [
   {
     id: 46,
     question: "How do you use the ROW_NUMBER() window function?",
-    answer:
-      "ROW_NUMBER() assigns a unique sequential integer to rows within a partition, starting at 1. Use cases: Pagination: WHERE ROW_NUMBER() BETWEEN 10 AND 20. Deduplication: Keep only the first row per group. Top-N per group: Filter with a subquery. Note: Requires an ORDER BY clause to determine row order.",
+    answer: [
+      "ROW_NUMBER() assigns a unique sequential integer to rows within a partition, starting at 1.",
+      "Use cases: Pagination: WHERE ROW_NUMBER() BETWEEN 10 AND 20.",
+      "Deduplication: Keep only the first row per group.",
+      "Top-N per group: Filter with a subquery.",
+      "Note: Requires an ORDER BY clause to determine row order."
+    ],
   },
   {
     id: 47,
@@ -587,8 +747,13 @@ let advanced = [
   {
     id: 49,
     question: "What is the WITH RECURSIVE clause in MySQL 8.0?",
-    answer:
-      "WITH RECURSIVE defines a recursive Common Table Expression (CTE) for querying hierarchical data (e.g., org charts, tree structures). Structure: 1. Base case: Non-recursive term. 2. Recursive term: Joins to the CTE itself. 3. Termination: Recursion stops when no rows are returned. Use cases: Organizational hierarchies, bill-of-materials, graph traversal.",
+    answer: [
+      "WITH RECURSIVE defines a recursive Common Table Expression (CTE) for querying hierarchical data (e.g., org charts, tree structures).",
+      "Structure: Base case: Non-recursive term.",
+      "Recursive term: Joins to the CTE itself.",
+      "Termination: Recursion stops when no rows are returned.",
+      "Use cases: Organizational hierarchies, bill-of-materials, graph traversal."
+    ],
   },
   {
     id: 50,
