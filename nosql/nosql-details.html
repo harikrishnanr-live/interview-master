@@ -9,6 +9,7 @@
     <script src="js/nosql-beginner.js"></script>
     <script src="js/nosql-intermediate.js"></script>
     <script src="js/nosql-advanced.js"></script>
+
     <style>
       .wave-bg {
         background: linear-gradient(-45deg, #009688, #00796b, #004d40, #00695c);
@@ -23,7 +24,6 @@
       }
     </style>
   </head>
-
   <body class="wave-bg min-h-screen">
     <!-- Navigation Menu -->
     <nav class="bg-gray-800 text-white p-4 sticky top-0 z-50">
@@ -583,17 +583,36 @@
                                 ${formatAnswer(item.answer)}
                                 ${
                                   item.syntax
-                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Syntax:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.syntax}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.syntax.replace(/`/g, "\\`")}\`)">Copy</button></div></div>`
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Syntax:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${
+                                        item.syntax
+                                      }</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.syntax.replace(
+                                        /`/g,
+                                        "\\`"
+                                      )}\`)">Copy</button></div></div>`
                                     : ""
                                 }
                                 ${
                                   item.example
-                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Example:</strong>${Array.isArray(item.example) ? `<ol class="list-decimal list-inside space-y-2 mt-2">${item.example.map((ex) => `<li class="text-gray-700">${ex}</li>`).join("")}</ol>` : `<div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.example}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.example.replace(/`/g, "\\`")}\`)">Copy</button></div>`}</div>`
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Example:</strong>${
+                                        Array.isArray(item.example)
+                                          ? `<ol class="list-decimal list-inside space-y-2 mt-2">${item.example
+                                              .map(
+                                                (ex) =>
+                                                  `<li class="text-gray-700">${ex}</li>`
+                                              )
+                                              .join("")}</ol>`
+                                          : `<div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${
+                                              item.example
+                                            }</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.example.replace(
+                                              /`/g,
+                                              "\\`"
+                                            )}\`)">Copy</button></div>`
+                                      }</div>`
                                     : ""
                                 }
                                 ${
-                                  item.realtimeExample
-                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Real-Time Example:</strong>${Array.isArray(item.realtimeExample) ? `<ol class="list-decimal list-inside space-y-2 mt-2">${item.realtimeExample.map((rte) => `<li class="text-gray-800">${rte}</li>`).join("")}</ol>` : `<p class="text-gray-800 mt-2">${item.realtimeExample}</p>`}</div>`
+                                  item.realTimeExample
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Real-Time Example:</strong><p class="text-gray-800 mt-2">${item.realTimeExample}</p></div>`
                                     : ""
                                 }
                             </div>
@@ -721,6 +740,18 @@
         if (jumpInput) jumpInput.max = totalPages;
         if (currentPageDisplay) currentPageDisplay.textContent = currentPage;
         if (totalPagesDisplay) totalPagesDisplay.textContent = totalPages;
+      }
+
+      // Function to copy code to clipboard
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert("Code copied to clipboard!");
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
       }
     </script>
   </body>
