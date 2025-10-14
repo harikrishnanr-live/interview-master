@@ -264,7 +264,6 @@
           </div>
         </div>
 
-
         <!-- Q&A Container -->
         <div id="qaContainer" class="space-y-6 mb-8">
           <!-- Q&A items will be inserted here -->
@@ -352,7 +351,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <script>
@@ -391,9 +389,7 @@
                     <svg class="w-8 h-8 mr-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
                     </svg>
-                    PHP ${
-                      level.charAt(0).toUpperCase() + level.slice(1)
-                    } Level
+                    PHP ${level.charAt(0).toUpperCase() + level.slice(1)} Level
                 `;
 
         // Initialize Q&A functionality
@@ -603,7 +599,9 @@
                                 }
                                 ${
                                   item.codeExample
-                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Code Example:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${item.codeExample}</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.codeExample.replace(
+                                    ? `<div class="mt-4 pt-4 border-t border-gray-300"><strong class="text-gray-700">Code Example:</strong><div class="relative"><pre class="bg-gray-100 p-3 rounded mt-2 text-sm overflow-x-auto whitespace-pre-wrap">${
+                                        item.codeExample
+                                      }</pre><button class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" onclick="copyToClipboard(\`${item.codeExample.replace(
                                         /`/g,
                                         "\\`"
                                       )}\`)">Copy</button></div></div>`
